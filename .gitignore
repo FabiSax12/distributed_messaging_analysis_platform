@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+npm-debug.log*
+
+# Terraform
+.terraform/
+*.tfstate*
+*.tfvars
+crash.log
+
+# Secretos
+.env
+.env.*
+*.pem
+*.key
+
+# Contenido pesado o sensible (se conservan los .gitkeep)
+dataset/video/*
+!dataset/video/.gitkeep
+dataset/heavy_cases/*
+!dataset/heavy_cases/.gitkeep
+infra/tls/*
+!infra/tls/.gitkeep
+!.gitkeep
+
+# Resultados pesados
+experiments/*/results/*
+!experiments/*/results/.gitkeep
+*.csv.gz
+*.parquet
+*.log
+*.pcap
+*.prof
