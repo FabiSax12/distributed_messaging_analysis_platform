@@ -1,0 +1,43 @@
+#!/bin/bash
+# Minimal bootstrap: Docker, Compose plugin and CloudWatch agent.
+# The application itself is deployed later (via SSM) by external scripts.
+set -euxo pipefail
+
+dnf install -y docker amazon-cloudwatch-agent
+
+# Docker Compose v2 plugin (not packaged in Amazon Linux 2023 repositories).
+ARCH="$(uname -m)"
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -fsSL -o /usr/local/lib/docker/cli-plugins/docker-compose \
+  "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-linux-$ARCH"
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+systemctl enable --now docker
+usermod -aG docker ssm-user || true
+
+# Ship system logs to the component log group.
+cat > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json <<'JSON'
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/messages",
+            "log_group_name": "${log_group_name}",
+            "log_stream_name": "{instance_id}/messages"
+          },
+          {
+            "file_path": "/var/log/cloud-init-output.log",
+            "log_group_name": "${log_group_name}",
+            "log_stream_name": "{instance_id}/cloud-init"
+          }
+        ]
+      }
+    }
+  }
+}
+JSON
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+systemctl enable amazon-cloudwatch-agent

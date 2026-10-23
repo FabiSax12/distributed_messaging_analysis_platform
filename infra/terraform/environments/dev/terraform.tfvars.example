@@ -1,0 +1,17 @@
+# Copy to terraform.tfvars and adjust. Never put secrets in this file.
+aws_region            = "us-east-1"
+alert_email           = "team@example.com"
+cognito_domain_prefix = "msg-analysis-dev-yourteam" # must be globally unique in the region
+
+callback_urls = ["http://localhost:5173"]
+logout_urls   = ["http://localhost:5173"]
+
+coordinator_instance_type = "t3.small"
+
+worker_nodes = {
+  text  = { instance_type = "t3.large", volume_gb = 40 }
+  image = { instance_type = "t3.large", volume_gb = 40 }
+  audio = { instance_type = "t3.large", volume_gb = 40 } # g4dn.xlarge for GPU (module M5)
+}
+
+monthly_budget_usd = 60
