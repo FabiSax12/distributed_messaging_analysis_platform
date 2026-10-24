@@ -1,0 +1,36 @@
+[project]
+name = "workers"
+version = "0.1.0"
+description = "Worker nodes: consume their queues by priority, process media with ffmpeg or external APIs, and report every state change to the coordinator."
+requires-python = ">=3.12"
+dependencies = [
+    "shared",
+    "boto3>=1.34",
+    "pydantic-settings>=2.4",
+    "psutil>=5.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2",
+    "moto[sqs,dynamodb,s3,server]>=5.0",
+    "ruff>=0.6",
+    "httpx>=0.27",
+    "websockets>=12",
+]
+
+[tool.uv.sources]
+shared = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/workers"]
+
+# ruff 0.16 (the one in uv.lock) sorts imports by default and, without this,
+# treats `shared` as third-party. This gives the same grouping the
+# coordinator uses: stdlib, third-party, `shared`, then the package itself.
+[tool.ruff.lint.isort]
+known-first-party = ["shared", "workers"]
