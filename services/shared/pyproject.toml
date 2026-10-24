@@ -1,0 +1,21 @@
+[project]
+name = "shared"
+version = "0.1.0"
+description = "Shared domain contracts: routing, states, SQS messages, DynamoDB/S3 models and REST contracts."
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.7"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# Standard src/-like layout: the modules live in shared/shared/ (the real
+# "shared" package sits next to this pyproject.toml). This used to be a flat
+# layout with a `sources` remap in the hatchling build, but that remap is not
+# reflected in the editable install (`uv sync`/`pip install -e`): the .pth it
+# generates points at the shared/ directory itself instead of its parent, and
+# `import shared` only resolved by accident via Python's cwd-on-path.
+# With the nested layout, hatchling detects the package on its own and the
+# editable install works without tricks.
+[tool.hatch.build.targets.wheel]
+packages = ["shared"]
