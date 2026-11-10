@@ -1,0 +1,9 @@
+.git
+.venv
+dataset
+experiments/*/results
+**/__pycache__
+*.pt
+.env*
+**/*.tfstate*
+**/*.tfvars

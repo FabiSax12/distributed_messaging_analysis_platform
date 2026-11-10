@@ -26,6 +26,7 @@ from shared.models import CaseItem, report_key
 from shared.states import TERMINAL_CASE, CaseStatus
 from ulid import ULID
 
+from ..admission import reserve
 from ..repo import cases as cases_table
 from ..repo import subtasks as subtasks_table
 from ..repo.cases import CaseAlreadyTerminal, CaseNotFound
@@ -57,7 +58,7 @@ def create_case(
     outbox: OutboxDep,
 ) -> CreateCaseResponse:
     input_keys = [f.input_key for f in payload.files]
-    missing = _missing_input_keys(s3, settings.S3_BUCKET, input_keys)
+    missing, sizes = _input_sizes(s3, settings.S3_BUCKET, input_keys)
     if missing:
         raise HTTPException(status_code=422, detail={"missing": missing})
 
@@ -70,8 +71,8 @@ def create_case(
     # nothing, no orphans), then the relay publishes them. A crash after the
     # commit only delays the publish: the relay finds `enqueued = false` rows
     # on its next pass, including after a coordinator restart.
-    # M1 admission control would decide here whether to accept the case.
     with db.connection() as conn:
+        reserve(conn, settings, subtasks, sum(sizes[key] for key in input_keys), sizes)
         cases_table.insert(
             conn,
             CaseItem(
@@ -101,22 +102,27 @@ def create_case(
     )
 
 
-def _missing_input_keys(s3: Any, bucket: str, input_keys: list[str]) -> list[str]:
+def _input_sizes(
+    s3: Any, bucket: str, input_keys: list[str]
+) -> tuple[list[str], dict[str, int]]:
     """`head_object` for each `input_key`, in parallel (I/O-bound, not CPU-bound)."""
 
-    def _check(key: str) -> str | None:
+    def _check(key: str) -> tuple[str, int | None]:
         try:
-            s3.head_object(Bucket=bucket, Key=key)
+            head = s3.head_object(Bucket=bucket, Key=key)
         except ClientError as exc:
             code = exc.response.get("Error", {}).get("Code")
             if code in _HEAD_OBJECT_NOT_FOUND_CODES:
-                return key
+                return key, None
             raise
-        return None
+        return key, int(head["ContentLength"])
 
     with ThreadPoolExecutor(max_workers=min(16, len(input_keys))) as pool:
         results = list(pool.map(_check, input_keys))
-    return [key for key in results if key is not None]
+    return (
+        [key for key, size in results if size is None],
+        {key: size for key, size in results if size is not None},
+    )
 
 
 @router.get("/cases", response_model=list[CaseItem])
