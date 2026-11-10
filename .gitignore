@@ -45,3 +45,6 @@ experiments/*/results/*
 *.log
 *.pcap
 *.prof
+
+# direnv (personal AWS profile)
+.envrc
