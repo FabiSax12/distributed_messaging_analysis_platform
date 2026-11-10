@@ -11,10 +11,7 @@ members = [
 ]
 
 [manifest.dependency-groups]
-dataset = [
-    { name = "jsonschema", specifier = ">=4.22" },
-    { name = "pytest", specifier = ">=8.2" },
-]
+dataset = [{ name = "jsonschema", specifier = ">=4.22" }]
 dev = [{ name = "ruff", specifier = ">=0.6" }]
 
 [[package]]
@@ -1740,7 +1737,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "pytest" },
     { name = "ruff" },
 ]
 
@@ -1748,10 +1744,7 @@ dev = [
 requires-dist = [{ name = "pydantic", specifier = ">=2.7" }]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "pytest", specifier = ">=8.2" },
-    { name = "ruff", specifier = ">=0.6" },
-]
+dev = [{ name = "ruff", specifier = ">=0.6" }]
 
 [[package]]
 name = "six"
@@ -1782,17 +1775,13 @@ source = { editable = "services/storage" }
 
 [package.dev-dependencies]
 dev = [
-    { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "pytest", specifier = ">=8.2" },
-    { name = "ruff", specifier = ">=0.6" },
-]
+dev = [{ name = "ruff", specifier = ">=0.6" }]
 
 [[package]]
 name = "sympy"

@@ -9,7 +9,7 @@ state change to the coordinator through the `resultados` queue. It never writes
 > **Status: inherited code, being adapted.** This package was copied from the
 > team's Project I (SQS/DynamoDB/ffmpeg pipeline). The target for this project is
 > RabbitMQ + PostgreSQL with text, image and audio workers (see the root
-> `README.md` and `docs/reuse.md`). Queue, pool and operation names below are the
+> `README.md` and `docs/reutilizacion.md`). Queue, pool and operation names below are the
 > inherited wire contract and will change in a later coordinated step.
 
 ## Concurrency model
@@ -187,9 +187,9 @@ uv run ruff format --check services/workers
 ```
 
 All of them use moto; none touches AWS or the internet. The runner tests use
-small fake operations registered with `monkeypatch`, so no ffmpeg is needed;
-`tests/test_run_local.py` does the same for the local analysis runner.
-Operation tests will be added together with the real operations.
+small fake operations registered with `monkeypatch`, so no ffmpeg is needed.
+These are legacy Project I tests; analysis ops are checked with `run_local`, not
+unit tests (see `CLAUDE.md`).
 
 ## Out of scope
 

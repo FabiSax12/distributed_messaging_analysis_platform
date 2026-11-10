@@ -7,7 +7,7 @@ PostgreSQL migration.
 
 > **Status: interfaces only.** Each subpackage defines its public interface as
 > `Protocol` classes with docstrings. The implementations are pending (owner:
-> David Molina, see `docs/responsibilities.md`).
+> David Molina, see `docs/responsabilidades.md`).
 
 | Subpackage | Interface | Purpose |
 |---|---|---|
@@ -39,10 +39,9 @@ Scripts and raw CSVs go in `experiments/m3_io_storage/`; the write-up goes in
 A corruption test (flip a byte in one chunk, drop a chunk) showing that the
 reassembler rejects the file is cheap and worth including.
 
-## Tests
+## Lint
 
 ```bash
-uv run --package storage pytest services/storage/tests -q
 uv run ruff check services/storage
 uv run ruff format --check services/storage
 ```

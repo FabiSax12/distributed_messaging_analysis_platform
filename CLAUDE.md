@@ -4,18 +4,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-University project (II Proyecto Programado IC-6600, Alternative B): a distributed platform that analyzes messaging data (text, image, audio) on AWS. It builds on the team's Project I (`FabiSax12/distributed-multimedia-processing`); `docs/reuse.md` records what is reused, modified or new.
+University project (II Proyecto Programado IC-6600, Alternative B): a distributed platform that analyzes messaging data (text, image, audio) on AWS. It builds on the team's Project I (`FabiSax12/distributed-multimedia-processing`); `docs/reutilizacion.md` records what is reused, modified or new.
 
 - `services/coordinator` and `services/workers` are Project I code still on SQS + DynamoDB (and `shared/routing.py` is its wire contract); the migration to RabbitMQ + PostgreSQL is pending on the lead's branch, so do not touch those parts without being asked.
 - New contracts on top: `services/shared/shared/analysis.py` (analysis results, `AnalysisResult.to_meta/from_meta`), the separate `workers.ops.analysis.ANALYSIS_OPERATIONS` registry with `python -m workers.ops.run_local`, the `services/storage` M3 interface skeleton, and the dataset schemas/validator in `dataset/`.
-- Python is a uv workspace (root `pyproject.toml`, one `uv.lock`): `uv sync --all-packages --group dataset` (full setup: every package plus the dataset tools), then `uv run --package <shared|coordinator|workers|storage> pytest services/<pkg>/tests -q` and `uv run --group dataset pytest dataset/tests -q`; lint with `uv run ruff check <path>` / `uv run ruff format --check <path>`.
+- Python is a uv workspace (root `pyproject.toml`, one `uv.lock`): `uv sync --all-packages --group dataset` (full setup: every package plus the dataset tools). Validate the dataset with `uv run --group dataset python dataset/generators/validate_manifests.py`. Legacy Project I tests: `uv run --package <coordinator|workers> pytest services/<pkg>/tests -q` (moto-based; drop them during the migration instead of porting them); lint with `uv run ruff check <path>` / `uv run ruff format --check <path>`.
 - `frontend/` has a Vite dashboard; `infra/docker`, `infra/monitoring`, `infra/tls`, most of `scripts/` and `experiments/*/scripts` are still empty scaffolds.
 
 ## Conventions
 
-- Everything is in English (explicit user decision): file and directory names, code, comments, commit messages, the README and all docs. Existing Spanish content (the `docs/` templates, `docs/architecture/diagram.drawio` labels, `docs/reuse.md`'s `docs/arquitectura/` path) is legacy and should be translated when touched.
+- Build only what the assignment PDF asks for. No unit tests (the PDF grades measured evidence: M1-M5 reports and the five B.6 load/fault scenarios). Tools are fine when they save end-to-end testing time (`run_local`, `fake_worker.py`, `smoke.py`, the manifest validator). Measurement experiments are required: a module without measured evidence is capped at 2/5.
+- Required doc names come from the PDF and stay in Spanish: `docs/responsabilidades.md`, `docs/reutilizacion.md`, `docs/bitacora_ia.md` (contents in English).
+- Everything else is in English (explicit user decision): file and directory names, code, comments, commit messages, the README and all docs. Existing Spanish content (the `docs/` templates, `docs/architecture/diagram.drawio` labels, `docs/reutilizacion.md`'s `docs/arquitectura/` path) is legacy and should be translated when touched.
 - Planned layout: `services/coordinator/{api,admission,scheduler,state}`, `services/workers/{common,text,image,audio}`, `services/storage/*`, `services/security/*`, one `experiments/mN_*` folder per OS module (M1 memory, M2 scheduling, M3 I/O and storage, M4 security, M5 heterogeneous compute), each with a matching `docs/module-m*.md` report template (sections: what was implemented, OS concept, measurement method, results, interpretation).
-- `docs/responsibilities.md` maps modules and areas to team members; `docs/ai_log.md` is a required log of AI usage (at least two documented AI errors).
+- `docs/responsabilidades.md` maps modules and areas to team members; `docs/bitacora_ia.md` is a required log of AI usage (at least two documented AI errors).
 
 ## Terraform (`infra/terraform/`)
 

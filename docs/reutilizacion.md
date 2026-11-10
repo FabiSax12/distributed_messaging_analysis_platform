@@ -41,7 +41,7 @@ Copied with minimal changes (renames, imports, content types, extra fields).
 | `dashboard/src/hooks/`, `lib/`, `components/` | WebSocket with polling fallback, hash routing, charts. | None in substance |
 | `infra/modules/frontend`, `deploy/publish-dashboard.sh` | Dashboard delivery: Vite build, S3 bucket, CloudFront invalidation, and `/api/*` proxied to the coordinator (same origin, so no CORS). | Cognito login integrated in the app |
 | Concurrency model of the coordinator | One process with threads, no `multiprocessing`. | None |
-| `coordinator/scripts/fake_worker.py`, `smoke.py`, `workers/scripts/local_e2e.py`, `pytest` layout | Local end-to-end and smoke testing without real workers. | AWS mocks (`moto`) replaced by PostgreSQL and RabbitMQ fixtures |
+| `coordinator/scripts/fake_worker.py`, `smoke.py`, `workers/scripts/local_e2e.py`, `pytest` layout | Local end-to-end and smoke testing without real workers. | The scripts are kept for end-to-end checks; the `moto` unit tests are dropped in the migration (not required by the assignment) |
 | Infrastructure conventions | Flat Terraform layout, SSM-only access (no SSH), AMI taken from an SSM parameter, generated `.env.local`. | Extended, see below |
 
 ## What is modified

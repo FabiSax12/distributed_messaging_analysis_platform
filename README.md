@@ -31,7 +31,7 @@ Key points:
 | M4 | Security | [docs/module-m4-security.md](docs/module-m4-security.md) |
 | M5 | Heterogeneous compute | [docs/module-m5-heterogeneous-compute.md](docs/module-m5-heterogeneous-compute.md) |
 
-Who owns what: [docs/responsibilities.md](docs/responsibilities.md). What is reused from Project I: [docs/reuse.md](docs/reuse.md).
+Who owns what: [docs/responsabilidades.md](docs/responsabilidades.md). What is reused from Project I: [docs/reutilizacion.md](docs/reutilizacion.md).
 
 ## Requirements
 

@@ -2,11 +2,7 @@
 # together so they share one lockfile and one .venv.
 #
 #   uv sync --all-packages --group dataset
-#   uv run --package shared pytest services/shared/tests -q
-#   uv run --package coordinator pytest services/coordinator/tests -q
-#   uv run --package workers pytest services/workers/tests -q
-#   uv run --package storage pytest services/storage/tests -q
-#   uv run --group dataset pytest dataset/tests -q
+#   uv run --group dataset python dataset/generators/validate_manifests.py
 [tool.uv.workspace]
 members = [
     "services/shared",
@@ -19,7 +15,6 @@ members = [
 # Tools for dataset/ (manifest validation). Not part of any service.
 dataset = [
     "jsonschema>=4.22",
-    "pytest>=8.2",
 ]
 dev = [
     "ruff>=0.6",

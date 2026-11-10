@@ -16,7 +16,7 @@ Work is split by load: Fabián owns the heaviest and cloud-bound work, which can
 | M5 Heterogeneous compute (CPU vs GPU / threads vs quantized) | Camila Hidalgo | David Molina | `experiments/m5_heterogeneous_compute/` | `docs/module-m5-heterogeneous-compute.md` |
 | Dataset (generators, public sources, ground truth) | Camila Hidalgo | David Molina | `dataset/`, `scripts/dataset/`, `docs/dataset.md` | — |
 | Frontend (dashboard, Cognito login, role-based views) | Camila Hidalgo | Fabián Vargas | `frontend/` | — |
-| AI usage log | Everyone | — | `docs/ai_log.md` | — |
+| AI usage log | Everyone | — | `docs/bitacora_ia.md` | — |
 
 ## What each person can start now
 
