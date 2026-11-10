@@ -34,6 +34,10 @@ def create_pool(url: str, *, max_size: int) -> ConnectionPool:
         # Test a pooled connection before lending it, so a database restart
         # costs one reconnect instead of one failed query per idle connection.
         check=ConnectionPool.check_connection,
+        # Fail fast while the database is down instead of blocking a thread
+        # for psycopg_pool's default 30 s; callers retry (consumers requeue
+        # with backoff, the sweeper and outbox loops retry next cycle).
+        timeout=5,
         open=False,
         name="coordinator",
     )

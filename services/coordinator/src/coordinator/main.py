@@ -16,12 +16,14 @@ from __future__ import annotations
 import asyncio
 import logging
 import threading
+import time
 from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI
 from shared.broker import consume
+from shared.models import DEFAULT_HEARTBEAT_INTERVAL_S
 from shared.routing import DLQ, RESULTS_QUEUE
 
 from .api import cases as cases_router
@@ -50,22 +52,27 @@ from .security import OriginVerifyMiddleware
 logger = logging.getLogger(__name__)
 
 _THREAD_JOIN_TIMEOUT_S = 10.0
+_DEAD_MARKING_GRACE_S = 2 * DEFAULT_HEARTBEAT_INTERVAL_S
 
 
 def _sweeper_loop(stop_event: threading.Event, interval: float, **kwargs: Any) -> None:
     """A failed recurring pass is logged and retried on the next cycle (the
     startup pass in `lifespan` runs outside this loop and fails loudly).
 
-    The pass right after a failure does not mark workers dead: if the
-    database was down, the workers could not heartbeat either, so their
-    `last_seen` is stale for a reason that is not a crash."""
-    failed_last_pass = False
+    For `_DEAD_MARKING_GRACE_S` after a failed pass, workers are not marked
+    dead: if the database was down, the workers could not heartbeat either,
+    so their `last_seen` is stale for a reason that is not a crash; the
+    grace gives them a couple of heartbeats to catch up."""
+    last_failure: float | None = None
     while not stop_event.wait(interval):
+        in_grace = (
+            last_failure is not None
+            and time.monotonic() - last_failure < _DEAD_MARKING_GRACE_S
+        )
         try:
-            run_sweep(**kwargs, mark_dead=not failed_last_pass)
-            failed_last_pass = False
+            run_sweep(**kwargs, mark_dead=not in_grace)
         except Exception:
-            failed_last_pass = True
+            last_failure = time.monotonic()
             logger.exception("run_sweep failed, will retry on the next cycle")
 
 
