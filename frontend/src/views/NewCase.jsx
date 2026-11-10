@@ -11,7 +11,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { api, putToS3 } from '../api/client.js'
 import { Empty, ErrorBanner, Section } from '../components/ui.jsx'
 import { navigate } from '../hooks/useHashRoute.js'
-import { ALLOWED_OPERATIONS, DEFAULT_OPERATIONS, MEDIA_TYPES, OPERATIONS, detectMediaType } from '../lib/domain.js'
+import { ALLOWED_OPERATIONS, DEFAULT_OPERATIONS, DEFAULT_PRIORITY, MEDIA_TYPES, OPERATIONS, PRIORITIES, detectMediaType } from '../lib/domain.js'
 import { basename, formatBytes, shortId } from '../lib/format.js'
 
 const TABS = [
@@ -99,14 +99,12 @@ function CaseOptions({ label, setLabel, priority, setPriority, showLabel = true 
       <fieldset className="field">
         <span>Priority</span>
         <div className="segmented">
-          <label className={priority === 'normal' ? 'on' : ''}>
-            <input type="radio" name="priority" value="normal" checked={priority === 'normal'} onChange={() => setPriority('normal')} />
-            Normal
-          </label>
-          <label className={priority === 'alta' ? 'on' : ''}>
-            <input type="radio" name="priority" value="alta" checked={priority === 'alta'} onChange={() => setPriority('alta')} />
-            High
-          </label>
+          {Object.entries(PRIORITIES).map(([value, { label }]) => (
+            <label key={value} className={priority === value ? 'on' : ''}>
+              <input type="radio" name="priority" value={value} checked={priority === value} onChange={() => setPriority(value)} />
+              {label}
+            </label>
+          ))}
         </div>
       </fieldset>
     </div>
@@ -168,7 +166,7 @@ function FromDataset() {
   const [typeFilter, setTypeFilter] = useState('all')
   const [selected, setSelected] = useState({}) // input_key -> operations | null
   const [label, setLabel] = useState('')
-  const [priority, setPriority] = useState('normal')
+  const [priority, setPriority] = useState(DEFAULT_PRIORITY)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
 
@@ -245,7 +243,7 @@ function FromDataset() {
         <ErrorBanner error={ds.error} onRetry={() => ds.load()} />
         <div className="toolbar">
           <div className="chips">
-            {['all', 'video', 'audio', 'image', 'none'].map((t) => (
+            {['all', ...Object.keys(MEDIA_TYPES), 'none'].map((t) => (
               <button key={t} type="button" className={`chip ${typeFilter === t ? 'on' : ''}`} onClick={() => setTypeFilter(t)}>
                 {t === 'all' ? 'All' : t === 'none' ? 'Unsupported' : MEDIA_TYPES[t]}
               </button>
@@ -355,7 +353,7 @@ function metaPreview(meta) {
 function FromUpload() {
   const [files, setFiles] = useState([]) // [{ file, ops, progress, status }]
   const [label, setLabel] = useState('')
-  const [priority, setPriority] = useState('normal')
+  const [priority, setPriority] = useState(DEFAULT_PRIORITY)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
   const [result, setResult] = useState(null)
@@ -468,7 +466,7 @@ function AutoGenerate() {
   const ds = useDataset()
   const [criterion, setCriterion] = useState('folder')
   const [metaKey, setMetaKey] = useState('')
-  const [priority, setPriority] = useState('normal')
+  const [priority, setPriority] = useState(DEFAULT_PRIORITY)
   const [busy, setBusy] = useState(false)
   const [results, setResults] = useState([])
 

@@ -11,7 +11,7 @@ import { api, toDevS3Url } from '../api/client.js'
 import { Empty, ErrorBanner, Section, StackedProgress, StatusLegend, StatusPill } from '../components/ui.jsx'
 import { useInterval } from '../hooks/useInterval.js'
 import { useLiveState } from '../hooks/useLiveState.jsx'
-import { ERROR_CODES, MEDIA_TYPES, OPERATIONS, SUBTASK_STATUS, TERMINAL_CASE } from '../lib/domain.js'
+import { ERROR_CODES, MEDIA_TYPES, OPERATIONS, PRIORITIES, SUBTASK_STATUS, TERMINAL_CASE } from '../lib/domain.js'
 import { basename, durationBetween, formatDateTime, formatDuration, formatTime, shortId } from '../lib/format.js'
 
 const DETAIL_REFRESH_MS = 5000
@@ -108,7 +108,7 @@ function CaseHeader({ c, onChanged }) {
         <h1>{c.label || `Case ${shortId(c.case_id)}`}</h1>
         <div className="case-tags">
           <StatusPill status={c.status} />
-          {c.priority === 'alta' ? <span className="pill tone-accent">High priority</span> : <span className="pill tone-neutral">Normal priority</span>}
+          <span className={`pill tone-${PRIORITIES[c.priority]?.tone ?? 'neutral'}`}>{PRIORITIES[c.priority]?.label ?? c.priority} priority</span>
           <span className="pill tone-neutral">{c.source === 'auto' ? 'Auto-generated' : 'Manual'}</span>
           {c.cancel_requested && c.status !== 'cancelled' && <span className="pill tone-warn">Cancellation requested</span>}
         </div>

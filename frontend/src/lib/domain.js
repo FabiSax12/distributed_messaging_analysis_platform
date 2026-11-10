@@ -1,4 +1,4 @@
-// Dashboard mirror of shared/routing.py y shared/states.py.
+// Dashboard mirror of shared/routing.py, shared/analysis.py and shared/states.py.
 
 export const CASE_STATUS = {
   queued: { label: 'Queued', tone: 'neutral' },
@@ -26,34 +26,28 @@ export const SUBTASK_STATUS = {
 export const SUBTASK_ORDER = ['completed', 'failed', 'cancelled', 'running', 'assigned', 'retrying', 'pending']
 
 export const OPERATIONS = {
-  video_convert: 'Video conversion',
-  audio_extract: 'Audio extraction',
-  video_thumbnail: 'Video thumbnail',
-  audio_convert: 'Audio transcoding',
-  image_thumbnail: 'Image thumbnail',
-  metadata: 'Metadata',
-  lyrics: 'Lyrics',
-  classify: 'Classification',
+  text_analyze: 'Text analysis',
+  image_analyze: 'Image analysis',
+  audio_analyze: 'Audio analysis',
 }
 
-export const MEDIA_TYPES = { video: 'Video', audio: 'Audio', image: 'Image' }
+export const MEDIA_TYPES = { text: 'Text', image: 'Image', audio: 'Audio', video: 'Video' }
 
+// Video has no operation of its own: the audio worker analyzes its audio track.
 export const ALLOWED_OPERATIONS = {
-  video: ['video_convert', 'audio_extract', 'video_thumbnail', 'metadata', 'classify'],
-  audio: ['audio_convert', 'metadata', 'lyrics', 'classify'],
-  image: ['image_thumbnail', 'metadata', 'classify'],
+  text: ['text_analyze'],
+  image: ['image_analyze'],
+  audio: ['audio_analyze'],
+  video: ['audio_analyze'],
 }
 
-export const DEFAULT_OPERATIONS = {
-  video: ['video_convert', 'audio_extract', 'video_thumbnail'],
-  audio: ['audio_convert', 'metadata'],
-  image: ['image_thumbnail'],
-}
+export const DEFAULT_OPERATIONS = ALLOWED_OPERATIONS
 
 const EXTENSIONS = {
-  mp4: 'video', mkv: 'video', mov: 'video', avi: 'video', webm: 'video',
-  mp3: 'audio', wav: 'audio', flac: 'audio', ogg: 'audio', m4a: 'audio', aac: 'audio',
-  jpg: 'image', jpeg: 'image', png: 'image', webp: 'image',
+  txt: 'text', json: 'text',
+  jpg: 'image', jpeg: 'image', png: 'image', webp: 'image', gif: 'image', bmp: 'image',
+  mp3: 'audio', wav: 'audio', ogg: 'audio', opus: 'audio', m4a: 'audio', aac: 'audio', flac: 'audio',
+  mp4: 'video', mkv: 'video', mov: 'video', webm: 'video', avi: 'video',
 }
 
 export function detectMediaType(filename) {
@@ -61,18 +55,26 @@ export function detectMediaType(filename) {
   return EXTENSIONS[ext] ?? null
 }
 
-export const POOLS = {
-  video: { label: 'Video', instance: 'c7i-flex.large' },
-  audio: { label: 'Audio', instance: 'm7i-flex.large' },
-  metadatos: { label: 'Metadata', instance: 't3.micro' },
+// CasePriority; the coordinator maps it to AMQP message priority 1..4.
+export const PRIORITIES = {
+  low: { label: 'Low', tone: 'muted' },
+  medium: { label: 'Medium', tone: 'neutral' },
+  high: { label: 'High', tone: 'accent' },
+  critical: { label: 'Critical', tone: 'bad' },
 }
 
-// Consumption order of each pool (POLL_ORDER en shared/routing.py).
-export const POLL_ORDER = {
-  video: ['video-alta', 'video-normal', 'audio-normal'],
-  audio: ['audio-alta', 'audio-normal', 'metadatos-alta', 'metadatos-normal', 'video-normal'],
-  metadatos: ['metadatos-alta', 'metadatos-normal', 'audio-normal'],
+export const DEFAULT_PRIORITY = 'medium'
+
+export const POOLS = {
+  text: { label: 'Text', instance: 't3.large', color: 'var(--c-meta)' },
+  image: { label: 'Image', instance: 't3.large', color: 'var(--c-video)' },
+  audio: { label: 'Audio', instance: 't3.large', color: 'var(--c-audio)' },
 }
+
+// RabbitMQ queues: one work queue per pool (priorities live inside it).
+export const workQueue = (pool) => `work.${pool}`
+export const RESULTS_QUEUE = 'results'
+export const DEAD_LETTER_QUEUE = 'dead-letter'
 
 export const ERROR_CODES = {
   unsupported_format: 'Unsupported format',
@@ -80,7 +82,9 @@ export const ERROR_CODES = {
   processing_error: 'Processing error',
   external_api_error: 'External API error',
   timeout: 'Timed out',
-  retries_exhausted: 'Retries exhausted (DLQ)',
+  retries_exhausted: 'Retries exhausted',
+  worker_lost: 'Worker lost',
+  dead_lettered: 'Dead-lettered message',
   cancelled: 'Cancelled',
   internal: 'Internal error',
 }

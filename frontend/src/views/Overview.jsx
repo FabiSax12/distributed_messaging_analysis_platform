@@ -7,10 +7,10 @@ import { Empty, Meter, Section, StackedProgress, StatusPill } from '../component
 import { METRICS_INTERVAL_MS, METRICS_WINDOW_MIN } from '../config.js'
 import { useInterval } from '../hooks/useInterval.js'
 import { useLiveState } from '../hooks/useLiveState.jsx'
-import { POLL_ORDER, POOLS, TERMINAL_CASE } from '../lib/domain.js'
+import { DEAD_LETTER_QUEUE, POOLS, PRIORITIES, RESULTS_QUEUE, TERMINAL_CASE, workQueue } from '../lib/domain.js'
 import { secondsAgo, shortId } from '../lib/format.js'
 
-const POOL_COLORS = { video: 'var(--c-video)', audio: 'var(--c-audio)', metadatos: 'var(--c-meta)' }
+const POOL_COLORS = Object.fromEntries(Object.entries(POOLS).map(([pool, p]) => [pool, p.color]))
 
 export default function Overview() {
   const { data } = useLiveState()
@@ -37,8 +37,8 @@ function Kpis({ data }) {
   const k = useMemo(() => {
     const open = data.cases.filter((c) => !TERMINAL_CASE.has(c.case.status))
     const sum = (key) => data.cases.reduce((a, c) => a + (c.by_status[key] || 0), 0)
-    const work = data.queues.filter((q) => q.queue !== 'resultados' && q.queue !== 'dlq')
-    const dlq = data.queues.find((q) => q.queue === 'dlq')
+    const work = data.queues.filter((q) => q.queue !== RESULTS_QUEUE && q.queue !== DEAD_LETTER_QUEUE)
+    const dlq = data.queues.find((q) => q.queue === DEAD_LETTER_QUEUE)
     return {
       open: open.length,
       active: sum('running') + sum('assigned') + sum('retrying'),
@@ -172,7 +172,7 @@ function Queues({ queues }) {
 
   return (
     <Section
-      title="SQS queues"
+      title="RabbitMQ queues"
       aside={
         <span className="legend">
           <span className="legend-item"><i className="dot qb-visible" /> visible</span>
@@ -185,16 +185,14 @@ function Queues({ queues }) {
           <div key={pool} className="queue-group">
             <div className="queue-group-head">
               <i className="dot" style={{ background: POOL_COLORS[pool] }} /> {POOLS[pool].label}
-              <span className="muted small poll-order">consumes: {POLL_ORDER[pool].join(' → ')}</span>
             </div>
-            {row(`${pool}-alta`, 'high')}
-            {row(`${pool}-normal`, 'normal')}
+            {row(workQueue(pool))}
           </div>
         ))}
         <div className="queue-group">
           <div className="queue-group-head">Coordinator</div>
-          {row('resultados')}
-          {row('dlq', 'DLQ')}
+          {row(RESULTS_QUEUE)}
+          {row(DEAD_LETTER_QUEUE)}
         </div>
       </div>
     </Section>
@@ -221,7 +219,7 @@ function ActiveCases({ cases }) {
                 <a href={`#/cases/${c.case_id}`} className="case-mini-row">
                   <span className="case-mini-title">
                     <strong>{c.label || `Case ${shortId(c.case_id)}`}</strong>
-                    {c.priority === 'alta' && <span className="pill tone-accent">High</span>}
+                    {c.priority !== 'medium' && <span className={`pill tone-${PRIORITIES[c.priority]?.tone ?? 'neutral'}`}>{PRIORITIES[c.priority]?.label ?? c.priority}</span>}
                   </span>
                   <StatusPill status={c.status} />
                   <StackedProgress byStatus={by_status} total={c.total} />
@@ -264,7 +262,7 @@ function LoadHistory() {
       key: pool,
       label: POOLS[pool].label,
       color: POOL_COLORS[pool],
-      values: samples.map((s) => (s.queue_visible[`${pool}-alta`] || 0) + (s.queue_visible[`${pool}-normal`] || 0)),
+      values: samples.map((s) => s.queue_visible[workQueue(pool)] || 0),
     }))
     const cpuSeries = pools.map((pool) => ({
       key: pool,

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import { Empty, Section, StackedProgress, StatusLegend, StatusPill } from '../components/ui.jsx'
 import { useLiveState } from '../hooks/useLiveState.jsx'
 import { navigate } from '../hooks/useHashRoute.js'
-import { CASE_STATUS } from '../lib/domain.js'
+import { CASE_STATUS, PRIORITIES } from '../lib/domain.js'
 import { durationBetween, formatDateTime, formatDuration, shortId } from '../lib/format.js'
 
 export default function CasesList() {
@@ -108,7 +108,7 @@ export default function CasesList() {
                     </span>
                   </td>
                   <td className="right num">{c.file_count}</td>
-                  <td>{c.priority === 'alta' ? <span className="pill tone-accent">High</span> : 'Normal'}</td>
+                  <td>{PRIORITIES[c.priority]?.label ?? c.priority}</td>
                   <td>{c.source === 'auto' ? 'Automatic' : 'Manual'}</td>
                   <td className="small">{formatDateTime(c.created_at)}</td>
                   <td className="right num small">
