@@ -13,8 +13,15 @@ every dispatchable sub-task with publisher confirms and marks it
 So a crash anywhere between the commit and the confirmation only delays the
 publish: the relay finds the rows on its next pass (it also polls every
 `OUTBOX_POLL_S`). The opposite gap, a publish confirmed but not yet marked,
-can publish the same attempt twice; workers drop the second copy
-(`workers/runner/process.py`) and the barrier counts a sub-task once anyway.
+can publish the same attempt twice. A worker drops the copy it receives if
+the sub-task is already closed or another worker already started that
+attempt (`workers/runner/process.py`); if both copies are taken before
+either start is recorded, both run, and the barrier still counts the
+sub-task once.
+
+Each message carries `message_id = "{subtask_id}:{attempt}"` and a `case_id`
+header, so a dead-lettered message whose body cannot be parsed can still
+close its sub-task (`consumers/dlq.py`).
 
 A single thread owns the broker connection (pika is not thread-safe), which
 is also why API threads do not publish directly. M1 admission control and
@@ -90,6 +97,7 @@ class OutboxRelay:
                     subtask.to_message().to_body(),
                     priority=message_priority(subtask.priority),
                     message_id=f"{subtask.subtask_id}:{subtask.attempt}",
+                    headers={"case_id": subtask.case_id},
                 )
                 published.append((subtask.subtask_id, subtask.attempt))
         finally:
