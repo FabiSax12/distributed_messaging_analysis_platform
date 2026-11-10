@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import resource
 import sys
 import tempfile
 import time
@@ -163,15 +162,22 @@ def run(
         files=list(output.files),
         result=result,
         wall_time_s=wall_time_s,
-        peak_rss_bytes=_peak_rss_bytes(resource.RUSAGE_SELF),
-        peak_rss_children_bytes=_peak_rss_bytes(resource.RUSAGE_CHILDREN),
+        peak_rss_bytes=_peak_rss_bytes(False),
+        peak_rss_children_bytes=_peak_rss_bytes(True),
         progress=progress,
     )
 
 
-def _peak_rss_bytes(who: int) -> int:
-    # ru_maxrss is in KiB on Linux and in bytes on macOS.
-    maxrss = resource.getrusage(who).ru_maxrss
+def _peak_rss_bytes(children: bool) -> int:
+    if sys.platform == "win32":
+        import psutil
+
+        return 0 if children else psutil.Process().memory_info().peak_wset
+    import resource
+
+    maxrss = resource.getrusage(
+        resource.RUSAGE_CHILDREN if children else resource.RUSAGE_SELF
+    ).ru_maxrss
     return maxrss if sys.platform == "darwin" else maxrss * 1024
 
 

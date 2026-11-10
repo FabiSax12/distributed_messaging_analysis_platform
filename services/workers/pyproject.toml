@@ -12,6 +12,15 @@ dependencies = [
     "psutil>=5.9",
 ]
 
+[project.optional-dependencies]
+image = [
+    "ultralytics>=8.3,<9",
+]
+audio = [
+    "av<19",
+    "faster-whisper>=1.1,<2",
+]
+
 [dependency-groups]
 dev = [
     "ruff>=0.6",
