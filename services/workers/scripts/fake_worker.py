@@ -1,278 +1,103 @@
 #!/usr/bin/env python3
-"""Simulates a real worker against AWS, using ONLY `shared/` + boto3.
+"""A real worker (`workers.main.run_worker`: RabbitMQ consumer, heartbeat,
+pre-start checks, S3 upload, results) with a fake op for every analysis
+operation, so a case can be driven end to end without ML models.
 
-This script is, on purpose, the "protocol" that the real worker (another
-component, not yet written) will have to implement: consume its queues in
-the order of `shared.routing.POLL_ORDER`, publish `ResultMessage`s for each
-state change, write its own heartbeat to `Workers`, and never touch
-`Cases`/`SubTasks` directly. It imports nothing from `coordinator.src`
-except `coordinator.config` (so as not to reinvent how environment
-variables / `.env.local` are read).
+The fake op sleeps `--work-s` while reporting progress, then uploads a small
+JSON file and returns a valid `AnalysisResult`. Fault injection:
 
-Usage:
-    uv run --package coordinator python services/coordinator/scripts/fake_worker.py \\
-        --pool video --fail-rate 0.1 --crash-rate 0.05
+- `--fail-rate P`: raise a transient `external_api_error`, which the
+  coordinator retries with backoff (`retrying`) up to RETRY_MAX_ATTEMPTS.
+- `--crash-rate P`: kill the whole process halfway through the op
+  (`os._exit(137)`, like `kill -9`): the broker requeues the message and the
+  coordinator's sweeper/heartbeat timeout handles the rest.
+
+Usage (from the repo root, with the compose stack up):
+    set -a; source infra/docker/dev.env; set +a
+    uv run --package workers python services/workers/scripts/fake_worker.py \\
+        --pool text --fail-rate 0.3
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import random
-import socket
 import time
+from collections.abc import Callable
+from pathlib import Path
 
-import boto3
-from coordinator.config import get_settings
-from shared.messages import ErrorCode, ErrorInfo, ResultMessage, SubTaskMessage, utcnow
-from shared.models import HEARTBEAT_INTERVAL_S, WorkerItem, to_item
-from shared.routing import POLL_ORDER, RESULTS_QUEUE, Pool
-from shared.states import SubTaskStatus
+from shared.analysis import AnalysisOperation, AnalysisResult, ModelInfo
+from shared.messages import ErrorCode, SubTaskMessage
+from shared.routing import Pool
+from workers.config import Settings
+from workers.logging import setup_logging
+from workers.main import run_worker
+from workers.ops.base import OpError, OpOutput
 
 logger = logging.getLogger("fake_worker")
 
-_RECEIVE_WAIT_S = 3
-_RUNNING_PROGRESS_STEPS = (25, 60)
+_STEPS = 4
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--pool", required=True, choices=[p.value for p in Pool])
-    parser.add_argument(
-        "--fail-rate",
-        type=float,
-        default=0.0,
-        help="Probability (0-1) of reporting 'failed' instead of 'completed'.",
-    )
-    parser.add_argument(
-        "--crash-rate",
-        type=float,
-        default=0.0,
-        help=(
-            "Probability (0-1) of NOT deleting the work message after processing it, "
-            "simulating a worker crash (exercises retries/DLQ)."
-        ),
-    )
+    parser.add_argument("--work-s", type=float, default=2.0, help="fake op duration")
+    parser.add_argument("--fail-rate", type=float, default=0.0)
+    parser.add_argument("--crash-rate", type=float, default=0.0)
+    parser.add_argument("--concurrency", type=int, default=1)
     args = parser.parse_args()
-    for flag, value in (
-        ("--fail-rate", args.fail_rate),
-        ("--crash-rate", args.crash_rate),
-    ):
-        if not 0.0 <= value <= 1.0:
-            parser.error(f"{flag} must be between 0 and 1")
+    for flag in ("fail_rate", "crash_rate"):
+        if not 0.0 <= getattr(args, flag) <= 1.0:
+            parser.error(f"--{flag.replace('_', '-')} must be between 0 and 1")
     return args
 
 
+def fake_op(work_s: float, fail_rate: float, crash_rate: float):
+    def op(
+        task: SubTaskMessage,
+        src: Path,
+        out_dir: Path,
+        *,
+        timeout_s: float,
+        on_progress: Callable[[int], None],
+    ) -> OpOutput:
+        crash_at = _STEPS // 2 if random.random() < crash_rate else None
+        for step in range(_STEPS):
+            if step == crash_at:
+                logger.warning("simulated crash on %s", task.subtask_id)
+                os._exit(137)
+            time.sleep(work_s / _STEPS)
+            on_progress(int((step + 1) / _STEPS * 100) - 1)
+        if random.random() < fail_rate:
+            raise OpError(ErrorCode.EXTERNAL_API_ERROR, "simulated transient failure")
+
+        result = AnalysisResult(
+            operation=task.operation,
+            keywords=["fake"],
+            model=ModelInfo(name="fake-worker"),
+            timings_s={"infer": work_s},
+        )
+        out = out_dir / "analysis.json"
+        out.write_text(
+            json.dumps({"input_bytes": src.stat().st_size, **result.to_meta()})
+        )
+        return OpOutput([out], meta=result.to_meta())
+
+    return op
+
+
 def main() -> None:
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
-    )
+    setup_logging()
     args = parse_args()
-    settings = get_settings()
-
-    sqs = boto3.client("sqs", region_name=settings.AWS_REGION)
-    s3 = boto3.client("s3", region_name=settings.AWS_REGION)
-    workers_table = boto3.resource("dynamodb", region_name=settings.AWS_REGION).Table(
-        settings.TABLE_WORKERS
-    )
-    cases_table = boto3.resource("dynamodb", region_name=settings.AWS_REGION).Table(
-        settings.TABLE_CASES
-    )
-
-    pool = Pool(args.pool)
-    worker_id = f"{pool.value}-{socket.gethostname()}-{os.getpid()}"
-    started_at = utcnow()
-    poll_order = POLL_ORDER[pool]
-    results_queue_url = settings.QUEUE_URLS[RESULTS_QUEUE]
-
-    def heartbeat() -> None:
-        item = WorkerItem(
-            worker_id=worker_id,
-            pool=pool,
-            instance_type="fake-worker",
-            hostname=socket.gethostname(),
-            concurrency=1,
-            cpu_percent=round(random.uniform(10, 60), 1),
-            mem_percent=round(random.uniform(10, 60), 1),
-            active_subtasks=[],
-            started_at=started_at,
-            last_seen=utcnow(),
-        )
-        workers_table.put_item(Item=to_item(item))
-
-    heartbeat()
-    last_heartbeat = time.monotonic()
-    logger.info("fake_worker started worker_id=%s pool=%s", worker_id, pool.value)
-
-    while True:
-        if time.monotonic() - last_heartbeat >= HEARTBEAT_INTERVAL_S:
-            heartbeat()
-            last_heartbeat = time.monotonic()
-
-        received = _receive_next(sqs, settings.QUEUE_URLS, poll_order)
-        if received is None:
-            continue
-        queue_name, raw_message = received
-
-        _process_message(
-            raw_message,
-            queue_url=settings.QUEUE_URLS[queue_name],
-            sqs=sqs,
-            s3=s3,
-            cases_table=cases_table,
-            results_queue_url=results_queue_url,
-            results_bucket=settings.RESULTS_BUCKET,
-            worker_id=worker_id,
-            pool=pool,
-            fail_rate=args.fail_rate,
-            crash_rate=args.crash_rate,
-        )
-
-
-def _receive_next(sqs, queue_urls: dict[str, str], poll_order: tuple[str, ...]):
-    for queue_name in poll_order:
-        resp = sqs.receive_message(
-            QueueUrl=queue_urls[queue_name],
-            WaitTimeSeconds=_RECEIVE_WAIT_S,
-            MaxNumberOfMessages=1,
-            AttributeNames=["ApproximateReceiveCount"],
-        )
-        messages = resp.get("Messages", [])
-        if messages:
-            return queue_name, messages[0]
-    return None
-
-
-def _is_cancelled(cases_table, case_id: str) -> bool:
-    resp = cases_table.get_item(Key={"case_id": case_id}, ConsistentRead=True)
-    item = resp.get("Item")
-    return bool(item and item.get("cancel_requested"))
-
-
-def _publish(sqs, queue_url: str, result: ResultMessage) -> None:
-    sqs.send_message(QueueUrl=queue_url, MessageBody=result.to_body())
-
-
-def _process_message(
-    raw_message,
-    *,
-    queue_url: str,
-    sqs,
-    s3,
-    cases_table,
-    results_queue_url: str,
-    results_bucket: str,
-    worker_id: str,
-    pool: Pool,
-    fail_rate: float,
-    crash_rate: float,
-) -> None:
-    receipt_handle = raw_message["ReceiptHandle"]
-    attempt = int(raw_message.get("Attributes", {}).get("ApproximateReceiveCount", "1"))
-
-    try:
-        task = SubTaskMessage.from_body(raw_message["Body"])
-    except Exception:
-        logger.exception("unreadable SubTaskMessage, discarding")
-        sqs.delete_message(QueueUrl=queue_url, ReceiptHandle=receipt_handle)
-        return
-
-    if _is_cancelled(cases_table, task.case_id):
-        _publish(
-            sqs,
-            results_queue_url,
-            ResultMessage(
-                subtask_id=task.subtask_id,
-                case_id=task.case_id,
-                status=SubTaskStatus.CANCELLED,
-                attempt=attempt,
-                worker_id=worker_id,
-                pool=pool,
-                finished_at=utcnow(),
-                error=ErrorInfo(
-                    code=ErrorCode.CANCELLED, message="case cancelled before processing"
-                ),
-            ),
-        )
-        sqs.delete_message(QueueUrl=queue_url, ReceiptHandle=receipt_handle)
-        return
-
-    _publish(
-        sqs,
-        results_queue_url,
-        ResultMessage(
-            subtask_id=task.subtask_id,
-            case_id=task.case_id,
-            status=SubTaskStatus.ASSIGNED,
-            attempt=attempt,
-            worker_id=worker_id,
-            pool=pool,
-            started_at=utcnow(),
-        ),
-    )
-
-    for progress in _RUNNING_PROGRESS_STEPS:
-        time.sleep(random.uniform(0.2, 0.8))
-        _publish(
-            sqs,
-            results_queue_url,
-            ResultMessage(
-                subtask_id=task.subtask_id,
-                case_id=task.case_id,
-                status=SubTaskStatus.RUNNING,
-                attempt=attempt,
-                worker_id=worker_id,
-                pool=pool,
-                progress=progress,
-            ),
-        )
-
-    time.sleep(random.uniform(0.2, 0.8))
-
-    if random.random() < fail_rate:
-        result = ResultMessage(
-            subtask_id=task.subtask_id,
-            case_id=task.case_id,
-            status=SubTaskStatus.FAILED,
-            attempt=attempt,
-            worker_id=worker_id,
-            pool=pool,
-            finished_at=utcnow(),
-            error=ErrorInfo(
-                code=ErrorCode.PROCESSING_ERROR, message="fake_worker: simulated failure"
-            ),
-        )
-    else:
-        output_key = f"{task.output_prefix}output.bin"
-        s3.put_object(
-            Bucket=results_bucket,
-            Key=output_key,
-            Body=b"fake-output",
-            ContentType="application/octet-stream",
-        )
-        result = ResultMessage(
-            subtask_id=task.subtask_id,
-            case_id=task.case_id,
-            status=SubTaskStatus.COMPLETED,
-            attempt=attempt,
-            worker_id=worker_id,
-            pool=pool,
-            finished_at=utcnow(),
-            output_keys=[output_key],
-        )
-
-    _publish(sqs, results_queue_url, result)
-
-    if random.random() < crash_rate:
-        logger.warning(
-            "simulated crash after processing subtask_id=%s: the message is NOT deleted "
-            "(it will reappear and eventually land in the DLQ)",
-            task.subtask_id,
-        )
-        return
-
-    sqs.delete_message(QueueUrl=queue_url, ReceiptHandle=receipt_handle)
+    settings = Settings(POOL=args.pool, WORKER_CONCURRENCY=args.concurrency)  # type: ignore[call-arg]
+    op = fake_op(args.work_s, args.fail_rate, args.crash_rate)
+    run_worker(settings, {operation: op for operation in AnalysisOperation})
 
 
 if __name__ == "__main__":

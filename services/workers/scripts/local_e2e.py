@@ -1,356 +1,414 @@
-#!/usr/bin/env python3
-"""End-to-end test on a single laptop, with no AWS or Docker.
+"""End-to-end run on one laptop against the compose stack (RabbitMQ,
+PostgreSQL, MinIO): the real coordinator plus `fake_worker.py` workers, and
+the B.6-style scenarios.
 
-Starts moto as an in-process server (SQS + DynamoDB + S3 over HTTP), creates
-the same queues, tables and buckets as Terraform (including visibility
-timeouts and the redrive to the DLQ), starts the REAL coordinator untouched and
-one real worker per pool, and sends a heterogeneous case generated with ffmpeg
-(a video, a song, an image, a corrupt file and an unsupported .txt).
-
-NOTE: legacy script from Project I. The worker operation registry is empty
-(text/image/audio ops come later), so workers cannot complete sub-tasks yet and
-the final assertions will fail. It also still targets the SQS/DynamoDB layout.
-TODO: rewrite it for RabbitMQ + PostgreSQL and the new text/image/audio ops.
-
-Usage (from the repo root, needs ffmpeg in PATH):
-    uv sync --all-packages
+    docker compose -f infra/docker/compose.dev.yml up -d --wait
     uv run --all-packages python services/workers/scripts/local_e2e.py
+    uv run --all-packages python services/workers/scripts/local_e2e.py --scenario crash
 
-With `--endpoint` it uses an emulator that is already running instead of moto,
-for example Floci in Docker:
-    docker run -d --name floci -p 4566:4566 floci/floci:latest
-    uv run --all-packages python services/workers/scripts/local_e2e.py --endpoint http://localhost:4566
+Scenarios (all by default, in this order):
+  basic        .txt + .jpg + .mp3 -> completed
+  unsupported  .json + .xyz + .mp4 -> pre-failed sub-task, partially_completed
+  retries      workers with --fail-rate 0.5 -> some sub-task goes through
+               `retrying`; every sub-task ends terminal
+  crash        kill -9 the audio worker mid-task, start a new one -> the
+               sub-task is retried (worker_lost) and the case completes
+  restart      kill -9 the coordinator with a case in flight, start it again
+               -> the case completes, no duplicated sub-tasks
+
+Settings come from the environment, falling back to infra/docker/dev.env.
+Logs of every process go to --logs (default /tmp/dmap-e2e). Exit code 1 if
+any scenario fails.
 """
 
 from __future__ import annotations
 
 import argparse
-import json
-import logging
 import os
+import signal
 import subprocess
 import sys
-import tempfile
-import threading
 import time
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
-import boto3
 import httpx
-from moto.server import ThreadedMotoServer
-from websockets.exceptions import ConnectionClosed
-from websockets.sync.client import connect
-
-from shared.routing import ALL_WORK_QUEUES, DLQ, RESULTS_QUEUE, Pool
-
-MOTO_PORT = 5055
-API_PORT = 8765
-API = f"http://127.0.0.1:{API_PORT}"
-REGION = "us-east-1"
-# Per-run suffix: Floci keeps state between runs, so this way each run starts
-# with empty queues, tables and buckets.
-RUN = f"{int(time.time()) % 1_000_000:06d}"
-DATASET_BUCKET = f"local-e2e-dataset-{RUN}"
-RESULTS_BUCKET = f"local-e2e-results-{RUN}"
-TABLES = {name: f"{name}-{RUN}" for name in ("Cases", "SubTasks", "Workers")}
-PREFIX = "e2e/"
-CASE_TIMEOUT_S = 240
-
-# Legacy SQS visibility timeouts per pool (Project I queue layout).
-VISIBILITY_TIMEOUTS = {"video": 900, "audio": 300, "metadatos": 120}
-MAX_RECEIVE_COUNT = 3
+import psycopg
 
 REPO = Path(__file__).resolve().parents[3]
+DEV_ENV = REPO / "infra/docker/dev.env"
+API_PORT = 8765
+API = f"http://127.0.0.1:{API_PORT}"
+TERMINAL = {"completed", "partially_completed", "failed", "cancelled"}
+POOLS = ("text", "image", "audio")
+CONTENT = {
+    ".txt": b"[1/2/24, 10:00] Ana: hola\n",
+    ".json": b'{"name": "chat", "messages": []}',
+    ".jpg": b"\xff\xd8\xff\xe0fake-jpeg",
+    ".mp3": b"ID3\x03fake-mp3",
+    ".mp4": b"\x00\x00\x00\x18ftypmp42",
+}
 
 
-def _env(endpoint: str) -> dict[str, str]:
-    return {
-        **os.environ,
-        "AWS_ENDPOINT_URL": endpoint,
-        "AWS_ACCESS_KEY_ID": "testing",
-        "AWS_SECRET_ACCESS_KEY": "testing",
-        "AWS_REGION": REGION,
-        "AWS_DEFAULT_REGION": REGION,
-        "TABLE_CASES": TABLES["Cases"],
-        "TABLE_SUBTASKS": TABLES["SubTasks"],
-        "TABLE_WORKERS": TABLES["Workers"],
-        "DATASET_BUCKET": DATASET_BUCKET,
-        "RESULTS_BUCKET": RESULTS_BUCKET,
-        "API_PORT": str(API_PORT),
-        "ORIGIN_VERIFY_SECRET": "",
-        "PYTHONUNBUFFERED": "1",
-    }
+class ScenarioFailed(Exception):
+    pass
 
 
-def create_resources(env: dict[str, str]) -> dict[str, str]:
-    session = boto3.session.Session(
-        aws_access_key_id="testing", aws_secret_access_key="testing", region_name=REGION
-    )
-    endpoint = env["AWS_ENDPOINT_URL"]
-    sqs = session.client("sqs", endpoint_url=endpoint)
-    dynamodb = session.client("dynamodb", endpoint_url=endpoint)
-    s3 = session.client("s3", endpoint_url=endpoint)
-
-    urls = {DLQ: sqs.create_queue(QueueName=f"{DLQ}-{RUN}")["QueueUrl"]}
-    dlq_arn = sqs.get_queue_attributes(QueueUrl=urls[DLQ], AttributeNames=["QueueArn"])[
-        "Attributes"
-    ]["QueueArn"]
-    urls[RESULTS_QUEUE] = sqs.create_queue(
-        QueueName=f"{RESULTS_QUEUE}-{RUN}", Attributes={"VisibilityTimeout": "60"}
-    )["QueueUrl"]
-    redrive = json.dumps(
-        {"deadLetterTargetArn": dlq_arn, "maxReceiveCount": MAX_RECEIVE_COUNT}
-    )
-    for name in ALL_WORK_QUEUES:
-        visibility = VISIBILITY_TIMEOUTS[name.split("-")[0]]
-        urls[name] = sqs.create_queue(
-            QueueName=f"{name}-{RUN}",
-            Attributes={"VisibilityTimeout": str(visibility), "RedrivePolicy": redrive},
-        )["QueueUrl"]
-
-    for table, keys in (
-        ("Cases", ["case_id"]),
-        ("SubTasks", ["case_id", "subtask_id"]),
-        ("Workers", ["worker_id"]),
-    ):
-        dynamodb.create_table(
-            TableName=TABLES[table],
-            KeySchema=[
-                {"AttributeName": k, "KeyType": t}
-                for k, t in zip(keys, ("HASH", "RANGE"), strict=False)
-            ],
-            AttributeDefinitions=[
-                {"AttributeName": k, "AttributeType": "S"} for k in keys
-            ],
-            BillingMode="PAY_PER_REQUEST",
-        )
-    for bucket in (DATASET_BUCKET, RESULTS_BUCKET):
-        s3.create_bucket(Bucket=bucket)
-    return urls
+def load_env() -> dict[str, str]:
+    env = dict(os.environ)
+    for line in DEV_ENV.read_text().splitlines():
+        key, sep, value = line.partition("=")
+        if sep and not key.startswith("#"):
+            env.setdefault(key.strip(), value.strip())
+    # Fast failure detection and retries so the scenarios finish quickly.
+    env.setdefault("HEARTBEAT_TIMEOUT_S", "10")
+    env.setdefault("SWEEP_INTERVAL_S", "2")
+    env.setdefault("RETRY_BASE_DELAY_S", "1")
+    env.setdefault("RETRY_MAX_ATTEMPTS", "4")
+    env.setdefault("HEARTBEAT_INTERVAL_S", "2")
+    return env
 
 
-def _ffmpeg(*args: str) -> None:
-    subprocess.run(
-        ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *args], check=True
-    )
+class Stack:
+    """The coordinator and fake workers as subprocesses."""
 
+    def __init__(self, env: dict[str, str], logs: Path) -> None:
+        self.env = env
+        self.logs = logs
+        self.coordinator: subprocess.Popen | None = None
+        self.workers: dict[str, subprocess.Popen] = {}
+        self._seq = 0
 
-def make_media(root: Path) -> list[Path]:
-    files = {
-        "clip.mp4": [
-            "-f", "lavfi", "-i", "testsrc=duration=6:size=640x360:rate=24",
-            "-f", "lavfi", "-i", "sine=frequency=440:duration=6",
-            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest",
-        ],
-        "Queen - Bohemian Rhapsody.mp3": [
-            "-f", "lavfi", "-i", "sine=frequency=330:duration=5",
-            "-metadata", "artist=Queen", "-metadata", "title=Bohemian Rhapsody",
-            "-metadata", "genre=Rock", "-c:a", "libmp3lame",
-        ],
-        "cover.png": ["-f", "lavfi", "-i", "testsrc=size=1280x720", "-frames:v", "1"],
-    }  # fmt: skip
-    paths = []
-    for name, args in files.items():
-        path = root / name
-        _ffmpeg(*args, str(path))
-        paths.append(path)
-    (root / "broken.mp4").write_bytes(b"this is not a video")
-    (root / "notes.txt").write_text("unsupported format")
-    return [*paths, root / "broken.mp4", root / "notes.txt"]
-
-
-def start(cmd: list[str], env: dict[str, str], log: Path) -> subprocess.Popen:
-    return subprocess.Popen(
-        cmd, env=env, cwd=REPO, stdout=log.open("w"), stderr=subprocess.STDOUT
-    )
-
-
-def wait_healthy(proc: subprocess.Popen, log: Path) -> None:
-    deadline = time.monotonic() + 60
-    while time.monotonic() < deadline:
-        if proc.poll() is not None:
-            sys.exit(f"the coordinator died on startup:\n{log.read_text()[-3000:]}")
-        try:
-            if httpx.get(f"{API}/healthz", timeout=1).status_code == 200:
-                return
-        except httpx.HTTPError:
-            pass
-        time.sleep(0.5)
-    sys.exit("the coordinator did not answer /healthz within 60 s")
-
-
-class StateListener(threading.Thread):
-    """Listens to `WS /api/ws` while the case runs: the dashboard sees the same thing."""
-
-    def __init__(self) -> None:
-        super().__init__(daemon=True)
-        self.states: list[dict] = []
-        self.stop = threading.Event()
-
-    def run(self) -> None:
-        with connect(f"ws://127.0.0.1:{API_PORT}/api/ws") as ws:
-            while not self.stop.is_set():
-                try:
-                    message = json.loads(ws.recv(timeout=1))
-                except TimeoutError:
-                    continue
-                except ConnectionClosed:
-                    return  # the coordinator shut down at the end of the run
-                if message.get("type") == "state":
-                    self.states.append(message["data"])
-
-    def case_statuses(self, case_id: str) -> list[str]:
-        return [
-            summary["case"]["status"]
-            for state in list(self.states)
-            for summary in state["cases"]
-            if summary["case"]["case_id"] == case_id
-        ]
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--endpoint",
-        help="emulator already running (e.g. Floci at http://localhost:4566); without this, moto",
-    )
-    args = parser.parse_args()
-
-    moto = None
-    if args.endpoint is None:
-        logging.getLogger("werkzeug").setLevel(logging.ERROR)  # one log line per request
-        moto = ThreadedMotoServer(ip_address="127.0.0.1", port=MOTO_PORT)
-        moto.start()
-    env = _env(args.endpoint or f"http://127.0.0.1:{MOTO_PORT}")
-    print(f"emulator: {env['AWS_ENDPOINT_URL']}")
-    procs: list[subprocess.Popen] = []
-    tmp = Path(tempfile.mkdtemp(prefix="e2e-"))
-    try:
-        env["QUEUE_URLS"] = json.dumps(create_resources(env))
-        s3 = boto3.client(
-            "s3",
-            endpoint_url=env["AWS_ENDPOINT_URL"],
-            region_name=REGION,
-            aws_access_key_id="testing",
-            aws_secret_access_key="testing",
-        )
-        media_dir = tmp / "media"
-        media_dir.mkdir()
-        files = make_media(media_dir)
-        for path in files:
-            s3.upload_file(str(path), DATASET_BUCKET, f"{PREFIX}{path.name}")
-        print(f"dataset: {len(files)} files in s3://{DATASET_BUCKET}/{PREFIX}")
-
-        coordinator_log = tmp / "coordinator.log"
-        coordinator = start(
-            [sys.executable, "-m", "uvicorn", "coordinator.main:app",
-             "--host", "127.0.0.1", "--port", str(API_PORT)],
-            env,
-            coordinator_log,
-        )  # fmt: skip
-        procs.append(coordinator)
-        wait_healthy(coordinator, coordinator_log)
-        print(f"coordinator at {API}")
-
-        for pool in Pool:
-            worker_env = {**env, "POOL": pool.value, "WORKER_CONCURRENCY": "2"}
-            procs.append(
-                start(
-                    [sys.executable, "-m", "workers.main"],
-                    worker_env,
-                    tmp / f"worker-{pool.value}.log",
-                )
-            )
-        print("workers: video, audio, metadatos")
-
-        listener = StateListener()
-        listener.start()
-
-        song = f"{PREFIX}Queen - Bohemian Rhapsody.mp3"
-        body = {
-            "label": "local e2e",
-            "priority": "alta",
-            "files": [
-                {"input_key": f"{PREFIX}clip.mp4"},
-                {
-                    "input_key": song,
-                    "operations": ["audio_convert", "metadata", "lyrics", "classify"],
-                    "params": {"target_format": "ogg"},
-                },
-                {"input_key": f"{PREFIX}cover.png"},
-                {"input_key": f"{PREFIX}broken.mp4", "operations": ["video_thumbnail"]},
-                {"input_key": f"{PREFIX}notes.txt"},
-            ],
-        }
-        created = httpx.post(f"{API}/api/cases", json=body, timeout=30)
-        created.raise_for_status()
-        case_id = created.json()["case_id"]
-        print(f"case {case_id}: {created.json()}")
-
-        deadline = time.monotonic() + CASE_TIMEOUT_S
-        while True:
-            detail = httpx.get(f"{API}/api/cases/{case_id}", timeout=10).json()
-            status = detail["case"]["status"]
-            if status in {"completed", "partially_completed", "failed", "cancelled"}:
-                break
-            if time.monotonic() > deadline:
-                sys.exit(f"the case did not close within {CASE_TIMEOUT_S} s (status {status})")
-            time.sleep(1)
-
-        print(f"\nfinal status: {status}")
-        for st in sorted(detail["subtasks"], key=lambda s: s["input_key"]):
-            error = (st.get("error") or {}).get("code", "")
-            print(
-                f"  {st['status']:<10} {st.get('operation') or '-':<16} "
-                f"{st.get('worker_id') or '-':<28} {Path(st['input_key']).name} {error}"
-            )
-
-        report_url = httpx.get(f"{API}/api/cases/{case_id}/report", timeout=10).json()[
-            "url"
-        ]
-        report = httpx.get(report_url, timeout=10).json()
-        print(f"\nreport: {report['summary']}")
-        print(f"workers_used: {report['workers_used']}")
-
-        state = httpx.get(f"{API}/api/state", timeout=10).json()
-        alive = sorted(w["worker_id"] for w in state["workers"] if w["alive"])
-        print(f"alive workers in /api/state: {alive}")
-
-        # The snapshot goes out every 2 s: the closure arrives over the WebSocket shortly after.
-        ws_deadline = time.monotonic() + 15
-        while status not in listener.case_statuses(case_id):
-            if time.monotonic() > ws_deadline:
-                break
-            time.sleep(0.5)
-        listener.stop.set()
-        ws_statuses = listener.case_statuses(case_id)
-        print(
-            f"WebSocket /api/ws: {len(listener.states)} states received, "
-            f"the case went through {sorted(set(ws_statuses))}"
+    def _spawn(self, name: str, args: list[str]) -> subprocess.Popen:
+        self._seq += 1
+        log = open(self.logs / f"{self._seq:02d}-{name}.log", "wb")  # noqa: SIM115
+        return subprocess.Popen(
+            ["uv", "run", "--all-packages", *args],
+            cwd=REPO,
+            env=self.env,
+            stdout=log,
+            stderr=subprocess.STDOUT,
         )
 
-        pools_used = {w.split("-")[0] for w in report["workers_used"]}
-        assert status == "partially_completed", status
-        assert pools_used == {p.value for p in Pool}, pools_used
-        assert len(alive) == 3, alive
-        assert status in ws_statuses, ws_statuses
-        print("\nOK: the case closed with all three pools and the WebSocket pushed it.")
-    except BaseException:
-        for log in sorted(tmp.glob("*.log")):
-            print(f"\n--- {log.name} (last lines) ---\n{log.read_text()[-2500:]}")
-        raise
-    finally:
-        for proc in procs:
-            proc.terminate()
-        for proc in procs:
+    def start_coordinator(self) -> None:
+        self.coordinator = self._spawn(
+            "coordinator",
+            ["uvicorn", "coordinator.main:app", "--host", "127.0.0.1", "--port", str(API_PORT)],
+        )
+        deadline = time.monotonic() + 60
+        while time.monotonic() < deadline:
             try:
-                proc.wait(timeout=10)
+                if httpx.get(f"{API}/healthz", timeout=2).status_code == 200:
+                    return
+            except httpx.HTTPError:
+                pass
+            time.sleep(0.5)
+        raise ScenarioFailed("coordinator did not become healthy")
+
+    def kill_coordinator(self) -> None:
+        assert self.coordinator is not None
+        _kill_tree(self.coordinator, signal.SIGKILL)
+        self.coordinator = None
+
+    def start_worker(self, pool: str, *extra: str) -> None:
+        self.workers[pool] = self._spawn(
+            f"worker-{pool}",
+            ["python", "services/workers/scripts/fake_worker.py", "--pool", pool, *extra],
+        )
+
+    def start_workers(self, *extra: str) -> None:
+        for pool in POOLS:
+            self.start_worker(pool, *extra)
+        time.sleep(5)  # connect, declare topology, first heartbeat
+
+    def stop_workers(self) -> None:
+        for proc in self.workers.values():
+            _kill_tree(proc, signal.SIGTERM)
+        for proc in self.workers.values():
+            try:
+                proc.wait(timeout=20)
             except subprocess.TimeoutExpired:
-                proc.kill()
-        if moto is not None:
-            moto.stop()
-        print(f"logs in {tmp}")
+                _kill_tree(proc, signal.SIGKILL)
+        self.workers.clear()
+
+    def stop(self) -> None:
+        self.stop_workers()
+        if self.coordinator is not None:
+            _kill_tree(self.coordinator, signal.SIGTERM)
+            self.coordinator.wait(timeout=20)
+
+
+def _children(proc: subprocess.Popen) -> list[str]:
+    return subprocess.run(
+        ["pgrep", "-P", str(proc.pid)], check=False, capture_output=True, text=True
+    ).stdout.split()
+
+
+def _kill_tree(proc: subprocess.Popen, sig: int) -> None:
+    """`uv run` forks the real interpreter: signal its children too."""
+    children = _children(proc)
+    for pid in children:
+        try:
+            os.kill(int(pid), sig)
+        except ProcessLookupError:
+            pass
+    try:
+        proc.send_signal(sig)
+    except ProcessLookupError:
+        pass
+
+
+def worker_pid(proc: subprocess.Popen) -> int:
+    children = _children(proc)
+    return int(children[0]) if children else proc.pid
+
+
+# ---- API helpers ------------------------------------------------------------ #
+
+
+def create_case(files: list[str]) -> str:
+    resp = httpx.post(f"{API}/api/uploads", json={"filenames": files}, timeout=30)
+    resp.raise_for_status()
+    keys = []
+    for entry in resp.json()["urls"]:
+        suffix = PurePosixPath(entry["filename"]).suffix
+        httpx.put(entry["url"], content=CONTENT.get(suffix, b"?"), timeout=30).raise_for_status()
+        keys.append(entry["input_key"])
+    resp = httpx.post(
+        f"{API}/api/cases",
+        json={"files": [{"input_key": k} for k in keys], "label": "local e2e"},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    body = resp.json()
+    print(
+        f"  case {body['case_id']}: {body['subtask_count']} sub-tasks, "
+        f"{body['prefailed_count']} pre-failed"
+    )
+    return body["case_id"]
+
+
+def get_case(case_id: str) -> dict | None:
+    try:
+        resp = httpx.get(f"{API}/api/cases/{case_id}", timeout=5)
+    except httpx.HTTPError:
+        return None  # coordinator down (restart scenario)
+    resp.raise_for_status()
+    return resp.json()
+
+
+class Watcher:
+    """Polls a case and records every (status, attempt) of each sub-task."""
+
+    def __init__(self, case_id: str) -> None:
+        self.case_id = case_id
+        self.history: dict[str, list[tuple[str, int]]] = {}
+        self.detail: dict | None = None
+
+    def poll_once(self) -> dict | None:
+        detail = get_case(self.case_id)
+        if detail is None:
+            return None
+        self.detail = detail
+        for sub in detail["subtasks"]:
+            states = self.history.setdefault(sub["subtask_id"], [])
+            state = (sub["status"], sub["attempt"])
+            if not states or states[-1] != state:
+                states.append(state)
+                error = f" ({sub['error']['code']})" if sub.get("error") else ""
+                print(
+                    f"    {sub['subtask_id'][-4:]} {sub['status']:<10} "
+                    f"attempt={sub['attempt']} worker={sub['worker_id']}{error}"
+                )
+        return detail
+
+    def wait_until(self, predicate, timeout_s: float, what: str) -> dict:
+        deadline = time.monotonic() + timeout_s
+        while time.monotonic() < deadline:
+            detail = self.poll_once()
+            if detail is not None and predicate(detail):
+                return detail
+            time.sleep(0.3)
+        raise ScenarioFailed(f"timed out waiting for {what}")
+
+    def wait_terminal(self, timeout_s: float = 120) -> dict:
+        detail = self.wait_until(
+            lambda d: d["case"]["status"] in TERMINAL, timeout_s, "a terminal case"
+        )
+        print(f"  -> case {detail['case']['status']}")
+        return detail
+
+    def saw(self, status: str) -> bool:
+        return any(s == status for states in self.history.values() for s, _ in states)
+
+
+def check_report(case_id: str) -> str:
+    resp = httpx.get(f"{API}/api/cases/{case_id}/report", timeout=10)
+    resp.raise_for_status()
+    report = httpx.get(resp.json()["url"], timeout=10).json()
+    print(f"  report: {report['summary']}")
+    return report["summary"]
+
+
+def expect(condition: bool, message: str) -> None:
+    if not condition:
+        raise ScenarioFailed(message)
+
+
+# ---- Scenarios -------------------------------------------------------------- #
+
+
+def scenario_basic(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers()
+    try:
+        watcher = Watcher(create_case(["chat.txt", "photo.jpg", "voice.mp3"]))
+        detail = watcher.wait_terminal()
+        expect(detail["case"]["status"] == "completed", "expected completed")
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+def scenario_unsupported(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers()
+    try:
+        watcher = Watcher(create_case(["chat.json", "notes.xyz", "clip.mp4"]))
+        detail = watcher.wait_terminal()
+        expect(detail["case"]["status"] == "partially_completed", "expected partially_completed")
+        prefailed = [s for s in detail["subtasks"] if s["attempt"] == 0]
+        expect(
+            len(prefailed) == 1 and prefailed[0]["error"]["code"] == "unsupported_format",
+            "expected one pre-failed unsupported_format sub-task",
+        )
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+def scenario_retries(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers("--fail-rate", "0.5", "--work-s", "0.5")
+    try:
+        files = [f"f{i}{ext}" for i in range(3) for ext in (".txt", ".jpg", ".mp3")]
+        watcher = Watcher(create_case(files))
+        detail = watcher.wait_terminal(timeout_s=180)
+        expect(watcher.saw("retrying"), "no sub-task went through retrying")
+        retried = [s for s in detail["subtasks"] if s["attempt"] > 1]
+        exhausted = [
+            s for s in detail["subtasks"]
+            if s.get("error") and s["error"]["code"] == "retries_exhausted"
+        ]
+        print(f"  {len(retried)} sub-tasks retried, {len(exhausted)} exhausted retries")
+        expect(bool(retried), "expected attempt > 1 on some sub-task")
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+def scenario_crash(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers("--work-s", "6")
+    try:
+        watcher = Watcher(create_case(["voice.mp3", "chat.txt"]))
+        watcher.wait_until(
+            lambda d: any(
+                s["status"] == "running" and (s["worker_id"] or "").startswith("audio")
+                for s in d["subtasks"]
+            ),
+            30,
+            "the audio sub-task to run",
+        )
+        victim = stack.workers.pop("audio")
+        pid = worker_pid(victim)
+        print(f"  kill -9 audio worker pid {pid}")
+        os.kill(pid, signal.SIGKILL)
+        time.sleep(1)
+        stack.start_worker("audio", "--work-s", "1")
+        detail = watcher.wait_terminal(timeout_s=90)
+        expect(detail["case"]["status"] == "completed", "expected completed after the crash")
+        audio = next(s for s in detail["subtasks"] if s["input_key"].endswith(".mp3"))
+        expect(audio["attempt"] >= 2, "the crashed sub-task was not retried")
+        # The sweeper marks the killed worker dead once its heartbeat is stale.
+        timeout = float(env["HEARTBEAT_TIMEOUT_S"]) + 10
+        deadline = time.monotonic() + timeout
+        dead = []
+        while time.monotonic() < deadline and not dead:
+            state = httpx.get(f"{API}/api/state", timeout=5).json()
+            dead = [
+                w["worker_id"] for w in state["workers"]
+                if w["worker_id"].endswith(f"-{pid}") and w["status"] == "dead"
+            ]
+            time.sleep(1)
+        expect(bool(dead), f"worker with pid {pid} was not marked dead")
+        print(f"  sweeper marked {dead[0]} dead")
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+def scenario_restart(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers("--work-s", "2")
+    try:
+        files = [f"r{i}{ext}" for i in range(3) for ext in (".txt", ".jpg", ".mp3")]
+        watcher = Watcher(create_case(files))
+        watcher.wait_until(
+            lambda d: any(s["status"] in ("assigned", "running") for s in d["subtasks"]),
+            30,
+            "a sub-task in flight",
+        )
+        print("  kill -9 coordinator")
+        stack.kill_coordinator()
+        time.sleep(5)  # workers keep publishing results into the durable queue
+        print("  starting coordinator again")
+        stack.start_coordinator()
+        detail = watcher.wait_terminal(timeout_s=120)
+        expect(detail["case"]["status"] == "completed", "expected completed after restart")
+        with psycopg.connect(env["DATABASE_URL"]) as conn:
+            rows, distinct = conn.execute(
+                "SELECT count(*), count(DISTINCT input_key) FROM subtasks WHERE case_id = %s",
+                (watcher.case_id,),
+            ).fetchone()
+        print(f"  subtasks rows={rows} distinct inputs={distinct} files={len(files)}")
+        expect(rows == distinct == len(files), "duplicated or missing sub-tasks")
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+SCENARIOS = {
+    "basic": scenario_basic,
+    "unsupported": scenario_unsupported,
+    "retries": scenario_retries,
+    "crash": scenario_crash,
+    "restart": scenario_restart,
+}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument("--scenario", choices=SCENARIOS, action="append")
+    parser.add_argument("--logs", type=Path, default=Path("/tmp/dmap-e2e"))
+    args = parser.parse_args()
+    args.logs.mkdir(parents=True, exist_ok=True)
+
+    env = load_env()
+    stack = Stack(env, args.logs)
+    results: dict[str, str] = {}
+    try:
+        stack.start_coordinator()
+        for name in args.scenario or list(SCENARIOS):
+            print(f"== {name}")
+            try:
+                SCENARIOS[name](stack, env)
+                results[name] = "OK"
+            except (ScenarioFailed, httpx.HTTPError) as exc:
+                results[name] = f"FAILED: {exc}"
+            print(f"== {name}: {results[name]}")
+    finally:
+        stack.stop()
+    print("\n".join(f"{name:<12} {result}" for name, result in results.items()))
+    print(f"logs in {args.logs}")
+    return 0 if all(r == "OK" for r in results.values()) else 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
