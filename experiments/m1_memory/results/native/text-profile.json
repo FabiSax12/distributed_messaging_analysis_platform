@@ -1,0 +1,17 @@
+{
+  "pool": "text",
+  "input_bytes": 45,
+  "os": "Windows-11-10.0.26200-SP0",
+  "pid": 46052,
+  "load_seconds": 0.0014880999806337059,
+  "before": {
+    "rss_bytes": 34816000,
+    "pss_bytes": null
+  },
+  "loaded": {
+    "rss_bytes": 34926592,
+    "pss_bytes": null
+  },
+  "peak_sampled_rss_bytes": 35037184,
+  "note": "PSS null on Windows; sampled RSS is not kernel peak; no cgroup limit on native host"
+}
