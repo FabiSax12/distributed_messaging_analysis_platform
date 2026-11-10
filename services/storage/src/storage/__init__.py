@@ -1,7 +1,6 @@
 """M3 I/O and storage building blocks.
 
-Only the public interfaces live here for now (``Protocol`` classes with
-docstrings); the implementations are M3 work. Each subpackage is independent
+Public Protocols have concrete stdlib implementations beside them. Each subpackage is independent
 of the coordinator, the workers and any broker, so it can be built, tested
 and benchmarked standalone (see ``services/storage/README.md``).
 

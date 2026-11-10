@@ -5,9 +5,25 @@ coordinator, the workers or any broker, so they can be implemented, tested and
 benchmarked on a laptop and plugged into the coordinator after the RabbitMQ +
 PostgreSQL migration.
 
-> **Status: interfaces only.** Each subpackage defines its public interface as
-> `Protocol` classes with docstrings. The implementations are pending (owner:
-> David Molina, see `docs/responsabilidades.md`).
+Concrete stdlib implementations (David Molina):
+
+- `storage.chunking.file_chunker.FileChunker` and `DiskReassembler`:
+  lazy SHA-256 chunks; out-of-order disk spool, idempotent retries and full
+  integrity verification before writing any output. Use the receiver as a
+  context manager to close its temporary file.
+- `storage.content_store.file_store.FileContentStore(root)`: streamed writes,
+  fsync + atomic hard-link publication, concurrent identical writers dedup.
+  Requires a filesystem supporting hard links (NTFS/ext4, not exFAT).
+  Successful put counters and distinct encountered bytes are per store instance;
+  they are not a persistent inventory of preexisting objects. Existing corrupt
+  objects are rejected on put; get streams bytes without rehashing them.
+- `storage.backpressure.thread_queue.ThreadBoundedQueue(maxsize, policy)`:
+  BLOCK timeout or immediate REJECT, FIFO, bounded depth, close wakes producers
+  and lets consumers drain. Capacity counts items, so callers must also bound
+  item size. This standalone queue does not replace RabbitMQ.
+
+Run contract checks: `uv run --all-packages python services/storage/check_storage.py`.
+The components are standalone; S3 upload/download APIs are unchanged.
 
 | Subpackage | Interface | Purpose |
 |---|---|---|
