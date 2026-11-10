@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ground_truth.schema.json",
+  "title": "Case ground truth",
+  "description": "Expected findings of one case, in dataset/ground_truth/<case_id>.json. Every listed source was labeled by a person: a source with an empty findings list is a known negative, a source that is not listed is unlabeled. Category and severity values match shared/analysis.py (FindingCategory, Severity); locators use the same field names as Evidence, so precision/recall can match predicted against expected findings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "labeled_by",
+    "sources"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,63}$"
+    },
+    "labeled_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/labeled_source"
+      }
+    }
+  },
+  "$defs": {
+    "labeled_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "findings"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[^\\\\]+$",
+          "description": "Same path as in the case manifest (same safe-path pattern: relative, no leading slash, no '..')."
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expected_finding"
+          }
+        }
+      }
+    },
+    "expected_finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "severity",
+        "kind"
+      ],
+      "properties": {
+        "category": {
+          "enum": [
+            "threat",
+            "violence",
+            "offensive_language",
+            "illicit_activity",
+            "sensitive_image",
+            "other"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "message",
+            "image",
+            "audio_segment",
+            "document"
+          ]
+        },
+        "message_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "audio_start_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "audio_end_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "bbox": {
+          "$ref": "#/$defs/bbox"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 500
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "message"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "message_index"
+            ],
+            "properties": {
+              "audio_start_s": false,
+              "audio_end_s": false,
+              "bbox": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "audio_segment"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "audio_start_s",
+              "audio_end_s"
+            ],
+            "properties": {
+              "message_index": false,
+              "bbox": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "image"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "message_index": false,
+              "audio_start_s": false,
+              "audio_end_s": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "document"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "message_index": false,
+              "audio_start_s": false,
+              "audio_end_s": false,
+              "bbox": false
+            }
+          }
+        }
+      ],
+      "description": "Locator rules match Evidence in shared/analysis.py: message needs message_index; audio_segment needs audio_start_s and audio_end_s; image may have bbox (omitted = whole image); document has no locator. A kind cannot carry another kind's locators."
+    },
+    "bbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "description": "Normalized to the image size; omit it to mean the whole image. x + w and y + h may exceed 1 by at most BBOX_TOLERANCE (1e-6, checked by validate_manifests.py, same value as shared/analysis.py).",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "w": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "h": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

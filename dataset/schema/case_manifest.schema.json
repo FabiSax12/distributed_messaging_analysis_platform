@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "case_manifest.schema.json",
+  "title": "Case manifest",
+  "description": "One per case, in dataset/cases/<case_id>/manifest.json. Source paths are relative to the case directory, which mirrors the S3 prefix cases/<case_id>/. Enum values match shared/analysis.py (CasePriority, ContentType).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "title", "priority", "heterogeneous", "sources"],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,63}$",
+      "description": "Must equal the case directory name, e.g. case-001."
+    },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "priority": { "enum": ["low", "medium", "high", "critical"] },
+    "heterogeneous": {
+      "type": "boolean",
+      "description": "True when the case mixes text, image, audio and video or document sources."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "notes": { "type": "string", "maxLength": 2000 }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "content_type", "sha256", "size_bytes"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[^\\\\]+$",
+          "description": "Relative POSIX path inside the case directory, e.g. chat/whatsapp.txt or media/IMG-0001.jpg. No leading slash, no '..'."
+        },
+        "content_type": { "enum": ["text", "image", "audio", "video", "document"] },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "chat_format": {
+          "enum": ["whatsapp", "telegram"],
+          "description": "Only for text sources that are chat exports (see docs/dataset.md)."
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1,
+          "description": "IANA time zone of the naive timestamps in a chat export (default America/Costa_Rica)."
+        },
+        "notes": { "type": "string", "maxLength": 2000 }
+      },
+      "if": { "required": ["chat_format"] },
+      "then": { "properties": { "content_type": { "const": "text" } } }
+    }
+  }
+}
