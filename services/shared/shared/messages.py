@@ -1,10 +1,10 @@
-"""Messages that travel through SQS.
+"""Messages that travel through RabbitMQ (JSON bodies).
 
-- SubTaskMessage: coordinator -> work queues (and whatever lands in the DLQ).
+- SubTaskMessage: coordinator -> pool work queue (and whatever is dead-lettered).
 - ResultMessage: worker -> results queue, one per state change.
 
-Workers never write Cases or SubTasks: they only publish ResultMessage.
-The coordinator is the only writer of that state.
+Workers never write `cases` or `subtasks`: they only publish ResultMessage.
+The coordinator is the only writer of that state (and decides retries).
 """
 
 from datetime import UTC, datetime
@@ -13,7 +13,8 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from .routing import MediaType, Operation, Pool, Priority
+from .analysis import AnalysisOperation, CasePriority, ContentType
+from .routing import Pool
 from .states import SubTaskStatus, state_order
 
 SCHEMA_VERSION = 1
@@ -25,13 +26,22 @@ def utcnow() -> datetime:
 
 class ErrorCode(StrEnum):
     UNSUPPORTED_FORMAT = "unsupported_format"   # unsupported type or operation
-    CORRUPT_INPUT = "corrupt_input"             # ffprobe cannot read the file
-    PROCESSING_ERROR = "processing_error"       # ffmpeg finished with an error
-    EXTERNAL_API_ERROR = "external_api_error"   # lyrics / catalog API
+    CORRUPT_INPUT = "corrupt_input"             # unreadable file / not a chat export
+    PROCESSING_ERROR = "processing_error"       # model or ffmpeg failed
+    EXTERNAL_API_ERROR = "external_api_error"   # an external API failed (transient)
     TIMEOUT = "timeout"                         # exceeded the operation's maximum time
-    RETRIES_EXHAUSTED = "retries_exhausted"     # arrived through the DLQ (worker down)
+    RETRIES_EXHAUSTED = "retries_exhausted"     # transient failures beyond the retry max
+    WORKER_LOST = "worker_lost"                 # worker crashed or stopped heartbeating
+    DEAD_LETTERED = "dead_lettered"             # the broker dead-lettered the message
     CANCELLED = "cancelled"
-    INTERNAL = "internal"
+    INTERNAL = "internal"                       # unexpected worker exception (transient)
+
+
+# Codes the coordinator retries with backoff (up to its configured maximum).
+# The rest are final: retrying a corrupt file or a timeout gives the same result.
+RETRYABLE_ERRORS: frozenset[ErrorCode] = frozenset(
+    {ErrorCode.INTERNAL, ErrorCode.EXTERNAL_API_ERROR, ErrorCode.WORKER_LOST}
+)
 
 
 class ErrorInfo(BaseModel):
@@ -54,16 +64,17 @@ class _Message(BaseModel):
 
 
 class SubTaskMessage(_Message):
-    """Message body in video-alta, audio-normal, etc."""
+    """Message body in work.text, work.image and work.audio."""
 
     subtask_id: str
     case_id: str
-    input_key: str                 # key in the dataset bucket
-    media_type: MediaType
-    operation: Operation
-    priority: Priority
+    attempt: int = Field(default=1, ge=1)  # 1 on the first dispatch, +1 per retry
+    input_key: str                 # key in the S3 bucket
+    media_type: ContentType        # name kept from Project I for API stability
+    operation: AnalysisOperation
+    priority: CasePriority
     output_prefix: str             # results/{case_id}/{subtask_id}/
-    params: dict[str, Any] = Field(default_factory=dict)  # e.g. {"target_format": "mp4"}
+    params: dict[str, Any] = Field(default_factory=dict)  # e.g. {"lang": "es"}
     enqueued_at: datetime = Field(default_factory=utcnow)
 
 
@@ -73,8 +84,8 @@ class ResultMessage(_Message):
     subtask_id: str
     case_id: str
     status: SubTaskStatus
-    attempt: int = Field(ge=1)     # ApproximateReceiveCount of the work message
-    worker_id: str | None = None   # None only when it comes from the DLQ
+    attempt: int = Field(ge=1)     # SubTaskMessage.attempt
+    worker_id: str | None = None   # None only when the coordinator synthesizes it
     pool: Pool | None = None
     progress: int | None = Field(default=None, ge=0, le=100)
     started_at: datetime | None = None
@@ -87,11 +98,12 @@ class ResultMessage(_Message):
     @model_validator(mode="after")
     def _check_consistency(self):
         if self.status is SubTaskStatus.FAILED and self.error is None:
-            raise ValueError("un resultado failed necesita error")
+            raise ValueError("a failed result needs an error")
         if self.status is SubTaskStatus.COMPLETED and self.finished_at is None:
-            raise ValueError("un resultado completed necesita finished_at")
-        if self.status is SubTaskStatus.PENDING:
-            raise ValueError("workers do not report pending")
+            raise ValueError("a completed result needs finished_at")
+        if self.status in (SubTaskStatus.PENDING, SubTaskStatus.RETRYING):
+            # retrying is decided and written by the coordinator, never reported.
+            raise ValueError(f"workers do not report {self.status}")
         return self
 
     @property
@@ -99,16 +111,17 @@ class ResultMessage(_Message):
         return state_order(self.status, self.attempt)
 
 
-def result_from_dlq(msg: SubTaskMessage, receive_count: int) -> ResultMessage:
-    """What the coordinator records when consuming the DLQ."""
+def result_from_dead_letter(msg: SubTaskMessage) -> ResultMessage:
+    """What the coordinator records when a work message is dead-lettered
+    (a worker rejected it as unprocessable)."""
     return ResultMessage(
         subtask_id=msg.subtask_id,
         case_id=msg.case_id,
         status=SubTaskStatus.FAILED,
-        attempt=max(receive_count, 1),
+        attempt=msg.attempt,
         finished_at=utcnow(),
         error=ErrorInfo(
-            code=ErrorCode.RETRIES_EXHAUSTED,
-            message=f"exhausted {receive_count} attempts (worker down or process aborted)",
+            code=ErrorCode.DEAD_LETTERED,
+            message="the work message was dead-lettered by the broker",
         ),
     )

@@ -19,16 +19,16 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from .analysis import AnalysisOperation, CasePriority, ContentType
 from .messages import utcnow
 from .models import CaseItem, CaseSource, LoadSample, SubTaskItem, WorkerItem
-from .routing import MediaType, Operation, Priority
 
 # ---- Dataset and manual upload ---------------------------------------------- #
 
 class DatasetEntry(BaseModel):
     input_key: str
     size_bytes: int
-    media_type: MediaType | None          # None = unsupported extension
+    media_type: ContentType | None        # None = unsupported extension
     metadata: dict[str, Any] = Field(default_factory=dict)  # from the dataset JSON
 
 
@@ -52,13 +52,13 @@ class UploadUrlResponse(BaseModel):
 
 class CaseFileIn(BaseModel):
     input_key: str
-    operations: list[Operation] | None = None   # None = the coordinator decides
+    operations: list[AnalysisOperation] | None = None  # None = the coordinator decides
     params: dict[str, Any] = Field(default_factory=dict)
 
 
 class CreateCaseRequest(BaseModel):
     files: list[CaseFileIn] = Field(min_length=1, max_length=1000)
-    priority: Priority = Priority.NORMAL
+    priority: CasePriority = CasePriority.MEDIUM
     label: str | None = Field(default=None, max_length=200)
     source: CaseSource = CaseSource.MANUAL
 
@@ -107,9 +107,9 @@ class CaseOutputsResponse(BaseModel):
 # ---- System state ----------------------------------------------------- #
 
 class QueueDepth(BaseModel):
-    queue: str                # logical name: "video-alta", "resultados", "dlq"
-    visible: int
-    in_flight: int
+    queue: str                # "work.text", "work.image", "work.audio", "results", "dead-letter"
+    visible: int              # ready messages in the broker
+    in_flight: int            # work queues: sub-tasks assigned/running; others: 0
 
 
 class WorkerView(WorkerItem):

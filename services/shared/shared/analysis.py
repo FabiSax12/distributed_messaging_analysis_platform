@@ -13,9 +13,8 @@ the coordinator and the report read it back with ``AnalysisResult.from_meta``.
 The payload is nested under ``ANALYSIS_META_KEY`` so it can share ``meta`` with
 other keys the runner may add.
 
-These enums are independent of ``shared.routing`` on purpose: routing still
-carries the Project I wire contract (video/audio/metadata pools) until the
-RabbitMQ + PostgreSQL migration wires the analysis operations in.
+``shared.routing`` maps file extensions to these content types and operations,
+and operations to worker pools.
 """
 
 from __future__ import annotations
@@ -57,8 +56,8 @@ class AnalysisOperation(StrEnum):
     AUDIO_ANALYZE = "audio_analyze"  # transcribe, then text analysis on the transcript
 
 
-# Content type each operation consumes. Video and documents have no operation
-# yet: the coordinator decides later whether to extract audio/frames/text.
+# Content type each operation consumes. Video is routed to audio_analyze (the
+# audio worker extracts the track); documents have no operation yet.
 OPERATION_CONTENT_TYPE: dict[AnalysisOperation, ContentType] = {
     AnalysisOperation.TEXT_ANALYZE: ContentType.TEXT,
     AnalysisOperation.IMAGE_ANALYZE: ContentType.IMAGE,
@@ -67,8 +66,8 @@ OPERATION_CONTENT_TYPE: dict[AnalysisOperation, ContentType] = {
 
 
 class CasePriority(StrEnum):
-    """Case priority for M2 scheduling (not ``shared.routing.Priority``,
-    which is the legacy two-level queue priority)."""
+    """Case priority. ``shared.routing.MESSAGE_PRIORITY`` maps it to the AMQP
+    message priority of the work queues (M2 scheduling builds on it)."""
 
     LOW = "low"
     MEDIUM = "medium"

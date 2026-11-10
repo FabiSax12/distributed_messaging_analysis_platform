@@ -1,9 +1,12 @@
 [project]
 name = "shared"
 version = "0.1.0"
-description = "Shared domain contracts: routing, states, SQS messages, DynamoDB/S3 models, REST contracts and analysis results."
+description = "Shared domain contracts: routing, states, broker messages and topology, PostgreSQL/S3 models, REST contracts and analysis results."
 requires-python = ">=3.12"
-dependencies = ["pydantic>=2.7"]
+dependencies = [
+    "pydantic>=2.7",
+    "pika>=1.3",
+]
 
 [dependency-groups]
 dev = [

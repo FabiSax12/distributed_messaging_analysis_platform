@@ -1,23 +1,24 @@
 """Sub-task and case states, and the rule for ordering them.
 
-The results queue is SQS Standard: it can deliver duplicate or out-of-order
-messages. Each sub-task state has an order number (`state_order`) that only
-grows. The coordinator updates SubTasks with the condition
-`state_order < :new`, so a late message ("running") never overwrites a newer
-one ("completed").
+RabbitMQ delivers at least once: a message is redelivered after a consumer or
+connection dies, and several coordinator threads consume the results queue,
+so results can arrive duplicated or out of order. Each sub-task state has an
+order number (`state_order`) that only grows. The coordinator updates
+`subtasks` with the condition `state_order < new`, so a late message
+("running") never overwrites a newer one ("completed").
 
-The order depends on the attempt: the "retrying" of attempt 2 is newer than the
-"running" of attempt 1. Terminal states always win.
+The order depends on the attempt: the "retrying" that schedules attempt 2 is
+newer than the "running" of attempt 1. Terminal states always win.
 """
 
 from enum import StrEnum
 
 
 class SubTaskStatus(StrEnum):
-    PENDING = "pending"        # the message is visible in its queue
-    ASSIGNED = "assigned"      # a worker received it (invisible due to the visibility timeout)
-    RUNNING = "running"        # the ffmpeg run / external call started
-    RETRYING = "retrying"      # the message went back to the queue (ApproximateReceiveCount > 1)
+    PENDING = "pending"        # planned; published (or about to be) to its pool queue
+    ASSIGNED = "assigned"      # a worker took the message
+    RUNNING = "running"        # the analysis op started
+    RETRYING = "retrying"      # transient failure; the coordinator republishes at retry_at
     COMPLETED = "completed"
     FAILED = "failed"
     CANCELLED = "cancelled"
@@ -39,7 +40,9 @@ _TERMINAL_ORDER = 1_000_000
 def state_order(status: SubTaskStatus, attempt: int) -> int:
     """Monotonic number for the write condition on SubTasks.
 
-    `attempt` is the message's ApproximateReceiveCount (1 on the first delivery).
+    `attempt` is `SubTaskMessage.attempt` (1 on the first dispatch). A
+    `retrying` row carries the attempt it schedules, so it outranks every
+    progress state of the attempt that failed.
     """
     if status in TERMINAL_SUBTASK:
         return _TERMINAL_ORDER
