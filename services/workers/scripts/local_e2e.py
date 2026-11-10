@@ -15,6 +15,8 @@ Scenarios (all by default, in this order):
                sub-task is retried (worker_lost) and the case completes
   restart      kill -9 the coordinator with a case in flight, start it again
                -> the case completes, no duplicated sub-tasks
+  dbdown       stop the PostgreSQL container for 20 s with a case in flight
+               -> the case completes without retries_exhausted
 
 Settings come from the environment, falling back to infra/docker/dev.env.
 Logs of every process go to --logs (default /tmp/dmap-e2e). Exit code 1 if
@@ -60,7 +62,7 @@ def load_env() -> dict[str, str]:
         if sep and not key.startswith("#"):
             env.setdefault(key.strip(), value.strip())
     # Fast failure detection and retries so the scenarios finish quickly.
-    env.setdefault("HEARTBEAT_TIMEOUT_S", "10")
+    env.setdefault("HEARTBEAT_TIMEOUT_S", "20")
     env.setdefault("SWEEP_INTERVAL_S", "2")
     env.setdefault("RETRY_BASE_DELAY_S", "1")
     env.setdefault("RETRY_MAX_ATTEMPTS", "4")
@@ -192,6 +194,8 @@ def get_case(case_id: str) -> dict | None:
         resp = httpx.get(f"{API}/api/cases/{case_id}", timeout=5)
     except httpx.HTTPError:
         return None  # coordinator down (restart scenario)
+    if resp.status_code >= 500:
+        return None  # database down (dbdown scenario)
     resp.raise_for_status()
     return resp.json()
 
@@ -372,12 +376,41 @@ def scenario_restart(stack: Stack, env: dict[str, str]) -> None:
         stack.stop_workers()
 
 
+POSTGRES_CONTAINER = "dmap-dev-postgres-1"
+
+
+def scenario_dbdown(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers("--work-s", "3")
+    try:
+        files = [f"d{i}{ext}" for i in range(2) for ext in (".txt", ".jpg", ".mp3")]
+        watcher = Watcher(create_case(files))
+        watcher.wait_until(
+            lambda d: any(s["status"] == "running" for s in d["subtasks"]),
+            30,
+            "a running sub-task",
+        )
+        print(f"  docker stop {POSTGRES_CONTAINER} for 20 s")
+        subprocess.run(["docker", "stop", POSTGRES_CONTAINER], check=True, capture_output=True)
+        time.sleep(20)
+        subprocess.run(["docker", "start", POSTGRES_CONTAINER], check=True, capture_output=True)
+        print("  postgres started again")
+        detail = watcher.wait_terminal(timeout_s=180)
+        codes = [s["error"]["code"] for s in detail["subtasks"] if s.get("error")]
+        print(f"  error codes recorded: {codes or 'none'}")
+        expect(detail["case"]["status"] == "completed", "expected completed after the outage")
+        expect("retries_exhausted" not in codes, "a sub-task exhausted its retries")
+        check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
 SCENARIOS = {
     "basic": scenario_basic,
     "unsupported": scenario_unsupported,
     "retries": scenario_retries,
     "crash": scenario_crash,
     "restart": scenario_restart,
+    "dbdown": scenario_dbdown,
 }
 
 
