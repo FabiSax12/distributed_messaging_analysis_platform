@@ -61,12 +61,15 @@ class CasesRepo:
         return CaseItem.model_validate(row) if row else None
 
     def update_cancel_requested(self, case_id: str) -> CaseItem:
-        """Set `cancel_requested = true`. Raises CaseNotFound / CaseAlreadyTerminal."""
+        """Set `cancel_requested = true`. Raises CaseNotFound / CaseAlreadyTerminal.
+
+        `pending_count > 0`: a case whose barrier already reached zero is
+        finishing; cancelling it would turn a completed case into cancelled."""
         with self._pool.connection() as conn:
             row = conn.execute(
                 f"""
                 UPDATE cases SET cancel_requested = true
-                WHERE case_id = %s AND status <> ALL(%s)
+                WHERE case_id = %s AND status <> ALL(%s) AND pending_count > 0
                 RETURNING {_COLUMNS}
                 """,
                 (case_id, TERMINAL_CASE_VALUES),
