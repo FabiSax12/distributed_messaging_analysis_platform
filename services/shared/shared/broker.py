@@ -105,6 +105,7 @@ def publish(
     *,
     priority: int | None = None,
     message_id: str | None = None,
+    headers: dict[str, Any] | None = None,
 ) -> None:
     """Persistent publish to the work exchange. On a confirm channel it
     blocks until the broker acks and raises `NackError`/`UnroutableError`."""
@@ -117,6 +118,7 @@ def publish(
             delivery_mode=pika.DeliveryMode.Persistent,
             priority=priority,
             message_id=message_id,
+            headers=headers,
         ),
         mandatory=True,
     )
@@ -161,6 +163,7 @@ class Publisher:
         *,
         priority: int | None = None,
         message_id: str | None = None,
+        headers: dict[str, Any] | None = None,
     ) -> None:
         for attempt in range(self._retries + 1):
             try:
@@ -170,6 +173,7 @@ class Publisher:
                     body,
                     priority=priority,
                     message_id=message_id,
+                    headers=headers,
                 )
                 return
             except BROKER_ERRORS:
@@ -209,6 +213,7 @@ def consume(
     name: str,
     prefetch: int,
     confirm: bool = False,
+    transient: tuple[type[BaseException], ...] = (),
 ) -> None:
     """Consume `queue` until `stop_event`, reconnecting with backoff.
 
@@ -216,8 +221,13 @@ def consume(
     the message itself. With `confirm=True` the same channel can publish
     with confirms (the worker publishes its results this way, so all its
     AMQP traffic stays on the consuming thread). An exception from
-    `on_message` that is not a broker error is logged and the message is
-    nacked with requeue, so it is retried instead of lost.
+    `on_message` that is not a broker error is logged and then:
+
+    - one of `transient` (e.g. the database is down): requeued after an
+      exponential pause, with no cap, because the message itself is fine;
+    - anything else: requeued once; if the message was already redelivered
+      it is rejected without requeue (dead-letter queue), so a poison
+      message cannot loop forever.
     """
     attempt = 0
     while not stop_event.is_set():
@@ -230,6 +240,7 @@ def consume(
             if confirm:
                 channel.confirm_delivery()
             attempt = 0
+            transient_failures = 0
             logger.info("consuming", extra={"queue": queue, "consumer": name})
             for method, properties, body in channel.consume(
                 queue, inactivity_timeout=1.0
@@ -240,14 +251,29 @@ def consume(
                     continue
                 try:
                     on_message(channel, method, properties, body)
+                    transient_failures = 0
                 except BROKER_ERRORS:
                     raise
+                except transient:
+                    delay = backoff_delay(transient_failures)
+                    transient_failures += 1
+                    logger.warning(
+                        "transient error in message handler, requeueing",
+                        extra={"queue": queue, "consumer": name, "retry_in_s": round(delay, 2)},
+                        exc_info=True,
+                    )
+                    connection.sleep(delay)  # keeps servicing AMQP heartbeats
+                    channel.basic_nack(method.delivery_tag, requeue=True)
                 except Exception:
+                    requeue = not method.redelivered
                     logger.exception(
-                        "unhandled error in message handler, requeueing",
+                        "unhandled error in message handler, %s",
+                        "requeueing once" if requeue else "dead-lettering it",
                         extra={"queue": queue, "consumer": name},
                     )
-                    _nack_requeue(channel, method)
+                    if requeue:
+                        connection.sleep(1.0)
+                    channel.basic_nack(method.delivery_tag, requeue=requeue)
             channel.cancel()  # requeues anything prefetched and not acked
         except BROKER_ERRORS:
             delay = backoff_delay(attempt)
@@ -264,13 +290,6 @@ def consume(
                     connection.close()
                 except BROKER_ERRORS:
                     pass
-
-
-def _nack_requeue(channel: BlockingChannel, method: Basic.Deliver) -> None:
-    # A short pause so a persistent failure (database down) does not turn
-    # into a hot redelivery loop.
-    time.sleep(1.0)
-    channel.basic_nack(method.delivery_tag, requeue=True)
 
 
 def queue_depth(channel: BlockingChannel, queue: str) -> int:

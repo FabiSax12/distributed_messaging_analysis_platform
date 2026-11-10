@@ -36,7 +36,7 @@ from .barrier.sweeper import run_sweep
 from .config import get_settings
 from .consumers.dlq import build_dlq_handler
 from .consumers.results import build_results_handler
-from .db import apply_schema, create_pool
+from .db import DB_ERRORS, apply_schema, create_pool
 from .logging import setup_logging
 from .monitor.broadcaster import Broadcaster
 from .monitor.samples import run_samples_loop
@@ -132,6 +132,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
                 stop_event,
                 name=f"coordinator-{name}",
                 prefetch=settings.RESULTS_PREFETCH,
+                transient=DB_ERRORS,
             )
         )
     add(
@@ -144,6 +145,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
             stop_event,
             name="coordinator-dlq-consumer",
             prefetch=10,
+            transient=DB_ERRORS,
         )
     )
     add(_thread("outbox-relay", outbox.run, stop_event))

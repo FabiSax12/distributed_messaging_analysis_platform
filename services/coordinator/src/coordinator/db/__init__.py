@@ -12,13 +12,17 @@ from __future__ import annotations
 import logging
 from importlib.resources import files
 
+from psycopg import OperationalError
 from psycopg.rows import dict_row
-from psycopg_pool import ConnectionPool
+from psycopg_pool import ConnectionPool, PoolTimeout
 
 logger = logging.getLogger(__name__)
 
 # Serializes concurrent schema application (two coordinators starting at once).
 _SCHEMA_LOCK_ID = 6600_0001
+
+# Database unreachable: the message being handled is fine, retry it later.
+DB_ERRORS: tuple[type[BaseException], ...] = (OperationalError, PoolTimeout)
 
 
 def create_pool(url: str, *, max_size: int) -> ConnectionPool:
@@ -27,6 +31,9 @@ def create_pool(url: str, *, max_size: int) -> ConnectionPool:
         min_size=1,
         max_size=max_size,
         kwargs={"row_factory": dict_row},
+        # Test a pooled connection before lending it, so a database restart
+        # costs one reconnect instead of one failed query per idle connection.
+        check=ConnectionPool.check_connection,
         open=False,
         name="coordinator",
     )
