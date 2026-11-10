@@ -1,7 +1,7 @@
-# Bitácora de uso de IA
+# AI usage log
 
-> Mínimo dos casos documentados de error o imprecisión de la IA
+> At least two documented cases of AI errors or inaccuracies
 
-| Fecha · integrante | Herramienta | Componente | Propósito | Consulta resumida | Resultado obtenido | Validado / corregido / descartado | Cómo se validó |
+| Date · member | Tool | Component | Purpose | Summarized prompt | Result obtained | Validated / corrected / discarded | How it was validated |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |

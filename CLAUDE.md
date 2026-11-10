@@ -6,7 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 University project (II Proyecto Programado IC-6600, Alternative B): a distributed platform that analyzes messaging data (text, image, audio) on AWS. It builds on the team's Project I (`FabiSax12/distributed-multimedia-processing`); `docs/reuse.md` records what is reused, modified or new.
 
-Right now only `infra/terraform/` contains real code. Everything else (`services/`, `frontend/`, `dataset/`, `experiments/`, `scripts/`, `tests/`, `infra/docker`, `infra/monitoring`, `infra/tls`) is an empty scaffold of `.gitkeep` files, so there are no build, lint or test commands yet. Do not invent them.
+- `services/coordinator` and `services/workers` are Project I code still on SQS + DynamoDB (and `shared/routing.py` is its wire contract); the migration to RabbitMQ + PostgreSQL is pending on the lead's branch, so do not touch those parts without being asked.
+- New contracts on top: `services/shared/shared/analysis.py` (analysis results, `AnalysisResult.to_meta/from_meta`), the separate `workers.ops.analysis.ANALYSIS_OPERATIONS` registry with `python -m workers.ops.run_local`, the `services/storage` M3 interface skeleton, and the dataset schemas/validator in `dataset/`.
+- Python is a uv workspace (root `pyproject.toml`, one `uv.lock`): `uv sync --all-packages --group dataset` (full setup: every package plus the dataset tools), then `uv run --package <shared|coordinator|workers|storage> pytest services/<pkg>/tests -q` and `uv run --group dataset pytest dataset/tests -q`; lint with `uv run ruff check <path>` / `uv run ruff format --check <path>`.
+- `frontend/` has a Vite dashboard; `infra/docker`, `infra/monitoring`, `infra/tls`, most of `scripts/` and `experiments/*/scripts` are still empty scaffolds.
 
 ## Conventions
 

@@ -1,6 +1,6 @@
-# Módulo: Cómputo heterogéneo    Responsable: <nombre>
-## 1. Qué se implementó
-## 2. Concepto de Sistemas Operativos
-## 3. Método de medición
-## 4. Resultados
-## 5. Interpretación
+# Module: Heterogeneous compute    Owner: Camila Hidalgo
+## 1. What was implemented
+## 2. Operating systems concept
+## 3. Measurement method
+## 4. Results
+## 5. Interpretation
