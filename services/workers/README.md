@@ -50,6 +50,94 @@ each one follows the `Operation` interface in `src/workers/ops/base.py`, and
 `src/workers/ops/ffmpeg.py` holds the ffmpeg/ffprobe subprocess helpers.
 Project I's video and metadata operations were intentionally not copied.
 
+## Writing an analysis operation
+
+The analysis ops (`text_analyze`, `image_analyze`, `audio_analyze`) can be
+written and measured today, without RabbitMQ, PostgreSQL or S3. Their result
+contract is `shared/analysis.py`.
+
+**Protocol.** An op is a plain function that follows `Operation` in
+`src/workers/ops/base.py`:
+
+```python
+def text_analyze(task: SubTaskMessage, src: Path, out_dir: Path, *,
+                 timeout_s: float, on_progress: Callable[[int], None]) -> OpOutput:
+    ...
+    result = AnalysisResult(operation=AnalysisOperation.TEXT_ANALYZE, findings=[...])
+    return OpOutput(files=[...], meta=result.to_meta())
+```
+
+- `src` is the already-downloaded input; never modify it. Write any output
+  files (e.g. an annotated image, a transcript `.json`) into `out_dir` and list
+  them in `OpOutput.files`.
+- Use `task.input_key` as `Evidence.source_key` and `task.params` for options.
+  Do not branch on `task.media_type`/`task.operation`: they still use the legacy
+  routing enums and are filled loosely by the local runner.
+- Respect `timeout_s` (pass it to subprocesses / model calls) and call
+  `on_progress(pct)` with 0-100 now and then.
+- `audio_analyze` transcribes and then runs the same text analysis on the
+  transcript: share that code instead of duplicating it.
+
+**Errors.** Raise `OpError(ErrorCode.X, "message")` for expected failures:
+`CORRUPT_INPUT` (unreadable file, not a chat export), `UNSUPPORTED_FORMAT`
+(bad `params`), `TIMEOUT`, `PROCESSING_ERROR` (model/ffmpeg failed),
+`EXTERNAL_API_ERROR`. The runner reports them as `failed` without retrying.
+Any other exception is treated as transient and retried, so do not catch
+everything.
+
+**Register** the op in `ANALYSIS_OPERATIONS` in
+`src/workers/ops/analysis/__init__.py` (one module per op in that package).
+It is separate from the legacy `OPERATIONS`; the migration wires it into the
+runner. Import heavy libraries inside the function, not at module level.
+
+**Run it locally** (prints the `AnalysisResult` as JSON plus wall time and
+peak RSS; progress and errors go to stderr):
+
+```bash
+uv run --package workers python -m workers.ops.run_local text_analyze path/to/chat.txt \
+    --out /tmp/out --timeout 120 --param lang=es
+```
+
+An unknown or unregistered operation exits with code 2 and lists the
+registered ones; an `OpError` or a `meta` that breaks the contract exits with 1.
+`peak_rss_bytes` is the whole process peak (`getrusage`, includes the
+interpreter and imports); `peak_rss_children_bytes` covers subprocesses such as
+ffmpeg. You can also fill `AnalysisResult.timings_s` and `peak_rss_bytes` from
+inside the op (e.g. model load vs inference).
+
+**Under a memory limit (M1).** Run the same command in a container with a cgroup
+limit to find the smallest limit each model survives and to provoke an OOM:
+
+```bash
+# From the repo root. UV_PROJECT_ENVIRONMENT keeps the container's venv out of
+# the host's .venv. `--extra text` assumes that extra exists (see below).
+docker run --rm --memory=1g --memory-swap=1g \
+    -v "$PWD":/app -w /app -e UV_PROJECT_ENVIRONMENT=/tmp/venv \
+    ghcr.io/astral-sh/uv:python3.12-bookworm \
+    uv run --package workers --extra text python -m workers.ops.run_local text_analyze dataset/text/sample.txt
+# exit code 137 = killed by the OOM killer; `docker stats` shows usage over time
+```
+
+Measure PSS (shared pages split across processes) with `smem` or
+`/proc/<pid>/smaps_rollup` when comparing one model per process against a
+model shared through fork/copy-on-write or mmap. Put the scripts and CSVs in
+`experiments/m1_memory/`.
+
+**Dependencies per pool.** Heavy ML libraries go in optional dependency groups
+in `services/workers/pyproject.toml`, one per pool, so each node installs only
+what it runs:
+
+```toml
+[project.optional-dependencies]
+text = ["..."]    # e.g. a tokenizer / small classifier
+image = ["..."]   # e.g. ultralytics or onnxruntime
+audio = ["..."]   # e.g. faster-whisper (plus whatever `text` needs)
+```
+
+Install with `uv sync --package workers --extra audio` (or `--extra text`,
+`--extra image`). After changing dependencies run `uv lock` at the repo root
+and commit `uv.lock`. Keep the base `dependencies` free of ML libraries.
+
 ## Errors
 
 | Situation | `ErrorCode` |
@@ -99,7 +187,8 @@ uv run ruff format --check services/workers
 ```
 
 All of them use moto; none touches AWS or the internet. The runner tests use
-small fake operations registered with `monkeypatch`, so no ffmpeg is needed.
+small fake operations registered with `monkeypatch`, so no ffmpeg is needed;
+`tests/test_run_local.py` does the same for the local analysis runner.
 Operation tests will be added together with the real operations.
 
 ## Out of scope
