@@ -142,7 +142,8 @@ build_script() {
       "LOG_GROUP=$LOG_GROUP_PREFIX/$component" "S3_BUCKET=$S3_BUCKET" \
       "RDS_ENDPOINT=$RDS_ENDPOINT" "RDS_DB_NAME=$RDS_DB_NAME" "RDS_SECRET_ARN=$RDS_SECRET_ARN" \
       "MQ_ENDPOINT=$MQ_ENDPOINT" "MQ_SECRET_ARN=$MQ_SECRET_ARN" \
-      "ORIGIN_VERIFY_SECRET_ARN=$ORIGIN_VERIFY_SECRET_ARN"; do
+      "ORIGIN_VERIFY_SECRET_ARN=$ORIGIN_VERIFY_SECRET_ARN" \
+      "RUNTIME_CONFIG_JSON=${RUNTIME_CONFIG_JSON:-}"; do
       printf 'export %s=%s\n' "${pair%%=*}" "$(shquote "${pair#*=}")"
     done
     printf 'export COMPOSE_B64=%s\n' "$(base64 <"$compose" | tr -d '\n')"

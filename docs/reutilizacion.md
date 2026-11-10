@@ -2,9 +2,9 @@
 
 This document declares what Project II (Alternative B) reuses from our Project I, what it modifies, and what is new (assignment section B.2).
 
-- **Project I repository:** [FabiSax12/distributed-multimedia-processing](https://github.com/FabiSax12/distributed-multimedia-processing), commit `de2c96c` **[confirm: this hash could not be resolved when checked; pin the delivered commit or a tag]**.
+- **Project I repository:** [FabiSax12/distributed-multimedia-processing](https://github.com/FabiSax12/distributed-multimedia-processing), commit `de2c96c` (unresolved historical reference; the delivered commit/tag must be supplied manually).
 - **Paths below** refer to the Project I repository unless stated otherwise.
-- **Architecture diagram:** see `docs/arquitectura/`.
+- **Architecture diagram:** see `docs/architecture/`.
 
 ## Project I at a glance
 
@@ -68,7 +68,7 @@ The logic is reused, but the technology or the scope changes in a meaningful way
 
 ## What is new
 
-Nothing in this table exists in Project I.
+Nothing in this table exists in Project I. This table describes scope, not proof of completion: see docs/handoff-completion.md for measured status. Dataset, frontend login and M5 remain Camila deliverables.
 
 | Component | Description | Assignment |
 |---|---|---|
@@ -95,7 +95,7 @@ Replacing SQS and DynamoDB is the largest modification, so the reasons are state
 
 ## Limitations of Project I that are corrected
 
-B.2 requires fixing the deficiencies of Project I. These are the known ones, taken from the Project I documentation and code. **[confirm: add the observations from the instructor's evaluation of Project I.]**
+B.2 requires fixing the deficiencies of Project I. These are the known ones, taken from the Project I documentation and code. Instructor feedback has not been supplied and must be added manually, without invented observations.
 
 | Limitation in Project I | Where it is corrected |
 |---|---|

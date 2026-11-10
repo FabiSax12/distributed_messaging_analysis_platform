@@ -18,10 +18,13 @@ Work is split by load: Fabián owns the heaviest and cloud-bound work, which can
 | Frontend (dashboard, Cognito login, role-based views) | Camila Hidalgo | Fabián Vargas | `frontend/` | — |
 | AI usage log | Everyone | — | `docs/bitacora_ia.md` | — |
 
-## What each person can start now
+## Current implementation/manual split
 
-| Person | Unblocked today | Waits on |
-|---|---|---|
-| Fabián | Migration to RabbitMQ + PostgreSQL, Docker images and Compose, SSM deploy scripts, Cognito/KMS/TLS wiring | Nothing |
-| David | Text/image/audio ops as pure functions, model RSS/PSS measurement with `docker --memory`, standalone chunked upload + CAS | The migration, to plug admission control and the storage service into the coordinator |
-| Camila | Dataset generators and public sources, M5 benchmark (Whisper/YOLO on Colab or Kaggle) | The migrated API, to adapt the dashboard views and add login |
+David implements remaining backend, worker, storage, infrastructure code,
+experiments and deployment/docs changes in one completion PR. Fabi?n performs
+Terraform apply, repository-variable setup, instance lifecycle, Cognito users,
+cloud experiments/screenshots and instructor-feedback collection. Camila keeps
+frontend login/views, the full dataset and M5 benchmarking; backend contracts
+and model device/thread/quantization settings are available without waiting
+for those deliverables. Module ownership above remains for presentation and
+evidence interpretation; code authorship follows actual commits.

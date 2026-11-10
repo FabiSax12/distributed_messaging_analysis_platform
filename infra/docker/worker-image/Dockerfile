@@ -5,6 +5,7 @@
 # services/workers/src/workers/config.py); nothing is baked in except POOL.
 
 FROM python:3.12-slim AS build
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 libxcb1 && rm -rf /var/lib/apt/lists/*
 COPY --from=ghcr.io/astral-sh/uv:0.12.19 /uv /usr/local/bin/uv
 ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
@@ -23,7 +24,9 @@ RUN uv sync --frozen --package workers --extra image --no-dev --no-install-works
 # Then the project itself, installed as regular (non-editable) wheels.
 COPY services/shared services/shared
 COPY services/workers services/workers
+COPY services/storage services/storage
 RUN uv sync --frozen --package workers --extra image --no-dev --no-editable
+RUN HOME=/home/app /app/.venv/bin/python -c "from workers.ops.analysis.image import load_model; load_model()"
 
 
 FROM python:3.12-slim
@@ -32,11 +35,12 @@ LABEL org.opencontainers.image.title="worker-image" \
       org.opencontainers.image.revision="${GIT_SHA}"
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 libxcb1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --system --uid 10001 --create-home --shell /usr/sbin/nologin app
 COPY --from=build --chown=app:app /app/.venv /app/.venv
+COPY --from=build --chown=app:app /home/app/.cache /home/app/.cache
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \

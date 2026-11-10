@@ -43,7 +43,7 @@ EXPOSE 8000
 # /healthz is outside /api/*, so it does not need X-Origin-Verify. It returns
 # 503 when a background thread (outbox relay, sweeper, consumers) has died.
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
-    CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
+    CMD ["python", "-c", "import os,ssl,urllib.request; tls=os.getenv('COORDINATOR_TLS','false').lower() in ('true','1'); urllib.request.urlopen(('https' if tls else 'http')+'://127.0.0.1:8000/healthz', context=ssl._create_unverified_context() if tls else None, timeout=3)"]
 
 # One process on purpose: the background threads live inside it (see main.py).
-CMD ["uvicorn", "coordinator.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+CMD ["python", "-m", "coordinator.serve"]

@@ -126,7 +126,7 @@ function CaseHeader({ c, onChanged }) {
         <div className="case-actions">
           {confirming ? (
             <div className="confirm">
-              <span>Sub-tasks that have not started are discarded; those already running finish and are recorded.</span>
+              <span>Pending sub-tasks are discarded; running analysis processes are stopped and recorded as cancelled.</span>
               <button type="button" className="btn btn-danger" onClick={cancel} disabled={busy}>
                 {busy ? 'Cancelling…' : 'Yes, cancel case'}
               </button>

@@ -13,9 +13,14 @@ from __future__ import annotations
 import hmac
 import logging
 
+from fastapi import HTTPException
+from starlette.concurrency import run_in_threadpool
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
+
+from .auth import authorize, bearer, validate_token
+from .config import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -50,8 +55,8 @@ class OriginVerifyMiddleware(BaseHTTPMiddleware):
         self._secret = secret
         if not secret:
             logger.warning(
-                "ORIGIN_VERIFY_SECRET is empty: /api/* is left unprotected "
-                "(local mode, do not use like this in production)"
+                "ORIGIN_VERIFY_SECRET is empty: origin-header protection is disabled; "
+                "Cognito JWT settings still apply"
             )
 
     async def dispatch(
@@ -64,4 +69,19 @@ class OriginVerifyMiddleware(BaseHTTPMiddleware):
         if not verify_origin(provided, self._secret):
             return JSONResponse({"detail": "origin no verificado"}, status_code=403)
 
+        if request.url.path != "/api/healthz":
+            try:
+                claims = await run_in_threadpool(
+                    validate_token,
+                    bearer(request.headers.get("Authorization")),
+                    get_settings(),
+                )
+                authorize(claims, request.method, request.url.path)
+                request.state.identity = claims
+            except HTTPException as exc:
+                return JSONResponse(
+                    {"detail": exc.detail},
+                    status_code=exc.status_code,
+                    headers=exc.headers,
+                )
         return await call_next(request)

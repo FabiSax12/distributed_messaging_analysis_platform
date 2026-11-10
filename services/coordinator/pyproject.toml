@@ -12,6 +12,7 @@ dependencies = [
     "psycopg-pool>=3.2",
     "pydantic-settings>=2.4",
     "python-ulid>=2.2",
+    "pyjwt[crypto]>=2.10",
 ]
 
 [dependency-groups]

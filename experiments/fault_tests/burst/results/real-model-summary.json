@@ -1,0 +1,6 @@
+{
+  "cases": 20,
+  "findings": 1,
+  "timeline_entries": 3,
+  "note": "real CPU models, synthetic fixtures, Docker cgroup limits; not AWS or dataset accuracy"
+}

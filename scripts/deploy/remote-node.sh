@@ -88,10 +88,43 @@ emit(
 )
 emit("S3_BUCKET", env["S3_BUCKET"])
 emit("AWS_REGION", env["AWS_REGION"])
+config = json.loads(env.get("RUNTIME_CONFIG_JSON") or "{}")
+node = "coordinator" if env["NODE_ROLE"] == "coordinator" else env["POOL"]
+if node == "coordinator":
+    required = {"COGNITO_ISSUER_URL", "COGNITO_CLIENT_ID", "COGNITO_USER_POOL_ID", "ALERTS_TOPIC_ARN"}
+    missing = [name for name in sorted(required) if not config.get(node, {}).get(name)]
+    if missing:
+        sys.exit("RUNTIME_CONFIG_JSON.coordinator missing: " + ", ".join(missing))
+allowed = {"M1_MAX_ACTIVE_CASES", "M1_MAX_CASE_INPUT_BYTES", "M1_MEMORY_BUDGET_BYTES",
+ "M1_TASK_BASE_BYTES", "M1_OPERATION_BASE_BYTES", "M1_INPUT_MEMORY_MULTIPLIER", "M1_RETRY_AFTER_S",
+ "COORDINATOR_TLS", "COGNITO_ISSUER_URL", "COGNITO_CLIENT_ID", "COGNITO_USER_POOL_ID", "ALERTS_TOPIC_ARN",
+ "SCHEDULER_POLICY", "SCHEDULER_AGING_S", "OUTBOX_QUEUE_LIMIT", "WORKER_CONCURRENCY",
+ "OP_TIMEOUT_S", "MODEL_DEVICE", "MODEL_THREADS", "HF_HUB_OFFLINE", "AUDIO_MODEL", "AUDIO_COMPUTE_TYPE",
+ "OMP_NUM_THREADS", "MKL_NUM_THREADS", "BROKER_MAX_LENGTH", "BROKER_MANAGEMENT_URL"}
+defaults = {"M1_MAX_ACTIVE_CASES": 20} if node == "coordinator" else {
+ "WORKER_CONCURRENCY": 1, "MODEL_THREADS": 2, "OMP_NUM_THREADS": 2, "MKL_NUM_THREADS": 2}
+for key, value in {**defaults, **config.get(node, {})}.items():
+    if key in {"WORKER_MEMORY_LIMIT", "WORKER_CPUS", "WORKER_PIDS_LIMIT"}:
+        continue
+    if key not in allowed:
+        sys.exit(f"Unknown runtime setting: {key}")
+    emit(key, json.dumps(value) if isinstance(value, dict) else str(value))
 if env["NODE_ROLE"] == "coordinator":
     emit("ORIGIN_VERIFY_SECRET", env["ORIGIN_VERIFY_SECRET_VALUE"].rstrip("\n"))
 PY
 mv app.env.new app.env
+
+# Compose limits derive from the same scoped runtime config.
+eval "$(python3 - <<'PY'
+import json, os, shlex
+pool = os.environ.get("POOL", "text")
+config = json.loads(os.environ.get("RUNTIME_CONFIG_JSON") or "{}")
+values = config.get(pool, {})
+for key, default in {"WORKER_MEMORY_LIMIT": "256m" if pool == "text" else "1g",
+                     "WORKER_CPUS": "2", "WORKER_PIDS_LIMIT": "128"}.items():
+    print(key+"="+shlex.quote(str(values.get(key, default))))
+PY
+)"
 
 # Compose interpolation values (no secrets).
 if [ -f .env ]; then
@@ -105,6 +138,9 @@ AWS_REGION=$AWS_REGION
 LOG_GROUP=$LOG_GROUP
 POOL=$POOL
 STOP_GRACE_PERIOD=$STOP_GRACE_PERIOD
+WORKER_MEMORY_LIMIT=$WORKER_MEMORY_LIMIT
+WORKER_CPUS=$WORKER_CPUS
+WORKER_PIDS_LIMIT=$WORKER_PIDS_LIMIT
 ENV
 mv .env.new .env
 
@@ -154,6 +190,10 @@ while [ "$waited" -lt "$HEALTH_TIMEOUT_S" ]; do
   waited=$((waited + 5))
 done
 [ "$waited" -lt "$HEALTH_TIMEOUT_S" ] || fail "not healthy after ${HEALTH_TIMEOUT_S}s"
+
+if [ "$NODE_ROLE" = coordinator ]; then
+  docker compose exec -T coordinator python -m shared.broker_policy || fail "queue policy update failed"
+fi
 
 docker image prune -af --filter "until=24h" >/dev/null || true
 docker compose ps

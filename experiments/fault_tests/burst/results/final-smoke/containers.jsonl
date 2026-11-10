@@ -1,0 +1,4 @@
+{"name": "madp-check-06c100a1-coordinator", "user": "app", "memory_limit": 1073741824, "oom_killed": false}
+{"name": "madp-check-06c100a1-text", "user": "app", "memory_limit": 268435456, "oom_killed": false}
+{"name": "madp-check-06c100a1-image", "user": "app", "memory_limit": 1073741824, "oom_killed": false}
+{"name": "madp-check-06c100a1-audio", "user": "app", "memory_limit": 1073741824, "oom_killed": false}

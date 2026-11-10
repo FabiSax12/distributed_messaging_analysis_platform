@@ -5,21 +5,20 @@ II Programming Project (IC-6600 Operative Sistems Course): a distributed platfor
 Full documentation lives in [docs/](docs/).
 
 ## Architecture
-![Architecture png diagram](./docs/architecture/diagram.png "Main Diagram")
 
-Solid lines are synchronous calls, dashed lines are asynchronous (queues, logs, alerts). The editable source, with the full detail, is [docs/architecture/diagram.drawio](docs/architecture/diagram.drawio) (its labels are still in Spanish).
+See [the current architecture](docs/architecture/current.md). The older PNG is
+historical; it should not be used as proof of deployment.
 
-Key points:
+CloudFront serves the dashboard and proxies the API. The coordinator performs
+admission, FIFO/aging scheduling, case barriers, retries, reports and custody
+logging. RabbitMQ connects three non-root CPU worker pools. Downloads use
+verified chunks; S3 CAS objects use SHA-256 keys. Cognito access tokens authorize
+REST and WebSocket access when configured. Production compose supports cgroup
+limits. Terraform includes SNS/application alarms and optional managed origin
+TLS; cloud activation and experiments remain manual.
 
-- **Frontend:** a React dashboard served from S3 through CloudFront, with views per role (analyst, supervisor, administrator).
-- **API path:** CloudFront proxies `/api/*` to the coordinator and adds an `X-Origin-Verify` header that the coordinator must check.
-- **Coordinator:** one EC2 instance in a public subnet. It runs memory admission (M1) and the scheduler (M2).
-- **Workers:** one EC2 instance each for text, image and audio, in private subnets. They run without root and under cgroups v2.
-- **State and messaging:** RDS PostgreSQL for state and the custody log, Amazon MQ (RabbitMQ) for sub-task queues.
-- **Evidence:** S3 objects addressed by SHA-256, chunked, deduplicated and encrypted with KMS (M3).
-- **Security:** Cognito issues JWTs with roles, Secrets Manager holds credentials (M4).
-- **Alerts:** CloudWatch alarms publish to SNS, which sends email.
-- **Management:** instances are reached through SSM only. No SSH, no key pairs.
+Frontend login/views, full dataset generation and the M5 benchmark remain
+Camila's independent deliverables. See [completion status and manual steps](docs/handoff-completion.md).
 
 ## Modules
 
@@ -35,7 +34,7 @@ Who owns what: [docs/responsabilidades.md](docs/responsabilidades.md). What is r
 
 ## Requirements
 
-- Terraform >= 1.6 and AWS credentials with admin-like rights on the target account.
+- Terraform >= 1.9 and AWS credentials with admin-like rights on the target account.
 - AWS CLI and the Session Manager plugin, to reach instances.
 - A confirmed email address for alerts and a globally unique Cognito domain prefix.
 
@@ -61,12 +60,12 @@ Dev costs roughly 280-300 USD/month if left running 24x7. Run `terraform destroy
 |---|---|
 | `infra/terraform/` | Terraform modules and the `dev` environment (`prod` is a template only) |
 | `infra/docker/` | Local stack for end-to-end runs (RabbitMQ, PostgreSQL, MinIO) |
-| `infra/monitoring/`, `infra/tls/` | Monitoring and TLS assets (not started) |
-| `services/coordinator/` | REST API, outbox relay, barrier, retries and recovery on RabbitMQ + PostgreSQL; admission (M1) and scheduler (M2) pending |
-| `services/workers/` | Worker runner for the text, image and audio pools; analysis ops pending |
+| `infra/terraform/modules/observability`, `tls_origin` | Dashboard/alarms and optional managed origin TLS |
+| `services/coordinator/` | REST API, outbox relay, barrier, retries and recovery on RabbitMQ + PostgreSQL; admission (M1), FIFO/aging scheduling (M2), JWT/RBAC and custody (M4) |
+| `services/workers/` | Worker runner for the text, image and audio pools; registered text, YOLO and Whisper operations; isolated cancellation |
 | `services/shared/` | Wire contracts: routing, messages, states, models, broker topology, analysis results |
-| `services/storage/`, `services/security/` | Chunking, content store, backpressure; auth, crypto, custody log (not started) |
-| `services/load_client/`, `services/alerts/` | Burst load client and alerting (not started) |
+| `services/storage/` | Chunking, content store and backpressure; integrated in worker download |
+| `services/load_client/` | Concurrent manifest-driven load client; alerting lives in coordinator/monitor |
 | `frontend/` | React dashboard (Vite) |
 | `dataset/` | Test data, generators and ground truth |
 | `experiments/` | Per-module measurements and fault tests |

@@ -45,6 +45,7 @@ jobs:
     timeout-minutes: 60
     env:
       # Non-secret values, set once as repository variables (docs/deployment.md).
+      RUNTIME_CONFIG_JSON: ${{ vars.RUNTIME_CONFIG_JSON }}
       AWS_REGION: ${{ vars.AWS_REGION }}
       AWS_DEPLOY_ROLE_ARN: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
       ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
@@ -72,7 +73,7 @@ jobs:
           INPUT_DRY_RUN: ${{ inputs.dry_run }}
         run: |
           missing=""
-          for name in AWS_REGION AWS_DEPLOY_ROLE_ARN ECR_REGISTRY ECR_REPO_PREFIX S3_BUCKET \
+          for name in RUNTIME_CONFIG_JSON AWS_REGION AWS_DEPLOY_ROLE_ARN ECR_REGISTRY ECR_REPO_PREFIX S3_BUCKET \
             RDS_ENDPOINT RDS_DB_NAME MQ_ENDPOINT RDS_SECRET_ARN MQ_SECRET_ARN \
             ORIGIN_VERIFY_SECRET_ARN LOG_GROUP_PREFIX SITE_BUCKET DISTRIBUTION_ID CLOUDFRONT_URL; do
             [ -n "${!name}" ] || missing="$missing $name"
@@ -168,13 +169,13 @@ jobs:
           base="${CLOUDFRONT_URL%/}"
           curl -fsS --max-time 20 -o /dev/null "$base/"
           for attempt in $(seq 1 12); do
-            if body="$(curl -fsS --max-time 20 -H 'Accept: application/json' "$base/api/state")" &&
-              printf '%s' "$body" | jq -e 'has("cases")' >/dev/null; then
-              echo "OK: $base/api/state answered with the coordinator state (attempt $attempt)"
+            if body="$(curl -fsS --max-time 20 -H 'Accept: application/json' "$base/api/healthz")" &&
+              printf '%s' "$body" | jq -e '.service == "coordinator"' >/dev/null; then
+              echo "OK: $base/api/healthz answered with the coordinator state (attempt $attempt)"
               exit 0
             fi
             echo "attempt $attempt: no valid answer yet"
             sleep 10
           done
-          echo "::error::$base/api/state did not return the coordinator state"
+          echo "::error::$base/api/healthz did not return the coordinator state"
           exit 1

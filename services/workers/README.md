@@ -9,10 +9,10 @@ write is its heartbeat row in `workers` (plus a read-only pre-start check).
 
 ## Concurrency model
 
-One process per machine with `WORKER_CONCURRENCY` consumer threads (default 1)
+One supervisor per machine with `WORKER_CONCURRENCY` consumer threads (default 1)
 plus a heartbeat thread. Each consumer owns its AMQP connection (pika is not
-thread-safe) with `prefetch=1` and manual acks. The op runs on a helper
-thread while the consumer thread keeps servicing AMQP heartbeats and
+thread-safe) with `prefetch=1` and manual acks. The download/upload supervisor runs on a helper
+thread; analysis runs in a killable child process while the consumer thread keeps servicing AMQP heartbeats and
 publishes the op's progress, so long model runs do not drop the connection.
 
 ## Sub-task protocol (`src/workers/runner/process.py`)
@@ -174,7 +174,7 @@ startup are retried in place.
 
 ## Out of scope
 
-- Cancelling a sub-task that is already running (checked before starting).
+- Cancellation is checked during isolated analysis; S3 transfers are allowed to return before cleanup.
 - Autoscaling: scale by hand through the `worker_nodes` map in Terraform.
 
 ## Implemented analysis (David Molina)
@@ -199,8 +199,7 @@ Each op writes `analysis.json` and returns the validated `AnalysisResult` meta.
 Image/audio models are lazily cached once per process, serialized per model
 because native inference objects are shared across consumer threads.
 Deadlines are checked between stages/segments; ffmpeg is killed at deadline.
-Native model load/inference calls are not preemptible in this thread-based
-runner; use process/container supervision for a hard deadline. See M1 limits.
+run_local uses cooperative deadlines; the distributed runner enforces a hard deadline in an isolated process. See M1 limits.
 
 ```
 uv sync --all-packages --group dataset --all-extras
@@ -219,3 +218,23 @@ API references: [Ultralytics prediction](https://docs.ultralytics.com/modes/pred
 [faster-whisper usage](https://github.com/SYSTRAN/faster-whisper).
 YOLO weights/code have Ultralytics AGPL/enterprise terms; faster-whisper and
 Whisper weights use MIT. Review those terms before reuse outside coursework.
+
+## Isolation, storage and resource limits
+
+Each operation now runs in a spawned process with a hard deadline. The parent
+polls case cancellation and kills the child plus ffmpeg descendants, then
+cleans the task directory. A child that exits without a result reports
+worker_lost (possible OOM); bounded coordinator retries apply. No claim is made
+that a same-node retry fixes an insufficient cgroup limit: increase the limit
+or reject the workload at admission. Model caches are per child, not shared
+across tasks; fork/CoW is measured separately rather than assumed safe for
+native inference. Image/audio weights are baked into their respective images.
+
+Downloads use FileChunker/DiskReassembler and validate an expected SHA-256 from
+task params or S3 metadata when supplied. Without a sender hash, hashes still
+verify reassembly but do not independently authenticate the original bytes.
+A conditional put creates content/<sha256> once across workers. Original upload
+objects remain for provenance; CAS dedup does not remove original S3 copies.
+Container memory reporting uses cgroups or process-tree RSS, not host percent.
+Production compose limits memory/swap, CPUs and PIDs; calibrate overrides via
+the runtime configuration in docs/handoff-completion.md.

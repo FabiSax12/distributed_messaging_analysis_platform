@@ -95,7 +95,7 @@ data "aws_iam_policy_document" "common" {
     condition {
       test     = "StringEquals"
       variable = "cloudwatch:namespace"
-      values   = ["CWAgent"]
+      values   = ["CWAgent", "MessagingAnalysis"]
     }
   }
 
@@ -124,6 +124,16 @@ data "aws_iam_policy_document" "coordinator" {
       "ecr:BatchCheckLayerAvailability",
     ]
     resources = [var.ecr_repository_arns["coordinator"]]
+  }
+
+  dynamic "statement" {
+    for_each = var.cognito_user_pool_arn == null ? [] : [var.cognito_user_pool_arn]
+    content {
+      sid = "ManageCognitoRoles"
+      actions = ["cognito-idp:ListUsers", "cognito-idp:AdminListGroupsForUser",
+      "cognito-idp:AdminAddUserToGroup", "cognito-idp:AdminRemoveUserFromGroup"]
+      resources = [statement.value]
+    }
   }
 
   statement {

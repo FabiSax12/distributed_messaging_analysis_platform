@@ -27,6 +27,7 @@ import os
 import random
 import time
 from collections.abc import Callable
+from functools import partial
 from pathlib import Path
 
 from shared.analysis import AnalysisOperation, AnalysisResult, ModelInfo
@@ -58,38 +59,40 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
-def fake_op(work_s: float, fail_rate: float, crash_rate: float):
-    def op(
-        task: SubTaskMessage,
-        src: Path,
-        out_dir: Path,
-        *,
-        timeout_s: float,
-        on_progress: Callable[[int], None],
-    ) -> OpOutput:
-        crash_at = _STEPS // 2 if random.random() < crash_rate else None
-        for step in range(_STEPS):
-            if step == crash_at:
-                logger.warning("simulated crash on %s", task.subtask_id)
-                os._exit(137)
-            time.sleep(work_s / _STEPS)
-            on_progress(int((step + 1) / _STEPS * 100) - 1)
-        if random.random() < fail_rate:
-            raise OpError(ErrorCode.EXTERNAL_API_ERROR, "simulated transient failure")
+def fake_op(work_s, fail_rate, crash_rate):
+    return partial(_fake_op, work_s, fail_rate, crash_rate)
 
-        result = AnalysisResult(
-            operation=task.operation,
-            keywords=["fake"],
-            model=ModelInfo(name="fake-worker"),
-            timings_s={"infer": work_s},
-        )
-        out = out_dir / "analysis.json"
-        out.write_text(
-            json.dumps({"input_bytes": src.stat().st_size, **result.to_meta()})
-        )
-        return OpOutput([out], meta=result.to_meta())
 
-    return op
+def _fake_op(
+    work_s,
+    fail_rate,
+    crash_rate,
+    task: SubTaskMessage,
+    src: Path,
+    out_dir: Path,
+    *,
+    timeout_s: float,
+    on_progress: Callable[[int], None],
+) -> OpOutput:
+    crash_at = _STEPS // 2 if random.random() < crash_rate else None
+    for step in range(_STEPS):
+        if step == crash_at:
+            logger.warning("simulated crash on %s", task.subtask_id)
+            os._exit(137)
+        time.sleep(work_s / _STEPS)
+        on_progress(int((step + 1) / _STEPS * 100) - 1)
+    if random.random() < fail_rate:
+        raise OpError(ErrorCode.EXTERNAL_API_ERROR, "simulated transient failure")
+
+    result = AnalysisResult(
+        operation=task.operation,
+        keywords=["fake"],
+        model=ModelInfo(name="fake-worker"),
+        timings_s={"infer": work_s},
+    )
+    out = out_dir / "analysis.json"
+    out.write_text(json.dumps({"input_bytes": src.stat().st_size, **result.to_meta()}))
+    return OpOutput([out], meta=result.to_meta())
 
 
 def main() -> None:

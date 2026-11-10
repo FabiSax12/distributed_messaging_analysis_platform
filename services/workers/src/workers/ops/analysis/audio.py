@@ -1,5 +1,6 @@
 """Extract audio from any supported media, transcribe, then apply text rules."""
 
+import os
 import threading
 import time
 from functools import lru_cache
@@ -27,7 +28,12 @@ LOCK = threading.Lock()
 def load_model():
     from faster_whisper import WhisperModel
 
-    return WhisperModel("tiny", device="cpu", compute_type="int8", cpu_threads=2)
+    return WhisperModel(
+        os.environ.get("AUDIO_MODEL", "tiny"),
+        device=os.environ.get("MODEL_DEVICE", "cpu"),
+        compute_type=os.environ.get("AUDIO_COMPUTE_TYPE", "int8"),
+        cpu_threads=int(os.environ.get("MODEL_THREADS", "2")),
+    )
 
 
 def audio_analyze(task, src, out_dir, *, timeout_s, on_progress):
@@ -110,7 +116,9 @@ def audio_analyze(task, src, out_dir, *, timeout_s, on_progress):
             transcript=Transcript(
                 text=text, language=info.language, segments=transcript_segments
             ),
-            model=ModelInfo(name="faster-whisper-tiny-int8"),
+            model=ModelInfo(
+                name=f"faster-whisper-{os.environ.get('AUDIO_MODEL', 'tiny')}-{os.environ.get('AUDIO_COMPUTE_TYPE', 'int8')}"
+            ),
             timings_s={"extract": extract_s, "load_model": load_s, "infer": infer_s},
         ),
         out_dir,

@@ -71,12 +71,38 @@ Windows 11, CPython 3.13, 2026-11-10 (MiB = 2^20 bytes):
 Admission self-check passed for budget/active limits, overload, oversized
 reservation and caller spoofing. It uses SQL fakes, not PostgreSQL integration.
 
-## 5. Interpretation
+## 5. Linux cgroup evidence (2026-11-10)
 
-Image/audio imports and inference dominate the simple rule model. These
-figures do not justify production limits. Docker is not installed on this
-host: Linux PSS, smallest surviving limits, provoked OOM, fork/CoW comparison
-and distributed worker burst/requeue recovery remain unmeasured. Scripts are
-provided; no results are invented. The fake-worker E2E does not prove
-real-model OOM recovery. Native traces cover repeated inference in one process,
-not a distributed burst.
+Production CPU images were measured sequentially under Docker in WSL. Raw
+limits/profiles/samples and the per-process/fork comparison live in
+`experiments/m1_memory/results/linux/`. Run `measure_images.py` after building
+images tagged `:handoff`; `plot.py` plots the recorded results.
+
+| Model | Loaded RSS MiB | Loaded PSS MiB | Sampled inference peak RSS MiB | Lowest tested surviving limit |
+|---|---:|---:|---:|---|
+| Rules | 37.26 | 37.25 | 37.32 | 32 MiB |
+| YOLOv8n CPU | 289.01 | 289.00 | 435.77 | 512 MiB |
+| Whisper tiny/int8 | 177.66 | 177.65 | 274.25 | 256 MiB |
+
+OOMKilled=true and exit 137 were observed below those tested passing limits.
+These are lowest passing points in a coarse sweep with tiny synthetic inputs,
+not universal minimum limits; cgroup charging and filesystem cache sharing can
+also differ from process PSS/RSS. Native Windows values above remain historical.
+
+| Loaded weights: parent + 3 idle children | Independent spawn total PSS MiB | Parent-loaded fork total PSS MiB |
+|---|---:|---:|
+| Rules | 103.04 | 41.70 |
+| YOLO | 676.81 | 296.26 |
+| Whisper | 466.92 | 191.94 |
+
+Fork saves loaded-weight memory here; this does not prove concurrent inference
+is fork-safe. Production uses spawn for reliable cancellation. Child death
+reports worker_lost and uses bounded retry; same-node retry cannot repair an
+insufficient memory limit. The sweep demonstrates OOM then a successful
+higher-limit run, while E2E worker-crash tests demonstrate requeue/recovery.
+A live AWS OOM/recovery campaign remains manual.
+
+Real PostgreSQL admission/exclusion and custody checks passed. Runtime cgroup
+limits and admission settings now travel through deploy runtime JSON. The
+real-model burst records each worker's cgroup memory percent over time. Cloud
+bursts and representative heavy inputs are still needed before capacity claims.

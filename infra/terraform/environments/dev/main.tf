@@ -83,8 +83,9 @@ module "compute" {
   coordinator_instance_type     = var.coordinator_instance_type
   worker_nodes                  = var.worker_nodes
 
-  evidence_bucket_arn = module.storage_evidence.bucket_arn
-  kms_key_arn         = module.secrets_kms.kms_key_arn
+  cognito_user_pool_arn = module.identity.user_pool_arn
+  evidence_bucket_arn   = module.storage_evidence.bucket_arn
+  kms_key_arn           = module.secrets_kms.kms_key_arn
   coordinator_secret_arns = [
     module.secrets_kms.rds_secret_arn,
     module.secrets_kms.mq_secret_arn,
@@ -100,14 +101,16 @@ module "compute" {
 }
 
 module "cdn" {
-  source = "../../modules/cdn"
+  source     = "../../modules/cdn"
+  depends_on = [module.tls_origin]
 
   name_prefix                          = local.name_prefix
   frontend_bucket_id                   = module.storage_frontend.bucket_name
   frontend_bucket_arn                  = module.storage_frontend.bucket_arn
   frontend_bucket_regional_domain_name = module.storage_frontend.bucket_regional_domain_name
-  coordinator_origin_domain            = module.compute.coordinator_public_dns
-  origin_protocol                      = var.origin_protocol
+  coordinator_origin_domain            = var.origin_tls_hostname != "" ? var.origin_tls_hostname : module.compute.coordinator_public_dns
+  coordinator_port                     = var.origin_tls_hostname != "" ? 443 : 8000
+  origin_protocol                      = var.origin_tls_hostname != "" ? "https-only" : var.origin_protocol
   origin_verify_secret                 = module.secrets_kms.origin_verify_value
 }
 
@@ -152,4 +155,16 @@ module "observability" {
     { coordinator = module.compute.coordinator_instance_id },
     { for k, v in module.compute.worker_instance_ids : "worker-${k}" => v },
   )
+}
+
+module "tls_origin" {
+  count             = var.origin_tls_hostname != "" ? 1 : 0
+  source            = "../../modules/tls_origin"
+  name_prefix       = local.name_prefix
+  hostname          = var.origin_tls_hostname
+  zone_id           = var.origin_tls_zone_id
+  vpc_id            = module.network.vpc_id
+  subnet_ids        = module.network.public_subnet_ids
+  instance_id       = module.compute.coordinator_instance_id
+  coordinator_sg_id = module.network.coordinator_security_group_id
 }

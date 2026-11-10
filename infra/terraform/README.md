@@ -17,7 +17,7 @@ Users -> CloudFront --default--> S3 (SPA, via OAC)
 
 ## Prerequisites
 
-- Terraform >= 1.6 and AWS credentials with admin-like rights on the target account (`aws configure` or `AWS_PROFILE`).
+- Terraform >= 1.9 and AWS credentials with admin-like rights on the target account (`aws configure` or `AWS_PROFILE`).
 - AWS CLI + Session Manager plugin to reach instances (no SSH, no key pairs, no port 22).
 - A confirmed email address for alerts and a globally unique Cognito domain prefix.
 

@@ -1,0 +1,6 @@
+{
+  "cases": 1,
+  "wall_seconds": 5.951574477999998,
+  "completed_per_second": 0.1680227650173078,
+  "note": "Wall time includes uploads, semaphore waiting, processing and polling."
+}
