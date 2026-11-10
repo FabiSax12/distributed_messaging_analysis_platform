@@ -41,7 +41,7 @@ Who owns what: [docs/responsabilidades.md](docs/responsabilidades.md). What is r
 
 ## Deploy
 
-Terraform builds the infrastructure only. The application is pushed afterwards by deployment scripts that read `terraform output`.
+Terraform builds the infrastructure only. The application is pushed afterwards by the scripts in `scripts/deploy/` that read `terraform output` (see `docs/deployment.md`), by hand or through GitHub Actions on push to `main`.
 
 ```bash
 cd infra/terraform/environments/dev

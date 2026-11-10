@@ -1,0 +1,110 @@
+# Checks on pull requests and on pushes to every branch except main (main is
+# handled by deploy.yml). Nothing here touches AWS.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+# A pull request branch triggers both events: each event has its own group so
+# that the two runs never cancel each other, only superseded runs of the same event.
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python lint and dataset manifests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --locked --all-packages --group dataset
+      - run: uv run ruff check .
+      - run: uv run --group dataset python dataset/generators/validate_manifests.py
+
+  frontend:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 12
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+  terraform:
+    name: Terraform fmt and validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: hashicorp/setup-terraform@v4
+      - name: Format
+        run: terraform fmt -check -recursive -diff infra/terraform
+      - name: Validate every environment (no backend, no credentials)
+        run: |
+          for env in infra/terraform/environments/*/; do
+            echo "::group::validate $env"
+            terraform -chdir="$env" init -backend=false -input=false
+            terraform -chdir="$env" validate
+            echo "::endgroup::"
+          done
+
+  shell:
+    name: Shell scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      # shellcheck is preinstalled on GitHub-hosted Ubuntu runners.
+      - run: shellcheck scripts/deploy/*.sh
+
+  docker:
+    name: Docker build (${{ matrix.image }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [coordinator, worker-text, worker-image, worker-audio]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: infra/docker/${{ matrix.image }}/Dockerfile
+          platforms: linux/amd64
+          push: false
+          build-args: GIT_SHA=${{ github.sha }}
+          cache-from: type=gha,scope=${{ matrix.image }}
+          cache-to: type=gha,scope=${{ matrix.image }},mode=max

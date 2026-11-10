@@ -12,7 +12,7 @@ Users -> CloudFront --default--> S3 (SPA, via OAC)
 
 ## Layout
 
-- `modules/`: network, secrets_kms, storage_evidence, storage_frontend, messaging, database, registry, compute, cdn, identity, observability (each has its own README).
+- `modules/`: network, secrets_kms, storage_evidence, storage_frontend, messaging, database, registry, compute, cdn, identity, observability, ci_oidc (each has its own README).
 - `environments/dev`: deployable environment. `environments/prod`: template only (see its README).
 
 ## Prerequisites
@@ -32,7 +32,7 @@ terraform apply
 terraform output
 ```
 
-After applying, confirm the SNS subscription email. The application is NOT deployed by Terraform: deployment scripts read `terraform output` (ECR URLs, endpoints, secret ARNs, Cognito IDs, instance IDs) and push containers/configuration through SSM.
+After applying, confirm the SNS subscription email. The application is NOT deployed by Terraform: deployment scripts read `terraform output` (ECR URLs, endpoints, secret ARNs, Cognito IDs, instance IDs) and push containers/configuration through SSM (`scripts/deploy/`, see `docs/deployment.md`).
 
 Connect to an instance: `aws ssm start-session --target <instance-id>`.
 
