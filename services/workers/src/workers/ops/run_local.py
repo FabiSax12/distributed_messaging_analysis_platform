@@ -22,6 +22,7 @@ import tempfile
 import time
 import uuid
 from collections.abc import Mapping, Sequence
+from contextlib import redirect_stdout
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -221,13 +222,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = _parser()
     args = parser.parse_args(argv)
     try:
-        report = run(
-            args.operation,
-            args.file,
-            out_dir=args.out,
-            timeout_s=args.timeout,
-            params=dict(args.param),
-        )
+        # Model libraries may print setup/download messages on their first run.
+        with redirect_stdout(sys.stderr):
+            report = run(
+                args.operation,
+                args.file,
+                out_dir=args.out,
+                timeout_s=args.timeout,
+                params=dict(args.param),
+            )
     except (UnknownOperation, FileNotFoundError) as exc:
         parser.error(str(exc))  # exits with code 2
     except OpError as exc:
