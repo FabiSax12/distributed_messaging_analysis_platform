@@ -123,6 +123,22 @@ module "identity" {
   extra_logout_urls   = [module.cdn.url]
 }
 
+# GitHub Actions deploys through OIDC (no stored keys). Terraform itself is not run by CI.
+module "ci_oidc" {
+  source = "../../modules/ci_oidc"
+
+  name_prefix                = local.name_prefix
+  github_repository          = var.github_repository
+  create_oidc_provider       = var.create_github_oidc_provider
+  existing_oidc_provider_arn = var.existing_github_oidc_provider_arn
+
+  ecr_repository_arns      = values(module.registry.repository_arns)
+  frontend_bucket_arn      = module.storage_frontend.bucket_arn
+  distribution_arn         = module.cdn.distribution_arn
+  instance_tag_project     = var.project_name
+  instance_tag_environment = var.environment
+}
+
 module "observability" {
   source = "../../modules/observability"
 
