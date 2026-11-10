@@ -302,9 +302,9 @@ def test_close_subtask_with_nonexistent_subtask_logs_warning_not_debug(
         )
 
     warning_records = [r for r in caplog.records if r.levelno >= logging.WARNING]
-    assert any("inexistente" in r.message for r in warning_records)
+    assert any("nonexistent" in r.message for r in warning_records)
     assert not any(
-        r.levelno >= logging.WARNING and "inexistente" not in r.message
+        r.levelno >= logging.WARNING and "nonexistent" not in r.message
         for r in caplog.records
     )
 
