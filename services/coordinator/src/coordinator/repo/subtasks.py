@@ -10,7 +10,6 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Any
 
 from psycopg import Connection
@@ -177,14 +176,15 @@ class SubTasksRepo:
         *,
         subtask_id: str,
         failed_attempt: int,
-        retry_at: datetime,
+        delay_s: float,
         error: ErrorInfo,
     ) -> str | None:
         """`retrying` + backoff for the attempt after `failed_attempt`.
 
         Only if `failed_attempt` is still the current attempt and the
         sub-task is open: a duplicate failure, or one from an attempt that
-        was already retried, changes nothing. `enqueued = false` hands the
+        was already retried, changes nothing. `retry_at` is computed with
+        the database clock, the same one `list_dispatchable` compares with. `enqueued = false` hands the
         sub-task back to the outbox relay, which publishes it at `retry_at`.
         The case moves to `retrying` in the same transaction. Returns the
         case_id, or None if nothing changed.
@@ -194,7 +194,8 @@ class SubTasksRepo:
             row = conn.execute(
                 """
                 UPDATE subtasks SET
-                    status = %s, attempt = %s, state_order = %s, retry_at = %s,
+                    status = %s, attempt = %s, state_order = %s,
+                    retry_at = now() + make_interval(secs => %s),
                     enqueued = false, worker_id = NULL, progress = NULL, error = %s
                 WHERE subtask_id = %s AND NOT closed AND attempt = %s
                 RETURNING case_id
@@ -203,7 +204,7 @@ class SubTasksRepo:
                     SubTaskStatus.RETRYING.value,
                     next_attempt,
                     state_order(SubTaskStatus.RETRYING, next_attempt),
-                    retry_at,
+                    delay_s,
                     _error(error),
                     subtask_id,
                     failed_attempt,

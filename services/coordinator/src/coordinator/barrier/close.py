@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from datetime import timedelta
 from typing import Any
 
 from shared.messages import (
@@ -27,7 +26,6 @@ from shared.messages import (
     ErrorCode,
     ErrorInfo,
     ResultMessage,
-    utcnow,
 )
 from shared.states import SubTaskStatus
 
@@ -112,7 +110,7 @@ class Barrier:
         case_id = self.subtasks.schedule_retry(
             subtask_id=result.subtask_id,
             failed_attempt=result.attempt,
-            retry_at=utcnow() + timedelta(seconds=delay_s),
+            delay_s=delay_s,
             error=result.error,
         )
         extra = {
