@@ -33,3 +33,13 @@ aging campaigns; Terraform validation. Remaining manual/cloud evidence is
 explicit in docs/handoff-completion.md; no results or teammate AI use invented.
 
 Final checks also verified offline model caches, TLS target behavior, UID/capabilities/no-new-privileges, shellcheck, frontend build, deployment env quoting/config rejection, and report evidence chronology. Local custody head is anchored in docs/load-tests/local-builds/custody-head.json.
+
+### Camila handoff (David Molina, 2026-11-10)
+
+Codex traced the existing frontend client/socket, dataset validator, analysis
+operations, load client and Cognito configuration to write docs/handoff-camila.md.
+The handoff records Camila's scope, exact integration points, completion checks
+and external prerequisites. Corrected the report contract wording to distinguish
+the API's presigned URL envelope from the downloaded report JSON. Documentation
+links and referenced paths were checked locally; no new cloud or model run was
+needed for this documentation change.

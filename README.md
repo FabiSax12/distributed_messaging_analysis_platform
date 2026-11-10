@@ -20,6 +20,8 @@ TLS; cloud activation and experiments remain manual.
 Frontend login/views, full dataset generation and the M5 benchmark remain
 Camila's independent deliverables. See [completion status and manual steps](docs/handoff-completion.md).
 
+Camila and her agents: start with the [dataset, frontend and M5 handoff](docs/handoff-camila.md) for setup, code locations, integration contracts and completion checks.
+
 ## Modules
 
 | Module | Topic | Report |

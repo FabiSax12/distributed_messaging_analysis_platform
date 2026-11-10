@@ -2,6 +2,8 @@
 
 Backend work does not require waiting for the frontend, full dataset or M5.
 
+For setup, code locations and delivery checks, start with [Camila's handoff](handoff-camila.md).
+
 ## Authentication
 
 Use Cognito Hosted UI authorization code + PKCE for the public SPA client.
@@ -28,8 +30,10 @@ supervisors can also cancel; administrators additionally manage roles through
 
 ## Findings and reports
 
-The existing report URL now returns `findings`, `categories` and a `timeline`
-plus the previous fields. Each report subtask includes `analysis` when present.
+`GET /api/cases/{id}/report` returns a presigned URL envelope, not the report
+contents. Fetch that URL without an API bearer header. The report JSON includes
+`findings`, `categories` and a `timeline` plus the previous fields.
+Each report subtask includes `analysis` when present.
 The case-detail subtask `output_meta.analysis` also remains available. Evidence
 contains original source keys/hashes and message indexes, bounding boxes or
 audio segment times. Render user text escaped by React; never use raw HTML.
