@@ -1,0 +1,7 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.15",
+  "logical_cpus": 16,
+  "disk_path": "C:\\Users\\david\\AppData\\Local\\Temp",
+  "source": "synthetic 200 MiB; local temporary disk; warm filesystem cache"
+}

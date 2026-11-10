@@ -18,20 +18,22 @@ COPY services/shared/pyproject.toml services/shared/
 COPY services/coordinator/pyproject.toml services/coordinator/
 COPY services/workers/pyproject.toml services/workers/
 COPY services/storage/pyproject.toml services/storage/
-RUN uv sync --frozen --package workers --no-dev --no-install-workspace
-# TODO(image ops): add the image analysis / ML dependencies to services/workers
-# (an optional extra) and sync it here once ANALYSIS_OPERATIONS is populated.
+RUN uv sync --frozen --package workers --extra image --no-dev --no-install-workspace
 
 # Then the project itself, installed as regular (non-editable) wheels.
 COPY services/shared services/shared
 COPY services/workers services/workers
-RUN uv sync --frozen --package workers --no-dev --no-editable
+RUN uv sync --frozen --package workers --extra image --no-dev --no-editable
 
 
 FROM python:3.12-slim
 ARG GIT_SHA=unknown
 LABEL org.opencontainers.image.title="worker-image" \
       org.opencontainers.image.revision="${GIT_SHA}"
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --system --uid 10001 --create-home --shell /usr/sbin/nologin app
 COPY --from=build --chown=app:app /app/.venv /app/.venv

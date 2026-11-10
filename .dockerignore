@@ -20,6 +20,8 @@
 frontend
 dataset
 docs
-experiments
+experiments/*
+!experiments/m1_memory/
+experiments/m1_memory/results
 infra
 scripts

@@ -12,8 +12,9 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Annotated
 
-from pydantic import Field
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from shared.models import DEFAULT_HEARTBEAT_TIMEOUT_S
 
@@ -47,6 +48,24 @@ class Settings(BaseSettings):
 
     API_PORT: int = 8000
     ORIGIN_VERIFY_SECRET: str = ""
+
+    # M1: zero disables each limit; byte estimates must be calibrated on the
+    # deployed models/input envelope, not inferred from compressed file size.
+    M1_MAX_ACTIVE_CASES: int = Field(default=0, ge=0)
+    M1_MAX_CASE_INPUT_BYTES: int = Field(default=0, ge=0)
+    M1_MEMORY_BUDGET_BYTES: int = Field(default=0, ge=0)
+    M1_TASK_BASE_BYTES: int = Field(default=0, ge=0)
+    M1_OPERATION_BASE_BYTES: dict[str, Annotated[int, Field(gt=0)]] = Field(
+        default_factory=dict
+    )
+    M1_INPUT_MEMORY_MULTIPLIER: int = Field(default=4, ge=1)
+    M1_RETRY_AFTER_S: int = Field(default=5, ge=1)
+
+    @model_validator(mode="after")
+    def memory_budget_has_estimate(self) -> Settings:
+        if self.M1_MEMORY_BUDGET_BYTES and not self.M1_TASK_BASE_BYTES:
+            raise ValueError("M1_MEMORY_BUDGET_BYTES requires M1_TASK_BASE_BYTES > 0")
+        return self
 
     # `api/ws.py`: application ping interval (CloudFront closes idle
     # connections) and cap on simultaneous WebSocket connections.
