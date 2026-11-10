@@ -22,6 +22,7 @@ from shared.models import WorkerItem
 from shared.routing import Pool
 
 from .db import upsert_heartbeat
+from .memory import memory_usage
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,7 @@ class Heartbeat:
         with self._lock:
             active = sorted(self._active)
         now = utcnow()
+        used, limit = memory_usage()
         upsert_heartbeat(
             self._db,
             WorkerItem(
@@ -74,7 +76,7 @@ class Heartbeat:
                 hostname=self._hostname,
                 concurrency=self._concurrency,
                 cpu_percent=psutil.cpu_percent(interval=None),
-                mem_percent=psutil.virtual_memory().percent,
+                mem_percent=min(100, used / limit * 100),
                 active_subtasks=active,
                 started_at=self._started_at,
                 last_seen=now,

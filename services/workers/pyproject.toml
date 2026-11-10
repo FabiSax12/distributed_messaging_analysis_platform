@@ -10,10 +10,13 @@ dependencies = [
     "psycopg-pool>=3.2",
     "pydantic-settings>=2.4",
     "psutil>=5.9",
+    "storage",
 ]
 
 [project.optional-dependencies]
 image = [
+    "torch>=2.5",
+    "torchvision>=0.20",
     "ultralytics>=8.3,<9",
 ]
 audio = [
@@ -29,6 +32,9 @@ dev = [
 
 [tool.uv.sources]
 shared = { workspace = true }
+torch = { index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }
+torchvision = { index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }
+storage = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

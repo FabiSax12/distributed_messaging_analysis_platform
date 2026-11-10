@@ -81,11 +81,13 @@ data "aws_iam_policy_document" "deploy" {
     resources = ["*"]
   }
 
-  # docker push of the four images (no pull permissions on purpose).
+  # Push manifest checks also require read access to the same four repositories.
   statement {
     sid = "EcrPush"
     actions = [
       "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
       "ecr:InitiateLayerUpload",
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload",

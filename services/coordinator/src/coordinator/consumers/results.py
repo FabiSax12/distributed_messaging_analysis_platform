@@ -19,6 +19,7 @@ from shared.messages import ResultMessage
 from shared.states import TERMINAL_SUBTASK
 
 from ..barrier.close import Barrier
+from ..monitor.notifications import findings_alert
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +40,7 @@ def build_results_handler(barrier: Barrier) -> OnMessage:
 
         if result.status in TERMINAL_SUBTASK:
             barrier.apply_terminal(result)
+            findings_alert(result)
         elif barrier.subtasks.update_progress(result):
             barrier.cases.mark_processing_if_needed(result.case_id)
         else:

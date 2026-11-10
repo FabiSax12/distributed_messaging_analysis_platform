@@ -17,6 +17,7 @@ from psycopg.types.json import Jsonb
 from psycopg_pool import ConnectionPool
 from shared.messages import ErrorInfo, ResultMessage
 from shared.models import SubTaskItem
+from shared.routing import Pool
 from shared.states import SubTaskStatus, state_order
 
 from .cases import TERMINAL_CASE_VALUES
@@ -111,18 +112,29 @@ class SubTasksRepo:
 
     # ---- Outbox ---------------------------------------------------------------- #
 
-    def list_dispatchable(self, limit: int) -> list[SubTaskItem]:
+    def list_dispatchable(
+        self, limit: int, *, policy: str = "fifo", aging_s: float = 30
+    ) -> list[SubTaskItem]:
         """New sub-tasks not confirmed by the broker yet, plus retries that are due."""
         with self._pool.connection() as conn:
-            rows = conn.execute(
-                f"""
-                SELECT {_COLUMNS} FROM subtasks
-                WHERE NOT enqueued AND NOT closed AND queue IS NOT NULL
-                  AND status = ANY(%s) AND (retry_at IS NULL OR retry_at <= now())
-                ORDER BY subtask_id LIMIT %s
-                """,
-                (list(_DISPATCHABLE), limit),
-            ).fetchall()
+            rows = []
+            for pool in Pool:
+                rows.extend(
+                    conn.execute(
+                        f"""
+                    SELECT {_COLUMNS} FROM subtasks
+                    WHERE NOT enqueued AND NOT closed AND queue IS NOT NULL
+                      AND pool = %s AND status = ANY(%s) AND (retry_at IS NULL OR retry_at <= now())
+                    ORDER BY
+                      CASE WHEN %s = 'aging' THEN LEAST(4,
+                        CASE priority WHEN 'critical' THEN 4 WHEN 'high' THEN 3
+                          WHEN 'medium' THEN 2 ELSE 1 END +
+                        FLOOR(EXTRACT(EPOCH FROM (now()-created_at)) / %s)) ELSE 0 END DESC,
+                      created_at, subtask_id LIMIT %s
+                    """,
+                        (pool.value, list(_DISPATCHABLE), policy, aging_s, limit),
+                    ).fetchall()
+                )
         return [SubTaskItem.model_validate(row) for row in rows]
 
     def mark_enqueued(self, published: list[tuple[str, int]]) -> None:

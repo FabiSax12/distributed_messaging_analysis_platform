@@ -66,3 +66,51 @@ resource "aws_budgets_budget" "monthly" {
     subscriber_email_addresses = [var.alert_email]
   }
 }
+
+resource "aws_cloudwatch_metric_alarm" "queue" {
+  for_each            = toset(["work.text", "work.image", "work.audio", "dead-letter"])
+  alarm_name          = "${var.name_prefix}-${each.value}-depth"
+  namespace           = "MessagingAnalysis"
+  metric_name         = "QueueDepth"
+  dimensions          = { Queue = each.value }
+  statistic           = "Maximum"
+  period              = 60
+  evaluation_periods  = 2
+  threshold           = each.value == "dead-letter" ? 0 : 100
+  comparison_operator = "GreaterThanThreshold"
+  treat_missing_data  = "missing"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
+}
+
+resource "aws_cloudwatch_metric_alarm" "worker_memory" {
+  for_each            = toset(["text", "image", "audio"])
+  alarm_name          = "${var.name_prefix}-${each.value}-memory"
+  namespace           = "MessagingAnalysis"
+  metric_name         = "WorkerMemoryPercent"
+  dimensions          = { Pool = each.value }
+  statistic           = "Maximum"
+  period              = 60
+  evaluation_periods  = 2
+  threshold           = 90
+  comparison_operator = "GreaterThanThreshold"
+  treat_missing_data  = "missing"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
+}
+
+data "aws_region" "dashboard" {}
+
+resource "aws_cloudwatch_dashboard" "application" {
+  dashboard_name = "${var.name_prefix}-application"
+  dashboard_body = jsonencode({ widgets = [
+    { type = "metric", x = 0, y = 0, width = 12, height = 6, properties = {
+      title = "Queue depth", region = data.aws_region.dashboard.name, period = 60,
+      metrics = [for queue in ["work.text", "work.image", "work.audio", "dead-letter"] :
+      ["MessagingAnalysis", "QueueDepth", "Queue", queue]]
+    } },
+    { type = "metric", x = 12, y = 0, width = 12, height = 6, properties = {
+      title = "Container memory percent", region = data.aws_region.dashboard.name, period = 60,
+      metrics = [for pool in ["text", "image", "audio"] :
+      ["MessagingAnalysis", "WorkerMemoryPercent", "Pool", pool]]
+    } }
+  ] })
+}

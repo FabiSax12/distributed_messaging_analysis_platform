@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
 from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -46,6 +46,11 @@ class Settings(BaseSettings):
     S3_ENDPOINT_URL: str | None = None  # MinIO locally; unset on AWS
     AWS_REGION: str = "us-east-1"
 
+    COGNITO_ISSUER_URL: str = ""
+    COGNITO_CLIENT_ID: str = ""
+    COGNITO_USER_POOL_ID: str = ""
+    ALERTS_TOPIC_ARN: str = ""
+
     API_PORT: int = 8000
     ORIGIN_VERIFY_SECRET: str = ""
 
@@ -63,9 +68,18 @@ class Settings(BaseSettings):
 
     @model_validator(mode="after")
     def memory_budget_has_estimate(self) -> Settings:
+        if bool(self.COGNITO_ISSUER_URL) != bool(self.COGNITO_CLIENT_ID):
+            raise ValueError("Cognito issuer and client id must be configured together")
+        if self.COGNITO_ISSUER_URL and not self.COGNITO_ISSUER_URL.startswith(
+            "https://cognito-idp."
+        ):
+            raise ValueError("Cognito issuer must be an HTTPS Cognito endpoint")
         if self.M1_MEMORY_BUDGET_BYTES and not self.M1_TASK_BASE_BYTES:
             raise ValueError("M1_MEMORY_BUDGET_BYTES requires M1_TASK_BASE_BYTES > 0")
         return self
+
+    SCHEDULER_POLICY: Literal["fifo", "aging"] = "aging"
+    SCHEDULER_AGING_S: float = Field(default=30, gt=0)
 
     # `api/ws.py`: application ping interval (CloudFront closes idle
     # connections) and cap on simultaneous WebSocket connections.
@@ -86,7 +100,8 @@ class Settings(BaseSettings):
     RESULTS_PREFETCH: int = Field(default=20, ge=1)
     PRESIGN_EXPIRES_S: int = 900
     SWEEP_INTERVAL_S: float = 5.0
-    OUTBOX_POLL_S: float = 1.0
+    OUTBOX_POLL_S: float = 0.5
+    OUTBOX_QUEUE_LIMIT: int = Field(default=1, ge=1)
     SNAPSHOT_INTERVAL_S: float = 2.0
     SAMPLE_INTERVAL_S: int = 5
     METRICS_FLUSH_S: int = 60

@@ -26,6 +26,7 @@ any scenario fails.
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 import signal
 import subprocess
@@ -94,7 +95,14 @@ class Stack:
     def start_coordinator(self) -> None:
         self.coordinator = self._spawn(
             "coordinator",
-            ["uvicorn", "coordinator.main:app", "--host", "127.0.0.1", "--port", str(API_PORT)],
+            [
+                "uvicorn",
+                "coordinator.main:app",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                str(API_PORT),
+            ],
         )
         deadline = time.monotonic() + 60
         while time.monotonic() < deadline:
@@ -114,7 +122,13 @@ class Stack:
     def start_worker(self, pool: str, *extra: str) -> None:
         self.workers[pool] = self._spawn(
             f"worker-{pool}",
-            ["python", "services/workers/scripts/fake_worker.py", "--pool", pool, *extra],
+            [
+                "python",
+                "services/workers/scripts/fake_worker.py",
+                "--pool",
+                pool,
+                *extra,
+            ],
         )
 
     def start_workers(self, *extra: str) -> None:
@@ -173,7 +187,9 @@ def create_case(files: list[str]) -> str:
     keys = []
     for entry in resp.json()["urls"]:
         suffix = PurePosixPath(entry["filename"]).suffix
-        httpx.put(entry["url"], content=CONTENT.get(suffix, b"?"), timeout=30).raise_for_status()
+        httpx.put(
+            entry["url"], content=CONTENT.get(suffix, b"?"), timeout=30
+        ).raise_for_status()
         keys.append(entry["input_key"])
     resp = httpx.post(
         f"{API}/api/cases",
@@ -277,10 +293,14 @@ def scenario_unsupported(stack: Stack, env: dict[str, str]) -> None:
     try:
         watcher = Watcher(create_case(["chat.json", "notes.xyz", "clip.mp4"]))
         detail = watcher.wait_terminal()
-        expect(detail["case"]["status"] == "partially_completed", "expected partially_completed")
+        expect(
+            detail["case"]["status"] == "partially_completed",
+            "expected partially_completed",
+        )
         prefailed = [s for s in detail["subtasks"] if s["attempt"] == 0]
         expect(
-            len(prefailed) == 1 and prefailed[0]["error"]["code"] == "unsupported_format",
+            len(prefailed) == 1
+            and prefailed[0]["error"]["code"] == "unsupported_format",
             "expected one pre-failed unsupported_format sub-task",
         )
         check_report(watcher.case_id)
@@ -297,7 +317,8 @@ def scenario_retries(stack: Stack, env: dict[str, str]) -> None:
         expect(watcher.saw("retrying"), "no sub-task went through retrying")
         retried = [s for s in detail["subtasks"] if s["attempt"] > 1]
         exhausted = [
-            s for s in detail["subtasks"]
+            s
+            for s in detail["subtasks"]
             if s.get("error") and s["error"]["code"] == "retries_exhausted"
         ]
         print(f"  {len(retried)} sub-tasks retried, {len(exhausted)} exhausted retries")
@@ -326,7 +347,10 @@ def scenario_crash(stack: Stack, env: dict[str, str]) -> None:
         time.sleep(1)
         stack.start_worker("audio", "--work-s", "1")
         detail = watcher.wait_terminal(timeout_s=90)
-        expect(detail["case"]["status"] == "completed", "expected completed after the crash")
+        expect(
+            detail["case"]["status"] == "completed",
+            "expected completed after the crash",
+        )
         audio = next(s for s in detail["subtasks"] if s["input_key"].endswith(".mp3"))
         expect(audio["attempt"] >= 2, "the crashed sub-task was not retried")
         # The sweeper marks the killed worker dead once its heartbeat is stale.
@@ -336,7 +360,8 @@ def scenario_crash(stack: Stack, env: dict[str, str]) -> None:
         while time.monotonic() < deadline and not dead:
             state = httpx.get(f"{API}/api/state", timeout=5).json()
             dead = [
-                w["worker_id"] for w in state["workers"]
+                w["worker_id"]
+                for w in state["workers"]
                 if w["worker_id"].endswith(f"-{pid}") and w["status"] == "dead"
             ]
             time.sleep(1)
@@ -353,7 +378,9 @@ def scenario_restart(stack: Stack, env: dict[str, str]) -> None:
         files = [f"r{i}{ext}" for i in range(3) for ext in (".txt", ".jpg", ".mp3")]
         watcher = Watcher(create_case(files))
         watcher.wait_until(
-            lambda d: any(s["status"] in ("assigned", "running") for s in d["subtasks"]),
+            lambda d: any(
+                s["status"] in ("assigned", "running") for s in d["subtasks"]
+            ),
             30,
             "a sub-task in flight",
         )
@@ -363,7 +390,9 @@ def scenario_restart(stack: Stack, env: dict[str, str]) -> None:
         print("  starting coordinator again")
         stack.start_coordinator()
         detail = watcher.wait_terminal(timeout_s=120)
-        expect(detail["case"]["status"] == "completed", "expected completed after restart")
+        expect(
+            detail["case"]["status"] == "completed", "expected completed after restart"
+        )
         with psycopg.connect(env["DATABASE_URL"]) as conn:
             rows, distinct = conn.execute(
                 "SELECT count(*), count(DISTINCT input_key) FROM subtasks WHERE case_id = %s",
@@ -390,16 +419,48 @@ def scenario_dbdown(stack: Stack, env: dict[str, str]) -> None:
             "a running sub-task",
         )
         print(f"  docker stop {POSTGRES_CONTAINER} for 20 s")
-        subprocess.run(["docker", "stop", POSTGRES_CONTAINER], check=True, capture_output=True)
+        subprocess.run(
+            ["docker", "stop", POSTGRES_CONTAINER], check=True, capture_output=True
+        )
         time.sleep(20)
-        subprocess.run(["docker", "start", POSTGRES_CONTAINER], check=True, capture_output=True)
+        subprocess.run(
+            ["docker", "start", POSTGRES_CONTAINER], check=True, capture_output=True
+        )
         print("  postgres started again")
         detail = watcher.wait_terminal(timeout_s=180)
         codes = [s["error"]["code"] for s in detail["subtasks"] if s.get("error")]
         print(f"  error codes recorded: {codes or 'none'}")
-        expect(detail["case"]["status"] == "completed", "expected completed after the outage")
+        expect(
+            detail["case"]["status"] == "completed",
+            "expected completed after the outage",
+        )
         expect("retries_exhausted" not in codes, "a sub-task exhausted its retries")
         check_report(watcher.case_id)
+    finally:
+        stack.stop_workers()
+
+
+def scenario_cancel_inflight(stack: Stack, env: dict[str, str]) -> None:
+    stack.start_workers("--work-s", "30")
+    try:
+        watcher = Watcher(create_case(["cancel.txt"]))
+        watcher.wait_until(
+            lambda detail: any(
+                task["status"] == "running" for task in detail["subtasks"]
+            ),
+            30,
+            "a running operation",
+        )
+        started = time.monotonic()
+        response = httpx.delete(f"{API}/api/cases/{watcher.case_id}")
+        response.raise_for_status()
+        detail = watcher.wait_terminal(timeout_s=15)
+        expect(
+            detail["case"]["status"] == "cancelled", "expected in-flight cancellation"
+        )
+        expect(
+            time.monotonic() - started < 15, "cancellation waited for the 30s operation"
+        )
     finally:
         stack.stop_workers()
 
@@ -411,6 +472,7 @@ SCENARIOS = {
     "crash": scenario_crash,
     "restart": scenario_restart,
     "dbdown": scenario_dbdown,
+    "cancel_inflight": scenario_cancel_inflight,
 }
 
 
@@ -440,6 +502,10 @@ def main() -> int:
         stack.stop()
     print("\n".join(f"{name:<12} {result}" for name, result in results.items()))
     print(f"logs in {args.logs}")
+    with (args.logs / "scenarios.csv").open("w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["scenario", "result"])
+        writer.writerows(results.items())
     return 0 if all(r == "OK" for r in results.values()) else 1
 
 

@@ -14,6 +14,7 @@ and the snapshot loop. PostgreSQL is shared through one thread-safe
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 import threading
 import time
@@ -21,11 +22,13 @@ from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
 from typing import Any
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from shared.broker import consume
 from shared.models import DEFAULT_HEARTBEAT_INTERVAL_S
 from shared.routing import DLQ, RESULTS_QUEUE
 
+from .api import admin as admin_router
 from .api import cases as cases_router
 from .api import dataset as dataset_router
 from .api import health as health_router
@@ -112,6 +115,9 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         subtasks_repo=subtasks_repo,
         amqp_url=settings.AMQP_URL,
         poll_s=settings.OUTBOX_POLL_S,
+        policy=settings.SCHEDULER_POLICY,
+        aging_s=settings.SCHEDULER_AGING_S,
+        queue_limit=settings.OUTBOX_QUEUE_LIMIT,
     )
     app.state.db = db
     app.state.barrier = barrier
@@ -241,3 +247,15 @@ app.include_router(uploads_router.router, prefix="/api")
 app.include_router(dataset_router.router, prefix="/api")
 app.include_router(state_router.router, prefix="/api")
 app.include_router(ws_router.router, prefix="/api")
+
+app.include_router(admin_router.router, prefix="/api")
+
+
+@app.get("/api/healthz")
+def api_health(request: Request):
+    response = health_router.healthz(request)
+    payload = json.loads(response.body)
+    return JSONResponse(
+        {"service": "coordinator", "ok": payload["ok"]},
+        status_code=response.status_code,
+    )

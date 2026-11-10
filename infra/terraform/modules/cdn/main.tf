@@ -78,21 +78,7 @@ resource "aws_cloudfront_distribution" "this" {
     origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host.id
   }
 
-  # Client-side routed SPA: unknown paths fall back to index.html.
-  # Note: custom error responses apply to the whole distribution, including /api/*.
-  custom_error_response {
-    error_code            = 403
-    response_code         = 200
-    response_page_path    = "/index.html"
-    error_caching_min_ttl = 0
-  }
-
-  custom_error_response {
-    error_code            = 404
-    response_code         = 200
-    response_page_path    = "/index.html"
-    error_caching_min_ttl = 0
-  }
+  # Hash-routed SPA needs no global error rewrite. Preserve API 401/403/404.
 
   restrictions {
     geo_restriction {

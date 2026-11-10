@@ -1,0 +1,13 @@
+{
+  "workers": 1,
+  "fake_work_s": 0.5,
+  "cases": 40,
+  "priorities": [
+    "low",
+    "critical",
+    "medium",
+    "high"
+  ],
+  "aging_s": 2,
+  "note": "Real PostgreSQL/RabbitMQ and isolated fake text work. No cloud or model-performance claim."
+}

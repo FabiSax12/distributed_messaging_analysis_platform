@@ -61,6 +61,9 @@ Small buffers performed best in this cached local workload. Measurements do
 not separate hashing from disk/cache cost, so no bottleneck is asserted.
 BLOCK held depth at capacity and transferred consumer delay to the producer;
 REJECT bounded accepted work through immediate overload errors. Integrity,
-concurrent dedup and close/wakeup checks passed. Components are standalone;
-coordinator S3 and RabbitMQ paths remain unchanged. Real-dataset dedup and
+concurrent dedup and close/wakeup checks passed. The worker now uses verified chunk downloads and conditional S3 CAS writes;
+source hashes supplied in task params/S3 metadata are checked independently.
+Original upload objects remain, so whole-bucket dedup savings are not claimed.
+The outbox caps waiting messages per pool; deployment installs the mutable
+RabbitMQ max-length/reject-publish policy without deleting durable queues. Real-dataset dedup and
 transfer on its five heavy cases await the dataset owner's data.

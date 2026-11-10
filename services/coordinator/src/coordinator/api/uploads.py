@@ -55,7 +55,5 @@ def _sanitize_filename(filename: str) -> str:
     """
     name = PurePosixPath(filename).name
     if not name or name in (".", "..") or len(name) > _MAX_FILENAME_LENGTH:
-        raise HTTPException(
-            status_code=422, detail=f"invalid file name: {filename!r}"
-        )
+        raise HTTPException(status_code=422, detail=f"invalid file name: {filename!r}")
     return name

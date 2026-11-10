@@ -19,3 +19,12 @@ dataset = [
 dev = [
     "ruff>=0.6",
 ]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }
+torchvision = { index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }

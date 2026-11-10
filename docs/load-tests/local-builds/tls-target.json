@@ -1,0 +1,6 @@
+{
+  "status": 200,
+  "tls_version": "TLSv1.3",
+  "self_signed_rejected_by_default_trust": true,
+  "note": "Local target-hop test only; no public ACM/ALB/DNS activation performed."
+}

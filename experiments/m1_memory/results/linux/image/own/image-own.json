@@ -1,0 +1,7 @@
+{
+  "pool": "image",
+  "mode": "own",
+  "children": 3,
+  "total_rss_bytes": 947671040,
+  "total_pss_bytes": 709687296
+}

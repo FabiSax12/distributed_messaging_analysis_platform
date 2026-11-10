@@ -17,13 +17,21 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from .analysis import AnalysisOperation, CasePriority, ContentType
+from .analysis import (
+    AnalysisOperation,
+    AnalysisResult,
+    CasePriority,
+    ContentType,
+    Finding,
+)
 from .messages import ErrorInfo, SubTaskMessage, utcnow
 from .routing import Pool, work_queue
 from .states import CaseStatus, SubTaskStatus
 
 DEFAULT_HEARTBEAT_INTERVAL_S = 5
-DEFAULT_HEARTBEAT_TIMEOUT_S = 60  # 12 missed beats: tolerates GC pauses and short DB blips
+DEFAULT_HEARTBEAT_TIMEOUT_S = (
+    60  # 12 missed beats: tolerates GC pauses and short DB blips
+)
 
 
 class _Item(BaseModel):
@@ -34,9 +42,10 @@ class _Item(BaseModel):
 # Cases
 # --------------------------------------------------------------------------- #
 
+
 class CaseSource(StrEnum):
-    MANUAL = "manual"   # submitted from the dashboard or the API
-    AUTO = "auto"       # grouped by the generator (folder / metadata JSON)
+    MANUAL = "manual"  # submitted from the dashboard or the API
+    AUTO = "auto"  # grouped by the generator (folder / metadata JSON)
 
 
 class CaseItem(_Item):
@@ -47,7 +56,7 @@ class CaseItem(_Item):
     status: CaseStatus = CaseStatus.QUEUED
 
     file_count: int = Field(ge=1)
-    total: int = Field(ge=1)          # sub-tasks, not files
+    total: int = Field(ge=1)  # sub-tasks, not files
     pending_count: int = Field(ge=0)  # barrier counter
     failed_count: int = 0
     cancelled_count: int = 0
@@ -63,6 +72,7 @@ class CaseItem(_Item):
 # SubTasks
 # --------------------------------------------------------------------------- #
 
+
 class SubTaskItem(_Item):
     case_id: str
     subtask_id: str
@@ -76,9 +86,9 @@ class SubTaskItem(_Item):
     priority: CasePriority = CasePriority.MEDIUM
 
     status: SubTaskStatus = SubTaskStatus.PENDING
-    state_order: int = 0     # write condition: only a greater value is accepted
-    attempt: int = 1         # attempt of the latest dispatch (0 if prefailed)
-    enqueued: bool = False   # outbox: False until the broker confirmed the publish
+    state_order: int = 0  # write condition: only a greater value is accepted
+    attempt: int = 1  # attempt of the latest dispatch (0 if prefailed)
+    enqueued: bool = False  # outbox: False until the broker confirmed the publish
     retry_at: datetime | None = None  # when a `retrying` sub-task is republished
 
     worker_id: str | None = None
@@ -136,13 +146,14 @@ class SubTaskItem(_Item):
 # Workers (heartbeat: each worker upserts its own row)
 # --------------------------------------------------------------------------- #
 
+
 class WorkerStatus(StrEnum):
     ALIVE = "alive"
     DEAD = "dead"  # set by the coordinator sweeper when the heartbeat is stale
 
 
 class WorkerItem(_Item):
-    worker_id: str          # e.g. "audio-i-0abc123" (pool-instance) or pool-host-pid
+    worker_id: str  # e.g. "audio-i-0abc123" (pool-instance) or pool-host-pid
     pool: Pool
     instance_type: str
     hostname: str
@@ -168,6 +179,7 @@ class WorkerItem(_Item):
 # Load samples (evidence for the report; stored in S3 as JSON Lines)
 # --------------------------------------------------------------------------- #
 
+
 class WorkerLoad(BaseModel):
     pool: Pool
     alive: bool
@@ -178,9 +190,9 @@ class WorkerLoad(BaseModel):
 
 class LoadSample(BaseModel):
     ts: datetime = Field(default_factory=utcnow)
-    queue_visible: dict[str, int]      # per logical queue
+    queue_visible: dict[str, int]  # per logical queue
     queue_in_flight: dict[str, int]
-    workers: dict[str, WorkerLoad]     # per worker_id
+    workers: dict[str, WorkerLoad]  # per worker_id
     cases_open: int
 
 
@@ -188,7 +200,9 @@ class LoadSample(BaseModel):
 # Consolidated report per case (results/{case_id}/report.json)
 # --------------------------------------------------------------------------- #
 
+
 class ReportSubTask(BaseModel):
+    analysis: AnalysisResult | None = None
     subtask_id: str
     input_key: str
     media_type: ContentType | None
@@ -206,7 +220,7 @@ class ReportSubTask(BaseModel):
 class ReportGroup(BaseModel):
     """A summary row: type + operation."""
 
-    media_type: ContentType | None   # None = unsupported
+    media_type: ContentType | None  # None = unsupported
     operation: AnalysisOperation | None
     total: int
     completed: int
@@ -215,6 +229,9 @@ class ReportGroup(BaseModel):
 
 
 class CaseReport(BaseModel):
+    findings: list[Finding] = Field(default_factory=list)
+    categories: dict[str, int] = Field(default_factory=dict)
+    timeline: list[dict[str, Any]] = Field(default_factory=list)
     schema_version: int = 1
     case_id: str
     label: str | None
@@ -229,7 +246,7 @@ class CaseReport(BaseModel):
     groups: list[ReportGroup]
     subtasks: list[ReportSubTask]
     workers_used: list[str]
-    summary: str   # "of 55 files — 30 texts analyzed, 20 images analyzed, 2 failed due to ..."
+    summary: str  # "of 55 files — 30 texts analyzed, 20 images analyzed, 2 failed due to ..."
 
 
 # --------------------------------------------------------------------------- #
@@ -238,7 +255,7 @@ class CaseReport(BaseModel):
 
 # Dataset inputs live under arbitrary prefixes of the bucket; the coordinator
 # writes only under these two, so `GET /api/dataset` skips them.
-RESERVED_PREFIXES: tuple[str, ...] = ("results/", "metrics/")
+RESERVED_PREFIXES: tuple[str, ...] = ("results/", "metrics/", "content/")
 
 
 def upload_key(upload_id: str, filename: str) -> str:

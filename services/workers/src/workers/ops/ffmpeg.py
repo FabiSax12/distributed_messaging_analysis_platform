@@ -19,6 +19,8 @@ from shared.messages import ErrorCode
 from .base import OpError
 
 _PROBE_TIMEOUT_S = 60
+
+
 def probe(src: Path, timeout_s: float = _PROBE_TIMEOUT_S) -> dict[str, Any]:
     """ffprobe as JSON. If it cannot read the file, the file is corrupt: the
     coordinator only filtered by extension."""

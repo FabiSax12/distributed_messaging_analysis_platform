@@ -1,16 +1,14 @@
-# Checks on pull requests and on pushes to every branch except main (main is
-# handled by deploy.yml). Nothing here touches AWS.
+# PR updates already cover branch pushes; avoid duplicate build minutes.
+# Manual checks remain available. Nothing here touches AWS.
 name: CI
 
 on:
   pull_request:
-  push:
-    branches-ignore: [main]
+  workflow_dispatch:
 
-# A pull request branch triggers both events: each event has its own group so
-# that the two runs never cancel each other, only superseded runs of the same event.
+# Superseded checks for the same branch cancel; deploy.yml owns main rollout.
 concurrency:
-  group: ci-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
+  group: ci-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
@@ -31,6 +29,18 @@ jobs:
           cache-dependency-glob: uv.lock
       - run: uv sync --locked --all-packages --group dataset
       - run: uv run ruff check .
+      - name: Executable contract checks (no model downloads)
+        run: |
+          uv run --all-packages python services/workers/scripts/check_analysis.py
+          uv run --all-packages python services/workers/scripts/check_isolation.py
+          uv run --all-packages python services/workers/scripts/check_download.py
+          uv run --all-packages python services/storage/check_storage.py
+          uv run --all-packages python scripts/check_deploy_config.py
+          uv run --all-packages python services/coordinator/scripts/check_report.py
+          uv run --all-packages python experiments/m1_memory/scripts/check_admission.py
+          uv run --all-packages python experiments/m2_scheduling/scripts/measure.py --self-check
+          uv run --all-packages python experiments/m4_security/scripts/check_auth.py
+          uv run --all-packages python services/coordinator/scripts/verify_custody.py --self-check
       - run: uv run --group dataset python dataset/generators/validate_manifests.py
 
   frontend:
