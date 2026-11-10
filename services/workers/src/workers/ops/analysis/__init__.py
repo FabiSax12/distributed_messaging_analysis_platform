@@ -22,5 +22,12 @@ from __future__ import annotations
 from shared.analysis import AnalysisOperation
 
 from ..base import Operation
+from .audio import audio_analyze
+from .image import image_analyze
+from .text import text_analyze
 
-ANALYSIS_OPERATIONS: dict[AnalysisOperation, Operation] = {}
+ANALYSIS_OPERATIONS: dict[AnalysisOperation, Operation] = {
+    AnalysisOperation.TEXT_ANALYZE: text_analyze,
+    AnalysisOperation.IMAGE_ANALYZE: image_analyze,
+    AnalysisOperation.AUDIO_ANALYZE: audio_analyze,
+}

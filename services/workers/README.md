@@ -35,9 +35,8 @@ decided by the coordinator (`RETRY_*` settings there).
 
 `ANALYSIS_OPERATIONS` (`src/workers/ops/analysis/__init__.py`) maps each
 `AnalysisOperation` to a function following `Operation` in
-`src/workers/ops/base.py`. It is empty until the text, image and audio ops are
-written, so a real worker fails every sub-task with `processing_error`; use
-`scripts/fake_worker.py` to drive cases meanwhile. `src/workers/ops/ffmpeg.py`
+`src/workers/ops/base.py`. All three operations are registered. `scripts/fake_worker.py` remains useful
+for infrastructure fault scenarios without loading models. `src/workers/ops/ffmpeg.py`
 keeps the ffprobe/ffmpeg subprocess helpers with timeout and progress (the
 audio pool needs ffmpeg to extract the audio track of videos).
 
@@ -177,3 +176,46 @@ startup are retried in place.
 
 - Cancelling a sub-task that is already running (checked before starting).
 - Autoscaling: scale by hand through the `worker_nodes` map in Terraform.
+
+## Implemented analysis (David Molina)
+
+- Text: versioned English/Spanish keyword rules, topics and lexicon sentiment.
+  Reads plain UTF-8, the documented WhatsApp export (multiline entries and
+  system messages), and Telegram JSON (including rich-text entities).
+  Message indexes include service entries; naive timestamps use `timezone`
+  (default America/Costa_Rica). `chat_format` can force plain/whatsapp/telegram.
+- Image: YOLOv8n COCO on CPU; returns detected labels. Knife/scissors boxes
+  produce sensitive-image review findings. This is object triage, not a
+  classifier of nudity, violence or criminal intent. Blank images can correctly
+  return no labels/findings. Weights download once and remain outside git.
+- Audio/video: ffprobe verifies an audio stream, ffmpeg extracts mono 16 kHz
+  WAV, faster-whisper tiny/int8 transcribes, then text rules analyze each
+  segment. Evidence refers to the ORIGINAL source hash/key and segment times.
+  Temporary WAV is deleted on success and failure. `lang=es` can force language.
+
+Rule confidence 0.65 is a heuristic score, not a calibrated probability;
+negation, sarcasm and words spanning transcription segments need human review.
+Each op writes `analysis.json` and returns the validated `AnalysisResult` meta.
+Image/audio models are lazily cached once per process, serialized per model
+because native inference objects are shared across consumer threads.
+Deadlines are checked between stages/segments; ffmpeg is killed at deadline.
+Native model load/inference calls are not preemptible in this thread-based
+runner; use process/container supervision for a hard deadline. See M1 limits.
+
+```
+uv sync --all-packages --group dataset --all-extras
+uv run --all-packages --all-extras python services/workers/scripts/check_analysis.py --models
+uv run --package workers python -m workers.ops.run_local text_analyze chat.txt
+uv run --package workers --extra image python -m workers.ops.run_local image_analyze picture.jpg
+uv run --package workers --extra audio python -m workers.ops.run_local audio_analyze clip.mp4 --param lang=es
+```
+
+ffmpeg and ffprobe must be installed on PATH. PyAV is constrained below 19:
+version 19 removed the `metadata_errors` argument used by faster-whisper 1.2.1.
+On Windows `run_local` reports peak working set; child peak RSS is unavailable
+and reported as 0. Linux keeps getrusage measurements.
+
+API references: [Ultralytics prediction](https://docs.ultralytics.com/modes/predict/),
+[faster-whisper usage](https://github.com/SYSTRAN/faster-whisper).
+YOLO weights/code have Ultralytics AGPL/enterprise terms; faster-whisper and
+Whisper weights use MIT. Review those terms before reuse outside coursework.
