@@ -40,7 +40,7 @@ import mimetypes
 import queue
 import tempfile
 from collections.abc import Mapping
-from concurrent.futures import Future, ThreadPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -181,7 +181,16 @@ def handle(
     progress: queue.SimpleQueue[int] = queue.SimpleQueue()
     with ctx.heartbeat.track(task.subtask_id):
         future = ctx.executor.submit(_run, ctx, task, progress.put)
-        _wait(channel, future, progress, task, ctx, started_at, report)
+        try:
+            _wait(channel, future, progress, task, ctx, started_at, report)
+        except BaseException:
+            # The connection broke (or we are stopping). Let the op finish
+            # so its temp dir is removed and the executor is free before the
+            # consumer reconnects; its result is discarded and the broker
+            # redelivers the message, which is then reported as worker_lost.
+            logger.warning("connection lost mid-task, discarding the op result", extra=log)
+            wait([future])
+            raise
     try:
         output_keys, output_meta = future.result()
         terminal = ctx.result(
