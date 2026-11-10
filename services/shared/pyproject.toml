@@ -1,9 +1,15 @@
 [project]
 name = "shared"
 version = "0.1.0"
-description = "Shared domain contracts: routing, states, SQS messages, DynamoDB/S3 models and REST contracts."
+description = "Shared domain contracts: routing, states, SQS messages, DynamoDB/S3 models, REST contracts and analysis results."
 requires-python = ">=3.12"
 dependencies = ["pydantic>=2.7"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2",
+    "ruff>=0.6",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -19,3 +25,9 @@ build-backend = "hatchling.build"
 # editable install works without tricks.
 [tool.hatch.build.targets.wheel]
 packages = ["shared"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["shared"]
