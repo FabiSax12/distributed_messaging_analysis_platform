@@ -18,15 +18,13 @@ COPY services/shared/pyproject.toml services/shared/
 COPY services/coordinator/pyproject.toml services/coordinator/
 COPY services/workers/pyproject.toml services/workers/
 COPY services/storage/pyproject.toml services/storage/
-RUN uv sync --frozen --package workers --no-dev --no-install-workspace
-# TODO(audio ops): add the speech-to-text dependencies to services/workers (an
-# optional extra) and sync it here once ANALYSIS_OPERATIONS is populated. For a
-# GPU node (M5) switch the final stage to a CUDA-enabled base image.
+RUN uv sync --frozen --package workers --extra audio --no-dev --no-install-workspace
+# A GPU node (M5) needs a CUDA-enabled runtime image.
 
 # Then the project itself, installed as regular (non-editable) wheels.
 COPY services/shared services/shared
 COPY services/workers services/workers
-RUN uv sync --frozen --package workers --no-dev --no-editable
+RUN uv sync --frozen --package workers --extra audio --no-dev --no-editable
 
 
 FROM python:3.12-slim
@@ -37,7 +35,7 @@ LABEL org.opencontainers.image.title="worker-audio" \
 # The audio pool extracts audio tracks from videos with ffmpeg/ffprobe; the
 # worker refuses to start without them (workers/main.py check_ffmpeg).
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg \
+    && apt-get install -y --no-install-recommends ffmpeg libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --system --uid 10001 --create-home --shell /usr/sbin/nologin app
