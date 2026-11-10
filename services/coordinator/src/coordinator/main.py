@@ -54,11 +54,18 @@ _THREAD_JOIN_TIMEOUT_S = 10.0
 
 def _sweeper_loop(stop_event: threading.Event, interval: float, **kwargs: Any) -> None:
     """A failed recurring pass is logged and retried on the next cycle (the
-    startup pass in `lifespan` runs outside this loop and fails loudly)."""
+    startup pass in `lifespan` runs outside this loop and fails loudly).
+
+    The pass right after a failure does not mark workers dead: if the
+    database was down, the workers could not heartbeat either, so their
+    `last_seen` is stale for a reason that is not a crash."""
+    failed_last_pass = False
     while not stop_event.wait(interval):
         try:
-            run_sweep(**kwargs)
+            run_sweep(**kwargs, mark_dead=not failed_last_pass)
+            failed_last_pass = False
         except Exception:
+            failed_last_pass = True
             logger.exception("run_sweep failed, will retry on the next cycle")
 
 

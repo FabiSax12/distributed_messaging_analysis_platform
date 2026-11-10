@@ -97,7 +97,7 @@ function Workers({ workers }) {
   }))
 
   return (
-    <Section title="Worker nodes" aside={<span className="muted">Heartbeat every 5 s · marked down after 15 s without reporting</span>}>
+    <Section title="Worker nodes" aside={<span className="muted">Heartbeat every 5 s · marked down after 60 s without reporting</span>}>
       <div className="pools">
         {byPool.map(({ pool, list }) => (
           <div key={pool} className="pool">

@@ -23,7 +23,7 @@ from .routing import Pool, work_queue
 from .states import CaseStatus, SubTaskStatus
 
 DEFAULT_HEARTBEAT_INTERVAL_S = 5
-DEFAULT_HEARTBEAT_TIMEOUT_S = 15
+DEFAULT_HEARTBEAT_TIMEOUT_S = 60  # 12 missed beats: tolerates GC pauses and short DB blips
 
 
 class _Item(BaseModel):

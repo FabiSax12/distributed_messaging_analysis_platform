@@ -33,9 +33,14 @@ logger = logging.getLogger(__name__)
 
 
 def run_sweep(
-    *, barrier: Barrier, workers_repo: WorkersRepo, heartbeat_timeout_s: float
+    *,
+    barrier: Barrier,
+    workers_repo: WorkersRepo,
+    heartbeat_timeout_s: float,
+    mark_dead: bool = True,
 ) -> None:
-    for worker_id in workers_repo.mark_stale_dead(heartbeat_timeout_s):
+    stale = workers_repo.mark_stale_dead(heartbeat_timeout_s) if mark_dead else []
+    for worker_id in stale:
         logger.warning(
             "worker marked dead: no heartbeat",
             extra={"worker_id": worker_id, "timeout_s": heartbeat_timeout_s},
