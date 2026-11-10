@@ -9,16 +9,22 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from psycopg import OperationalError
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
-from psycopg_pool import ConnectionPool
+from psycopg_pool import ConnectionPool, PoolTimeout
 
 from shared.models import WorkerItem, WorkerStatus
+from shared.states import SubTaskStatus
+
+# Database unreachable: not the message's fault and not a crash.
+DB_ERRORS: tuple[type[BaseException], ...] = (OperationalError, PoolTimeout)
 
 
 @dataclass(frozen=True)
 class SubTaskState:
     attempt: int
+    status: SubTaskStatus
     closed: bool
     cancel_requested: bool
 
@@ -29,6 +35,7 @@ def create_pool(url: str, *, max_size: int) -> ConnectionPool:
         min_size=1,
         max_size=max_size,
         kwargs={"row_factory": dict_row},
+        check=ConnectionPool.check_connection,
         open=False,
         name="worker",
     )
@@ -41,13 +48,15 @@ def subtask_state(pool: ConnectionPool, subtask_id: str) -> SubTaskState | None:
     with pool.connection() as conn:
         row = conn.execute(
             """
-            SELECT s.attempt, s.closed, c.cancel_requested
+            SELECT s.attempt, s.status, s.closed, c.cancel_requested
             FROM subtasks s JOIN cases c ON c.case_id = s.case_id
             WHERE s.subtask_id = %s
             """,
             (subtask_id,),
         ).fetchone()
-    return SubTaskState(**row) if row else None
+    if row is None:
+        return None
+    return SubTaskState(**{**row, "status": SubTaskStatus(row["status"])})
 
 
 def upsert_heartbeat(pool: ConnectionPool, worker: WorkerItem) -> None:

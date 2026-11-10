@@ -11,13 +11,19 @@ Protocol:
    queue): retrying will not fix it.
 2. Pre-start check against PostgreSQL (read-only):
    - unknown sub-task, already closed, or `attempt` older than the current
-     one -> stale duplicate (the outbox published twice, or a retry already
-     superseded it): ack and drop;
+     one -> stale duplicate (a retry already superseded it): ack and drop;
+   - same attempt already `assigned`/`running` and this copy is not a
+     redelivery -> the outbox published the attempt twice and another
+     worker has it: ack and drop;
    - case `cancel_requested` -> report `cancelled` without processing.
-3. `redelivered` -> the worker that held it died (or lost its connection)
-   mid-task: report `failed` / `worker_lost` without running it. The
-   coordinator schedules the retry, so a file that crashes workers counts
-   against `RETRY_MAX_ATTEMPTS` instead of looping forever.
+   If the database is unreachable, the message is republished as a fresh
+   copy (keeping a crash marker if it had one) and acked, and the consumer
+   pauses with backoff: a database blip must not look like a crash.
+3. `redelivered` (or the crash marker header) -> the worker that held it
+   died (or lost its connection) mid-task: report `failed` / `worker_lost`
+   without running it. The coordinator schedules the retry, so a file that
+   crashes workers counts against `RETRY_MAX_ATTEMPTS` instead of looping
+   forever.
 4. `assigned` -> S3 download -> `running` with progress -> op -> upload to
    `results/{case}/{subtask}/` -> `completed`.
 5. `OpError` -> `failed` with its code; any other exception -> `failed` /
@@ -46,13 +52,13 @@ from pika.spec import Basic, BasicProperties
 from psycopg_pool import ConnectionPool
 
 from shared.analysis import AnalysisOperation
-from shared.broker import publish
+from shared.broker import backoff_delay, publish
 from shared.messages import ErrorCode, ErrorInfo, ResultMessage, SubTaskMessage, utcnow
 from shared.routing import RESULTS_QUEUE, Pool
 from shared.states import SubTaskStatus
 
 from ..ops.base import Operation, OpError
-from .db import subtask_state
+from .db import DB_ERRORS, subtask_state
 from .heartbeat import Heartbeat
 
 logger = logging.getLogger(__name__)
@@ -62,6 +68,11 @@ logger = logging.getLogger(__name__)
 _PROGRESS_STEP = 10
 # How long the consuming thread blocks in AMQP I/O between checks of the op.
 _POLL_S = 0.5
+# Header set on a republished copy of a redelivered message, so the crash
+# is not forgotten when the copy goes back to the queue (`redelivered` is
+# False on a new message).
+CRASH_HEADER = "x-redelivered"
+_IN_FLIGHT = frozenset({SubTaskStatus.ASSIGNED, SubTaskStatus.RUNNING})
 
 
 @dataclass
@@ -79,6 +90,7 @@ class WorkerContext:
     executor: ThreadPoolExecutor = field(
         default_factory=lambda: ThreadPoolExecutor(max_workers=1)
     )
+    db_failures: int = 0
 
     def result(self, task: SubTaskMessage, **fields: Any) -> ResultMessage:
         return ResultMessage(
@@ -95,7 +107,7 @@ def handle(
     ctx: WorkerContext,
     channel: BlockingChannel,
     method: Basic.Deliver,
-    _properties: BasicProperties,
+    properties: BasicProperties,
     body: bytes,
 ) -> None:
     try:
@@ -114,9 +126,21 @@ def handle(
     def report(result: ResultMessage) -> None:
         publish(channel, RESULTS_QUEUE, result.to_body())
 
-    state = subtask_state(ctx.db, task.subtask_id)
+    crashed = bool(method.redelivered or (properties.headers or {}).get(CRASH_HEADER))
+    try:
+        state = subtask_state(ctx.db, task.subtask_id)
+        ctx.db_failures = 0
+    except DB_ERRORS as exc:
+        _requeue_fresh(ctx, channel, method, properties, body, crashed, exc, log)
+        return
+
     if state is None or state.closed or task.attempt < state.attempt:
         logger.info("stale work message, dropping it", extra=log)
+        channel.basic_ack(method.delivery_tag)
+        return
+
+    if not crashed and task.attempt == state.attempt and state.status in _IN_FLIGHT:
+        logger.info("attempt already taken by another worker, dropping it", extra=log)
         channel.basic_ack(method.delivery_tag)
         return
 
@@ -135,7 +159,7 @@ def handle(
         logger.info("sub-task cancelled without processing", extra=log)
         return
 
-    if method.redelivered:
+    if crashed:
         report(
             ctx.result(
                 task,
@@ -177,6 +201,40 @@ def handle(
     report(terminal)
     channel.basic_ack(method.delivery_tag)
     logger.info("sub-task finished", extra={**log, "status": terminal.status.value})
+
+
+def _requeue_fresh(
+    ctx: WorkerContext,
+    channel: BlockingChannel,
+    method: Basic.Deliver,
+    properties: BasicProperties,
+    body: bytes,
+    crashed: bool,
+    error: BaseException,
+    log: dict[str, Any],
+) -> None:
+    """Database down during the pre-start check: put a fresh copy back in
+    the queue (same priority and ids, crash marker kept) and ack this one,
+    then pause before taking the next message."""
+    headers = dict(properties.headers or {})
+    if crashed:
+        headers[CRASH_HEADER] = True
+    publish(
+        channel,
+        method.routing_key,
+        body,
+        priority=properties.priority,
+        message_id=properties.message_id,
+        headers=headers,
+    )
+    channel.basic_ack(method.delivery_tag)
+    delay = backoff_delay(ctx.db_failures)
+    ctx.db_failures += 1
+    logger.warning(
+        "database unreachable before starting, requeued the message",
+        extra={**log, "retry_in_s": round(delay, 2), "error": repr(error)},
+    )
+    channel.connection.sleep(delay)
 
 
 def _wait(
