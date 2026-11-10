@@ -172,8 +172,9 @@ Read a secret with
 generated ones contain characters such as `#` and `%`. Tuning knobs:
 `RETRY_MAX_ATTEMPTS` (3), `RETRY_BASE_DELAY_S` (2), `RETRY_MAX_DELAY_S` (60),
 `HEARTBEAT_TIMEOUT_S` (60), `SWEEP_INTERVAL_S` (5), `OUTBOX_POLL_S` (1). The
-schema (`src/coordinator/db/schema.sql`) is applied at every startup. Deploy
-scripts (SSM) are not written yet.
+schema (`src/coordinator/db/schema.sql`) is applied at every startup. The
+SSM deploy scripts build `AMQP_URL`/`DATABASE_URL` from these secrets on the
+instance (`docs/deployment.md`).
 
 ## Running locally
 

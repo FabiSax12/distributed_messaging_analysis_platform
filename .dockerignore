@@ -1,9 +1,27 @@
+# Build context is the repo root (see infra/docker/*/Dockerfile). Keep it small
+# and keep anything local or secret out of the images.
 .git
-.venv
-dataset
-experiments/*/results
+.gitignore
+.envrc
+.env
+.env.*
+**/.venv
 **/__pycache__
-*.pt
-.env*
-**/*.tfstate*
-**/*.tfvars
+**/*.py[cod]
+**/.pytest_cache
+**/.ruff_cache
+**/.mypy_cache
+**/node_modules
+**/tests
+*.tfstate*
+*.tfvars
+**/.terraform
+
+frontend
+dataset
+docs
+experiments/*
+!experiments/m1_memory/
+experiments/m1_memory/results
+infra
+scripts
