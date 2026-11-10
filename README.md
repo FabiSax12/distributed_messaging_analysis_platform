@@ -60,12 +60,14 @@ Dev costs roughly 280-300 USD/month if left running 24x7. Run `terraform destroy
 | Path | Contents |
 |---|---|
 | `infra/terraform/` | Terraform modules and the `dev` environment (`prod` is a template only) |
-| `infra/docker/`, `infra/monitoring/`, `infra/tls/` | Container, monitoring and TLS assets (not started) |
-| `services/coordinator/` | API, admission, scheduler and state (not started) |
-| `services/workers/` | Common code plus text, image and audio workers (not started) |
+| `infra/docker/` | Local stack for end-to-end runs (RabbitMQ, PostgreSQL, MinIO) |
+| `infra/monitoring/`, `infra/tls/` | Monitoring and TLS assets (not started) |
+| `services/coordinator/` | REST API, outbox relay, barrier, retries and recovery on RabbitMQ + PostgreSQL; admission (M1) and scheduler (M2) pending |
+| `services/workers/` | Worker runner for the text, image and audio pools; analysis ops pending |
+| `services/shared/` | Wire contracts: routing, messages, states, models, broker topology, analysis results |
 | `services/storage/`, `services/security/` | Chunking, content store, backpressure; auth, crypto, custody log (not started) |
 | `services/load_client/`, `services/alerts/` | Burst load client and alerting (not started) |
-| `frontend/` | React dashboard (not started) |
+| `frontend/` | React dashboard (Vite) |
 | `dataset/` | Test data, generators and ground truth |
 | `experiments/` | Per-module measurements and fault tests |
 | `scripts/` | Bootstrap, dataset, deploy and measurement scripts |
