@@ -1,21 +1,14 @@
-"""Dashboard alert rules: PURE functions, they do not touch AWS.
+"""Dashboard alert rules: PURE functions, no I/O.
 
 `monitor/snapshot.py` calls them with the data it already gathered (queues,
-workers) and puts the result in `StateResponse.alerts`. Separating them like
-this allows testing the rules without `moto` (see `services/coordinator/tests/test_balancer.py`).
-
-TODO(actuation): for now these rules only generate `Alert`s for the
-dashboard to show. The natural next step (out of scope for this
-batch) would be for the balancer to publish a configuration that workers
-read to decide when to help another pool (beyond the static `POLL_ORDER`
-of `shared.routing`), e.g. an item in a table/S3 with per-pool weights
-that the worker runner consults before choosing a queue.
+workers) and puts the result in `StateResponse.alerts`. For now they only
+feed the dashboard; publishing severe ones through SNS is a later change.
 """
 
 from __future__ import annotations
 
 from shared.api import Alert, QueueDepth, WorkerView
-from shared.routing import DLQ, Pool, Priority, queue_key
+from shared.routing import DLQ, Pool, work_queue
 
 
 def check_pool_saturation(
@@ -25,7 +18,7 @@ def check_pool_saturation(
     queue_threshold: int,
     cpu_threshold: float,
 ) -> list[Alert]:
-    """A pool is saturated if its high-priority queue is above the
+    """A pool is saturated if its queue has more ready messages than the
     threshold, or if all of its live workers exceed the CPU threshold.
 
     "All of its live workers" on purpose: if a single worker is above
@@ -36,15 +29,15 @@ def check_pool_saturation(
     depth_by_queue = {q.queue: q for q in queues}
 
     for pool in Pool:
-        high_queue = queue_key(pool, Priority.HIGH)
-        depth = depth_by_queue.get(high_queue)
+        queue = work_queue(pool)
+        depth = depth_by_queue.get(queue)
         if depth is not None and depth.visible > queue_threshold:
             alerts.append(
                 Alert(
                     level="warning",
                     pool=pool.value,
                     message=(
-                        f"queue '{high_queue}' has {depth.visible} visible messages "
+                        f"queue '{queue}' has {depth.visible} ready messages "
                         f"(threshold {queue_threshold})"
                     ),
                 )
@@ -82,7 +75,7 @@ def check_pools_without_workers(workers: list[WorkerView]) -> list[Alert]:
 
 
 def check_dlq(queues: list[QueueDepth]) -> list[Alert]:
-    """Any message in the DLQ is a subtask that exhausted its retries."""
+    """Any message in the dead-letter queue is a message a consumer rejected."""
     depth_by_queue = {q.queue: q for q in queues}
     dlq = depth_by_queue.get(DLQ)
     if dlq is not None and (dlq.visible > 0 or dlq.in_flight > 0):
@@ -90,7 +83,7 @@ def check_dlq(queues: list[QueueDepth]) -> list[Alert]:
             Alert(
                 level="critical",
                 pool="-",
-                message=f"DLQ has {dlq.visible} visible messages and {dlq.in_flight} in flight",
+                message=f"dead-letter queue has {dlq.visible} messages",
             )
         ]
     return []
@@ -100,7 +93,7 @@ def check_dead_workers(workers: list[WorkerView]) -> list[Alert]:
     """A worker that stopped sending heartbeats.
 
     Uses the `alive` field already computed by `monitor/snapshot.py` (with
-    `WorkerItem.is_alive()`/`WORKER_DEAD_AFTER_S`) instead of recomputing it here,
+    `WorkerItem.is_alive()`/`HEARTBEAT_TIMEOUT_S`) instead of recomputing it here,
     so that all the rules in this pass see the same `now` instant.
     """
     return [

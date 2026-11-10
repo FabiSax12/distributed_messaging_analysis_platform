@@ -1,11 +1,11 @@
 """Closing a whole CASE: the "all at once" half of the barrier.
 
-Triggered when `pending_count` reaches 0 (from `barrier/close.py`) or
-when the sweeper finds a case that sat at zero without being closed (the
-process died between the `TransactWriteItems` and this function). It is
-IDEMPOTENT: it can run in parallel from several threads/calls for the same
-case without corrupting anything, because the only effect that cannot be
-repeated safely (`finalize_write`) is protected by an atomic condition.
+Triggered when `pending_count` reaches 0 (from `barrier/close.py`) or when
+the sweeper finds a case that sat at zero without being closed (the process
+died between the barrier transaction and this function). It is IDEMPOTENT:
+it can run in parallel from several threads for the same case, because the
+only effect that cannot be repeated safely (`finalize_write`) is guarded in
+SQL by "status is not terminal yet".
 """
 
 from __future__ import annotations
@@ -30,39 +30,35 @@ def finalize(
     cases_repo: CasesRepo,
     subtasks_repo: SubTasksRepo,
     s3: Any,
-    results_bucket: str,
+    bucket: str,
 ) -> CaseStatus | None:
-    case = cases_repo.get(case_id, consistent=True)
-    if case is None or case.status in TERMINAL_CASE:
+    case = cases_repo.get(case_id)
+    if case is None or case.status in TERMINAL_CASE or case.pending_count > 0:
         return None
 
-    subtasks = subtasks_repo.query_by_case(case_id)
+    subtasks = subtasks_repo.list_by_case(case_id)
     status = final_case_status(case.total, case.failed_count, case.cancel_requested)
     finished_at = utcnow()
 
     report = build_report(case, subtasks, status=status, finished_at=finished_at)
     key = report_key(case_id)
 
-    # The report is uploaded BEFORE writing the case's final state, on
-    # purpose: if the process dies between the two writes, the case is still
-    # not terminal and the sweeper (or another duplicate `close_subtask`) will
-    # call `finalize` again, which will overwrite the same report at the
-    # same deterministic key (no harm in overwriting it with the same
-    # content) and this time will manage to write the final state.
+    # The report is uploaded BEFORE writing the case's final state: if the
+    # process dies in between, the case is still open and the sweeper calls
+    # `finalize` again, overwriting the same deterministic key.
     s3.put_object(
-        Bucket=results_bucket,
+        Bucket=bucket,
         Key=key,
         Body=report.model_dump_json().encode("utf-8"),
         ContentType="application/json",
     )
 
-    wrote = cases_repo.finalize_write(
+    if not cases_repo.finalize_write(
         case_id, status, finished_at=finished_at, report_key=key
-    )
-    if not wrote:
-        # Another thread/call won the race and already left the case terminal.
+    ):
         logger.debug(
-            "finalize: another process already closed the case", extra={"case_id": case_id}
+            "finalize: another thread already closed the case",
+            extra={"case_id": case_id},
         )
         return None
 

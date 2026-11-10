@@ -16,7 +16,6 @@ from datetime import timedelta
 from typing import Any
 
 from botocore.exceptions import ClientError
-
 from shared.api import StateResponse
 from shared.messages import utcnow
 from shared.models import LoadSample, WorkerLoad, load_samples_chunk_key

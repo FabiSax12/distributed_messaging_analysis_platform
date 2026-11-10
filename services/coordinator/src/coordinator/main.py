@@ -1,16 +1,14 @@
 """Coordinator entry point.
 
-Concurrency model: a single `uvicorn --workers 1` process (the
-container/process command is part of the planned Docker Compose setup) with several Python threads for all the
-background work. Each thread is I/O-bound: SQS long-polling (`consumers/`), periodic
-DynamoDB Scans/Queries (`barrier/sweeper.py`, `monitor/snapshot.py`) or
-S3 Get/PutObject (`monitor/samples.py`). The GIL is not a problem here because
-none of these threads does heavy computation in pure Python; they spend almost all their
-time blocked in network syscalls inside boto3/urllib3, which release it.
-A single process also keeps the shared in-memory state simple (the
-snapshot of `monitor/snapshot.py` and the ring buffer of `monitor/samples.py`):
-they live as module-level variables protected by a lock, with no need for IPC or
-an external backend just for this.
+Concurrency model: a single `uvicorn --workers 1` process with several Python
+threads for the background work. Each thread is I/O-bound (AMQP sockets,
+PostgreSQL queries, S3 calls), so the GIL is not a problem; a single process
+also keeps the in-memory snapshot and metrics ring buffer simple.
+
+pika is not thread-safe, so every thread that talks to RabbitMQ owns its own
+connection: N results consumers, the dead-letter consumer, the outbox relay
+and the snapshot loop. PostgreSQL is shared through one thread-safe
+`psycopg_pool.ConnectionPool`.
 """
 
 from __future__ import annotations
@@ -18,11 +16,12 @@ from __future__ import annotations
 import asyncio
 import logging
 import threading
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI
+from shared.broker import consume
 from shared.routing import DLQ, RESULTS_QUEUE
 
 from .api import cases as cases_router
@@ -31,12 +30,13 @@ from .api import health as health_router
 from .api import state as state_router
 from .api import uploads as uploads_router
 from .api import ws as ws_router
-from .aws import dynamodb_client, s3_client, sqs_client
+from .aws import s3_client
+from .barrier.close import Barrier
 from .barrier.sweeper import run_sweep
 from .config import get_settings
-from .consumers.base import SqsConsumerThread
 from .consumers.dlq import build_dlq_handler
 from .consumers.results import build_results_handler
+from .db import apply_schema, create_pool
 from .logging import setup_logging
 from .monitor.broadcaster import Broadcaster
 from .monitor.samples import run_samples_loop
@@ -44,6 +44,7 @@ from .monitor.snapshot import run_snapshot_loop
 from .repo.cases import CasesRepo
 from .repo.subtasks import SubTasksRepo
 from .repo.workers import WorkersRepo
+from .routing.outbox import OutboxRelay
 from .security import OriginVerifyMiddleware
 
 logger = logging.getLogger(__name__)
@@ -52,20 +53,22 @@ _THREAD_JOIN_TIMEOUT_S = 10.0
 
 
 def _sweeper_loop(stop_event: threading.Event, interval: float, **kwargs: Any) -> None:
-    """`run_sweep` is a single pass (see its docstring); we build the loop here,
-    just as we do with those of `monitor/snapshot.py` and `monitor/samples.py`.
-
-    Like `run_snapshot_once`, a failed pass is logged and dropped
-    instead of killing the thread forever: the initial sweep in `lifespan`
-    (outside this loop) must fail loudly if something is misconfigured,
-    but a transient failure in a recurring pass should not
-    stop sweeping stalled cases forever."""
-    while not stop_event.is_set():
+    """A failed recurring pass is logged and retried on the next cycle (the
+    startup pass in `lifespan` runs outside this loop and fails loudly)."""
+    while not stop_event.wait(interval):
         try:
             run_sweep(**kwargs)
         except Exception:
             logger.exception("run_sweep failed, will retry on the next cycle")
-        stop_event.wait(interval)
+
+
+def _thread(
+    thread_name: str, target: Callable[..., None], /, *args: Any, **kwargs: Any
+) -> threading.Thread:
+    # Positional-only: `target` may itself take a `name` keyword (`consume`).
+    return threading.Thread(
+        target=target, args=args, kwargs=kwargs, name=thread_name, daemon=True
+    )
 
 
 @asynccontextmanager
@@ -73,112 +76,114 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     setup_logging()
     settings = get_settings()
 
-    # The loop is bound BEFORE starting the background threads: the
-    # snapshot thread needs this reference ready in order to call `publish`
-    # (see the docstring of `Broadcaster.bind_loop`).
+    # The loop is bound BEFORE starting the background threads: the snapshot
+    # thread needs it to call `publish` (see `Broadcaster.bind_loop`).
     broadcaster = Broadcaster()
     broadcaster.bind_loop(asyncio.get_running_loop())
     app.state.broadcaster = broadcaster
 
-    dynamodb = dynamodb_client()
-    s3 = s3_client()
-    sqs = sqs_client()
-
-    cases_repo = CasesRepo(dynamodb, settings.TABLE_CASES)
-    subtasks_repo = SubTasksRepo(dynamodb, settings.TABLE_SUBTASKS)
-    workers_repo = WorkersRepo(dynamodb, settings.TABLE_WORKERS)
-
-    # Synchronous sweep BEFORE accepting traffic: repairs any case that
-    # was left half-closed by a previous crash/restart of the process.
-    run_sweep(
-        cases_repo=cases_repo,
-        subtasks_repo=subtasks_repo,
-        sqs=sqs,
-        queue_urls=settings.QUEUE_URLS,
-        s3=s3,
-        results_bucket=settings.RESULTS_BUCKET,
+    db = create_pool(settings.DATABASE_URL, max_size=settings.DB_POOL_MAX)
+    apply_schema(db)
+    cases_repo = CasesRepo(db)
+    subtasks_repo = SubTasksRepo(db)
+    workers_repo = WorkersRepo(db)
+    barrier = Barrier(
+        cases=cases_repo,
+        subtasks=subtasks_repo,
+        s3=s3_client(),
+        bucket=settings.S3_BUCKET,
+        settings=settings,
     )
+    outbox = OutboxRelay(
+        subtasks_repo=subtasks_repo,
+        amqp_url=settings.AMQP_URL,
+        poll_s=settings.OUTBOX_POLL_S,
+    )
+    app.state.db = db
+    app.state.barrier = barrier
+    app.state.outbox = outbox
+
+    # Synchronous sweep BEFORE accepting traffic: repairs whatever a previous
+    # crash left half-done. The outbox relay's first pass then republishes
+    # anything committed but never confirmed by the broker.
+    sweep_kwargs = {
+        "barrier": barrier,
+        "workers_repo": workers_repo,
+        "heartbeat_timeout_s": settings.HEARTBEAT_TIMEOUT_S,
+    }
+    run_sweep(**sweep_kwargs)
 
     stop_event = threading.Event()
     threads: dict[str, threading.Thread] = {}
 
-    results_handler = build_results_handler(
-        cases_repo=cases_repo,
-        subtasks_repo=subtasks_repo,
-        dynamodb=dynamodb,
-        s3=s3,
-        results_bucket=settings.RESULTS_BUCKET,
-    )
-    for i in range(settings.RESULTS_CONSUMER_THREADS):
-        thread = SqsConsumerThread(
-            sqs=sqs,
-            queue_url=settings.QUEUE_URLS[RESULTS_QUEUE],
-            handler=results_handler,
-            stop_event=stop_event,
-            name=f"results-consumer-{i}",
-        )
+    def add(thread: threading.Thread) -> None:
         threads[thread.name] = thread
 
-    dlq_handler = build_dlq_handler(
-        cases_repo=cases_repo,
-        subtasks_repo=subtasks_repo,
-        dynamodb=dynamodb,
-        s3=s3,
-        results_bucket=settings.RESULTS_BUCKET,
-        dlq_assumed_attempts=settings.DLQ_ASSUMED_ATTEMPTS,
+    results_handler = build_results_handler(barrier)
+    for i in range(settings.RESULTS_CONSUMER_THREADS):
+        name = f"results-consumer-{i}"
+        add(
+            _thread(
+                name,
+                consume,
+                settings.AMQP_URL,
+                RESULTS_QUEUE,
+                results_handler,
+                stop_event,
+                name=f"coordinator-{name}",
+                prefetch=settings.RESULTS_PREFETCH,
+            )
+        )
+    add(
+        _thread(
+            "dlq-consumer",
+            consume,
+            settings.AMQP_URL,
+            DLQ,
+            build_dlq_handler(barrier),
+            stop_event,
+            name="coordinator-dlq-consumer",
+            prefetch=10,
+        )
     )
-    dlq_thread = SqsConsumerThread(
-        sqs=sqs,
-        queue_url=settings.QUEUE_URLS[DLQ],
-        handler=dlq_handler,
-        stop_event=stop_event,
-        name="dlq-consumer",
+    add(_thread("outbox-relay", outbox.run, stop_event))
+    add(
+        _thread(
+            "sweeper-loop",
+            _sweeper_loop,
+            stop_event,
+            settings.SWEEP_INTERVAL_S,
+            **sweep_kwargs,
+        )
     )
-    threads[dlq_thread.name] = dlq_thread
-
-    sweeper_thread = threading.Thread(
-        target=_sweeper_loop,
-        args=(stop_event, settings.SWEEP_INTERVAL_S),
-        kwargs={
-            "cases_repo": cases_repo,
-            "subtasks_repo": subtasks_repo,
-            "sqs": sqs,
-            "queue_urls": settings.QUEUE_URLS,
-            "s3": s3,
-            "results_bucket": settings.RESULTS_BUCKET,
-        },
-        name="sweeper-loop",
-        daemon=True,
+    add(
+        _thread(
+            "snapshot-loop",
+            run_snapshot_loop,
+            stop_event,
+            settings.SNAPSHOT_INTERVAL_S,
+            amqp_url=settings.AMQP_URL,
+            cases_repo=cases_repo,
+            subtasks_repo=subtasks_repo,
+            workers_repo=workers_repo,
+            recent_cases_limit=settings.RECENT_CASES_IN_STATE,
+            heartbeat_timeout_s=settings.HEARTBEAT_TIMEOUT_S,
+            pool_saturation_queue_threshold=settings.POOL_SATURATION_QUEUE_THRESHOLD,
+            pool_saturation_cpu_percent=settings.POOL_SATURATION_CPU_PERCENT,
+            broadcaster=broadcaster,
+        )
     )
-    threads[sweeper_thread.name] = sweeper_thread
-
-    snapshot_thread = threading.Thread(
-        target=run_snapshot_loop,
-        args=(stop_event, settings.SNAPSHOT_INTERVAL_S),
-        kwargs={
-            "cases_repo": cases_repo,
-            "subtasks_repo": subtasks_repo,
-            "workers_repo": workers_repo,
-            "sqs": sqs,
-            "queue_urls": settings.QUEUE_URLS,
-            "recent_cases_limit": settings.RECENT_CASES_IN_STATE,
-            "pool_saturation_queue_threshold": settings.POOL_SATURATION_QUEUE_THRESHOLD,
-            "pool_saturation_cpu_percent": settings.POOL_SATURATION_CPU_PERCENT,
-            "broadcaster": broadcaster,
-        },
-        name="snapshot-loop",
-        daemon=True,
+    add(
+        _thread(
+            "samples-loop",
+            run_samples_loop,
+            stop_event,
+            settings.SAMPLE_INTERVAL_S,
+            settings.METRICS_FLUSH_S,
+            s3=s3_client(),
+            results_bucket=settings.S3_BUCKET,
+        )
     )
-    threads[snapshot_thread.name] = snapshot_thread
-
-    samples_thread = threading.Thread(
-        target=run_samples_loop,
-        args=(stop_event, settings.SAMPLE_INTERVAL_S, settings.METRICS_FLUSH_S),
-        kwargs={"s3": s3, "results_bucket": settings.RESULTS_BUCKET},
-        name="samples-loop",
-        daemon=True,
-    )
-    threads[samples_thread.name] = samples_thread
 
     for thread in threads.values():
         thread.start()
@@ -189,6 +194,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         yield
     finally:
         stop_event.set()
+        outbox.wake()
         for thread in threads.values():
             thread.join(timeout=_THREAD_JOIN_TIMEOUT_S)
             if thread.is_alive():
@@ -197,11 +203,12 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
                     thread.name,
                 )
         await broadcaster.close_all(code=1001)
+        db.close()
         logger.info("coordinator shut down")
 
 
 app = FastAPI(
-    title="Coordinator — Distributed Multimedia Processing",
+    title="Coordinator — Distributed Messaging Analysis",
     description=(
         "Coordinator API: case ingestion, subtask tracking via "
         "barrier and live state. Swagger UI at `/docs`, OpenAPI JSON "

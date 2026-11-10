@@ -1,25 +1,21 @@
 """Coordinator configuration, read from environment variables.
 
-On an instance the variables are provided by the deployment (planned: Docker
-Compose per node, values taken from `terraform output`). On a laptop, a
-`.env.local` (gitignored) at the repo root can hold the same variables. `_repo_root()` finds that root by walking up from
-this file (marker: `.git/` or `infra/`) instead of assuming a fixed
-directory depth, so it keeps working if the package is relocated.
+Locally the values point at `infra/docker/compose.dev.yml` (RabbitMQ,
+PostgreSQL, MinIO); on AWS they come from `terraform output` plus the
+credentials in Secrets Manager (see `services/coordinator/README.md`). A
+gitignored `.env.local` at the repo root can hold the same variables;
+`_repo_root()` finds that root by walking up from this file. No credential
+has a default here.
 """
 
 from __future__ import annotations
 
-import json
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
 
-from pydantic import field_validator
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from shared.models import TABLE_CASES, TABLE_SUBTASKS, TABLE_WORKERS
-from shared.routing import ALL_WORK_QUEUES, DLQ, RESULTS_QUEUE
-
-_EXPECTED_QUEUE_KEYS = frozenset({*ALL_WORK_QUEUES, RESULTS_QUEUE, DLQ})
+from shared.models import DEFAULT_HEARTBEAT_TIMEOUT_S
 
 
 def _repo_root() -> Path:
@@ -37,18 +33,17 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    AWS_REGION: str
+    # amqp://user:pass@localhost:5672/ locally, amqps://user:pass@host:5671 on
+    # Amazon MQ (URL-encode the password).
+    AMQP_URL: str
+    # postgresql://user:pass@host:5432/db (add ?sslmode=require for RDS).
+    DATABASE_URL: str
+    DB_POOL_MAX: int = Field(default=10, ge=2)
 
-    # JSON: {"video-alta": "https://sqs..../video-alta", ..., "resultados": "...", "dlq": "..."}
-    # Must contain exactly the 8 logical queues (6 work + results + dlq).
-    QUEUE_URLS: dict[str, str]
-
-    TABLE_CASES: str = TABLE_CASES
-    TABLE_SUBTASKS: str = TABLE_SUBTASKS
-    TABLE_WORKERS: str = TABLE_WORKERS
-
-    DATASET_BUCKET: str
-    RESULTS_BUCKET: str
+    # One bucket holds dataset inputs (any prefix), results/ and metrics/.
+    S3_BUCKET: str
+    S3_ENDPOINT_URL: str | None = None  # MinIO locally; unset on AWS
+    AWS_REGION: str = "us-east-1"
 
     API_PORT: int = 8000
     ORIGIN_VERIFY_SECRET: str = ""
@@ -58,40 +53,34 @@ class Settings(BaseSettings):
     WS_PING_INTERVAL_S: float = 25.0
     WS_MAX_CLIENTS: int = 20
 
-    RESULTS_CONSUMER_THREADS: int = 4
+    # Retries (B.4): attempts per sub-task including the first one, and the
+    # exponential backoff delay = min(MAX_DELAY, BASE * 2^(attempt - 1)).
+    RETRY_MAX_ATTEMPTS: int = Field(default=3, ge=1)
+    RETRY_BASE_DELAY_S: float = Field(default=2.0, ge=0)
+    RETRY_MAX_DELAY_S: float = Field(default=60.0, ge=0)
+
+    # A worker whose last heartbeat is older than this is marked dead and its
+    # in-flight sub-tasks are retried.
+    HEARTBEAT_TIMEOUT_S: float = Field(default=DEFAULT_HEARTBEAT_TIMEOUT_S, gt=0)
+
+    RESULTS_CONSUMER_THREADS: int = Field(default=4, ge=1)
+    RESULTS_PREFETCH: int = Field(default=20, ge=1)
     PRESIGN_EXPIRES_S: int = 900
-    SWEEP_INTERVAL_S: int = 60
-    SNAPSHOT_INTERVAL_S: int = 2
+    SWEEP_INTERVAL_S: float = 5.0
+    OUTBOX_POLL_S: float = 1.0
+    SNAPSHOT_INTERVAL_S: float = 2.0
     SAMPLE_INTERVAL_S: int = 5
     METRICS_FLUSH_S: int = 60
-    DLQ_ASSUMED_ATTEMPTS: int = 3
     RECENT_CASES_IN_STATE: int = 50
 
-    # monitor/balancer.py: visible messages in a pool's high-priority queue above
-    # which it is considered "saturated" (see the docstring of
-    # `balancer.check_pool_saturation`).
+    # monitor/balancer.py: ready messages in a pool queue above which it is
+    # considered "saturated" (see `balancer.check_pool_saturation`).
     POOL_SATURATION_QUEUE_THRESHOLD: int = 20
     POOL_SATURATION_CPU_PERCENT: float = 85.0
 
-    @field_validator("QUEUE_URLS", mode="before")
-    @classmethod
-    def _parse_queue_urls(cls, value: Any) -> Any:
-        if isinstance(value, str):
-            value = json.loads(value)
-        return value
-
-    @field_validator("QUEUE_URLS")
-    @classmethod
-    def _check_queue_urls(cls, value: dict[str, str]) -> dict[str, str]:
-        missing = _EXPECTED_QUEUE_KEYS - value.keys()
-        extra = value.keys() - _EXPECTED_QUEUE_KEYS
-        if missing:
-            raise ValueError(
-                f"QUEUE_URLS does not have the 8 expected queues, missing: {sorted(missing)}"
-            )
-        if extra:
-            raise ValueError(f"QUEUE_URLS trae claves inesperadas: {sorted(extra)}")
-        return value
+    def retry_delay_s(self, attempt: int) -> float:
+        """Delay before dispatching `attempt + 1` after attempt `attempt` failed."""
+        return min(self.RETRY_MAX_DELAY_S, self.RETRY_BASE_DELAY_S * 2 ** (attempt - 1))
 
 
 @lru_cache

@@ -1,100 +1,51 @@
-"""Results queue handler: a single one, shared by N consumer threads.
+"""Results queue handler, shared by `RESULTS_CONSUMER_THREADS` consumer threads.
 
-`RESULTS_CONSUMER_THREADS` instances of `SqsConsumerThread` run this same
-handler against the same queue; that is fine, SQS spreads messages across
-concurrent receivers, there is no need to split the queue.
+Each thread has its own AMQP connection (`shared.broker.consume`) and the
+broker spreads messages among them, so results can be applied out of order;
+`state_order` and the barrier's `closed` flag make that safe. The message is
+acked only after its effect is committed in PostgreSQL: if the coordinator
+dies before the ack, the broker redelivers it and the guarded writes turn
+the duplicate into a no-op.
 """
 
 from __future__ import annotations
 
 import logging
-from collections.abc import Callable
-from typing import Any
 
+from pika.adapters.blocking_connection import BlockingChannel
+from pika.spec import Basic, BasicProperties
+from shared.broker import OnMessage
 from shared.messages import ResultMessage
-from shared.states import TERMINAL_SUBTASK, SubTaskStatus
+from shared.states import TERMINAL_SUBTASK
 
-from ..barrier.close import close_subtask
-from ..repo.cases import CasesRepo
-from ..repo.subtasks import SubTasksRepo
+from ..barrier.close import Barrier
 
 logger = logging.getLogger(__name__)
 
 
-def build_results_handler(
-    *,
-    cases_repo: CasesRepo,
-    subtasks_repo: SubTasksRepo,
-    dynamodb: Any,
-    s3: Any,
-    results_bucket: str,
-) -> Callable[[dict[str, Any]], bool]:
-    def handle(message: dict[str, Any]) -> bool:
+def build_results_handler(barrier: Barrier) -> OnMessage:
+    def handle(
+        channel: BlockingChannel,
+        method: Basic.Deliver,
+        _properties: BasicProperties,
+        body: bytes,
+    ) -> None:
         try:
-            result = ResultMessage.from_body(message["Body"])
+            result = ResultMessage.from_body(body)
         except Exception:
-            logger.exception(
-                "unreadable ResultMessage, discarding (poison message)",
-                extra={"message_id": message.get("MessageId")},
-            )
-            return True
+            logger.exception("unreadable ResultMessage, dead-lettering it")
+            channel.basic_reject(method.delivery_tag, requeue=False)
+            return
 
-        if result.status not in TERMINAL_SUBTASK:
-            return _apply_progress(
-                result, cases_repo=cases_repo, subtasks_repo=subtasks_repo
-            )
-
-        try:
-            close_subtask(
-                result,
-                cases_repo=cases_repo,
-                subtasks_repo=subtasks_repo,
-                dynamodb=dynamodb,
-                s3=s3,
-                results_bucket=results_bucket,
-            )
-        except Exception:
-            # close_subtask only re-raises for the "must retry" case
-            # (see its docstring); anything else we treat the same way, as a
-            # transient failure: do not delete, let SQS retry.
-            logger.exception(
-                "close_subtask failed, will retry",
+        if result.status in TERMINAL_SUBTASK:
+            barrier.apply_terminal(result)
+        elif barrier.subtasks.update_progress(result):
+            barrier.cases.mark_processing_if_needed(result.case_id)
+        else:
+            logger.debug(
+                "stale/duplicate progress, ignoring",
                 extra={"case_id": result.case_id, "subtask_id": result.subtask_id},
             )
-            return False
-        return True
+        channel.basic_ack(method.delivery_tag)
 
     return handle
-
-
-def _apply_progress(
-    result: ResultMessage, *, cases_repo: CasesRepo, subtasks_repo: SubTasksRepo
-) -> bool:
-    """Non-terminal states: assigned/running/retrying."""
-    updated = subtasks_repo.update_progress(
-        result.case_id,
-        result.subtask_id,
-        status=result.status.value,
-        state_order=result.order,
-        attempt=result.attempt,
-        worker_id=result.worker_id,
-        progress=result.progress,
-        started_at_if_missing=result.started_at,
-    )
-    if not updated:
-        # `state_order` did not advance: old or duplicate message. It is already
-        # superseded by a newer write, so it is deleted anyway.
-        logger.debug(
-            "stale/duplicate progress, ignoring",
-            extra={"case_id": result.case_id, "subtask_id": result.subtask_id},
-        )
-        return True
-
-    # These two case writes are conditional (see repo/cases.py) so they
-    # never overwrite a terminal state with stale progress.
-    if result.status is SubTaskStatus.RETRYING:
-        cases_repo.mark_retrying_if_not_terminal(result.case_id)
-    else:  # assigned / running
-        cases_repo.mark_processing_if_needed(result.case_id)
-
-    return True

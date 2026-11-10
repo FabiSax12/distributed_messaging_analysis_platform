@@ -4,7 +4,6 @@ the background. Neither touches AWS within the request."""
 from __future__ import annotations
 
 from fastapi import APIRouter
-
 from shared.api import MetricsResponse, StateResponse
 
 from ..monitor.samples import get_recent_samples

@@ -1,26 +1,26 @@
 """Translate the files of a `CreateCaseRequest` into planned subtasks.
 
-Does no I/O (neither S3 nor DynamoDB): the API layer (batch 2) validates with `head_object`
-that `input_key` exists in the dataset bucket BEFORE calling `plan_case`.
+Does no I/O (neither S3 nor PostgreSQL): the API layer validates with
+`head_object` that `input_key` exists in the bucket BEFORE calling `plan_case`.
 """
 
 from __future__ import annotations
 
+from shared.analysis import CasePriority
 from shared.api import CaseFileIn
 from shared.messages import ErrorCode, ErrorInfo, utcnow
 from shared.models import SubTaskItem
 from shared.routing import (
     OPERATION_POOL,
-    Priority,
     UnsupportedFile,
-    detect_media_type,
+    detect_content_type,
     plan_operations,
 )
 from shared.states import SubTaskStatus, state_order
 
 
 def plan_case(
-    files: list[CaseFileIn], case_id: str, priority: Priority
+    files: list[CaseFileIn], case_id: str, priority: CasePriority
 ) -> tuple[list[SubTaskItem], int]:
     """Planned subtasks + how many were born already failed (unsupported format).
 
@@ -39,8 +39,7 @@ def plan_case(
             subtask_id = f"{case_id}-{counter:04d}"
             counter += 1
             # A single prefailed subtask per FILE (not one per requested
-            # operation): we do not know which pool to assign it to because not even the media
-            # type could be determined, so it is never enqueued.
+            # operation): there is no pool for it, so it is never published.
             subtasks.append(
                 SubTaskItem(
                     case_id=case_id,
@@ -60,9 +59,9 @@ def plan_case(
             prefailed_count += 1
             continue
 
-        # plan_operations already validated the media type, so it is never None here.
-        media_type = detect_media_type(file.input_key)
-        assert media_type is not None
+        # plan_operations already validated the content type, so it is never None here.
+        content_type = detect_content_type(file.input_key)
+        assert content_type is not None
 
         for operation in operations:
             subtask_id = f"{case_id}-{counter:04d}"
@@ -72,7 +71,7 @@ def plan_case(
                     case_id=case_id,
                     subtask_id=subtask_id,
                     input_key=file.input_key,
-                    media_type=media_type,
+                    media_type=content_type,
                     operation=operation,
                     pool=OPERATION_POOL[operation],
                     priority=priority,

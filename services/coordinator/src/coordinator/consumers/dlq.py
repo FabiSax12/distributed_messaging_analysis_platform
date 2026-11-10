@@ -1,62 +1,48 @@
-"""DLQ handler: subtasks that exhausted their SQS retries.
+"""Dead-letter queue handler.
 
-If a message from a work queue exhausts `maxReceiveCount` (worker died
-mid-process, unhandled exception, etc.), SQS moves it here. The
-coordinator consumes it and records it as `failed` via
-`shared.messages.result_from_dlq`, exactly as if the worker had
-reported the failure itself.
+Messages land here when a consumer rejects them without requeue: a worker
+that cannot parse a work message, or the coordinator rejecting an unreadable
+result. A dead-lettered `SubTaskMessage` is recorded as `failed` /
+`dead_lettered` (not retried: the message itself is the problem), so its
+case can still close. Anything else is logged and dropped.
 """
 
 from __future__ import annotations
 
 import logging
-from collections.abc import Callable
-from typing import Any
 
-from shared.messages import SubTaskMessage, result_from_dlq
+from pika.adapters.blocking_connection import BlockingChannel
+from pika.spec import Basic, BasicProperties
+from pydantic import ValidationError
+from shared.broker import OnMessage
+from shared.messages import SubTaskMessage, result_from_dead_letter
 
-from ..barrier.close import close_subtask
-from ..repo.cases import CasesRepo
-from ..repo.subtasks import SubTasksRepo
+from ..barrier.close import Barrier
 
 logger = logging.getLogger(__name__)
 
 
-def build_dlq_handler(
-    *,
-    cases_repo: CasesRepo,
-    subtasks_repo: SubTasksRepo,
-    dynamodb: Any,
-    s3: Any,
-    results_bucket: str,
-    dlq_assumed_attempts: int,
-) -> Callable[[dict[str, Any]], bool]:
-    def handle(message: dict[str, Any]) -> bool:
+def build_dlq_handler(barrier: Barrier) -> OnMessage:
+    def handle(
+        channel: BlockingChannel,
+        method: Basic.Deliver,
+        properties: BasicProperties,
+        body: bytes,
+    ) -> None:
         try:
-            subtask_message = SubTaskMessage.from_body(message["Body"])
-        except Exception:
-            logger.exception(
-                "unreadable SubTaskMessage in the DLQ, discarding",
-                extra={"message_id": message.get("MessageId")},
+            subtask = SubTaskMessage.from_body(body)
+        except ValidationError:
+            logger.warning(
+                "dead-lettered message is not a SubTaskMessage, dropping it",
+                extra={
+                    "headers": properties.headers,
+                    "body": body[:500].decode(errors="replace"),
+                },
             )
-            return True
+            channel.basic_ack(method.delivery_tag)
+            return
 
-        result = result_from_dlq(subtask_message, dlq_assumed_attempts)
-        try:
-            close_subtask(
-                result,
-                cases_repo=cases_repo,
-                subtasks_repo=subtasks_repo,
-                dynamodb=dynamodb,
-                s3=s3,
-                results_bucket=results_bucket,
-            )
-        except Exception:
-            logger.exception(
-                "close_subtask failed for a DLQ message, will retry",
-                extra={"case_id": result.case_id, "subtask_id": result.subtask_id},
-            )
-            return False
-        return True
+        barrier.apply_terminal(result_from_dead_letter(subtask))
+        channel.basic_ack(method.delivery_tag)
 
     return handle

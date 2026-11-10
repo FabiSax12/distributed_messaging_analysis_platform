@@ -1,281 +1,295 @@
-"""Access to the `SubTasks` table (PK `case_id`, SK `subtask_id`).
+"""Access to the `subtasks` table, including the barrier write.
 
-The coordinator writes all of a subtask's state; workers never
-touch this table directly, they only publish `ResultMessage` (see
-`shared/messages.py`). The `state_order < :so` condition on progress/close
-writes is the defense against SQS Standard's reordering/duplication
-(see `shared/states.py`).
+The coordinator writes all of a sub-task's state; workers only publish
+`ResultMessage`s. Every progress/close write is guarded by `state_order`
+(see `shared/states.py`), so a late or duplicate result never overwrites a
+newer state, and by `closed`, so the barrier counts each sub-task once.
 """
 
 from __future__ import annotations
 
-import logging
-import time
-from collections.abc import Iterator
+from collections import Counter
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
-from botocore.exceptions import ClientError
+from psycopg import Connection
+from psycopg.types.json import Jsonb
+from psycopg_pool import ConnectionPool
+from shared.messages import ErrorInfo, ResultMessage
+from shared.models import SubTaskItem
+from shared.states import SubTaskStatus, state_order
 
-from shared.messages import ResultMessage
-from shared.models import SubTaskItem, _floats_to_decimal, from_item, to_item
+from .cases import TERMINAL_CASE_VALUES
 
-from ..aws import deserialize_item, serialize_item
+_COLUMNS = (
+    "subtask_id, case_id, input_key, media_type, operation, pool, queue, priority, "
+    "status, state_order, attempt, enqueued, retry_at, worker_id, progress, "
+    "created_at, started_at, finished_at, output_keys, output_meta, error, params"
+)
 
-logger = logging.getLogger(__name__)
-
-_BATCH_SIZE = 25
-_BATCH_RETRY_MAX = 5
+_IN_FLIGHT = (SubTaskStatus.ASSIGNED.value, SubTaskStatus.RUNNING.value)
+_DISPATCHABLE = (SubTaskStatus.PENDING.value, SubTaskStatus.RETRYING.value)
 
 
-def _is_conditional_check_failed(exc: ClientError) -> bool:
-    return (
-        exc.response.get("Error", {}).get("Code") == "ConditionalCheckFailedException"
-    )
+@dataclass(frozen=True)
+class InFlight:
+    subtask_id: str
+    case_id: str
+    attempt: int
+    worker_id: str
+
+
+def _row_params(item: SubTaskItem) -> dict[str, Any]:
+    params = item.model_dump()
+    params["output_keys"] = Jsonb(params["output_keys"])
+    params["output_meta"] = Jsonb(params["output_meta"])
+    params["params"] = Jsonb(params["params"])
+    params["error"] = Jsonb(params["error"]) if params["error"] is not None else None
+    return params
+
+
+def _error(error: ErrorInfo | None) -> Jsonb | None:
+    return Jsonb(error.model_dump(mode="json")) if error is not None else None
+
+
+def insert_many(conn: Connection[Any], items: list[SubTaskItem]) -> None:
+    """INSERT inside the caller's transaction (the outbox in `api/cases.py`)."""
+    placeholders = ", ".join(f"%({name.strip()})s" for name in _COLUMNS.split(","))
+    with conn.cursor() as cur:
+        cur.executemany(
+            f"INSERT INTO subtasks ({_COLUMNS}) VALUES ({placeholders})",
+            [_row_params(item) for item in items],
+        )
 
 
 class SubTasksRepo:
-    def __init__(self, client: Any, table_name: str) -> None:
-        self._client = client
-        self._table = table_name
+    def __init__(self, pool: ConnectionPool) -> None:
+        self._pool = pool
 
-    def batch_put_planned(self, items: list[SubTaskItem]) -> None:
-        """Write a case's planned subtasks, 25 at a time (BatchWriteItem limit).
+    # ---- Reads ---------------------------------------------------------------- #
 
-        `UnprocessedItems` (partial throttling of the batch) are retried with a
-        simple backoff; if after `_BATCH_RETRY_MAX` attempts something
-        is still unwritten, we treat it as a real error (it should not happen
-        with `PAY_PER_REQUEST` barring an extreme spike).
-        """
-        for start in range(0, len(items), _BATCH_SIZE):
-            chunk = items[start : start + _BATCH_SIZE]
-            requests = [
-                {"PutRequest": {"Item": serialize_item(to_item(item))}}
-                for item in chunk
-            ]
-            self._write_batch_with_retry({self._table: requests})
+    def get(self, subtask_id: str) -> SubTaskItem | None:
+        with self._pool.connection() as conn:
+            row = conn.execute(
+                f"SELECT {_COLUMNS} FROM subtasks WHERE subtask_id = %s", (subtask_id,)
+            ).fetchone()
+        return SubTaskItem.model_validate(row) if row else None
 
-    def _write_batch_with_retry(
-        self, request_items: dict[str, list[dict[str, Any]]]
-    ) -> None:
-        attempt = 0
-        while request_items:
-            resp = self._client.batch_write_item(RequestItems=request_items)
-            request_items = resp.get("UnprocessedItems") or {}
-            if not request_items:
-                return
-            attempt += 1
-            if attempt > _BATCH_RETRY_MAX:
-                raise RuntimeError(
-                    f"BatchWriteItem: items left unwritten after {_BATCH_RETRY_MAX} retries"
-                )
-            pending = sum(len(v) for v in request_items.values())
-            logger.warning(
-                "BatchWriteItem left unprocessed items, retrying",
-                extra={"attempt": attempt, "pending_items": pending},
-            )
-            time.sleep(0.1 * (2**attempt))
+    def list_by_case(self, case_id: str) -> list[SubTaskItem]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                f"SELECT {_COLUMNS} FROM subtasks WHERE case_id = %s ORDER BY subtask_id",
+                (case_id,),
+            ).fetchall()
+        return [SubTaskItem.model_validate(row) for row in rows]
 
-    def get(self, case_id: str, subtask_id: str) -> SubTaskItem | None:
-        """Targeted GetItem of one specific subtask, without a condition.
+    def status_counts(self, case_ids: list[str]) -> dict[str, dict[str, int]]:
+        """{case_id: {status: count}} for the dashboard overview, in one query."""
+        counts: dict[str, Counter[str]] = {case_id: Counter() for case_id in case_ids}
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                """
+                SELECT case_id, status, count(*) AS n FROM subtasks
+                WHERE case_id = ANY(%s) GROUP BY case_id, status
+                """,
+                (case_ids,),
+            ).fetchall()
+        for row in rows:
+            counts[row["case_id"]][row["status"]] = row["n"]
+        return {case_id: dict(counter) for case_id, counter in counts.items()}
 
-        Used by `barrier/close.py` to tell apart, when the close
-        `TransactWriteItems` fails with `ConditionalCheckFailed` on the
-        SubTasks side, a real duplicate (the subtask exists, it just already
-        has a newer `state_order`) from an invalid reference (no
-        subtask exists with that id for that case), and to compare the
-        `pool` reported by a worker against the planned one.
-        """
-        resp = self._client.get_item(
-            TableName=self._table,
-            Key={"case_id": {"S": case_id}, "subtask_id": {"S": subtask_id}},
-        )
-        item = resp.get("Item")
-        if item is None:
-            return None
-        return from_item(SubTaskItem, deserialize_item(item))
+    def in_flight_by_pool(self) -> dict[str, int]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                """
+                SELECT pool, count(*) AS n FROM subtasks
+                WHERE status = ANY(%s) AND NOT closed GROUP BY pool
+                """,
+                (list(_IN_FLIGHT),),
+            ).fetchall()
+        return {row["pool"]: row["n"] for row in rows}
 
-    def mark_enqueued(self, case_id: str, subtask_id: str) -> None:
-        self._client.update_item(
-            TableName=self._table,
-            Key={"case_id": {"S": case_id}, "subtask_id": {"S": subtask_id}},
-            UpdateExpression="SET enqueued = :true",
-            ExpressionAttributeValues={":true": {"BOOL": True}},
-        )
+    # ---- Outbox ---------------------------------------------------------------- #
 
-    def update_progress(
-        self,
-        case_id: str,
-        subtask_id: str,
-        *,
-        status: str,
-        state_order: int,
-        attempt: int,
-        worker_id: str | None,
-        progress: int | None,
-        started_at_if_missing: datetime | None,
-    ) -> bool:
-        """Update a NON-terminal state (assigned/running/retrying).
+    def list_dispatchable(self, limit: int) -> list[SubTaskItem]:
+        """New sub-tasks not confirmed by the broker yet, plus retries that are due."""
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                f"""
+                SELECT {_COLUMNS} FROM subtasks
+                WHERE NOT enqueued AND NOT closed AND queue IS NOT NULL
+                  AND status = ANY(%s) AND (retry_at IS NULL OR retry_at <= now())
+                ORDER BY subtask_id LIMIT %s
+                """,
+                (list(_DISPATCHABLE), limit),
+            ).fetchall()
+        return [SubTaskItem.model_validate(row) for row in rows]
 
-        Conditioned on `state_order < :so`: if a late or duplicate message
-        arrives after a newer one, the condition fails and we return
-        `False`; it is the expected case, not an exception (SQS can deliver
-        `running` after `retrying` of the same attempt due to reordering).
-        All `running` updates of the same attempt share `state_order`
-        (`shared.states.state_order` only distinguishes by status/attempt, not by
-        progress), so when `progress` is given `state_order == :so` is also
-        accepted as long as the new progress is greater than the stored one;
-        otherwise a second `running` with more progress in the same
-        attempt would never be saved. `started_at` is set only once with
-        `if_not_exists`.
-        """
-        names = {"#st": "status", "#so": "state_order"}
-        values: dict[str, Any] = {
-            ":st": {"S": status},
-            ":so": {"N": str(state_order)},
-            ":at": {"N": str(attempt)},
-        }
-        set_parts = ["#st = :st", "#so = :so", "attempt = :at"]
-
-        if worker_id is not None:
-            values[":wi"] = {"S": worker_id}
-            set_parts.append("worker_id = :wi")
-        if progress is not None:
-            values[":pr"] = {"N": str(progress)}
-            set_parts.append("progress = :pr")
-        if started_at_if_missing is not None:
-            values[":sa"] = {"S": started_at_if_missing.isoformat()}
-            set_parts.append("started_at = if_not_exists(started_at, :sa)")
-
-        condition = "attribute_exists(subtask_id) AND #so < :so"
-        if progress is not None:
-            names["#pr"] = "progress"
-            condition = (
-                "attribute_exists(subtask_id) AND "
-                "(#so < :so OR (#so = :so AND (attribute_not_exists(#pr) OR #pr < :pr)))"
+    def mark_enqueued(self, published: list[tuple[str, int]]) -> None:
+        """`published` = (subtask_id, attempt). The attempt guard keeps a
+        confirmation of an old attempt from hiding a newer retry."""
+        if not published:
+            return
+        with self._pool.connection() as conn, conn.cursor() as cur:
+            cur.executemany(
+                "UPDATE subtasks SET enqueued = true WHERE subtask_id = %s AND attempt = %s",
+                published,
             )
 
-        try:
-            self._client.update_item(
-                TableName=self._table,
-                Key={"case_id": {"S": case_id}, "subtask_id": {"S": subtask_id}},
-                UpdateExpression="SET " + ", ".join(set_parts),
-                ConditionExpression=condition,
-                ExpressionAttributeNames=names,
-                ExpressionAttributeValues=values,
-            )
-        except ClientError as exc:
-            if _is_conditional_check_failed(exc):
-                return False
-            raise
-        return True
+    # ---- Progress, retry and close ---------------------------------------------- #
 
-    def build_close_update(self, result: ResultMessage) -> dict[str, Any]:
-        """Build the SubTasks `Update` for the barrier's `TransactWriteItems`.
+    def update_progress(self, result: ResultMessage) -> bool:
+        """Apply a NON-terminal state (assigned/running).
 
-        Same rationale as `CasesRepo.build_close_update`: `barrier/close.py`
-        combines both in a single transaction. `#so` is used both in the
-        condition (current `state_order` < new) and in the SET (new value)
-        because it is the same substitution: the condition is evaluated on the
-        value *before* the update. `output_meta` goes through `_floats_to_decimal`: workers
-        already avoid sending `float` there, but DynamoDB rejects them
-        outright and if one slips through the case gets stuck in `processing`
-        forever (the `TransactWriteItems` never gets to execute).
+        Accepted if `state_order` advances. Every `running` of one attempt
+        shares a `state_order`, so an equal order is also accepted when it
+        carries more progress than the stored one. Returns False for a stale
+        or duplicate message (expected, not an error).
         """
-        raw: dict[str, Any] = {
-            "status": result.status.value,
-            "attempt": result.attempt,
-            "output_keys": result.output_keys,
-            "output_meta": _floats_to_decimal(result.output_meta),
-        }
-        if result.worker_id is not None:
-            raw["worker_id"] = result.worker_id
-        if result.error is not None:
-            raw["error"] = result.error.model_dump(mode="json")
-        if result.finished_at is not None:
-            raw["finished_at"] = result.finished_at.isoformat()
-
-        serialized = serialize_item(raw)
-        names = {f"#{k}": k for k in raw} | {"#so": "state_order"}
-        values = {f":{k}": v for k, v in serialized.items()}
-        values[":so"] = {"N": str(result.order)}
-
-        set_expr = ", ".join(f"#{k} = :{k}" for k in raw) + ", #so = :so"
-
-        return {
-            "Update": {
-                "TableName": self._table,
-                "Key": {
-                    "case_id": {"S": result.case_id},
-                    "subtask_id": {"S": result.subtask_id},
+        with self._pool.connection() as conn:
+            cur = conn.execute(
+                """
+                UPDATE subtasks SET
+                    status = %(status)s,
+                    state_order = %(so)s,
+                    worker_id = COALESCE(%(worker_id)s, worker_id),
+                    progress = COALESCE(%(progress)s, progress),
+                    started_at = COALESCE(started_at, %(started_at)s)
+                WHERE subtask_id = %(subtask_id)s AND NOT closed
+                  AND (state_order < %(so)s
+                       OR (state_order = %(so)s AND %(progress)s::int IS NOT NULL
+                           AND COALESCE(progress, -1) < %(progress)s::int))
+                """,
+                {
+                    "status": result.status.value,
+                    "so": result.order,
+                    "worker_id": result.worker_id,
+                    "progress": result.progress,
+                    "started_at": result.started_at,
+                    "subtask_id": result.subtask_id,
                 },
-                "UpdateExpression": f"SET {set_expr}",
-                "ConditionExpression": "attribute_exists(subtask_id) AND #so < :so",
-                "ExpressionAttributeNames": names,
-                "ExpressionAttributeValues": values,
-            }
-        }
-
-    def query_by_case(
-        self, case_id: str, projection: list[str] | None = None
-    ) -> list[SubTaskItem]:
-        """All subtasks of a case (Query, not Scan: uses the PK).
-
-        If you pass `projection`, make sure to include the fields required by
-        `SubTaskItem` (case_id, subtask_id, input_key, priority) or
-        `from_item` will fail validation; `projection` is for the case where
-        the caller knows exactly what it needs, not for "fetch less and
-        use it anyway as if it were complete".
-        """
-        kwargs: dict[str, Any] = {
-            "TableName": self._table,
-            "KeyConditionExpression": "case_id = :case_id",
-            "ExpressionAttributeValues": {":case_id": {"S": case_id}},
-        }
-        if projection:
-            names = {f"#p{i}": field for i, field in enumerate(projection)}
-            kwargs["ProjectionExpression"] = ", ".join(names)
-            kwargs["ExpressionAttributeNames"] = names
-
-        items: list[SubTaskItem] = []
-        while True:
-            resp = self._client.query(**kwargs)
-            items.extend(
-                from_item(SubTaskItem, deserialize_item(item))
-                for item in resp.get("Items", [])
             )
-            last_key = resp.get("LastEvaluatedKey")
-            if not last_key:
-                return items
-            kwargs["ExclusiveStartKey"] = last_key
+            return cur.rowcount == 1
 
-    def scan_orphan_enqueue_candidates(
-        self, older_than: datetime
-    ) -> Iterator[SubTaskItem]:
-        """`pending` subtasks, not yet enqueued, created before `older_than`.
+    def schedule_retry(
+        self,
+        *,
+        subtask_id: str,
+        failed_attempt: int,
+        retry_at: datetime,
+        error: ErrorInfo,
+    ) -> str | None:
+        """`retrying` + backoff for the attempt after `failed_attempt`.
 
-        This is what the sweeper (`barrier/sweeper.py`) re-enqueues when a
-        `SendMessageBatch` partially failed and left a subtask with
-        `enqueued=false` hanging. Scan with FilterExpression: in production
-        it would be a GSI on `(status, enqueued)` to avoid sweeping the whole table.
+        Only if `failed_attempt` is still the current attempt and the
+        sub-task is open: a duplicate failure, or one from an attempt that
+        was already retried, changes nothing. `enqueued = false` hands the
+        sub-task back to the outbox relay, which publishes it at `retry_at`.
+        The case moves to `retrying` in the same transaction. Returns the
+        case_id, or None if nothing changed.
         """
-        kwargs: dict[str, Any] = {
-            "TableName": self._table,
-            "FilterExpression": (
-                "#st = :pending AND enqueued = :false AND created_at < :older_than"
-            ),
-            "ExpressionAttributeNames": {"#st": "status"},
-            "ExpressionAttributeValues": {
-                ":pending": {"S": "pending"},
-                ":false": {"BOOL": False},
-                ":older_than": {"S": older_than.isoformat()},
-            },
-        }
-        while True:
-            resp = self._client.scan(**kwargs)
-            for item in resp.get("Items", []):
-                yield from_item(SubTaskItem, deserialize_item(item))
-            last_key = resp.get("LastEvaluatedKey")
-            if not last_key:
-                return
-            kwargs["ExclusiveStartKey"] = last_key
+        next_attempt = failed_attempt + 1
+        with self._pool.connection() as conn:
+            row = conn.execute(
+                """
+                UPDATE subtasks SET
+                    status = %s, attempt = %s, state_order = %s, retry_at = %s,
+                    enqueued = false, worker_id = NULL, progress = NULL, error = %s
+                WHERE subtask_id = %s AND NOT closed AND attempt = %s
+                RETURNING case_id
+                """,
+                (
+                    SubTaskStatus.RETRYING.value,
+                    next_attempt,
+                    state_order(SubTaskStatus.RETRYING, next_attempt),
+                    retry_at,
+                    _error(error),
+                    subtask_id,
+                    failed_attempt,
+                ),
+            ).fetchone()
+            if row is None:
+                return None
+            conn.execute(
+                "UPDATE cases SET status = 'retrying' WHERE case_id = %s AND status <> ALL(%s)",
+                (row["case_id"], TERMINAL_CASE_VALUES),
+            )
+            return row["case_id"]
+
+    def close(self, result: ResultMessage) -> int | None:
+        """The barrier: close the sub-task and decrement its case, atomically.
+
+        One statement (a data-modifying CTE) so both rows change in the same
+        transaction or neither does. `NOT closed` makes it idempotent per
+        sub-task: a concurrent duplicate waits on the row lock, re-checks the
+        condition and updates nothing. A failure or cancellation only closes
+        the current attempt (an older attempt was already retried); a
+        completion from any attempt is valid work and closes it.
+
+        Returns the case's new `pending_count`, or None if the result was a
+        duplicate, stale or referenced an unknown sub-task.
+        """
+        failed = result.status is SubTaskStatus.FAILED
+        cancelled = result.status is SubTaskStatus.CANCELLED
+        with self._pool.connection() as conn:
+            row = conn.execute(
+                """
+                WITH closed_subtask AS (
+                    UPDATE subtasks SET
+                        status = %(status)s,
+                        state_order = %(so)s,
+                        closed = true,
+                        retry_at = NULL,
+                        worker_id = COALESCE(%(worker_id)s, worker_id),
+                        started_at = COALESCE(started_at, %(started_at)s),
+                        finished_at = %(finished_at)s,
+                        progress = CASE WHEN %(completed)s THEN 100 ELSE progress END,
+                        output_keys = %(output_keys)s,
+                        output_meta = %(output_meta)s,
+                        error = %(error)s
+                    WHERE subtask_id = %(subtask_id)s AND case_id = %(case_id)s
+                      AND NOT closed AND state_order < %(so)s
+                      AND (%(completed)s OR attempt = %(attempt)s)
+                    RETURNING case_id
+                )
+                UPDATE cases SET
+                    pending_count = cases.pending_count - 1,
+                    failed_count = cases.failed_count + %(failed)s,
+                    cancelled_count = cases.cancelled_count + %(cancelled)s
+                FROM closed_subtask
+                WHERE cases.case_id = closed_subtask.case_id
+                RETURNING cases.pending_count
+                """,
+                {
+                    "status": result.status.value,
+                    "so": result.order,
+                    "worker_id": result.worker_id,
+                    "started_at": result.started_at,
+                    "finished_at": result.finished_at,
+                    "completed": result.status is SubTaskStatus.COMPLETED,
+                    "output_keys": Jsonb(result.output_keys),
+                    "output_meta": Jsonb(result.output_meta),
+                    "error": _error(result.error),
+                    "subtask_id": result.subtask_id,
+                    "case_id": result.case_id,
+                    "attempt": result.attempt,
+                    "failed": int(failed),
+                    "cancelled": int(cancelled),
+                },
+            ).fetchone()
+        return row["pending_count"] if row else None
+
+    # ---- Crash detection ------------------------------------------------------- #
+
+    def list_in_flight_on_dead_workers(self) -> list[InFlight]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                """
+                SELECT s.subtask_id, s.case_id, s.attempt, s.worker_id
+                FROM subtasks s JOIN workers w ON w.worker_id = s.worker_id
+                WHERE w.status = 'dead' AND s.status = ANY(%s) AND NOT s.closed
+                """,
+                (list(_IN_FLIGHT),),
+            ).fetchall()
+        return [InFlight(**row) for row in rows]

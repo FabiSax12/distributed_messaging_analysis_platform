@@ -8,16 +8,16 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
     "boto3>=1.34",
+    "psycopg[binary]>=3.2",
+    "psycopg-pool>=3.2",
     "pydantic-settings>=2.4",
     "python-ulid>=2.2",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8.2",
-    "moto[sqs,dynamodb,s3]>=5.0",
     "ruff>=0.6",
-    "httpx>=0.27",
+    "httpx>=0.27",  # scripts/smoke.py
 ]
 
 [tool.uv.sources]

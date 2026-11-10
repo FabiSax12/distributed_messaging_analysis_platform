@@ -1,5 +1,5 @@
-"""`GET /api/dataset`: files available in the dataset bucket (used by the dashboard
-to build a case, and by a teammate's load generator to discover what to upload)."""
+"""`GET /api/dataset`: input files available in the bucket (used by the dashboard
+to build a case, and by the load client to discover what to submit)."""
 
 from __future__ import annotations
 
@@ -10,14 +10,15 @@ from typing import Any
 
 from botocore.exceptions import ClientError
 from fastapi import APIRouter
-
 from shared.api import DatasetEntry
-from shared.routing import detect_media_type
+from shared.models import RESERVED_PREFIXES
+from shared.routing import detect_content_type
 
 from .deps import S3Dep, SettingsDep
 
 router = APIRouter(tags=["dataset"])
 
+_MANIFEST = "manifest.json"
 _MANIFEST_TTL_S = 60.0
 _manifest_cache: dict[str, tuple[float, dict[str, Any]]] = {}
 _manifest_lock = threading.Lock()
@@ -29,21 +30,21 @@ def list_dataset(
     s3: S3Dep,
     prefix: str = "",
 ) -> list[DatasetEntry]:
-    manifest = _get_manifest(s3, settings.DATASET_BUCKET, prefix)
+    manifest = _get_manifest(s3, settings.S3_BUCKET, prefix)
 
     entries: list[DatasetEntry] = []
-    kwargs: dict[str, Any] = {"Bucket": settings.DATASET_BUCKET, "Prefix": prefix}
+    kwargs: dict[str, Any] = {"Bucket": settings.S3_BUCKET, "Prefix": prefix}
     while True:
         resp = s3.list_objects_v2(**kwargs)
         for obj in resp.get("Contents", []):
             key = obj["Key"]
-            if key.endswith(".json"):
-                continue  # manifest.json and similar are not media inputs
+            if key.startswith(RESERVED_PREFIXES) or key.endswith(_MANIFEST):
+                continue  # coordinator outputs and manifests are not inputs
             entries.append(
                 DatasetEntry(
                     input_key=key,
                     size_bytes=obj["Size"],
-                    media_type=detect_media_type(key),
+                    media_type=detect_content_type(key),
                     metadata=manifest.get(key, {}),
                 )
             )
@@ -74,7 +75,7 @@ def _get_manifest(s3: Any, bucket: str, prefix: str) -> dict[str, Any]:
 
 
 def _load_manifest(s3: Any, bucket: str, prefix: str) -> dict[str, Any]:
-    key = f"{prefix}manifest.json"
+    key = f"{prefix}{_MANIFEST}"
     try:
         resp = s3.get_object(Bucket=bucket, Key=key)
     except ClientError as exc:

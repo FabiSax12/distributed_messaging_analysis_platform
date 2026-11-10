@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
+from shared.analysis import AnalysisOperation, ContentType
 from shared.messages import ErrorCode
 from shared.models import (
     CaseItem,
@@ -12,18 +13,12 @@ from shared.models import (
     ReportSubTask,
     SubTaskItem,
 )
-from shared.routing import MediaType, Operation
 from shared.states import CaseStatus, SubTaskStatus
 
-_OPERATION_LABELS: dict[Operation, str] = {
-    Operation.VIDEO_CONVERT: "videos converted",
-    Operation.AUDIO_EXTRACT: "audios extracted",
-    Operation.VIDEO_THUMBNAIL: "video thumbnails generated",
-    Operation.AUDIO_CONVERT: "audios converted",
-    Operation.IMAGE_THUMBNAIL: "image thumbnails generated",
-    Operation.METADATA: "metadata extracted",
-    Operation.LYRICS: "lyrics retrieved",
-    Operation.CLASSIFY: "files classified",
+_OPERATION_LABELS: dict[AnalysisOperation, str] = {
+    AnalysisOperation.TEXT_ANALYZE: "texts analyzed",
+    AnalysisOperation.IMAGE_ANALYZE: "images analyzed",
+    AnalysisOperation.AUDIO_ANALYZE: "audios analyzed",
 }
 
 _ERROR_LABELS: dict[ErrorCode, str] = {
@@ -33,6 +28,8 @@ _ERROR_LABELS: dict[ErrorCode, str] = {
     ErrorCode.EXTERNAL_API_ERROR: "external API error",
     ErrorCode.TIMEOUT: "processing timeout",
     ErrorCode.RETRIES_EXHAUSTED: "retries exhausted",
+    ErrorCode.WORKER_LOST: "worker lost",
+    ErrorCode.DEAD_LETTERED: "dead-lettered message",
     ErrorCode.CANCELLED: "cancellation",
     ErrorCode.INTERNAL: "internal worker error",
 }
@@ -49,7 +46,7 @@ def build_report(
 
     `status` and `finished_at` are passed explicitly instead of being read from
     `case.status`/`case.finished_at`: by the time `finalize()` calls
-    this, it has not yet written the final state to DynamoDB (the report is
+    this, it has not yet written the final state to PostgreSQL (the report is
     uploaded to S3 BEFORE the case state, see the docstring of
     `barrier/finalize.py`), so `case` still carries the previous state
     (`processing`, `retrying`, ...).
@@ -82,7 +79,7 @@ def build_report(
 
 def _build_groups(subtasks: list[SubTaskItem]) -> list[ReportGroup]:
     """Group by (media_type, operation); prefailed ones fall into (None, None)."""
-    buckets: dict[tuple[MediaType | None, Operation | None], dict[str, int]] = {}
+    buckets: dict[tuple[ContentType | None, AnalysisOperation | None], dict[str, int]] = {}
     for subtask in subtasks:
         key = (subtask.media_type, subtask.operation)
         bucket = buckets.setdefault(
@@ -126,10 +123,10 @@ def _build_subtask_report(subtask: SubTaskItem) -> ReportSubTask:
 def _build_summary(case: CaseItem, subtasks: list[SubTaskItem]) -> str:
     """English text, e.g.:
 
-    'of 55 files — 30 audios converted, 10 videos converted,
-    15 video thumbnails generated, 2 failed due to unsupported format'
+    'of 55 files — 30 texts analyzed, 15 images analyzed,
+    8 audios analyzed, 2 failed due to unsupported format'
     """
-    completed_counts: dict[Operation, int] = {}
+    completed_counts: dict[AnalysisOperation, int] = {}
     error_counts: dict[ErrorCode, int] = {}
 
     for subtask in subtasks:

@@ -6,10 +6,9 @@ from __future__ import annotations
 from pathlib import PurePosixPath
 
 from fastapi import APIRouter, HTTPException
-from ulid import ULID
-
 from shared.api import UploadUrl, UploadUrlRequest, UploadUrlResponse
 from shared.models import upload_key
+from ulid import ULID
 
 from .deps import S3Dep, SettingsDep
 
@@ -28,7 +27,7 @@ def create_upload_urls(
 
     urls = [
         _presigned_upload(
-            s3, settings.DATASET_BUCKET, settings.PRESIGN_EXPIRES_S, upload_id, name
+            s3, settings.S3_BUCKET, settings.PRESIGN_EXPIRES_S, upload_id, name
         )
         for name in payload.filenames
     ]

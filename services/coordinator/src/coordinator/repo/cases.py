@@ -1,30 +1,30 @@
-"""Access to the `Cases` table (PK `case_id`).
+"""Access to the `cases` table.
 
-All writes that touch the barrier (`pending_count`, `closed`, failed/cancelled
-counts) are conditional so that two duplicate threads/messages
-never overwrite each other. See `barrier/close.py` and `barrier/finalize.py` for the
-reason behind each condition.
+Writes that touch the barrier (`pending_count`, failed/cancelled counts) live
+in `repo/subtasks.py::close` because they must share a transaction with the
+sub-task row. Every status write here is guarded in SQL (`status NOT IN
+terminal`), so two threads or duplicate messages never overwrite a terminal
+case.
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterator
 from datetime import datetime
 from typing import Any
 
-from botocore.exceptions import ClientError
-
+from psycopg import Connection
+from psycopg_pool import ConnectionPool
 from shared.messages import utcnow
-from shared.models import CaseItem, from_item, to_item
+from shared.models import CaseItem
 from shared.states import TERMINAL_CASE, CaseStatus
 
-from ..aws import deserialize_item, serialize_item
+TERMINAL_CASE_VALUES = [status.value for status in TERMINAL_CASE]
 
-# Reusable placeholders for "status IN (<terminal states>)".
-_TERMINAL_VALUES: dict[str, dict[str, str]] = {
-    f":term{i}": {"S": status.value} for i, status in enumerate(TERMINAL_CASE)
-}
-_TERMINAL_IN = ", ".join(_TERMINAL_VALUES)
+_COLUMNS = (
+    "case_id, label, source, priority, status, file_count, total, pending_count, "
+    "failed_count, cancelled_count, cancel_requested, created_at, started_at, "
+    "finished_at, report_key"
+)
 
 
 class CaseNotFound(Exception):
@@ -32,246 +32,144 @@ class CaseNotFound(Exception):
 
 
 class CaseAlreadyTerminal(Exception):
-    """The case has already reached a terminal state; the requested operation no longer applies."""
+    """The case has already reached a terminal state; the operation no longer applies."""
 
 
-def _is_conditional_check_failed(exc: ClientError) -> bool:
-    return (
-        exc.response.get("Error", {}).get("Code") == "ConditionalCheckFailedException"
+def insert(conn: Connection[Any], case: CaseItem) -> None:
+    """INSERT inside the caller's transaction (the outbox in `api/cases.py`)."""
+    conn.execute(
+        f"""
+        INSERT INTO cases ({_COLUMNS})
+        VALUES (%(case_id)s, %(label)s, %(source)s, %(priority)s, %(status)s,
+                %(file_count)s, %(total)s, %(pending_count)s, %(failed_count)s,
+                %(cancelled_count)s, %(cancel_requested)s, %(created_at)s,
+                %(started_at)s, %(finished_at)s, %(report_key)s)
+        """,
+        case.model_dump(),
     )
 
 
 class CasesRepo:
-    def __init__(self, client: Any, table_name: str) -> None:
-        self._client = client
-        self._table = table_name
+    def __init__(self, pool: ConnectionPool) -> None:
+        self._pool = pool
 
-    def put_new(self, case: CaseItem) -> None:
-        """PutItem conditioned on the case not existing.
-
-        We do not catch `ConditionalCheckFailedException`: it propagates as is
-        (as `botocore.exceptions.ClientError`) so the caller decides
-        what a duplicate `case_id` means (it should not happen, they are ULIDs).
-        """
-        self._client.put_item(
-            TableName=self._table,
-            Item=serialize_item(to_item(case)),
-            ConditionExpression="attribute_not_exists(case_id)",
-        )
-
-    def get(self, case_id: str, consistent: bool = True) -> CaseItem | None:
-        resp = self._client.get_item(
-            TableName=self._table,
-            Key={"case_id": {"S": case_id}},
-            ConsistentRead=consistent,
-        )
-        item = resp.get("Item")
-        if item is None:
-            return None
-        return from_item(CaseItem, deserialize_item(item))
+    def get(self, case_id: str) -> CaseItem | None:
+        with self._pool.connection() as conn:
+            row = conn.execute(
+                f"SELECT {_COLUMNS} FROM cases WHERE case_id = %s", (case_id,)
+            ).fetchone()
+        return CaseItem.model_validate(row) if row else None
 
     def update_cancel_requested(self, case_id: str) -> CaseItem:
-        """Set `cancel_requested = true`. 404 if it does not exist, 409 if already terminal.
-
-        We do a prior read to be able to tell "does not exist" apart from "already
-        terminal" with a clear message (the API translates them to 404/409), and
-        we also protect the write with the same condition: if the case
-        became terminal right between the read and the update, the
-        `ConditionalCheckFailedException` is also translated to
-        `CaseAlreadyTerminal` (the condition is the source of truth, the
-        prior read is only to give a better message in the common case).
-        """
-        existing = self.get(case_id, consistent=True)
-        if existing is None:
-            raise CaseNotFound(case_id)
-        if existing.status in TERMINAL_CASE:
-            raise CaseAlreadyTerminal(case_id)
-
-        try:
-            resp = self._client.update_item(
-                TableName=self._table,
-                Key={"case_id": {"S": case_id}},
-                UpdateExpression="SET cancel_requested = :true",
-                ConditionExpression=(
-                    f"attribute_exists(case_id) AND NOT (#st IN ({_TERMINAL_IN}))"
-                ),
-                ExpressionAttributeNames={"#st": "status"},
-                ExpressionAttributeValues={":true": {"BOOL": True}, **_TERMINAL_VALUES},
-                ReturnValues="ALL_NEW",
-            )
-        except ClientError as exc:
-            if _is_conditional_check_failed(exc):
-                raise CaseAlreadyTerminal(case_id) from exc
-            raise
-        return from_item(CaseItem, deserialize_item(resp["Attributes"]))
-
-    def build_close_update(
-        self, case_id: str, subtask_id: str, *, failed: bool, cancelled: bool
-    ) -> dict[str, Any]:
-        """Build the Cases `Update` for the barrier's `TransactWriteItems`.
-
-        `barrier/close.py` combines this with `SubTasksRepo.build_close_update`
-        in a single transaction: both tables are updated atomically or
-        neither is. `ADD closed :idSet` is a string-set add: idempotent (adding
-        the same `subtask_id` twice changes nothing), and the condition
-        `NOT contains(closed, :id)` is what makes a duplicate result
-        (the same `subtask_id` already closed earlier) fail the transaction instead
-        of subtracting `pending_count` twice.
-        """
-        return {
-            "Update": {
-                "TableName": self._table,
-                "Key": {"case_id": {"S": case_id}},
-                "UpdateExpression": (
-                    "ADD pending_count :minus_one, failed_count :f, "
-                    "cancelled_count :c, closed :id_set"
-                ),
-                "ConditionExpression": "attribute_exists(case_id) AND NOT contains(closed, :id)",
-                "ExpressionAttributeValues": {
-                    ":minus_one": {"N": "-1"},
-                    ":f": {"N": "1" if failed else "0"},
-                    ":c": {"N": "1" if cancelled else "0"},
-                    ":id_set": {"SS": [subtask_id]},
-                    ":id": {"S": subtask_id},
-                },
-            }
-        }
+        """Set `cancel_requested = true`. Raises CaseNotFound / CaseAlreadyTerminal."""
+        with self._pool.connection() as conn:
+            row = conn.execute(
+                f"""
+                UPDATE cases SET cancel_requested = true
+                WHERE case_id = %s AND status <> ALL(%s)
+                RETURNING {_COLUMNS}
+                """,
+                (case_id, TERMINAL_CASE_VALUES),
+            ).fetchone()
+            if row is None:
+                exists = conn.execute(
+                    "SELECT 1 FROM cases WHERE case_id = %s", (case_id,)
+                ).fetchone()
+                raise CaseAlreadyTerminal(case_id) if exists else CaseNotFound(case_id)
+        return CaseItem.model_validate(row)
 
     def finalize_write(
         self, case_id: str, status: CaseStatus, finished_at: datetime, report_key: str
     ) -> bool:
-        """UpdateItem conditioned on the case not already being terminal.
+        """Write the final status unless the case is already terminal.
 
-        Returns `False` (not an error) if the condition failed: it means
-        another concurrent call to `finalize()` already closed the case first;
-        `barrier/finalize.py` is idempotent on purpose so that the sweeper and
-        the normal barrier can overlap without problems.
+        Returns False when another `finalize()` won the race; that is why
+        `barrier/finalize.py` can run concurrently from several threads.
         """
-        values = serialize_item(
-            {
-                "status": status.value,
-                "finished_at": finished_at.isoformat(),
-                "report_key": report_key,
-            }
-        )
-        try:
-            self._client.update_item(
-                TableName=self._table,
-                Key={"case_id": {"S": case_id}},
-                UpdateExpression="SET #st = :status, finished_at = :finished_at, report_key = :report_key",
-                ConditionExpression=f"attribute_exists(case_id) AND NOT (#st IN ({_TERMINAL_IN}))",
-                ExpressionAttributeNames={"#st": "status"},
-                ExpressionAttributeValues={
-                    ":status": values["status"],
-                    ":finished_at": values["finished_at"],
-                    ":report_key": values["report_key"],
-                    **_TERMINAL_VALUES,
-                },
+        with self._pool.connection() as conn:
+            cur = conn.execute(
+                """
+                UPDATE cases SET status = %s, finished_at = %s, report_key = %s
+                WHERE case_id = %s AND status <> ALL(%s)
+                """,
+                (status.value, finished_at, report_key, case_id, TERMINAL_CASE_VALUES),
             )
-        except ClientError as exc:
-            if _is_conditional_check_failed(exc):
-                return False
-            raise
-        return True
+            return cur.rowcount == 1
 
     def mark_processing_if_needed(self, case_id: str) -> None:
-        """The case moves to `processing` the first time a subtask starts.
-
-        Only applies if the case is `queued` or `retrying`; if it is already
-        `processing` (another result already set it) or terminal, the condition
-        fails and we do nothing; it is an expected race, not an error.
-        `started_at` is set only once with `if_not_exists`.
-        """
-        try:
-            self._client.update_item(
-                TableName=self._table,
-                Key={"case_id": {"S": case_id}},
-                UpdateExpression=(
-                    "SET #st = :processing, "
-                    "started_at = if_not_exists(started_at, :now)"
+        """queued/retrying -> processing the first time a sub-task starts."""
+        with self._pool.connection() as conn:
+            conn.execute(
+                """
+                UPDATE cases
+                SET status = %s, started_at = COALESCE(started_at, %s)
+                WHERE case_id = %s AND status IN (%s, %s)
+                """,
+                (
+                    CaseStatus.PROCESSING.value,
+                    utcnow(),
+                    case_id,
+                    CaseStatus.QUEUED.value,
+                    CaseStatus.RETRYING.value,
                 ),
-                ConditionExpression="#st IN (:queued, :retrying)",
-                ExpressionAttributeNames={"#st": "status"},
-                ExpressionAttributeValues={
-                    ":processing": {"S": CaseStatus.PROCESSING.value},
-                    ":queued": {"S": CaseStatus.QUEUED.value},
-                    ":retrying": {"S": CaseStatus.RETRYING.value},
-                    ":now": {"S": utcnow().isoformat()},
-                },
             )
-        except ClientError as exc:
-            if _is_conditional_check_failed(exc):
-                return
-            raise
 
-    def mark_retrying_if_not_terminal(self, case_id: str) -> None:
-        """The case moves to `retrying` as long as it is not terminal (same logic as above)."""
-        try:
-            self._client.update_item(
-                TableName=self._table,
-                Key={"case_id": {"S": case_id}},
-                UpdateExpression="SET #st = :retrying",
-                ConditionExpression=f"attribute_exists(case_id) AND NOT (#st IN ({_TERMINAL_IN}))",
-                ExpressionAttributeNames={"#st": "status"},
-                ExpressionAttributeValues={
-                    ":retrying": {"S": CaseStatus.RETRYING.value},
-                    **_TERMINAL_VALUES,
-                },
-            )
-        except ClientError as exc:
-            if _is_conditional_check_failed(exc):
-                return
-            raise
+    def mark_retrying_if_not_terminal(
+        self, case_id: str, conn: Connection[Any] | None = None
+    ) -> None:
+        sql = "UPDATE cases SET status = %s WHERE case_id = %s AND status <> ALL(%s)"
+        params = (CaseStatus.RETRYING.value, case_id, TERMINAL_CASE_VALUES)
+        if conn is not None:
+            conn.execute(sql, params)
+            return
+        with self._pool.connection() as own:
+            own.execute(sql, params)
 
-    def scan_non_terminal(self) -> Iterator[CaseItem]:
-        """Paginated Scan of cases that have not reached a terminal state.
+    def list_open(self) -> list[CaseItem]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                f"""
+                SELECT {_COLUMNS} FROM cases
+                WHERE status <> ALL(%s) ORDER BY case_id
+                """,
+                (TERMINAL_CASE_VALUES,),
+            ).fetchall()
+        return [CaseItem.model_validate(row) for row in rows]
 
-        At the scale of hundreds of cases a Scan+filter is acceptable; in
-        production this would be a GSI on `status` (Scan is O(entire table)
-        even if it filters afterwards).
-        """
-        kwargs: dict[str, Any] = {
-            "TableName": self._table,
-            "FilterExpression": f"NOT (#st IN ({_TERMINAL_IN}))",
-            "ExpressionAttributeNames": {"#st": "status"},
-            "ExpressionAttributeValues": _TERMINAL_VALUES,
-        }
-        while True:
-            resp = self._client.scan(**kwargs)
-            for item in resp.get("Items", []):
-                yield from_item(CaseItem, deserialize_item(item))
-            last_key = resp.get("LastEvaluatedKey")
-            if not last_key:
-                return
-            kwargs["ExclusiveStartKey"] = last_key
+    def list_stuck_barriers(self) -> list[str]:
+        """Open cases whose barrier already reached zero (finalize never ran)."""
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                "SELECT case_id FROM cases WHERE pending_count = 0 AND status <> ALL(%s)",
+                (TERMINAL_CASE_VALUES,),
+            ).fetchall()
+        return [row["case_id"] for row in rows]
 
     def list_recent(self, status: str | None, limit: int) -> list[CaseItem]:
-        """Most recent cases, optionally filtered by `status`.
+        """Most recent first (`case_id` is a ULID, sortable by creation)."""
+        with self._pool.connection() as conn:
+            if status is None:
+                rows = conn.execute(
+                    f"SELECT {_COLUMNS} FROM cases ORDER BY case_id DESC LIMIT %s",
+                    (limit,),
+                ).fetchall()
+            else:
+                rows = conn.execute(
+                    f"""
+                    SELECT {_COLUMNS} FROM cases WHERE status = %s
+                    ORDER BY case_id DESC LIMIT %s
+                    """,
+                    (status, limit),
+                ).fetchall()
+        return [CaseItem.model_validate(row) for row in rows]
 
-        Without a date GSI, we do a Scan + in-memory sort by `case_id`:
-        `case_id` is a ULID (time + random, lexicographically sortable
-        by creation), so sorting strings in descending order gives the most
-        recent first. At this project's scale (hundreds of cases) a full
-        Scan is acceptable; with thousands a GSI
-        `status -> created_at` would be advisable.
-        """
-        kwargs: dict[str, Any] = {"TableName": self._table}
-        if status is not None:
-            kwargs["FilterExpression"] = "#st = :status"
-            kwargs["ExpressionAttributeNames"] = {"#st": "status"}
-            kwargs["ExpressionAttributeValues"] = {":status": {"S": status}}
-
-        items: list[CaseItem] = []
-        while True:
-            resp = self._client.scan(**kwargs)
-            items.extend(
-                from_item(CaseItem, deserialize_item(item))
-                for item in resp.get("Items", [])
-            )
-            last_key = resp.get("LastEvaluatedKey")
-            if not last_key:
-                break
-            kwargs["ExclusiveStartKey"] = last_key
-
-        items.sort(key=lambda c: c.case_id, reverse=True)
-        return items[:limit]
+    def list_recent_terminal(self, limit: int) -> list[CaseItem]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                f"""
+                SELECT {_COLUMNS} FROM cases WHERE status = ANY(%s)
+                ORDER BY case_id DESC LIMIT %s
+                """,
+                (TERMINAL_CASE_VALUES, limit),
+            ).fetchall()
+        return [CaseItem.model_validate(row) for row in rows]
