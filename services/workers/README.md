@@ -165,6 +165,14 @@ uv run --all-packages python services/workers/scripts/local_e2e.py
 uv run ruff check services/workers
 ```
 
+## Process supervision
+
+A worker exits if PostgreSQL is unreachable for more than 30 s at startup.
+Run it under a restart policy (Docker `restart: unless-stopped`, or systemd
+`Restart=always` with `TimeoutStopSec` above `op_timeout_s`, since SIGTERM
+lets the current sub-task finish). Database and broker outages after
+startup are retried in place.
+
 ## Out of scope
 
 - Cancelling a sub-task that is already running (checked before starting).

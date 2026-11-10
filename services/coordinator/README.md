@@ -171,7 +171,7 @@ Read a secret with
 (JSON with `username`/`password`). URL-encode passwords in the URLs: the
 generated ones contain characters such as `#` and `%`. Tuning knobs:
 `RETRY_MAX_ATTEMPTS` (3), `RETRY_BASE_DELAY_S` (2), `RETRY_MAX_DELAY_S` (60),
-`HEARTBEAT_TIMEOUT_S` (15), `SWEEP_INTERVAL_S` (5), `OUTBOX_POLL_S` (1). The
+`HEARTBEAT_TIMEOUT_S` (60), `SWEEP_INTERVAL_S` (5), `OUTBOX_POLL_S` (1). The
 schema (`src/coordinator/db/schema.sql`) is applied at every startup. Deploy
 scripts (SSM) are not written yet.
 
@@ -193,6 +193,24 @@ uv run --package coordinator python services/coordinator/scripts/smoke.py \
 `services/workers/scripts/local_e2e.py` automates all of this plus the
 worker-crash and coordinator-restart scenarios. RabbitMQ management UI:
 <http://127.0.0.1:15673> (dev/dev). Lint with `uv run ruff check services/coordinator`.
+
+## Process supervision
+
+The coordinator exits if PostgreSQL is unreachable for more than 30 s at
+startup (pool open timeout), and so does a worker. Run both under a restart
+policy: `restart: unless-stopped` in Docker, or systemd `Restart=always`
+with `TimeoutStopSec` above the workers' `op_timeout_s` (a stopping worker
+finishes its current sub-task first). Once running, database and broker
+outages are retried in place.
+
+## Known limitations
+
+- A late `worker_lost` for an attempt whose `completed` result was published
+  but not acked can be applied after a retry was already scheduled; on the
+  final attempt this can record `retries_exhausted` for work that actually
+  completed.
+- Real in-flight cancellation is not implemented: `cancel_requested` is only
+  checked by workers before a sub-task starts.
 
 ## Seams for the OS modules (not implemented)
 
