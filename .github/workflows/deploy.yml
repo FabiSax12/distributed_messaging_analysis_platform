@@ -1,0 +1,180 @@
+# Deploys main to AWS: build and push the four images, roll them out to the
+# instances over SSM, publish the dashboard, then smoke-check CloudFront.
+# Authentication is OIDC (no stored keys); see docs/deployment.md for the
+# one-time setup and the repository variables this workflow reads.
+#
+# Optional hardening: a GitHub `environment: dev` on the job adds required
+# reviewers, but the OIDC subject then becomes repo:<repo>:environment:dev and
+# the role in infra/terraform/modules/ci_oidc must be changed to trust that subject.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - "docs/**"
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Roll out this existing ECR tag (rollback). Empty: build and deploy the current commit."
+        required: false
+        default: ""
+        type: string
+      dry_run:
+        description: "Dry run: build without pushing, check which nodes are SSM-online, send nothing."
+        required: false
+        default: false
+        type: boolean
+
+# One deploy at a time; a newer push waits instead of interrupting a rollout.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Build, deploy, publish
+    # The role only trusts main: any other ref would fail at the OIDC login.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      # Non-secret values, set once as repository variables (docs/deployment.md).
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      AWS_DEPLOY_ROLE_ARN: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+      ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
+      ECR_REPO_PREFIX: ${{ vars.ECR_REPO_PREFIX }}
+      S3_BUCKET: ${{ vars.S3_BUCKET }}
+      RDS_ENDPOINT: ${{ vars.RDS_ENDPOINT }}
+      RDS_DB_NAME: ${{ vars.RDS_DB_NAME }}
+      MQ_ENDPOINT: ${{ vars.MQ_ENDPOINT }}
+      RDS_SECRET_ARN: ${{ vars.RDS_SECRET_ARN }}
+      MQ_SECRET_ARN: ${{ vars.MQ_SECRET_ARN }}
+      ORIGIN_VERIFY_SECRET_ARN: ${{ vars.ORIGIN_VERIFY_SECRET_ARN }}
+      LOG_GROUP_PREFIX: ${{ vars.LOG_GROUP_PREFIX }}
+      SITE_BUCKET: ${{ vars.SITE_BUCKET }}
+      DISTRIBUTION_ID: ${{ vars.DISTRIBUTION_ID }}
+      CLOUDFRONT_URL: ${{ vars.CLOUDFRONT_URL }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Check configuration and decide what to do
+        id: plan
+        env:
+          INPUT_IMAGE_TAG: ${{ inputs.image_tag }}
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          missing=""
+          for name in AWS_REGION AWS_DEPLOY_ROLE_ARN ECR_REGISTRY ECR_REPO_PREFIX S3_BUCKET \
+            RDS_ENDPOINT RDS_DB_NAME MQ_ENDPOINT RDS_SECRET_ARN MQ_SECRET_ARN \
+            ORIGIN_VERIFY_SECRET_ARN LOG_GROUP_PREFIX SITE_BUCKET DISTRIBUTION_ID CLOUDFRONT_URL; do
+            [ -n "${!name}" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository variables:$missing (see docs/deployment.md)"
+            exit 1
+          fi
+
+          if [ -n "$INPUT_IMAGE_TAG" ]; then
+            # Rollback: the image already exists in ECR, do not rebuild or touch the dashboard.
+            if ! [[ "$INPUT_IMAGE_TAG" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$ ]]; then
+              echo "::error::image_tag is not a valid Docker tag"
+              exit 1
+            fi
+            tag="$INPUT_IMAGE_TAG"
+            build=false
+          else
+            tag="$(git rev-parse --short HEAD)"
+            build=true
+          fi
+          dry_run=false
+          [ "$INPUT_DRY_RUN" = true ] && dry_run=true
+
+          {
+            echo "tag=$tag"
+            echo "build=$build"
+            echo "dry_run=$dry_run"
+          } >> "$GITHUB_OUTPUT"
+          {
+            echo "### Deploy plan"
+            echo "- image tag: \`$tag\`"
+            echo "- build and publish dashboard: $build"
+            echo "- dry run: $dry_run"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ env.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-deploy-${{ github.run_id }}
+
+      - name: Build and push images
+        if: steps.plan.outputs.build == 'true'
+        env:
+          IMAGE_TAG: ${{ steps.plan.outputs.tag }}
+          PUSH: ${{ steps.plan.outputs.dry_run == 'true' && '0' || '1' }}
+        run: scripts/deploy/build-and-push.sh
+
+      - name: Roll out to the instances
+        env:
+          IMAGE_TAG: ${{ steps.plan.outputs.tag }}
+          INSTANCE_DISCOVERY: tags
+          DRY_RUN: ${{ steps.plan.outputs.dry_run == 'true' && '1' || '0' }}
+        # Nodes that are not SSM-online (stopped workers) are skipped and
+        # listed; the script fails only if a deploy fails or nothing was deployed.
+        run: scripts/deploy/deploy-app.sh
+
+      - uses: pnpm/action-setup@v6
+        if: steps.plan.outputs.build == 'true'
+        with:
+          version: 12
+      - uses: actions/setup-node@v7
+        if: steps.plan.outputs.build == 'true'
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install dashboard dependencies
+        if: steps.plan.outputs.build == 'true'
+        working-directory: frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish the dashboard
+        if: steps.plan.outputs.build == 'true' && steps.plan.outputs.dry_run != 'true'
+        # Builds (npm run build, using the pnpm-installed dependencies), syncs
+        # to the site bucket and invalidates CloudFront.
+        run: sh scripts/deploy/publish-dashboard.sh
+
+      - name: Build the dashboard (dry run)
+        if: steps.plan.outputs.build == 'true' && steps.plan.outputs.dry_run == 'true'
+        working-directory: frontend
+        run: pnpm build
+
+      - name: Smoke check through CloudFront
+        # /api/state is served by the coordinator through CloudFront, which adds
+        # X-Origin-Verify itself: the request below carries no secret. /healthz
+        # is not routed by CloudFront, and a 403/404 from the origin would come
+        # back as 200 index.html (SPA fallback), so the body must be the JSON state.
+        run: |
+          base="${CLOUDFRONT_URL%/}"
+          curl -fsS --max-time 20 -o /dev/null "$base/"
+          for attempt in $(seq 1 12); do
+            if body="$(curl -fsS --max-time 20 -H 'Accept: application/json' "$base/api/state")" &&
+              printf '%s' "$body" | jq -e 'has("cases")' >/dev/null; then
+              echo "OK: $base/api/state answered with the coordinator state (attempt $attempt)"
+              exit 0
+            fi
+            echo "attempt $attempt: no valid answer yet"
+            sleep 10
+          done
+          echo "::error::$base/api/state did not return the coordinator state"
+          exit 1

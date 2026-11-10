@@ -96,3 +96,8 @@ output "log_group_names" {
   description = "CloudWatch log groups by component."
   value       = module.observability.log_group_names
 }
+
+output "ci_deploy_role_arn" {
+  description = "IAM role GitHub Actions assumes through OIDC (GitHub variable AWS_DEPLOY_ROLE_ARN)."
+  value       = module.ci_oidc.role_arn
+}
