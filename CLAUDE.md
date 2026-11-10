@@ -38,10 +38,10 @@ Architecture: CloudFront serves the SPA from S3 (OAC) and proxies `/api/*` to th
 
 Structure and gotchas that need more than one file to see:
 
-- `modules/` has 11 single-purpose modules (network, secrets_kms, storage_evidence, storage_frontend, messaging, database, registry, compute, cdn, identity, observability). `environments/dev/main.tf` wires them together; `environments/prod` is a template that was only `terraform validate`d, never planned or applied.
+- `modules/` has 12 single-purpose modules (network, secrets_kms, storage_evidence, storage_frontend, messaging, database, registry, compute, cdn, identity, observability, ci_oidc). `environments/dev/main.tf` wires them together; `environments/prod` is a template that was only `terraform validate`d, never planned or applied.
 - Dependency cycles are avoided on purpose. Log group names and the SNS topic name are computed as locals in the environment `main.tf` and passed to both `compute` and `observability`; compute builds ARNs from names. `cdn` does not depend on `identity`, so `identity` can take the CloudFront URL.
 - Workers are driven by the `worker_nodes` map (`text`, `image`, `audio`); log groups and instances are derived from its keys. Switching audio to GPU (`g4dn.xlarge`) is a tfvars change, but the default AL2023 AMI has no NVIDIA drivers.
 - The coordinator application must validate the `X-Origin-Verify` header (value in Secrets Manager), because the CloudFront prefix list is shared across all customers.
-- Terraform only builds infrastructure. The app is deployed by scripts (planned in `scripts/deploy/`) that read `terraform output` and push through SSM.
+- Terraform only builds infrastructure. The app is deployed by `scripts/deploy/` (`build-and-push.sh`, `deploy-app.sh`; see `docs/deployment.md`), which read `terraform output` and push through SSM. GitHub Actions (`.github/workflows/ci.yml`, `deploy.yml`) runs the same scripts on push to `main`, authenticating through OIDC with the `ci_oidc` module's role; CI never runs Terraform.
 - State holds generated passwords. Never commit `*.tfstate*` or `*.tfvars`; do commit `.terraform.lock.hcl` and `*.tfvars.example`.
 - Dev runs about 280-300 USD/month if left on (3x t3.large workers, NAT, Amazon MQ dominate), above the default 60 USD budget alert. Destroy or stop workers between sessions.

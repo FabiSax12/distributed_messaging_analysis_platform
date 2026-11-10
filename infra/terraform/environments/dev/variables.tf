@@ -110,3 +110,21 @@ variable "secret_recovery_window_days" {
   type        = number
   default     = 0
 }
+
+variable "github_repository" {
+  description = "GitHub repository (owner/name) whose main branch may deploy through OIDC."
+  type        = string
+  default     = "FabiSax12/messaging_analisis_distributed_platform"
+}
+
+variable "create_github_oidc_provider" {
+  description = "Create the GitHub OIDC provider. Only one can exist per account: set false and fill existing_github_oidc_provider_arn if it is already there."
+  type        = bool
+  default     = true
+}
+
+variable "existing_github_oidc_provider_arn" {
+  description = "ARN of an existing token.actions.githubusercontent.com provider (used when create_github_oidc_provider is false)."
+  type        = string
+  default     = null
+}

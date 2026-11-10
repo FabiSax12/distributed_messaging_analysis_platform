@@ -1,0 +1,37 @@
+# Production compose file for the coordinator node (AWS dev environment).
+#
+# Deployed by scripts/deploy/deploy-app.sh, which copies it to
+# /opt/dmap/compose.yml on the instance next to two generated files:
+#   .env     non-secret interpolation values (registry, tag, log group, ...)
+#   app.env  application environment incl. credentials, built on the instance
+#            from Secrets Manager (mode 600, never leaves the instance)
+#
+# Variables (from .env): ECR_REGISTRY, ECR_REPO_PREFIX, IMAGE_TAG, AWS_REGION,
+# LOG_GROUP.
+name: dmap
+
+services:
+  coordinator:
+    image: ${ECR_REGISTRY:?}/${ECR_REPO_PREFIX:?}/coordinator:${IMAGE_TAG:?}
+    restart: unless-stopped
+    env_file: app.env
+    ports:
+      # Reachable only from CloudFront (security group); the app additionally
+      # checks X-Origin-Verify.
+      - "8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ${AWS_REGION:?}
+        awslogs-group: ${LOG_GROUP:?}
+        tag: "{{.Name}}/{{.ID}}"
+        mode: non-blocking
+        max-buffer-size: 4m
