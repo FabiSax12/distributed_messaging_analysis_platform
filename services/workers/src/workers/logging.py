@@ -37,5 +37,6 @@ def setup_logging(level: int = logging.INFO) -> None:
     handler = logging.StreamHandler(stream=sys.stdout)
     handler.setFormatter(JsonFormatter())
     root.addHandler(handler)
-    # boto3/urllib3 at INFO flood the log with every request.
-    logging.getLogger("botocore").setLevel(logging.WARNING)
+    # pika logs every connection open/close at INFO; boto3 every request.
+    for noisy in ("pika", "botocore"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)

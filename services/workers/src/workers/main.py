@@ -1,46 +1,47 @@
-"""Worker entry point: `uv run --package workers python -m workers.main`.
+"""Worker entry point: `POOL=text uv run --package workers python -m workers.main`.
 
-Concurrency model: one process per machine with `concurrency` consumer threads
-plus one heartbeat thread. The threads do not compete for the GIL: the heavy
-work runs in ffmpeg subprocesses and the rest is network waiting (SQS, S3,
-external APIs). So the heartbeat's `concurrency` is literally how many
-sub-tasks the machine can have in flight at once.
+Concurrency model: one process per machine with `WORKER_CONCURRENCY`
+consumer threads plus one heartbeat thread. Each consumer thread owns its
+AMQP connection (pika is not thread-safe) and consumes its pool queue with
+prefetch=1, so a worker never holds more messages than it is running.
 
-SIGTERM (systemd stop) sets `stop_event`: each thread finishes its current
-sub-task and exits. If systemd kills it earlier, the message was not deleted
-and SQS redelivers it to another worker.
+SIGTERM/SIGINT set `stop_event`: each consumer finishes its current
+sub-task and exits. If the process is killed instead, the broker requeues
+the unacked message and the next worker reports it as `worker_lost`
+(`runner/process.py`); the coordinator retries it.
 """
 
 from __future__ import annotations
 
+import functools
 import logging
 import os
 import shutil
 import signal
 import socket
 import threading
+from collections.abc import Mapping
 from urllib.request import Request, urlopen
 
 import boto3
 from botocore.config import Config
 
-from shared.routing import Pool
+from shared.analysis import AnalysisOperation
+from shared.broker import consume
+from shared.routing import Pool, work_queue
 
-from .config import get_settings
+from .config import Settings, get_settings
 from .logging import setup_logging
+from .ops.analysis import ANALYSIS_OPERATIONS
+from .ops.base import Operation
+from .runner.db import create_pool
 from .runner.heartbeat import Heartbeat
-from .runner.poller import op_timeouts
-from .runner.process import WorkerContext, consume
+from .runner.process import WorkerContext, handle
 
 logger = logging.getLogger(__name__)
 
 _IMDS = "http://169.254.169.254/latest"
 _IMDS_TIMEOUT_S = 1.0
-
-# max_pool_connections: one heartbeat thread + N consumers share clients.
-_BOTO_CONFIG = Config(
-    retries={"mode": "standard", "max_attempts": 5}, max_pool_connections=20
-)
 
 
 def ec2_identity() -> tuple[str, str] | None:
@@ -65,71 +66,93 @@ def ec2_identity() -> tuple[str, str] | None:
 
 
 def worker_identity(pool: Pool, ec2: tuple[str, str] | None) -> tuple[str, str]:
-    """(worker_id, instance_type). On EC2 without pid: a restart overwrites the same
-    Workers item. On a laptop with host and pid, so several can run."""
+    """(worker_id, instance_type). On EC2 without pid: a restart reuses the
+    same row. Elsewhere with host and pid, so several can run side by side."""
     if ec2 is not None:
         instance_id, instance_type = ec2
         return f"{pool.value}-{instance_id}", instance_type
     return f"{pool.value}-{socket.gethostname()}-{os.getpid()}", "local"
 
 
-def check_ffmpeg() -> None:
-    # The ops/ffmpeg.py subprocess helpers need both binaries.
-    # TODO: relax this once the text/image/audio ops show which pools need ffmpeg.
+def check_ffmpeg(pool: Pool) -> None:
+    """The audio pool extracts audio tracks from videos with ffmpeg
+    (`ops/ffmpeg.py`); the other pools do not need it."""
+    if pool is not Pool.AUDIO:
+        return
     missing = [name for name in ("ffmpeg", "ffprobe") if shutil.which(name) is None]
     if missing:
         raise SystemExit(f"{', '.join(missing)} not found in PATH (see workers/README.md)")
 
 
-def main() -> None:
-    setup_logging()
-    check_ffmpeg()
-    settings = get_settings()
+def s3_client(settings: Settings):
+    config = Config(
+        retries={"mode": "standard", "max_attempts": 5},
+        max_pool_connections=max(10, settings.WORKER_CONCURRENCY * 2),
+        s3={"addressing_style": "path"} if settings.S3_ENDPOINT_URL else {},
+    )
+    return boto3.client(
+        "s3",
+        region_name=settings.AWS_REGION,
+        endpoint_url=settings.S3_ENDPOINT_URL,
+        config=config,
+    )
+
+
+def run_worker(
+    settings: Settings,
+    operations: Mapping[AnalysisOperation, Operation],
+    stop_event: threading.Event | None = None,
+) -> None:
+    """Run consumers and the heartbeat until `stop_event` (or a signal).
+
+    `operations` is `ANALYSIS_OPERATIONS` in production; the local tooling
+    (`scripts/fake_worker.py`) passes a fake registry instead.
+    """
+    stop_event = stop_event or threading.Event()
     worker_id, instance_type = worker_identity(settings.POOL, ec2_identity())
-
-    session = boto3.session.Session(region_name=settings.AWS_REGION)
-    sqs = session.client("sqs", config=_BOTO_CONFIG)
-    s3 = session.client("s3", config=_BOTO_CONFIG)
-    dynamodb = session.client("dynamodb", config=_BOTO_CONFIG)
-
+    db = create_pool(settings.DATABASE_URL, max_size=settings.WORKER_CONCURRENCY + 1)
+    s3 = s3_client(settings)
     heartbeat = Heartbeat(
-        dynamodb,
-        settings.TABLE_WORKERS,
+        db,
         worker_id=worker_id,
         pool=settings.POOL,
         instance_type=instance_type,
         hostname=socket.gethostname(),
-        concurrency=settings.concurrency,
-    )
-    ctx = WorkerContext(
-        sqs=sqs,
-        s3=s3,
-        dynamodb=dynamodb,
-        queue_urls=settings.QUEUE_URLS,
-        cases_table=settings.TABLE_CASES,
-        dataset_bucket=settings.DATASET_BUCKET,
-        results_bucket=settings.RESULTS_BUCKET,
-        worker_id=worker_id,
-        pool=settings.POOL,
-        heartbeat=heartbeat,
-        timeouts=op_timeouts(sqs, settings.QUEUE_URLS, settings.poll_order),
+        concurrency=settings.WORKER_CONCURRENCY,
     )
 
-    stop_event = threading.Event()
-    for signum in (signal.SIGTERM, signal.SIGINT):
-        signal.signal(signum, lambda *_: stop_event.set())
+    if threading.current_thread() is threading.main_thread():
+        for signum in (signal.SIGTERM, signal.SIGINT):
+            signal.signal(signum, lambda *_: stop_event.set())
 
     threading.Thread(
-        target=heartbeat.run, args=(stop_event,), name="heartbeat", daemon=True
+        target=heartbeat.run,
+        args=(stop_event, settings.HEARTBEAT_INTERVAL_S),
+        name="heartbeat",
+        daemon=True,
     ).start()
-    consumers = [
-        threading.Thread(
-            target=consume,
-            args=(ctx, settings.poll_order, stop_event),
-            name=f"consumer-{i}",
+
+    queue = work_queue(settings.POOL)
+    consumers = []
+    for i in range(settings.WORKER_CONCURRENCY):
+        ctx = WorkerContext(
+            s3=s3,
+            bucket=settings.S3_BUCKET,
+            db=db,
+            worker_id=worker_id,
+            pool=settings.POOL,
+            heartbeat=heartbeat,
+            operations=operations,
+            op_timeout_s=settings.op_timeout_s,
         )
-        for i in range(settings.concurrency)
-    ]
+        consumers.append(
+            threading.Thread(
+                target=consume,
+                args=(settings.AMQP_URL, queue, functools.partial(handle, ctx), stop_event),
+                kwargs={"name": f"{worker_id}-{i}", "prefetch": 1, "confirm": True},
+                name=f"consumer-{i}",
+            )
+        )
     for thread in consumers:
         thread.start()
     logger.info(
@@ -137,18 +160,25 @@ def main() -> None:
         extra={
             "worker_id": worker_id,
             "pool": settings.POOL.value,
-            "concurrency": settings.concurrency,
-            "poll_order": settings.poll_order,
-            "timeouts": ctx.timeouts,
+            "queue": queue,
+            "concurrency": settings.WORKER_CONCURRENCY,
+            "operations": sorted(op.value for op in operations),
         },
     )
 
-    # join with timeout: the main thread has to wake up to handle
-    # signals (Python only delivers them in the main thread).
+    # join with timeout: the main thread has to wake up to handle signals.
     while any(thread.is_alive() for thread in consumers):
         for thread in consumers:
             thread.join(timeout=1)
+    db.close()
     logger.info("worker stopped", extra={"worker_id": worker_id})
+
+
+def main() -> None:
+    setup_logging()
+    settings = get_settings()
+    check_ffmpeg(settings.POOL)
+    run_worker(settings, ANALYSIS_OPERATIONS)
 
 
 if __name__ == "__main__":

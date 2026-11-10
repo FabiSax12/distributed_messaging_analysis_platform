@@ -19,18 +19,6 @@ from shared.messages import ErrorCode
 from .base import OpError
 
 _PROBE_TIMEOUT_S = 60
-# Audio output format -> codec arguments, for the future audio ops (inherited
-# from Project I, where audio_extract and audio_convert used them).
-# (video pool) and audio_convert (audio pool).
-AUDIO_CODECS: dict[str, list[str]] = {
-    "mp3": ["-c:a", "libmp3lame", "-q:a", "2"],
-    "ogg": ["-c:a", "libvorbis", "-q:a", "5"],
-    "m4a": ["-c:a", "aac", "-b:a", "192k"],
-    "flac": ["-c:a", "flac"],
-    "wav": ["-c:a", "pcm_s16le"],
-}
-
-
 def probe(src: Path, timeout_s: float = _PROBE_TIMEOUT_S) -> dict[str, Any]:
     """ffprobe as JSON. If it cannot read the file, the file is corrupt: the
     coordinator only filtered by extension."""
@@ -64,7 +52,7 @@ def duration_s(info: dict[str, Any]) -> float | None:
 
 
 def ms(seconds: float | None) -> int | None:
-    """Seconds -> integer ms for `output_meta` (DynamoDB does not accept float)."""
+    """Seconds -> integer milliseconds."""
     return None if seconds is None else round(seconds * 1000)
 
 

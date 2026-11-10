@@ -6,9 +6,10 @@ dict that travels in `ResultMessage.output_meta`. It never touches AWS: the
 runner downloads, uploads and reports.
 
 Expected errors (corrupt file, requested format that does not exist, external
-API down) are raised as `OpError` with their `ErrorCode`: the runner reports
-them as `failed` and deletes the message. Any other exception is a bug or a
-transient failure and is left for SQS to retry.
+API down) are raised as `OpError` with their `ErrorCode`; the runner reports
+them as `failed`. Any other exception is reported as `internal`. The
+coordinator decides which codes are retried (`shared.messages.RETRYABLE_ERRORS`:
+`internal`, `external_api_error`, `worker_lost`) with backoff.
 """
 
 from __future__ import annotations

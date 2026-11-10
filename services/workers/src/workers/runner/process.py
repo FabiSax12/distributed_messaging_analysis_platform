@@ -1,113 +1,129 @@
-"""Process a work message end to end and report it to the coordinator.
+"""Process one work message end to end and report it to the coordinator.
 
-Protocol (the same as `services/coordinator/scripts/fake_worker.py`):
+`handle` is the `on_message` callback of `shared.broker.consume` (manual
+ack, prefetch=1). Every AMQP call happens on the consuming thread (pika is
+not thread-safe); the op itself runs on a helper thread while the consuming
+thread keeps servicing AMQP heartbeats and publishes the op's progress.
 
-1. Unreadable `SubTaskMessage` -> deleted (poison message, retrying will not
-   fix it).
-2. Cancelled case (`Cases.cancel_requested`, consistent read) -> report
-   `cancelled` without processing and delete.
-3. `ApproximateReceiveCount > 1` -> `retrying` (another worker died or the
-   visibility timeout expired).
-4. `assigned` -> dataset download -> `running` with progress -> operation
-   -> upload to `results/{case}/{subtask}/` -> `completed`.
-5. Expected error (`OpError`) -> `failed` with its `ErrorCode`.
-6. The message is deleted AFTER publishing the terminal status. If the worker
-   dies between the two, SQS redelivers it and the coordinator's barrier ignores
-   the duplicate terminal (`closed` in Cases).
-7. Any other exception (S3 down, bug) -> neither terminal nor delete: SQS
-   retries up to `maxReceiveCount` and the DLQ hands it to the coordinator.
+Protocol:
 
-The worker never writes Cases or SubTasks: everything goes out through the
-`resultados` queue.
+1. Unreadable `SubTaskMessage` -> rejected without requeue (dead-letter
+   queue): retrying will not fix it.
+2. Pre-start check against PostgreSQL (read-only):
+   - unknown sub-task, already closed, or `attempt` older than the current
+     one -> stale duplicate (the outbox published twice, or a retry already
+     superseded it): ack and drop;
+   - case `cancel_requested` -> report `cancelled` without processing.
+3. `redelivered` -> the worker that held it died (or lost its connection)
+   mid-task: report `failed` / `worker_lost` without running it. The
+   coordinator schedules the retry, so a file that crashes workers counts
+   against `RETRY_MAX_ATTEMPTS` instead of looping forever.
+4. `assigned` -> S3 download -> `running` with progress -> op -> upload to
+   `results/{case}/{subtask}/` -> `completed`.
+5. `OpError` -> `failed` with its code; any other exception -> `failed` /
+   `internal`. The coordinator decides which codes are retried.
+6. The message is acked AFTER the terminal result is confirmed by the
+   broker. If the worker dies in between, the redelivered copy hits step 2
+   or 3 and the barrier ignores the duplicate.
 """
 
 from __future__ import annotations
 
 import logging
 import mimetypes
+import queue
 import tempfile
-import threading
-from dataclasses import dataclass
+from collections.abc import Mapping
+from concurrent.futures import Future, ThreadPoolExecutor
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 from botocore.exceptions import ClientError
+from pika.adapters.blocking_connection import BlockingChannel
+from pika.spec import Basic, BasicProperties
+from psycopg_pool import ConnectionPool
 
+from shared.analysis import AnalysisOperation
+from shared.broker import publish
 from shared.messages import ErrorCode, ErrorInfo, ResultMessage, SubTaskMessage, utcnow
 from shared.routing import RESULTS_QUEUE, Pool
 from shared.states import SubTaskStatus
 
-from ..ops import OPERATIONS
-from ..ops.base import OpError
+from ..ops.base import Operation, OpError
+from .db import subtask_state
 from .heartbeat import Heartbeat
-from .poller import receive_next
 
 logger = logging.getLogger(__name__)
 
-# How many progress points between `running` publications: enough for the
-# dashboard without flooding the results queue with one message per second.
+# Progress points between `running` publications: enough for the dashboard
+# without flooding the results queue.
 _PROGRESS_STEP = 10
+# How long the consuming thread blocks in AMQP I/O between checks of the op.
+_POLL_S = 0.5
 
-_IDLE_ON_ERROR_S = 5
 
-
-@dataclass(frozen=True)
+@dataclass
 class WorkerContext:
-    sqs: Any
     s3: Any
-    dynamodb: Any
-    queue_urls: dict[str, str]
-    cases_table: str
-    dataset_bucket: str
-    results_bucket: str
+    bucket: str
+    db: ConnectionPool
     worker_id: str
     pool: Pool
     heartbeat: Heartbeat
-    timeouts: dict[str, float]  # source queue -> operation limit
+    operations: Mapping[AnalysisOperation, Operation]
+    op_timeout_s: float
+    # One per consumer thread: the op runs here while the consumer thread
+    # keeps the AMQP connection alive.
+    executor: ThreadPoolExecutor = field(
+        default_factory=lambda: ThreadPoolExecutor(max_workers=1)
+    )
 
-    def publish(self, result: ResultMessage) -> None:
-        self.sqs.send_message(
-            QueueUrl=self.queue_urls[RESULTS_QUEUE], MessageBody=result.to_body()
-        )
-
-    def result(
-        self, task: SubTaskMessage, attempt: int, **fields: Any
-    ) -> ResultMessage:
+    def result(self, task: SubTaskMessage, **fields: Any) -> ResultMessage:
         return ResultMessage(
             subtask_id=task.subtask_id,
             case_id=task.case_id,
-            attempt=attempt,
+            attempt=task.attempt,
             worker_id=self.worker_id,
             pool=self.pool,
             **fields,
         )
 
 
-def handle_message(ctx: WorkerContext, queue_name: str, raw: dict[str, Any]) -> None:
-    queue_url = ctx.queue_urls[queue_name]
-    receipt = raw["ReceiptHandle"]
-    attempt = int(raw.get("Attributes", {}).get("ApproximateReceiveCount", "1"))
-
-    def delete() -> None:
-        ctx.sqs.delete_message(QueueUrl=queue_url, ReceiptHandle=receipt)
-
+def handle(
+    ctx: WorkerContext,
+    channel: BlockingChannel,
+    method: Basic.Deliver,
+    _properties: BasicProperties,
+    body: bytes,
+) -> None:
     try:
-        task = SubTaskMessage.from_body(raw["Body"])
+        task = SubTaskMessage.from_body(body)
     except Exception:
-        logger.exception(
-            "unreadable SubTaskMessage, discarding", extra={"queue": queue_name}
-        )
-        delete()
+        logger.exception("unreadable SubTaskMessage, dead-lettering it")
+        channel.basic_reject(method.delivery_tag, requeue=False)
         return
 
-    log = {"case_id": task.case_id, "subtask_id": task.subtask_id, "queue": queue_name}
+    log = {
+        "case_id": task.case_id,
+        "subtask_id": task.subtask_id,
+        "attempt": task.attempt,
+    }
 
-    if _is_cancelled(ctx, task.case_id):
-        ctx.publish(
+    def report(result: ResultMessage) -> None:
+        publish(channel, RESULTS_QUEUE, result.to_body())
+
+    state = subtask_state(ctx.db, task.subtask_id)
+    if state is None or state.closed or task.attempt < state.attempt:
+        logger.info("stale work message, dropping it", extra=log)
+        channel.basic_ack(method.delivery_tag)
+        return
+
+    if state.cancel_requested:
+        report(
             ctx.result(
                 task,
-                attempt,
                 status=SubTaskStatus.CANCELLED,
                 finished_at=utcnow(),
                 error=ErrorInfo(
@@ -115,60 +131,112 @@ def handle_message(ctx: WorkerContext, queue_name: str, raw: dict[str, Any]) -> 
                 ),
             )
         )
-        delete()
+        channel.basic_ack(method.delivery_tag)
         logger.info("sub-task cancelled without processing", extra=log)
         return
 
-    if attempt > 1:
-        ctx.publish(ctx.result(task, attempt, status=SubTaskStatus.RETRYING))
-    started_at = utcnow()
-    ctx.publish(
-        ctx.result(task, attempt, status=SubTaskStatus.ASSIGNED, started_at=started_at)
-    )
+    if method.redelivered:
+        report(
+            ctx.result(
+                task,
+                status=SubTaskStatus.FAILED,
+                finished_at=utcnow(),
+                error=ErrorInfo(
+                    code=ErrorCode.WORKER_LOST,
+                    message="redelivered: the previous worker died before finishing it",
+                ),
+            )
+        )
+        channel.basic_ack(method.delivery_tag)
+        logger.warning("redelivered work message reported as worker_lost", extra=log)
+        return
 
+    started_at = utcnow()
+    report(ctx.result(task, status=SubTaskStatus.ASSIGNED, started_at=started_at))
+
+    progress: queue.SimpleQueue[int] = queue.SimpleQueue()
+    with ctx.heartbeat.track(task.subtask_id):
+        future = ctx.executor.submit(_run, ctx, task, progress.put)
+        _wait(channel, future, progress, task, ctx, started_at, report)
     try:
-        with ctx.heartbeat.track(task.subtask_id):
-            output_keys, output_meta = _run(ctx, task, queue_name, attempt, started_at)
+        output_keys, output_meta = future.result()
         terminal = ctx.result(
             task,
-            attempt,
             status=SubTaskStatus.COMPLETED,
             started_at=started_at,
             finished_at=utcnow(),
             output_keys=output_keys,
-            output_meta=_without_floats(output_meta),
+            output_meta=output_meta,
         )
     except OpError as exc:
-        terminal = ctx.result(
-            task,
-            attempt,
-            status=SubTaskStatus.FAILED,
-            started_at=started_at,
-            finished_at=utcnow(),
-            error=ErrorInfo(code=exc.code, message=exc.message),
-        )
-    except Exception:
-        logger.exception(
-            "unexpected failure: message not deleted, SQS will retry",
-            extra={**log, "attempt": attempt},
-        )
-        return
+        terminal = _failed(ctx, task, started_at, exc.code, exc.message)
+    except Exception as exc:
+        logger.exception("unexpected op failure, reporting internal error", extra=log)
+        terminal = _failed(ctx, task, started_at, ErrorCode.INTERNAL, repr(exc))
 
-    ctx.publish(terminal)
-    delete()
-    logger.info(
-        "sub-task finished",
-        extra={**log, "status": terminal.status.value, "attempt": attempt},
+    report(terminal)
+    channel.basic_ack(method.delivery_tag)
+    logger.info("sub-task finished", extra={**log, "status": terminal.status.value})
+
+
+def _wait(
+    channel: BlockingChannel,
+    future: Future[Any],
+    progress: queue.SimpleQueue[int],
+    task: SubTaskMessage,
+    ctx: WorkerContext,
+    started_at: datetime,
+    report: Any,
+) -> None:
+    """Service AMQP I/O (heartbeats) and publish progress until the op ends."""
+    last = -_PROGRESS_STEP
+    while True:
+        done = future.done()
+        while not progress.empty():
+            pct = progress.get()
+            if pct >= last + _PROGRESS_STEP:
+                last = pct
+                # `started_at` here too: if the coordinator applies this
+                # `running` before the `assigned`, it is all it has.
+                report(
+                    ctx.result(
+                        task,
+                        status=SubTaskStatus.RUNNING,
+                        progress=pct,
+                        started_at=started_at,
+                    )
+                )
+        if done:
+            return
+        channel.connection.process_data_events(time_limit=_POLL_S)
+
+
+def _failed(
+    ctx: WorkerContext,
+    task: SubTaskMessage,
+    started_at: datetime,
+    code: ErrorCode,
+    message: str,
+) -> ResultMessage:
+    return ctx.result(
+        task,
+        status=SubTaskStatus.FAILED,
+        started_at=started_at,
+        finished_at=utcnow(),
+        error=ErrorInfo(code=code, message=message[-2000:]),
     )
 
 
 def _run(
-    ctx: WorkerContext,
-    task: SubTaskMessage,
-    queue_name: str,
-    attempt: int,
-    started_at: datetime,
+    ctx: WorkerContext, task: SubTaskMessage, on_progress: Any
 ) -> tuple[list[str], dict[str, Any]]:
+    """Runs on the helper thread: S3 and the op only, never AMQP."""
+    op = ctx.operations.get(task.operation)
+    if op is None:
+        raise OpError(
+            ErrorCode.PROCESSING_ERROR,
+            f"operation {task.operation} is not implemented on this worker",
+        )
     with tempfile.TemporaryDirectory(prefix="worker-") as tmp:
         src = Path(tmp) / "in" / Path(task.input_key).name
         out_dir = Path(tmp) / "out"
@@ -176,32 +244,9 @@ def _run(
         out_dir.mkdir()
         _download(ctx, task.input_key, src)
 
-        last = -_PROGRESS_STEP
-
-        def on_progress(pct: int) -> None:
-            nonlocal last
-            if pct >= last + _PROGRESS_STEP:
-                last = pct
-                # `started_at` here too: if the coordinator processes this
-                # `running` before the `assigned`, it discards the `assigned` by
-                # `state_order` and this start time is all it has.
-                ctx.publish(
-                    ctx.result(
-                        task,
-                        attempt,
-                        status=SubTaskStatus.RUNNING,
-                        progress=pct,
-                        started_at=started_at,
-                    )
-                )
-
         on_progress(0)
-        output = OPERATIONS[task.operation](
-            task,
-            src,
-            out_dir,
-            timeout_s=ctx.timeouts[queue_name],
-            on_progress=on_progress,
+        output = op(
+            task, src, out_dir, timeout_s=ctx.op_timeout_s, on_progress=on_progress
         )
 
         keys = []
@@ -211,60 +256,18 @@ def _run(
                 mimetypes.guess_type(path.name)[0] or "application/octet-stream"
             )
             ctx.s3.upload_file(
-                str(path),
-                ctx.results_bucket,
-                key,
-                ExtraArgs={"ContentType": content_type},
+                str(path), ctx.bucket, key, ExtraArgs={"ContentType": content_type}
             )
             keys.append(key)
         return keys, output.meta
 
 
-def _without_floats(value: Any) -> Any:
-    """float -> str, recursive. The coordinator stores `output_meta` as-is in
-    DynamoDB, which rejects float ("Use Decimal types instead") and leaves the
-    sub-task closure retrying forever. Operations already report durations in
-    integer ms; this covers any float that slips through."""
-    if isinstance(value, float):
-        return str(value)
-    if isinstance(value, dict):
-        return {k: _without_floats(v) for k, v in value.items()}
-    if isinstance(value, list):
-        return [_without_floats(v) for v in value]
-    return value
-
-
 def _download(ctx: WorkerContext, key: str, dest: Path) -> None:
     try:
-        ctx.s3.download_file(ctx.dataset_bucket, key, str(dest))
+        ctx.s3.download_file(ctx.bucket, key, str(dest))
     except ClientError as exc:
         if exc.response.get("Error", {}).get("Code") in {"404", "NoSuchKey"}:
             raise OpError(
-                ErrorCode.CORRUPT_INPUT, f"{key} does not exist in the dataset"
+                ErrorCode.CORRUPT_INPUT, f"{key} does not exist in the bucket"
             ) from exc
         raise
-
-
-def _is_cancelled(ctx: WorkerContext, case_id: str) -> bool:
-    item = ctx.dynamodb.get_item(
-        TableName=ctx.cases_table,
-        Key={"case_id": {"S": case_id}},
-        ConsistentRead=True,
-        ProjectionExpression="cancel_requested",
-    ).get("Item", {})
-    return item.get("cancel_requested", {}).get("BOOL", False)
-
-
-def consume(
-    ctx: WorkerContext, poll_order: tuple[str, ...], stop_event: threading.Event
-) -> None:
-    """Loop of one consumer thread. Finishes the in-flight sub-task before
-    exiting when `stop_event` is set (systemd stop)."""
-    while not stop_event.is_set():
-        try:
-            received = receive_next(ctx.sqs, ctx.queue_urls, poll_order)
-            if received is not None:
-                handle_message(ctx, *received)
-        except Exception:
-            logger.exception("consumer loop iteration failed, retrying")
-            stop_event.wait(_IDLE_ON_ERROR_S)

@@ -10,9 +10,9 @@ An op follows the ``Operation`` protocol in ``workers/ops/base.py`` and returns
 ``python -m workers.ops.run_local <operation> <file>``; see "Writing an
 analysis operation" in ``services/workers/README.md``.
 
-This registry is deliberately separate from ``workers.ops.OPERATIONS`` (keyed by
-the legacy ``shared.routing.Operation``): the RabbitMQ + PostgreSQL migration
-wires it into the runner. Import heavy libraries (torch, whisper...) inside the
+The runner (`workers/runner/process.py`) dispatches every sub-task through
+this registry; an operation that is not registered fails the sub-task with
+``processing_error``. Import heavy libraries (torch, whisper...) inside the
 op function, not at module level, so importing this package stays cheap on
 pools that never run that op.
 """

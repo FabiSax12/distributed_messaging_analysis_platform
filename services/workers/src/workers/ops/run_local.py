@@ -34,9 +34,11 @@ from shared.analysis import (
     OPERATION_CONTENT_TYPE,
     AnalysisOperation,
     AnalysisResult,
+    CasePriority,
 )
 from shared.messages import SubTaskMessage
-from shared.routing import Priority
+from shared.models import result_prefix
+from shared.routing import detect_content_type
 
 from .analysis import ANALYSIS_OPERATIONS
 from .base import OpError
@@ -81,23 +83,18 @@ class LocalRunReport:
 def build_task(
     operation: AnalysisOperation, src: Path, params: Mapping[str, Any] | None = None
 ) -> SubTaskMessage:
-    """Minimal ``SubTaskMessage`` for a local run; ``input_key`` is the local path.
-
-    ``model_construct`` skips validation on purpose: ``media_type`` and
-    ``operation`` still use the legacy ``shared.routing`` enums, which have no
-    text type nor analysis operations until the migration adds them. Ops must
-    take what they need from ``input_key``, ``params`` and their arguments,
-    not branch on ``task.media_type``.
-    """
-    subtask_id = f"local-{uuid.uuid4().hex[:12]}"
-    return SubTaskMessage.model_construct(
+    """A validated ``SubTaskMessage`` like the one the coordinator publishes;
+    ``input_key`` is the local path. ``media_type`` comes from the file
+    extension (a video run through ``audio_analyze`` keeps ``video``)."""
+    subtask_id = f"{LOCAL_CASE_ID}-{uuid.uuid4().hex[:12]}"
+    return SubTaskMessage(
         subtask_id=subtask_id,
         case_id=LOCAL_CASE_ID,
         input_key=str(src),
-        media_type=OPERATION_CONTENT_TYPE[operation],
+        media_type=detect_content_type(src.name) or OPERATION_CONTENT_TYPE[operation],
         operation=operation,
-        priority=Priority.NORMAL,
-        output_prefix=f"results/{LOCAL_CASE_ID}/{subtask_id}/",
+        priority=CasePriority.MEDIUM,
+        output_prefix=result_prefix(LOCAL_CASE_ID, subtask_id),
         params=dict(params or {}),
     )
 
