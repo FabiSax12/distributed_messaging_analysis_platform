@@ -146,7 +146,7 @@ def main(argv: list[str] | None = None) -> int:
 
     selection = select(load_annotations(), args.seed)
     SELECTION.parent.mkdir(parents=True, exist_ok=True)
-    SELECTION.write_text(json.dumps(selection, indent=1) + "\n", encoding="utf-8")
+    SELECTION.write_text(json.dumps(selection, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {SELECTION} ({len(selection['images'])} images)", file=sys.stderr)
     if args.skip_images:
         return 0

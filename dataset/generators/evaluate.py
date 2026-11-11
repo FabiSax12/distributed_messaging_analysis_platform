@@ -196,7 +196,7 @@ def main(argv: list[str] | None = None) -> int:
         "mean_iou_of_matched_boxes": sum(ious) / len(ious) if ious else None,
         "errors": errors,
     }
-    (args.out / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
+    (args.out / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     def fmt(v):
         return "n/a" if v is None else f"{v:.3f}"
@@ -208,7 +208,7 @@ def main(argv: list[str] | None = None) -> int:
         lines.append(f"| **all/{name}** | {m['tp']} | {m['fp']} | {m['fn']} | {fmt(m['precision'])} | {fmt(m['recall'])} | {fmt(m['f1'])} |")
     il = metrics["image_level"]
     lines.append(f"| image-level sensitive_image | {il['tp']} | {il['fp']} | {il['fn']} | {fmt(il['precision'])} | {fmt(il['recall'])} | {fmt(il['f1'])} |")
-    (args.out / "metrics.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (args.out / "metrics.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(lines))
     print(f"scored sources: {dict(scored)}; errors: {len(errors)}")
     return 0

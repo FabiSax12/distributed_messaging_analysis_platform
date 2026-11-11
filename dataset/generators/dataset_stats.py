@@ -107,7 +107,7 @@ def main(argv: list[str] | None = None) -> int:
     text = json.dumps(result, indent=2)
     print(text)
     if args.json:
-        args.json.write_text(text + "\n", encoding="utf-8")
+        args.json.write_text(text + "\n", encoding="utf-8", newline="\n")
     return 0 if not problems and all(m["ok"] for m in result["minimums"].values()) else 1
 
 
