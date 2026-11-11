@@ -8,7 +8,6 @@ the asyncio loop, so a slow query does not stall the rest of the API.
 from __future__ import annotations
 
 import logging
-import mimetypes
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import PurePosixPath
 from typing import Any
@@ -24,7 +23,7 @@ from shared.api import (
     SubTaskOutputs,
     SubTaskOutputUrl,
 )
-from shared.models import CaseItem, report_key
+from shared.models import RESERVED_PREFIXES, CaseItem, report_key
 from shared.states import TERMINAL_CASE, CaseStatus
 from ulid import ULID
 
@@ -226,7 +225,7 @@ def get_case_outputs(
         SubTaskOutputs(
             subtask_id=s.subtask_id,
             outputs=[presign(k) for k in s.output_keys],
-            input=presign(s.input_key, _media_content_type(s.input_key)),
+            input=_presign_input(s.input_key, presign),
         )
         for s in subtasks_repo.list_by_case(case_id)
     ]
@@ -260,12 +259,19 @@ _MEDIA_CONTENT_TYPES = {
 }
 
 
-def _media_content_type(key: str) -> str | None:
-    """`Content-Type` to force on the presigned GET of an input file.
+def _presign_input(key: str, presign: Any) -> SubTaskOutputUrl | None:
+    """Presigned GET of an input file, or None when it must not be exposed.
 
-    Dashboard uploads are PUT without a `Content-Type` (it would break the
-    signature), so S3 stores them as `binary/octet-stream` and some browsers
-    refuse to play them inline. None leaves the stored type untouched.
+    `POST /api/cases` accepts any existing bucket key as input, so only keys
+    outside the coordinator-owned prefixes and with an accepted input
+    extension are signed; anything else would turn this endpoint into a
+    reader for reports, metrics or CAS objects.
+
+    The `Content-Type` is forced from the extension: dashboard uploads are
+    PUT without one (it would break the signature), so S3 stores them as
+    `binary/octet-stream` and some browsers refuse to play them inline.
     """
-    suffix = PurePosixPath(key).suffix.lower()
-    return _MEDIA_CONTENT_TYPES.get(suffix) or mimetypes.guess_type(key)[0]
+    content_type = _MEDIA_CONTENT_TYPES.get(PurePosixPath(key).suffix.lower())
+    if content_type is None or key.startswith(RESERVED_PREFIXES):
+        return None
+    return presign(key, content_type)

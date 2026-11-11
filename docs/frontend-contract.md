@@ -62,6 +62,10 @@ Every sub-task is listed; `outputs` is empty until the worker writes results.
 `content/<sha256>` copy is internal) and forces a `Content-Type` from the
 extension (`.opus` -> `audio/ogg`, `.m4a` -> `audio/mp4`, `.mkv` ->
 `video/x-matroska`, ...), because dashboard uploads are stored without one.
+`input` is `null` when the key is under a coordinator-owned prefix
+(`results/`, `metrics/`, `content/`) or has an extension the routing table does
+not accept: `POST /api/cases` accepts any existing key, so this endpoint must
+not become a reader for reports or internal objects.
 Fetch the URLs without the API bearer header; they expire after
 `expires_in` seconds, so request the endpoint again to re-sign them. The case
 detail view uses `input` for the inline image/audio/video preview of each
