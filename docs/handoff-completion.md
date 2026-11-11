@@ -16,6 +16,8 @@
   `UPDATE ... RETURNING` publishes at most one message per case (best-effort) (status, sub-task counts, duration,
   findings and max severity, report key) to the alerts topic after the commit; a publish
   failure is only logged. No-op when `ALERTS_TOPIC_ARN` is unset.
+- M1 admission charges each operation's model base once per case, not once per subtask
+  (see `docs/module-m1-memory.md` section 6). The old formula rejected 37 of the 40 dataset cases.
 - Application dashboard/alarms, CloudWatch host-memory agent config and optional TLS-origin infrastructure.
 
 The original uploads are retained; CAS dedup is not a claim that total S3 bytes
@@ -41,6 +43,23 @@ a transaction that rolled back its temporary schema. Token checks verify real
 RSA signatures, issuer, client, access-token use, expiry and role denials without
 contacting Cognito. Terraform dev/prod validation is credential-free; it is not
 a cloud plan/apply. Run commands are in module/experiment READMEs.
+
+## Cloud verification (2026-11-11)
+
+Runs through CloudFront with Playwright, analyst role, after PRs #14 to #16:
+
+- Case GFVN309Z (chat, PNG, WAV tone) uploaded straight to S3 (bucket CORS)
+  and completed 3/3 in 4.0 s. SNS `NumberOfMessagesPublished` was 2 in that
+  window: the severe-findings alert and the case-finished alert. The only
+  subscription, an email one, is still `PendingConfirmation`, so no mail
+  arrives until it is re-created and confirmed.
+- Case P8Y82BM7 (chat, 3 COCO knife/scissors images, 2 TTS voice notes)
+  completed 6/6 in 12.0 s with findings from all three pools. Details and the
+  M1 admission rejections seen first are in `docs/module-m1-memory.md`
+  section 6.
+- The dataset media (COCO images, voice notes, videos) is not published in any
+  bucket, so `/api/dataset` lists nothing. The real-media inputs above were
+  built locally from `coco_selection.json` and `corpus.py`.
 
 ## Fabián: manual steps after merge
 
