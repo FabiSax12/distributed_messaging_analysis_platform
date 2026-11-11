@@ -66,9 +66,9 @@ export const PRIORITIES = {
 export const DEFAULT_PRIORITY = 'medium'
 
 export const POOLS = {
-  text: { label: 'Text', instance: 't3.large', color: 'var(--c-meta)' },
-  image: { label: 'Image', instance: 't3.large', color: 'var(--c-video)' },
-  audio: { label: 'Audio', instance: 't3.large', color: 'var(--c-audio)' },
+  text: { label: 'Text', color: 'var(--c-meta)' },
+  image: { label: 'Image', color: 'var(--c-video)' },
+  audio: { label: 'Audio', color: 'var(--c-audio)' },
 }
 
 // RabbitMQ queues: one work queue per pool (priorities live inside it).

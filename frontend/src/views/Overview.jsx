@@ -91,20 +91,22 @@ function Alerts({ alerts = [] }) {
 }
 
 function Workers({ workers }) {
-  const byPool = Object.keys(POOLS).map((pool) => ({
-    pool,
-    list: workers.filter((w) => w.pool === pool).sort((a, b) => a.worker_id.localeCompare(b.worker_id)),
-  }))
+  const byPool = Object.keys(POOLS).map((pool) => {
+    const list = workers.filter((w) => w.pool === pool).sort((a, b) => a.worker_id.localeCompare(b.worker_id))
+    // Instance types as reported by the pool's own heartbeats (none when empty).
+    const instanceTypes = [...new Set(list.map((w) => w.instance_type).filter(Boolean))].join(', ')
+    return { pool, list, instanceTypes }
+  })
 
   return (
     <Section title="Worker nodes" aside={<span className="muted">Heartbeat every 5 s · marked down after 60 s without reporting</span>}>
       <div className="pools">
-        {byPool.map(({ pool, list }) => (
+        {byPool.map(({ pool, list, instanceTypes }) => (
           <div key={pool} className="pool">
             <header className="pool-head">
               <i className="dot" style={{ background: POOL_COLORS[pool] }} />
               <h3>Pool {POOLS[pool].label}</h3>
-              <span className="muted mono">{POOLS[pool].instance}</span>
+              {instanceTypes && <span className="muted mono">{instanceTypes}</span>}
             </header>
             {list.length === 0 && <p className="muted small">No worker has registered a heartbeat.</p>}
             {list.map((w) => (
