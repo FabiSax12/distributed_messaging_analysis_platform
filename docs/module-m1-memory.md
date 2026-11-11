@@ -11,8 +11,12 @@ Limits default to zero (disabled to preserve existing scenarios).
 Set `M1_MAX_ACTIVE_CASES`, `M1_MAX_CASE_INPUT_BYTES` and/or
 `M1_MEMORY_BUDGET_BYTES`; the latter requires `M1_TASK_BASE_BYTES > 0`.
 `M1_OPERATION_BASE_BYTES` JSON can supply per-operation model estimates.
-Reservation = sum(model base + S3 ContentLength * input multiplier), default
-multiplier 4. Oversized cases return 413; exhausted reservations return 503.
+Reservation = model base once per distinct operation in the case + S3
+ContentLength * input multiplier per queued subtask, default multiplier 4.
+Each pool runs one analysis at a time (`WORKER_CONCURRENCY=1`), so a case's
+subtasks of one operation load that model one after another, not side by side.
+Across cases the accounting stays conservative: every active case reserves its
+own model bases. Section 6 explains why the earlier per-subtask base was wrong. Oversized cases return 413; exhausted reservations return 503.
 Drain existing cases before enabling memory budgets: unreserved active cases
 fail closed. This is conservative accounting, not a measurement of free RAM.
 Compressed size cannot guarantee decoded memory; calibrate with real inputs.
@@ -106,3 +110,59 @@ Real PostgreSQL admission/exclusion and custody checks passed. Runtime cgroup
 limits and admission settings now travel through deploy runtime JSON. The
 real-model burst records each worker's cgroup memory percent over time. Cloud
 bursts and representative heavy inputs are still needed before capacity claims.
+
+## 6. Cloud admission evidence (2026-11-11)
+
+AWS dev deploy, coordinator limits from the `RUNTIME_CONFIG_JSON` repository
+variable: 20 active cases, 1 GiB case input, 3 GiB memory budget, 64 MiB task
+base, 512 MiB `image_analyze`, 384 MiB `audio_analyze`, multiplier 4.
+
+Before the fix, `reserve()` charged the model base once per subtask. Cases
+were rejected with a permanent 413 `case reservation exceeds memory budget`:
+
+| Case | Sources | Input | Reservation (old) |
+|---|---|---:|---:|
+| Dashboard upload: 5 COCO jpg, 4 Opus voice notes, 1 chat | 10 | 0.93 MB | 4,365,812,560 B (4.07 GiB) |
+| User upload through the dashboard | n/a | n/a | 33,442,088,184 B (31.15 GiB) |
+| Dataset manifests (`dataset/cases/*/manifest.json`), computed | 40 cases | | 37 of 40 over budget, largest 6.44 GiB |
+
+Model bases made up almost all of each reservation; input bytes were
+negligible. With these numbers a case could hold at most five images.
+The subtasks of a case are not all running at the same moment, though.
+Each worker processes one subtask at a time, so the old formula charged
+for model memory that is never allocated together.
+
+After the fix (computed with the same limits, not yet observed in the cloud;
+needs merge and deploy):
+
+| Case | Reservation (new) |
+|---|---:|
+| 10-file upload above | 1,010,369,360 B (0.94 GiB) |
+| 6-file upload below | 1,009,312,884 B (0.94 GiB) |
+| Dataset manifests | 0 of 40 over budget, largest `case-012` 2.46 GiB (11 sources, 390.7 MiB input) |
+
+A check against local PostgreSQL gave 560,870,912 B for a 40-image case of
+150 kB files (512 MiB + 40 x 150 kB x 4). Input over `M1_MAX_CASE_INPUT_BYTES`
+still returns 413. `experiments/m1_memory/scripts/check_admission.py` covers
+the once-per-operation base.
+
+Accepted run before the fix: case `01M76A517FGXW9NNN6P8Y82BM7` (P8Y82BM7),
+uploaded through CloudFront as the analyst role, High priority. It reserved
+2,485,707,892 B (2.31 GiB) under the old formula and completed 6/6 subtasks
+in 12.0 s on the three worker instances.
+
+| Source | Worker | Duration | Findings |
+|---|---|---:|---|
+| `whatsapp.txt` (dataset case-001 chat) | text | 1.5 s | 14: threat, violence, illicit activity, offensive language |
+| COCO `000000143998.jpg` (knife) | image | 4.0 s | 0 |
+| COCO `000000359219.jpg` (knife) | image | 4.0 s | 1 sensitive image |
+| COCO `000000500716.jpg` (scissors) | image | 4.0 s | 0 |
+| `PTT-threat.opus` (Piper TTS) | audio | 2.5 s | 2 threat |
+| `PTT-drugs.opus` (Piper TTS) | audio | 2.5 s | 2 illicit activity |
+
+The images are COCO val2017 positives from
+`dataset/generators/data/coco_selection.json` with the largest knife/scissors
+boxes. The voice notes are `VOICE_DETECTABLE` phrases from
+`dataset/generators/corpus.py`, synthesized with Piper `en_US-lessac-medium`
+and encoded as 16 kHz mono Opus. YOLOv8n found one of the three sensitive
+objects, which matches its limited recall on small COCO knives.
