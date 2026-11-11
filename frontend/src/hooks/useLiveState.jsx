@@ -46,6 +46,8 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
   // open for WS_STABLE_MS. Refs survive the remount caused by the new token.
   const authRefreshPendingRef = useRef(false)
   const stableTimerRef = useRef(null)
+  // Why live updates stopped after a repeated 1008; polling keeps showing it.
+  const stoppedReasonRef = useRef(null)
 
   const accept = useCallback((state) => {
     setData(state)
@@ -59,7 +61,7 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
       const state = await api.state()
       if (unmountedRef.current) return
       accept(state)
-      setLastError(null)
+      setLastError(stoppedReasonRef.current)
       if (wsRef.current?.readyState !== WebSocket.OPEN) setMode('polling')
     } catch (err) {
       if (unmountedRef.current) return
@@ -106,6 +108,7 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
     ws.onopen = () => {
       backoffRef.current = WS_BACKOFF_START_MS
       setMode('ws')
+      stoppedReasonRef.current = null
       setLastError(null)
       stopPolling()
       armSilenceTimer()
@@ -132,9 +135,9 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
     }
 
     ws.onclose = (event) => {
+      if (wsRef.current !== ws || unmountedRef.current) return
       clearTimeout(silenceTimerRef.current)
       clearTimeout(stableTimerRef.current)
-      if (wsRef.current !== ws || unmountedRef.current) return
       wsRef.current = null
       if (event.code === 1008) {
         // Origin check or token check failed. With a token, refresh it once:
@@ -147,7 +150,9 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
           if (authRefreshPendingRef.current) {
             // Rejected again right after a refresh: a new token will not help.
             setNextRetryAt(null)
-            setLastError('The coordinator rejected the live connection again after a token refresh (origin not verified?). Live updates stopped; polling continues.')
+            stoppedReasonRef.current =
+              'The coordinator rejected the live connection again after a token refresh (origin not verified?). Live updates stopped; polling continues. Press Reconnect to retry.'
+            setLastError(stoppedReasonRef.current)
             return
           }
           authRefreshPendingRef.current = true
@@ -169,6 +174,7 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
   const reconnectNow = useCallback(() => {
     backoffRef.current = WS_BACKOFF_START_MS
     authRefreshPendingRef.current = false
+    stoppedReasonRef.current = null
     const ws = wsRef.current
     wsRef.current = null
     ws?.close()

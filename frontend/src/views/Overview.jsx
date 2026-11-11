@@ -93,8 +93,8 @@ function Alerts({ alerts = [] }) {
 function Workers({ workers }) {
   const byPool = Object.keys(POOLS).map((pool) => {
     const list = workers.filter((w) => w.pool === pool).sort((a, b) => a.worker_id.localeCompare(b.worker_id))
-    // Instance types as reported by the pool's own heartbeats (none when empty).
-    const instanceTypes = [...new Set(list.map((w) => w.instance_type).filter(Boolean))].join(', ')
+    // Instance types reported by the pool's live workers (none when empty).
+    const instanceTypes = [...new Set(list.filter((w) => w.alive).map((w) => w.instance_type).filter(Boolean))].join(', ')
     return { pool, list, instanceTypes }
   })
 

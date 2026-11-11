@@ -66,9 +66,9 @@ async function send(method, path, body, token) {
   }
 }
 
-async function request(method, path, body) {
+async function request(method, path, body, { retryOn401 = true } = {}) {
   let res = await send(method, path, body, auth.getToken())
-  if (res.status === 401 && auth.getToken()) {
+  if (retryOn401 && res.status === 401 && auth.getToken()) {
     const fresh = await auth.refresh()
     if (fresh) res = await send(method, path, body, fresh)
   }
@@ -84,7 +84,9 @@ async function request(method, path, body) {
 }
 
 export const api = {
-  me: () => request('GET', '/api/me'),
+  // No refresh-retry: /api/me runs inside AuthProvider's refresh, so retrying
+  // would await that same in-flight refresh and never settle.
+  me: () => request('GET', '/api/me', undefined, { retryOn401: false }),
   adminUsers: (cursor) => request('GET', `/api/admin/users${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ''}`),
   setRole: (username, role, enabled) => request('POST', '/api/admin/roles', { username, role, enabled }),
   state: () => request('GET', '/api/state'),
