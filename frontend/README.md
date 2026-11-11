@@ -110,3 +110,35 @@ AWS CLI with the project profile. CI reads the Cognito settings from the
 
 Backend contract: `docs/frontend-contract.md`. Verification record: see
 "Verification" below.
+
+## Verification
+
+Record of what was exercised for the Cognito/roles/report integration
+(2026-11-11, Camila Hidalgo with Claude Code). "Live" = `pnpm dev` on
+`http://localhost:5173` with `VITE_PROXY_TARGET` = the dev CloudFront URL and
+the real `madp-dev` Cognito user pool and SPA client, against the deployed
+coordinator and worker nodes.
+
+| Check | Environment | Result |
+|---|---|---|
+| `pnpm build` | local | Passes (50 modules) |
+| Hosted UI redirect with PKCE (`code_challenge_method=S256`, `state`), callback to the bare origin, code removed from the address bar | live | Pass |
+| Analyst sign-in -> ANALYST badge, nav without "Users & roles", REST and WebSocket (`['bearer', token]`) live through CloudFront | live | Pass (state from 3/3 cloud workers) |
+| Reload restores the session from the refresh token (no password prompt), socket reconnects with the new token; `localStorage` empty | live | Pass |
+| Invalid/revoked refresh token -> sign-in screen with "The sign-in session expired.", token removed, no socket or polling left | live (token replaced in sessionStorage) | Pass |
+| Sign out -> refresh token revoked, Cognito `/logout`, next sign-in asks for the password again | live | Pass |
+| Analyst server denials: `GET /api/admin/users` and `DELETE /api/cases/{id}` -> 403 shown as "Your role does not allow this action." | live | Pass |
+| Supervisor: cancel passes the role check (404 for a missing case), admin endpoints 403 | live | Pass |
+| Administrator: "Users & roles" lists the 3 pool users with checkboxes matching their groups | live | Pass |
+| Administrator role change (`POST /api/admin/roles`) | not run | Blocked by the agent's permission policy (it grants a permission on a real account). To verify by hand: tick a group, refresh the list, untick it |
+| Analyst upload + create: 6 case-001 files (chat, 2 images, 2 voice notes, video) through presigned PUTs (Vite S3 proxy), case created | live | Pass; case completed 6/6 in about 7 s on the cloud workers |
+| Analyst sees "Cancelling a case requires the supervisor or administrator role" instead of the cancel button | live | Pass |
+| Report: `GET .../report` envelope, JSON fetched from S3 without bearer, category tiles, 17 findings with source/hash/message/sender/send time, image box, audio segment, "original date unknown" for media, processing vs evidence timeline, per-file analysis, escaped excerpts | live | Pass |
+| Supervisor cancel while in progress -> 1 completed, 5 cancelled, case Cancelled | live | Pass |
+| No horizontal page scroll at 375 px on System, Cases, New case, Users & roles | live (viewport emulation) | Pass |
+| Access token expiring after 60 min while the page is open (timer refresh, 1008 close -> refresh -> reconnect) | not run | Code path written; only the reload refresh and the invalid-token path were exercised |
+| Production build served from CloudFront with Cognito settings | not run | Needs the `COGNITO_DOMAIN`/`COGNITO_CLIENT_ID` repository variables and a deploy |
+
+Known limitation: `GET /api/admin/users` returns Cognito usernames, which in
+this pool are UUIDs (email is a sign-in alias), so the admin table shows
+UUIDs; showing emails needs the backend to return the `email` attribute.
