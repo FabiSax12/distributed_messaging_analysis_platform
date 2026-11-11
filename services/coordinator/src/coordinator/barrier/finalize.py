@@ -7,7 +7,7 @@ it can run in parallel from several threads for the same case, because the
 only effect that cannot be repeated safely (`finalize_write`) is guarded in
 SQL by "status is not terminal yet". Only the call that wins that UPDATE
 publishes the case-finished notification, after the commit, so each case
-notifies exactly once whichever path (results consumer, sweeper, prefailed
+notifies at most once (best-effort) whichever path (results consumer, sweeper, prefailed
 case at creation) closes it.
 """
 

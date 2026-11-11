@@ -67,22 +67,23 @@ def findings_alert(result):
 
 
 def case_finished_alert(report: CaseReport, report_key: str) -> None:
-    """Publish once per case, called only by the `finalize()` that won the
-    guarded terminal UPDATE, after it committed. Never raises."""
-    settings = get_settings()
-    if not settings.ALERTS_TOPIC_ARN:
-        return
-    counts = {status.value: 0 for status in sorted(TERMINAL_SUBTASK)}
-    for subtask in report.subtasks:
-        if subtask.status in TERMINAL_SUBTASK:
-            counts[subtask.status.value] += 1
-    max_severity = max(
-        (finding.severity for finding in report.findings),
-        key=_SEVERITY_RANK.__getitem__,
-        default=None,
-    )
-    status = report.status.value
+    """Publish the case-finished message. Called only by the `finalize()` that
+    won the guarded terminal UPDATE, after it committed, so a case notifies at
+    most once (best-effort: a crash or SNS failure here drops it). Never raises."""
     try:
+        settings = get_settings()
+        if not settings.ALERTS_TOPIC_ARN:
+            return
+        counts = {status.value: 0 for status in sorted(TERMINAL_SUBTASK)}
+        for subtask in report.subtasks:
+            if subtask.status in TERMINAL_SUBTASK:
+                counts[subtask.status.value] += 1
+        max_severity = max(
+            (finding.severity for finding in report.findings),
+            key=_SEVERITY_RANK.__getitem__,
+            default=None,
+        )
+        status = report.status.value
         client("sns", settings).publish(
             TopicArn=settings.ALERTS_TOPIC_ARN,
             Subject=f"Case {report.case_id[-8:]} {status}",
@@ -100,6 +101,10 @@ def case_finished_alert(report: CaseReport, report_key: str) -> None:
                     "summary": report.summary[:500],
                 }
             ),
+            # Lets subscribers filter by event type on the shared alerts topic.
+            MessageAttributes={
+                "event": {"DataType": "String", "StringValue": "case_finished"}
+            },
         )
     except Exception:
         logger.exception(

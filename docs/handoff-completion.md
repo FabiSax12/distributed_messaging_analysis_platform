@@ -13,7 +13,7 @@
 - Append-only hash-chained case/subtask events, actor attribution and verification tool.
 - Findings/categories/timeline aggregation, severe-finding SNS and operational alerts/metrics.
 - Case-finished SNS notification: the `finalize()` call that wins the guarded terminal
-  `UPDATE ... RETURNING` publishes one message per case (status, sub-task counts, duration,
+  `UPDATE ... RETURNING` publishes at most one message per case (best-effort) (status, sub-task counts, duration,
   findings and max severity, report key) to the alerts topic after the commit; a publish
   failure is only logged. No-op when `ALERTS_TOPIC_ARN` is unset.
 - Application dashboard/alarms, CloudWatch host-memory agent config and optional TLS-origin infrastructure.
