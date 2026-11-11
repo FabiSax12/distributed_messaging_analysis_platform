@@ -166,6 +166,8 @@ Terraform is never run by CI (its state is local and holds generated passwords).
    set_var SITE_BUCKET              "$(get '.frontend_bucket_name.value')"
    set_var DISTRIBUTION_ID          "$(get '.cloudfront_distribution_id.value')"
    set_var CLOUDFRONT_URL           "$(get '.cloudfront_url.value')"
+   set_var COGNITO_DOMAIN           "$(get '.cognito_hosted_ui_domain.value')"
+   set_var COGNITO_CLIENT_ID        "$(get '.cognito_client_id.value')"
    ```
 
    | Variable | Terraform output | Used for |
@@ -180,6 +182,7 @@ Terraform is never run by CI (its state is local and holds generated passwords).
    | `LOG_GROUP_PREFIX` | directory of `log_group_names.coordinator` | `awslogs` group names |
    | `SITE_BUCKET`, `DISTRIBUTION_ID` | `frontend_bucket_name`, `cloudfront_distribution_id` | dashboard publish |
    | `CLOUDFRONT_URL` | `cloudfront_url` | smoke check |
+   | `COGNITO_DOMAIN`, `COGNITO_CLIENT_ID` | `cognito_hosted_ui_domain`, `cognito_client_id` | baked into the dashboard build as `VITE_COGNITO_*` (public SPA client, no secret). Not checked by the first step: without them the published dashboard shows "Sign-in is not configured" and refuses to run unauthenticated |
 
    The workflow fails in its first step, naming the variables that are missing.
    The values change only if the infrastructure is destroyed and recreated:

@@ -17,7 +17,17 @@ if [ -z "${DISTRIBUTION_ID:-}" ]; then
   DISTRIBUTION_ID="$(terraform -chdir="$TF_DIR" output -raw cloudfront_distribution_id)"
 fi
 
-echo "Bucket: $SITE_BUCKET · Distribution: $DISTRIBUTION_ID"
+# Public Cognito client settings baked into the build (VITE_*). A build
+# without them refuses to run (no unauthenticated fallback in production).
+if [ -z "${VITE_COGNITO_DOMAIN:-}" ]; then
+  VITE_COGNITO_DOMAIN="$(terraform -chdir="$TF_DIR" output -raw cognito_hosted_ui_domain)"
+fi
+if [ -z "${VITE_COGNITO_CLIENT_ID:-}" ]; then
+  VITE_COGNITO_CLIENT_ID="$(terraform -chdir="$TF_DIR" output -raw cognito_client_id)"
+fi
+export VITE_COGNITO_DOMAIN VITE_COGNITO_CLIENT_ID
+
+echo "Bucket: $SITE_BUCKET · Distribution: $DISTRIBUTION_ID · Cognito: $VITE_COGNITO_DOMAIN"
 
 cd "$ROOT/frontend"
 npm run build
