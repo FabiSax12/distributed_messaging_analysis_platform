@@ -19,3 +19,15 @@ variable "noncurrent_version_expiration_days" {
   type        = number
   default     = 90
 }
+
+variable "cors_allowed_origins" {
+  description = "Browser origins allowed to use presigned URLs on the bucket (for example the CloudFront URL). Empty means no CORS configuration."
+  type        = list(string)
+  default     = []
+}
+
+variable "cors_max_age_seconds" {
+  description = "How long browsers may cache the CORS preflight response."
+  type        = number
+  default     = 3000
+}

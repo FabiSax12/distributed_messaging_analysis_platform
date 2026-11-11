@@ -38,6 +38,11 @@ module "storage_evidence" {
   name_prefix   = local.name_prefix
   kms_key_arn   = module.secrets_kms.kms_key_arn
   force_destroy = var.force_destroy
+
+  # The dashboard uploads and reads reports with presigned URLs from the browser.
+  # No cycle: only the CORS resource reads this input, and cdn never reads it.
+  # Local `npm run dev` goes through the Vite S3 proxy, so localhost is not needed.
+  cors_allowed_origins = [module.cdn.url]
 }
 
 module "storage_frontend" {
