@@ -130,7 +130,7 @@ coordinator and worker nodes.
 | Analyst server denials: `GET /api/admin/users` and `DELETE /api/cases/{id}` -> 403 shown as "Your role does not allow this action." | live | Pass |
 | Supervisor: cancel passes the role check (404 for a missing case), admin endpoints 403 | live | Pass |
 | Administrator: "Users & roles" lists the 3 pool users with checkboxes matching their groups | live | Pass |
-| Administrator role change (`POST /api/admin/roles`) | not run | Blocked by the agent's permission policy (it grants a permission on a real account). To verify by hand: tick a group, refresh the list, untick it |
+| Administrator role change (`POST /api/admin/roles`): tick supervisor for the analyst, sign in as the analyst (ANALYST + SUPERVISOR badges, cancel available), untick it again | live, by hand (Camila) | Pass |
 | Analyst upload + create: 6 case-001 files (chat, 2 images, 2 voice notes, video) through presigned PUTs (Vite S3 proxy), case created | live | Pass; case completed 6/6 in about 7 s on the cloud workers |
 | Analyst sees "Cancelling a case requires the supervisor or administrator role" instead of the cancel button | live | Pass |
 | Report: `GET .../report` envelope, JSON fetched from S3 without bearer, category tiles, 17 findings with source/hash/message/sender/send time, image box, audio segment, "original date unknown" for media, processing vs evidence timeline, per-file analysis, escaped excerpts | live | Pass |
