@@ -10,7 +10,7 @@ University project (II Proyecto Programado IC-6600, Alternative B): a distribute
 - Python is a uv workspace (root `pyproject.toml`, one `uv.lock`): `uv sync --all-packages --group dataset`. Validate the dataset with `uv run --group dataset python dataset/generators/validate_manifests.py`. Lint with `uv run ruff check <path>`.
 - Local end to end: `docker compose -f infra/docker/compose.dev.yml up -d --wait` (RabbitMQ 5673/15673, PostgreSQL 5434, MinIO 9100, bound to 127.0.0.1), `set -a; source infra/docker/dev.env; set +a`, then `uv run --all-packages python services/workers/scripts/local_e2e.py` (coordinator + `fake_worker.py` per pool; scenarios basic, unsupported, retries, crash, restart). By hand: `uv run --package coordinator uvicorn coordinator.main:app`, `services/workers/scripts/fake_worker.py --pool <text|image|audio> [--fail-rate P --crash-rate P]`, `services/coordinator/scripts/smoke.py`. `docker compose ... down -v` when done.
 - FIFO/aging scheduling, JWT/RBAC, custody triggers, process-isolated cancellation, report aggregation and M3 download/CAS wiring are implemented. Read `docs/handoff-completion.md` for evidence and manual cloud steps.
-- `frontend/` has a Vite dashboard; `infra/monitoring`, `infra/tls`, experiment runners now exist; frontend auth integration, full dataset and M5 remain Camila work.
+- `frontend/` has a Vite dashboard; `infra/monitoring`, `infra/tls`, experiment runners now exist; Camila's frontend Cognito/roles integration, generated dataset (`dataset/generators/`) and M5 benchmark (`experiments/m5_heterogeneous_compute/`) are delivered; see `docs/responsabilidades.md`.
 
 ## Conventions
 
