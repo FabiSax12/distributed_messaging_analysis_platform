@@ -29,15 +29,16 @@ def main():
         M1_MAX_ACTIVE_CASES=2,
         M1_MEMORY_BUDGET_BYTES=1000,
         M1_TASK_BASE_BYTES=100,
+        M1_OPERATION_BASE_BYTES={"image_analyze": 300},
         _env_file=None,
     )
 
-    def task(subtask_id="t1", input_key="a.txt"):
+    def task(subtask_id="t1", input_key="a.txt", operation="text_analyze", queue="work.text"):
         return SimpleNamespace(
             subtask_id=subtask_id,
             input_key=input_key,
-            operation="text_analyze",
-            queue="work.text",
+            operation=operation,
+            queue=queue,
             params={RESERVATION_KEY: {"memory_bytes": -100000}},
         )
 
@@ -49,6 +50,17 @@ def main():
     reserve(Connection(), config, tasks, 20, {"a.txt": 10, "b.txt": 10})
     assert tasks[0].params[RESERVATION_KEY]["memory_bytes"] == 100 + 20 * 4
     assert RESERVATION_KEY not in tasks[1].params
+    # Mixed operations: each distinct base once (300 image, 100 text fallback);
+    # a subtask without a queue counts for neither base nor input.
+    tasks = [
+        task("t1", "a.jpg", "image_analyze", "work.image"),
+        task("t2", "b.jpg", "image_analyze", "work.image"),
+        task("t3", "c.txt"),
+        task("t4", "d.bin", "unsupported", None),
+    ]
+    sizes = {"a.jpg": 10, "b.jpg": 10, "c.txt": 10, "d.bin": 50}
+    reserve(Connection(), config, tasks, 80, sizes)
+    assert tasks[0].params[RESERVATION_KEY]["memory_bytes"] == 300 + 100 + 30 * 4
     for conn, expected in [
         (Connection(active=2), 503),
         (Connection(memory=900), 503),

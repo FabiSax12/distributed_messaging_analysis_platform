@@ -13,10 +13,14 @@ Set `M1_MAX_ACTIVE_CASES`, `M1_MAX_CASE_INPUT_BYTES` and/or
 `M1_OPERATION_BASE_BYTES` JSON can supply per-operation model estimates.
 Reservation = model base once per distinct operation in the case + S3
 ContentLength * input multiplier per queued subtask, default multiplier 4.
-Each pool runs one analysis at a time (`WORKER_CONCURRENCY=1`), so a case's
-subtasks of one operation load that model one after another, not side by side.
-Across cases the accounting stays conservative: every active case reserves its
-own model bases. Section 6 explains why the earlier per-subtask base was wrong. Oversized cases return 413; exhausted reservations return 503.
+This assumes the deployed topology: one node per pool and
+`WORKER_CONCURRENCY=1`, so a case's subtasks of one operation load that model
+one after another, not side by side. With more nodes or higher concurrency a
+case's subtasks can run in parallel and the base should be scaled by the
+number of slots; the code does not check this. Across cases the accounting
+stays conservative: every active case reserves its own model bases. Section 6
+explains why the earlier per-subtask base was wrong. Oversized cases return
+413; exhausted reservations return 503.
 Drain existing cases before enabling memory budgets: unreserved active cases
 fail closed. This is conservative accounting, not a measurement of free RAM.
 Compressed size cannot guarantee decoded memory; calibrate with real inputs.
@@ -132,13 +136,14 @@ The subtasks of a case are not all running at the same moment, though.
 Each worker processes one subtask at a time, so the old formula charged
 for model memory that is never allocated together.
 
-After the fix (computed with the same limits, not yet observed in the cloud;
-needs merge and deploy):
+After the fix (computed with the same limits from the manifests' `size_bytes`
+and the extension routing in `shared/routing.py`, video counted as
+`audio_analyze`; not yet observed in the cloud, needs merge and deploy):
 
 | Case | Reservation (new) |
 |---|---:|
 | 10-file upload above | 1,010,369,360 B (0.94 GiB) |
-| 6-file upload below | 1,009,312,884 B (0.94 GiB) |
+| 6-file case P8Y82BM7 (next table) | 1,009,312,884 B (0.94 GiB) |
 | Dataset manifests | 0 of 40 over budget, largest `case-012` 2.46 GiB (11 sources, 390.7 MiB input) |
 
 A check against local PostgreSQL gave 560,870,912 B for a 40-image case of
