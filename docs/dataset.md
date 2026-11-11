@@ -187,12 +187,149 @@ The `result.json` produced by Telegram Desktop's "Export chat history" (JSON):
   voice notes, `media_type: "voice_message"` and `duration_seconds`.
 - `message_index` is the 0-based position in `messages[]` (not `id`).
 
-## Provenance and licenses
+## Generating the dataset
 
-Fill one row per source (generator, public dataset, stock site). AI-generated
-content (synthetic text, generated images or synthesized voices) is allowed
-but must be marked.
+Everything comes from scripts in `dataset/generators/` with seed 42. Needs
+`ffmpeg`/`ffprobe` on PATH and a TTS backend (Windows SAPI, or `espeak-ng`
+elsewhere; see `tts.py`).
+
+```sh
+uv sync --all-packages --all-extras --group dataset
+uv run --group dataset python dataset/generators/fetch_coco.py        # ~241 MB annotations + 310 images (51 MB) into dataset/build/coco
+uv run --group dataset python dataset/generators/generate_dataset.py  # ~5 min; 1.6 GB of media under dataset/cases
+uv run --group dataset python dataset/generators/validate_manifests.py --verify-files
+uv run --all-packages --all-extras --group dataset python dataset/generators/dataset_stats.py
+```
+
+| Script | What it does |
+|---|---|
+| `fetch_coco.py` | Picks COCO val2017 images with a redistributable license: all 73 with a knife/scissors box, plus seeded negatives. Writes `data/coco_selection.json` (committed: id, license, Flickr URL, normalized boxes) |
+| `corpus.py` | Phrase banks: benign chat (es/en), harmful phrasings the rules know, paraphrases they miss, hard negatives, voice-note sentences |
+| `tts.py` | Synthesizes voice-note sentences (16 kHz mono WAV) |
+| `generate_dataset.py` | Plans the 40 cases from one RNG, renders chats, voice notes (Opus), videos (H.264 + AAC), copies images, writes manifests and ground truth |
+| `validate_manifests.py` | Schema and semantic checks; `--verify-files` hashes local media |
+| `dataset_stats.py` | Independent count: parses chats with the text worker's own parser, ffprobes every audio/video, opens every image |
+| `evaluate.py` | Runs the production ops on labeled sources and computes precision/recall (see Evaluation) |
+
+The plan (texts, labels, message indexes, segment times) is deterministic.
+Media bytes depend on the TTS voices and the ffmpeg/x264 build, so a rebuild on
+another machine produces equivalent but not byte-identical media (the
+manifests then fail `--verify-files` until regenerated with the new hashes).
+The published media is the reference copy: `scripts/dataset/upload-dataset.sh
+<bucket>` publishes `dataset/cases/<case_id>/<path>`, and
+`scripts/dataset/download-dataset.sh <bucket>` fetches it back and verifies the
+hashes. Terraform has no dedicated dataset bucket; agree on one with the team.
+
+## Current dataset (seed 42)
+
+| Item | Minimum | Generated | Counted by |
+|---|---|---|---|
+| Cases | 40 | 40 (29 WhatsApp, 11 Telegram exports) | validator |
+| Heterogeneous cases | 10 | 15 (10 with a small video, 5 heavy) | validator |
+| Text messages | 20,000 | 21,000 user messages + 337 system entries | `dataset_stats.py` (worker parser) |
+| Images | 300 | 300 (73 contain knife/scissors, 134 boxes) | `dataset_stats.py` |
+| Voice notes | 150 | 150, 3.9-172.3 s (74 under 10 s, 55 of 10-60 s, 21 over 60 s), 74 min total | `dataset_stats.py` (ffprobe) |
+| Videos | - | 15, all with an AAC audio track, 15.5 min total | `dataset_stats.py` (ffprobe) |
+| Heavy cases | 5 | 5 (cases 011-015, one 264-409 MB 720p video each) | validator (single source >= 200 MiB) |
+| Labeled sources | sample | all 505 sources | validator |
+
+Case kinds: 001-010 heterogeneous (text, 8 images, 5 voice notes, small video);
+011-015 heavy heterogeneous (text, 6 images, 3 voice notes, 264-409 MB video);
+016-035 standard (text, 8-9 images, 4-5 voice notes); 036-038 text only
+(large chats); 039-040 text and 12 images. 28 cases use a harmful scenario
+(extortion, drug sales, bullying, planned assault, neighbor dispute,
+harassment, money laundering) and 12 are benign controls (family, work,
+sports). No case includes documents: documents have no analysis operation yet.
+
+Ground truth contents: 635 harmful messages (301 threat, 156
+offensive_language, 101 violence, 77 illicit_activity), 43 harmful audio
+segments, 134 image boxes. Known negatives: 227 images, 110 voice notes, 12
+videos and the 12 benign chats (every chat line not listed is negative).
+
+How labels were produced:
+
+- **Text and audio**: the generator records the category of every harmful
+  message or spoken sentence it inserts, by meaning. About 70% of harmful chat
+  messages use a phrasing the rules know; the rest are paraphrases with no
+  rule keyword (expected false negatives). About 0.6% of messages are hard
+  negatives: harmless lines containing a rule keyword ("the photo shoot is at
+  3", "I'm going to kill you at chess tonight haha"), expected false
+  positives. Audio segments are the exact start/end of the synthesized
+  sentence within the note.
+- **Images**: COCO's human-annotated knife and scissors boxes, normalized.
+  This measures exactly what the image worker claims to do (flag knives and
+  scissors for human review). Most COCO knives are cutlery: a match means "a
+  knife is visible", not "the image is harmful". The worker is not a general
+  harmful-image classifier and the evaluation does not pretend otherwise.
+
+## Evaluation
+
+`evaluate.py` runs `text_analyze`, `image_analyze` and `audio_analyze` (video
+included) on every labeled source with the production code, in-process via
+`workers.ops.run_local.run` (no broker, no S3), and compares predictions with
+the ground truth. Matching is one-to-one, per category, within one source:
+
+- message: same category and same `message_index`;
+- audio segment: same category and the predicted segment overlaps the labeled
+  one, with 0.5 s slack each side (Whisper merges and splits sentences);
+- image: same category and box IoU >= 0.5; plus an image-level score (any
+  finding vs any label).
+
+Results are in [Dataset evaluation results](#dataset-evaluation-results).
+
+## Provenance and licenses
 
 | Source | Type | Count | Origin / URL | License | AI-generated (yes/no) |
 |---|---|---|---|---|---|
-| | | | | | |
+| `generate_dataset.py` + `corpus.py` | Chat exports (WhatsApp `.txt`, Telegram `result.json`) | 40 exports, 21,337 entries | Template-based generator in this repo, seed 42; all names, places and events are fictitious | Project code (same as repository) | Yes (programmatic synthesis; phrase banks written with AI assistance, see `bitacora_ia.md`) |
+| COCO 2017 val | Images (JPEG) | 300 | https://cocodataset.org; per-image Flickr URL and license in `dataset/generators/data/coco_selection.json` and each manifest source `notes` | Images: CC BY 2.0 (174 of the 310 selected), CC BY-SA 2.0 (87), CC BY-ND 2.0 (48), no known copyright restrictions (1). Annotations: CC BY 4.0. NonCommercial licenses excluded | No |
+| Windows SAPI TTS (Microsoft David/Zira Desktop) via `tts.py` | Voice notes (Opus in Ogg) and video audio tracks | 150 voice notes + 15 video tracks | Synthesized locally from `corpus.py` sentences | Generated output of the OS speech synthesizer, used for non-commercial coursework | Yes (synthetic speech) |
+| ffmpeg `testsrc2` / `noise` filters | Video frames | 15 videos | Generated by ffmpeg lavfi sources | Generated test patterns, no third-party content | Yes (procedural, not ML) |
+
+## Dataset evaluation results
+
+Run on 2026-11-11 with `evaluate.py` over all 505 labeled sources (40 chats,
+300 images, 150 voice notes, 15 videos) on the production operations: text
+rules `bilingual-rules` v1, YOLOv8n COCO (conf 0.25), faster-whisper tiny int8
+(2 threads, beam 1, language auto). 0 operation errors. Raw numbers:
+`dataset/evaluation/metrics.json` and `metrics.md`.
+
+| Category | Modality | TP | FP | FN | Precision | Recall | F1 |
+|---|---|---|---|---|---|---|---|
+| threat | text | 207 | 23 | 94 | 0.900 | 0.688 | 0.780 |
+| threat | audio + video | 14 | 6 | 6 | 0.700 | 0.700 | 0.700 |
+| offensive_language | text | 113 | 30 | 43 | 0.790 | 0.724 | 0.756 |
+| offensive_language | audio | 10 | 0 | 0 | 1.000 | 1.000 | 1.000 |
+| violence | text | 64 | 37 | 37 | 0.634 | 0.634 | 0.634 |
+| violence | audio | 7 | 0 | 0 | 1.000 | 1.000 | 1.000 |
+| illicit_activity | text | 46 | 32 | 31 | 0.590 | 0.597 | 0.594 |
+| illicit_activity | audio + video | 5 | 0 | 1 | 1.000 | 0.833 | 0.909 |
+| sensitive_image (box, IoU >= 0.5) | image | 23 | 10 | 111 | 0.697 | 0.172 | 0.275 |
+| sensitive_image (image level) | image | 27 | 1 | 46 | 0.964 | 0.370 | 0.535 |
+
+Mean IoU of matched boxes: 0.84.
+
+Interpretation:
+
+- **Text rules** miss every paraphrase by construction (about 30% of harmful
+  messages): "sé dónde vivís", "money laundering" (only the Spanish "lavado de
+  dinero" is a rule) and "we'll jump him" have no keyword. Every false
+  positive comes from the hard negatives: "documental sobre lavado de dinero"
+  (21), "qué idiota yo jaja" (20), "golpear la bola" (18), "golpiza del boxeo"
+  (14), "kill you at chess" (14), "drug deal investigation" (11), "stupid
+  printer" (10), "won't hurt you" (9). Keyword rules cannot read context:
+  they are review cues, as the worker docstring says.
+- **Audio**: Whisper tiny transcribes the synthetic English voices almost
+  verbatim, so audio inherits the rules' behavior on a smaller sample (43
+  labeled segments). The 6 audio threat false positives are the spoken
+  "kill you at chess" hard negative; the misses are spoken paraphrases.
+  Synthetic TTS speech is cleaner than real voice notes (no noise, accents
+  or overlapping speakers), so these audio numbers are an upper bound.
+- **Images**: YOLOv8n finds 37% of the images that contain a knife or
+  scissors and is almost never wrong when it flags one (1 image-level FP in
+  227 negatives), but it misses most boxes: COCO knives are mostly small
+  cutlery on dining tables, and nano-sized YOLO at 640 px rarely detects
+  objects of a few hundred pixels. The worker detects objects; it does not
+  judge whether an image is harmful.
+- Severity is not scored: the rules assign one fixed severity per category,
+  equal to the ground truth's, so it would add no information.
