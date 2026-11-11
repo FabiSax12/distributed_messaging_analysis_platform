@@ -8,7 +8,9 @@ the asyncio loop, so a slow query does not stall the rest of the API.
 from __future__ import annotations
 
 import logging
+import mimetypes
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import PurePosixPath
 from typing import Any
 
 from botocore.exceptions import ClientError
@@ -196,33 +198,74 @@ def get_case_outputs(
     cases_repo: CasesRepoDep,
     subtasks_repo: SubTasksRepoDep,
 ) -> CaseOutputsResponse:
-    """Presign the `output_keys` of each subtask, without requiring the case to be finished.
+    """Presign the input file and the `output_keys` of each subtask.
 
-    Unlike `get_case_report`, an individual subtask can have outputs ready
-    while other subtasks of the same case are still processing.
+    Does not require the case to be finished: an individual subtask can have
+    outputs ready while other subtasks of the same case are still processing.
+    Every subtask is listed, because every subtask has an `input_key`.
+
+    The input is presigned at its original `input_key`, which is never moved
+    or deleted: the worker's `content/<sha256>` CAS object is an extra copy.
+    Presigning is local signing (no S3 call), so a page polled every few
+    seconds does not issue one `head_object` per file.
     """
     case = cases_repo.get(case_id)
     if case is None:
         raise HTTPException(status_code=404, detail="case not found")
 
-    subtasks = subtasks_repo.list_by_case(case_id)
+    def presign(key: str, content_type: str | None = None) -> SubTaskOutputUrl:
+        params = {"Bucket": settings.S3_BUCKET, "Key": key}
+        if content_type:
+            params["ResponseContentType"] = content_type
+        url = s3.generate_presigned_url(
+            "get_object", Params=params, ExpiresIn=settings.PRESIGN_EXPIRES_S
+        )
+        return SubTaskOutputUrl(key=key, url=url, expires_in=settings.PRESIGN_EXPIRES_S)
+
     result = [
         SubTaskOutputs(
             subtask_id=s.subtask_id,
-            outputs=[
-                SubTaskOutputUrl(
-                    key=k,
-                    url=s3.generate_presigned_url(
-                        "get_object",
-                        Params={"Bucket": settings.S3_BUCKET, "Key": k},
-                        ExpiresIn=settings.PRESIGN_EXPIRES_S,
-                    ),
-                    expires_in=settings.PRESIGN_EXPIRES_S,
-                )
-                for k in s.output_keys
-            ],
+            outputs=[presign(k) for k in s.output_keys],
+            input=presign(s.input_key, _media_content_type(s.input_key)),
         )
-        for s in subtasks
-        if s.output_keys
+        for s in subtasks_repo.list_by_case(case_id)
     ]
     return CaseOutputsResponse(case_id=case_id, subtasks=result)
+
+
+# Explicit types for every extension `shared.routing.EXTENSIONS` accepts:
+# `mimetypes` depends on the host's /etc/mime.types (slim images lack .opus,
+# .m4a, .mkv) and returns legacy names such as audio/x-wav.
+_MEDIA_CONTENT_TYPES = {
+    ".txt": "text/plain; charset=utf-8",
+    ".json": "application/json",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+    ".gif": "image/gif",
+    ".bmp": "image/bmp",
+    ".mp3": "audio/mpeg",
+    ".wav": "audio/wav",
+    ".ogg": "audio/ogg",
+    ".opus": "audio/ogg",  # WhatsApp voice notes: Opus in an Ogg container
+    ".m4a": "audio/mp4",
+    ".aac": "audio/aac",
+    ".flac": "audio/flac",
+    ".mp4": "video/mp4",
+    ".mkv": "video/x-matroska",
+    ".mov": "video/quicktime",
+    ".webm": "video/webm",
+    ".avi": "video/x-msvideo",
+}
+
+
+def _media_content_type(key: str) -> str | None:
+    """`Content-Type` to force on the presigned GET of an input file.
+
+    Dashboard uploads are PUT without a `Content-Type` (it would break the
+    signature), so S3 stores them as `binary/octet-stream` and some browsers
+    refuse to play them inline. None leaves the stored type untouched.
+    """
+    suffix = PurePosixPath(key).suffix.lower()
+    return _MEDIA_CONTENT_TYPES.get(suffix) or mimetypes.guess_type(key)[0]

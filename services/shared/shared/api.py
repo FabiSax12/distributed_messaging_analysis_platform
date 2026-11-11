@@ -83,21 +83,25 @@ class ReportUrlResponse(BaseModel):
 
 class SubTaskOutputUrl(BaseModel):
     key: str
-    url: str                  # presigned GET of the output file
+    url: str                  # presigned GET of the file
     expires_in: int
 
 
 class SubTaskOutputs(BaseModel):
     subtask_id: str
     outputs: list[SubTaskOutputUrl]
+    input: SubTaskOutputUrl | None = None  # presigned GET of the sub-task's input_key
 
 
 class CaseOutputsResponse(BaseModel):
-    """Presigned URLs of the `output_keys` of each sub-task of the case.
+    """Presigned URLs of the input file and `output_keys` of each sub-task.
 
     Unlike `ReportUrlResponse`, it does not require the case to have finished:
     a sub-task can have `output_keys` while the case is still running.
-    It only includes sub-tasks with at least one `output_key`.
+    It includes every sub-task of the case (all have an `input_key`);
+    `outputs` is empty until the worker writes results. The input URL forces
+    a `Content-Type` from the extension so the browser can play media that
+    was uploaded without one.
     """
 
     case_id: str
