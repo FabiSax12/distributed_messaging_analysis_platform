@@ -15,14 +15,14 @@ Lets GitHub Actions deploy without stored AWS keys: an IAM role that only workfl
 
 ## Trust
 
-`sts:AssumeRoleWithWebIdentity` with `aud = sts.amazonaws.com` and `sub = repo:<repo>:ref:refs/heads/<branch>` (exact match). Pull request runs, other branches and forks cannot assume it. Gotcha: a job that declares a GitHub `environment:` gets `sub = repo:<repo>:environment:<name>` instead, which this role rejects; change `local.subject` if you add one.
+`sts:AssumeRoleWithWebIdentity` with `aud = sts.amazonaws.com` and `sub = repo:<repo>:ref:refs/heads/<branch>` (exact match). Repositories with GitHub's immutable subject format send `repo:<owner>@<owner_id>/<name>@<repo_id>:...` instead; pass that prefix in `github_subject_prefix` (read it from `gh api repos/<owner>/<name>/actions/oidc/customization/sub`). Pull request runs, other branches and forks cannot assume it. Gotcha: a job that declares a GitHub `environment:` gets `sub = repo:<repo>:environment:<name>` instead, which this role rejects; change `local.subject` if you add one.
 
 ## Permissions
 
 | Actions | Resource | Used by |
 |---|---|---|
 | `ecr:GetAuthorizationToken` | `*` | `docker login` to ECR |
-| `ecr:BatchCheckLayerAvailability`, `InitiateLayerUpload`, `UploadLayerPart`, `CompleteLayerUpload`, `PutImage` | the ECR repositories | `docker push` |
+| `ecr:BatchGetImage`, `BatchCheckLayerAvailability`, `InitiateLayerUpload`, `UploadLayerPart`, `CompleteLayerUpload`, `PutImage` | the ECR repositories | `docker push` |
 | `ec2:DescribeInstances`, `ssm:DescribeInstanceInformation` | `*` (no resource-level support) | find nodes by tag, skip nodes that are not SSM-online |
 | `ssm:SendCommand` | `AWS-RunShellScript` document | roll out a tag |
 | `ssm:SendCommand` | `instance/*` where tags `Project` and `Environment` match | same, limited to this project's instances |
@@ -30,7 +30,7 @@ Lets GitHub Actions deploy without stored AWS keys: an IAM role that only workfl
 | `s3:ListBucket`, `s3:PutObject`, `s3:DeleteObject` | the dashboard bucket | `aws s3 sync --delete`, `aws s3 cp` |
 | `cloudfront:CreateInvalidation` | the distribution | refresh `index.html` |
 
-No pull permissions on ECR, no Terraform, no IAM, no Secrets Manager: the instances read their own secrets with their instance roles.
+No layer downloads from ECR (`BatchGetImage` is only there because `docker push` HEADs the manifest first), no Terraform, no IAM, no Secrets Manager: the instances read their own secrets with their instance roles.
 
 ## Resources
 

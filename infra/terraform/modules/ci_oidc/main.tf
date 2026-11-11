@@ -13,7 +13,8 @@ locals {
   )
 
   # Only workflow runs on this exact ref get a token whose sub matches.
-  subject = "repo:${var.github_repository}:ref:refs/heads/${var.github_branch}"
+  subject_prefix = coalesce(var.github_subject_prefix, "repo:${var.github_repository}")
+  subject        = "${local.subject_prefix}:ref:refs/heads/${var.github_branch}"
 }
 
 # ---------------------------------------------------------------------------
@@ -81,10 +82,13 @@ data "aws_iam_policy_document" "deploy" {
     resources = ["*"]
   }
 
-  # Push manifest checks also require read access to the same four repositories.
+  # docker push of the four images. BatchGetImage is needed because push first
+  # HEADs the manifest to see if it already exists (403 without it). Layer
+  # downloads (GetDownloadUrlForLayer) stay out on purpose.
   statement {
     sid = "EcrPush"
     actions = [
+      "ecr:BatchGetImage",
       "ecr:BatchCheckLayerAvailability",
       "ecr:BatchGetImage",
       "ecr:GetDownloadUrlForLayer",
