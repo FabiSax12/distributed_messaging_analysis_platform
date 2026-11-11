@@ -4,6 +4,13 @@
 // whenever the coordinator snapshot changes, and {"type":"ping"} every 25 s.
 // Fallback: while the socket is not open, polling of GET /api/state every
 // 2 s. Reconnect with exponential backoff 1 s → 2 s → 4 s … up to 30 s.
+//
+// Authentication: the socket offers the subprotocols ['bearer', accessToken];
+// the coordinator selects 'bearer', validates before accepting and closes with
+// 1008 when the token is invalid or expires. On 1008 we ask AuthProvider for a
+// refresh instead of retrying with the same token; a new token reconnects. The
+// provider is only mounted while signed in, so signing out closes the socket
+// and stops polling.
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { api } from '../api/client.js'
@@ -17,7 +24,7 @@ import {
 
 const LiveStateContext = createContext(null)
 
-export function LiveStateProvider({ children }) {
+export function LiveStateProvider({ children, token = null, onAuthClose }) {
   const [data, setData] = useState(null)
   // 'connecting' | 'ws' | 'polling' | 'offline'
   const [mode, setMode] = useState('connecting')
@@ -81,7 +88,7 @@ export function LiveStateProvider({ children }) {
 
     let ws
     try {
-      ws = new WebSocket(WS_URL)
+      ws = token ? new WebSocket(WS_URL, ['bearer', token]) : new WebSocket(WS_URL)
     } catch (err) {
       setLastError(err.message)
       return
@@ -116,8 +123,18 @@ export function LiveStateProvider({ children }) {
       clearTimeout(silenceTimerRef.current)
       if (wsRef.current !== ws || unmountedRef.current) return
       wsRef.current = null
-      if (event.code === 1008) setLastError('The coordinator rejected the WebSocket (unverified origin).')
-      else if (event.code === 1013) setLastError('The coordinator reached its maximum number of WebSocket clients.')
+      if (event.code === 1008) {
+        // Origin check or token check failed. With a token, refresh it: the
+        // new token remounts this effect and reconnects. Polling keeps the
+        // view alive meanwhile (and is itself refreshed on 401).
+        setLastError('The coordinator closed the live connection (session expired or origin not verified).')
+        if (token && onAuthClose) {
+          setMode('polling')
+          startPolling()
+          onAuthClose()
+          return
+        }
+      } else if (event.code === 1013) setLastError('The coordinator reached its maximum number of WebSocket clients.')
 
       setMode((m) => (m === 'offline' ? 'offline' : 'polling'))
       startPolling()
@@ -127,7 +144,7 @@ export function LiveStateProvider({ children }) {
       setNextRetryAt(new Date(Date.now() + delay))
       retryTimerRef.current = setTimeout(connect, delay)
     }
-  }, [accept, armSilenceTimer, startPolling, stopPolling])
+  }, [accept, armSilenceTimer, startPolling, stopPolling, token, onAuthClose])
 
   const reconnectNow = useCallback(() => {
     backoffRef.current = WS_BACKOFF_START_MS
