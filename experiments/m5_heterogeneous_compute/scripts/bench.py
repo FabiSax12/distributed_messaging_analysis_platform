@@ -202,7 +202,8 @@ def main() -> int:
         procs.append({"config": config, "op": op, **extra, "cold_import_s": meta["t_import"] - spawned,
                       "load_s": meta["t_load"] - meta["t_import"], "rss_before_load_mb": meta["rss_before_load"] / 2**20,
                       "rss_after_load_mb": meta["rss_after_load"] / 2**20, "peak_mb": meta["peak_bytes"] / 2**20,
-                      "torch_threads": meta.get("torch_threads")})
+                      "torch_threads": meta.get("torch_threads"),
+                      "ultralytics_default_threads": meta.get("ultralytics_default_threads")})
         lat = []
         for r in meta["rows"]:
             row = {"config": config, "op": op, **extra, "input": Path(r["input"]).name, "repeat": r["repeat"],

@@ -58,10 +58,6 @@ with contextlib.redirect_stdout(sys.stderr):
     else:
         import torch
         from workers.ops.analysis import image as module
-
-        # image.py does not read MODEL_THREADS; torch picks its intra-op
-        # thread count from OMP_NUM_THREADS at import. Set it explicitly too.
-        torch.set_num_threads(int(os.environ.get("MODEL_THREADS", "1")))
     from workers.ops.run_local import run
 
     t_import = time.time()
@@ -69,6 +65,17 @@ with contextlib.redirect_stdout(sys.stderr):
     module.load_model()
     t_load = time.time()
     rss_after_load = rss()
+    threads_after_load = None
+    if args.op == "image":
+        # image.py does not read MODEL_THREADS, and ultralytics' select_device()
+        # (run by the first predict) forces torch.set_num_threads(NUM_THREADS)
+        # with NUM_THREADS = min(8, cpu_count - 1), whatever OMP_NUM_THREADS
+        # says. Pin ultralytics' own constant so the configuration holds.
+        import ultralytics.utils.torch_utils as torch_utils
+
+        threads_after_load = torch_utils.NUM_THREADS  # what production gets
+        torch_utils.NUM_THREADS = int(os.environ.get("MODEL_THREADS", "1"))
+        torch.set_num_threads(torch_utils.NUM_THREADS)
 
     inputs = json.loads(Path(args.inputs).read_text(encoding="utf-8"))
     operation = "audio_analyze" if args.op == "audio" else "image_analyze"
@@ -97,5 +104,6 @@ print(json.dumps({
     "first_start": first_start, "last_end": last_end,
     "rss_before_load": rss_before_load, "rss_after_load": rss_after_load, "peak_bytes": peak(),
     "torch_threads": __import__("torch").get_num_threads() if args.op == "image" else None,
+    "ultralytics_default_threads": threads_after_load,
     "rows": rows,
 }))
