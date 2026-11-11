@@ -8,7 +8,10 @@
 // Authentication: the socket offers the subprotocols ['bearer', accessToken];
 // the coordinator selects 'bearer', validates before accepting and closes with
 // 1008 when the token is invalid or expires. On 1008 we ask AuthProvider for a
-// refresh instead of retrying with the same token; a new token reconnects. The
+// refresh instead of retrying with the same token; a new token reconnects. If
+// the socket closes with 1008 again before it has stayed open for
+// WS_STABLE_MS, the cause is not the token (e.g. the origin check), so we stop
+// reconnecting and keep polling until the user presses Reconnect. The
 // provider is only mounted while signed in, so signing out closes the socket
 // and stops polling.
 
@@ -19,6 +22,7 @@ import {
   WS_BACKOFF_MAX_MS,
   WS_BACKOFF_START_MS,
   WS_SILENCE_TIMEOUT_MS,
+  WS_STABLE_MS,
   WS_URL,
 } from '../config.js'
 
@@ -38,6 +42,12 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
   const silenceTimerRef = useRef(null)
   const pollTimerRef = useRef(null)
   const unmountedRef = useRef(false)
+  // Set when a 1008 close asked for a refresh; cleared once a socket stays
+  // open for WS_STABLE_MS. Refs survive the remount caused by the new token.
+  const authRefreshPendingRef = useRef(false)
+  const stableTimerRef = useRef(null)
+  // Why live updates stopped after a repeated 1008; polling keeps showing it.
+  const stoppedReasonRef = useRef(null)
 
   const accept = useCallback((state) => {
     setData(state)
@@ -51,7 +61,7 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
       const state = await api.state()
       if (unmountedRef.current) return
       accept(state)
-      setLastError(null)
+      setLastError(stoppedReasonRef.current)
       if (wsRef.current?.readyState !== WebSocket.OPEN) setMode('polling')
     } catch (err) {
       if (unmountedRef.current) return
@@ -98,9 +108,14 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
     ws.onopen = () => {
       backoffRef.current = WS_BACKOFF_START_MS
       setMode('ws')
+      stoppedReasonRef.current = null
       setLastError(null)
       stopPolling()
       armSilenceTimer()
+      clearTimeout(stableTimerRef.current)
+      stableTimerRef.current = setTimeout(() => {
+        authRefreshPendingRef.current = false
+      }, WS_STABLE_MS)
     }
 
     ws.onmessage = (event) => {
@@ -120,17 +135,27 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
     }
 
     ws.onclose = (event) => {
-      clearTimeout(silenceTimerRef.current)
       if (wsRef.current !== ws || unmountedRef.current) return
+      clearTimeout(silenceTimerRef.current)
+      clearTimeout(stableTimerRef.current)
       wsRef.current = null
       if (event.code === 1008) {
-        // Origin check or token check failed. With a token, refresh it: the
-        // new token remounts this effect and reconnects. Polling keeps the
+        // Origin check or token check failed. With a token, refresh it once:
+        // the new token remounts this effect and reconnects. Polling keeps the
         // view alive meanwhile (and is itself refreshed on 401).
         setLastError('The coordinator closed the live connection (session expired or origin not verified).')
         if (token && onAuthClose) {
           setMode('polling')
           startPolling()
+          if (authRefreshPendingRef.current) {
+            // Rejected again right after a refresh: a new token will not help.
+            setNextRetryAt(null)
+            stoppedReasonRef.current =
+              'The coordinator rejected the live connection again after a token refresh (origin not verified?). Live updates stopped; polling continues. Press Reconnect to retry.'
+            setLastError(stoppedReasonRef.current)
+            return
+          }
+          authRefreshPendingRef.current = true
           onAuthClose()
           return
         }
@@ -148,6 +173,8 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
 
   const reconnectNow = useCallback(() => {
     backoffRef.current = WS_BACKOFF_START_MS
+    authRefreshPendingRef.current = false
+    stoppedReasonRef.current = null
     const ws = wsRef.current
     wsRef.current = null
     ws?.close()
@@ -164,6 +191,7 @@ export function LiveStateProvider({ children, token = null, onAuthClose }) {
       unmountedRef.current = true
       clearTimeout(retryTimerRef.current)
       clearTimeout(silenceTimerRef.current)
+      clearTimeout(stableTimerRef.current)
       stopPolling()
       const ws = wsRef.current
       wsRef.current = null

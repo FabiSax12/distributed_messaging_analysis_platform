@@ -31,11 +31,14 @@ library:
   The access token is refreshed 2 minutes before it expires (60 min). Sign
   out revokes the refresh token and goes through Cognito `/logout`.
 - **API**: every REST call sends `Authorization: Bearer <access token>` (never
-  the ID token). A 401 triggers one refresh and a retry; a second 401 ends the
-  session. 403 is shown as a role denial, 0/5xx as "backend unavailable".
+  the ID token). A 401 triggers one refresh and a retry; a failed refresh ends
+  the session, a 401 on the retry is shown as a session error. 403 is shown
+  as a role denial, 0/5xx as "backend unavailable".
 - **WebSocket**: `new WebSocket(url, ['bearer', accessToken])`. The
   coordinator closes with 1008 on an invalid/expired token; the dashboard then
-  refreshes and reconnects with the new token. Signing out unmounts the live
+  refreshes and reconnects with the new token. A second 1008 before the new
+  socket has stayed open for 10 s (e.g. origin not verified) stops reconnecting;
+  polling continues and Reconnect retries. Signing out unmounts the live
   state, closing the socket and stopping polling.
 - **Roles** come from `GET /api/me` (`cognito:groups`): analyst reads,
   uploads and creates cases; supervisor also cancels; administrator also

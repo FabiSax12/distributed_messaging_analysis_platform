@@ -10,7 +10,9 @@
 //
 // The access token (never the ID token) is handed to the REST client and the
 // WebSocket. It is refreshed 2 minutes before it expires; a failed refresh ends
-// the session.
+// the session. If /api/me fails (other than 401) after a background refresh,
+// the current identity is kept with the new token and /api/me is read again
+// on the next refresh.
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { api, ApiError, configureAuth } from '../api/client.js'
@@ -44,6 +46,8 @@ export function AuthProvider({ children }) {
   const refreshTimer = useRef(null)
   const refreshing = useRef(null)
   const refreshRef = useRef(null) // latest refreshNow, for the timer
+  // Bumped on logout: work started before it (a refresh, /api/me) is discarded.
+  const generationRef = useRef(0)
 
   const endSession = useCallback((notice) => {
     clearTimeout(refreshTimer.current)
@@ -53,8 +57,10 @@ export function AuthProvider({ children }) {
 
   const loadIdentity = useCallback(
     async (tokens) => {
+      const generation = generationRef.current
       try {
         const me = await api.me()
+        if (generation !== generationRef.current) return // signed out meanwhile
         const roles = (me.roles || []).filter((r) => ROLES.includes(r))
         const id = tokens?.id_token ? decodeJwt(tokens.id_token) : null
         const access = tokens?.access_token ? decodeJwt(tokens.access_token) : null
@@ -69,8 +75,23 @@ export function AuthProvider({ children }) {
           roles,
         })
       } catch (err) {
-        if (err instanceof ApiError && err.status === 401) endSession('The coordinator did not accept your session. Sign in again.')
-        else setSession({ status: 'error', error: err })
+        if (generation !== generationRef.current) return
+        if (err instanceof ApiError && err.status === 401) {
+          endSession('The coordinator did not accept your session. Sign in again.')
+          return
+        }
+        // Only the initial sign-in may fail into 'error'; a background refresh
+        // keeps the working session and its views mounted.
+        console.warn('Could not read /api/me; a signed-in session keeps its current roles.', err)
+        setSession((current) => {
+          if (current.status !== 'signed-in' && current.status !== 'denied') return { status: 'error', error: err }
+          const access = tokens?.access_token ? decodeJwt(tokens.access_token) : null
+          return {
+            ...current,
+            accessToken: tokens?.access_token ?? current.accessToken,
+            expiresAt: access?.exp ? access.exp * 1000 : current.expiresAt,
+          }
+        })
       }
     },
     [endSession],
@@ -95,18 +116,21 @@ export function AuthProvider({ children }) {
   const refreshNow = useCallback(async () => {
     if (AUTH_DISABLED) return null
     if (!refreshing.current) {
-      refreshing.current = (async () => {
+      const generation = generationRef.current
+      const flight = (async () => {
         try {
           const tokens = await refreshTokens()
+          if (generation !== generationRef.current) return null // signed out meanwhile
           await applyTokens(tokens)
-          return tokens.access_token
+          return generation === generationRef.current ? tokens.access_token : null
         } catch {
-          endSession('Your session expired. Sign in again.')
+          if (generation === generationRef.current) endSession('Your session expired. Sign in again.')
           return null
         } finally {
-          refreshing.current = null
+          if (refreshing.current === flight) refreshing.current = null
         }
       })()
+      refreshing.current = flight
     }
     return refreshing.current
   }, [applyTokens, endSession])
@@ -149,6 +173,8 @@ export function AuthProvider({ children }) {
       can: (action) => (ACTIONS[action] || []).some((r) => roles.includes(r)),
       login: () => startLogin(window.location.hash || '#/'),
       logout: async () => {
+        generationRef.current += 1
+        refreshing.current = null
         clearTimeout(refreshTimer.current)
         tokenRef.current = null
         if (AUTH_DISABLED) return

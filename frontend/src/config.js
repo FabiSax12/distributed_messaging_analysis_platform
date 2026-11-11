@@ -22,6 +22,9 @@ export const WS_BACKOFF_MAX_MS = 30000
 // The server sends {"type":"ping"} every 25 s. If 60 s pass without any
 // message, we treat the socket as dead and reconnect.
 export const WS_SILENCE_TIMEOUT_MS = 60000
+// A socket that stays open this long counts as healthy: the next 1008 close
+// may trigger a token refresh again (see useLiveState).
+export const WS_STABLE_MS = 10000
 // Load series (GET /api/metrics).
 export const METRICS_INTERVAL_MS = 10000
 export const METRICS_WINDOW_MIN = 30
