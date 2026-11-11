@@ -1,0 +1,19 @@
+{
+ "date": "2026-11-11 07:53:28 -0600",
+ "os": "Windows-11-10.0.26200-SP0",
+ "cpu": "11th Gen Intel(R) Core(TM) i5-11320H @ 3.20GHz",
+ "physical_cores": 4,
+ "logical_cpus": 8,
+ "ram_gb": 15.7,
+ "python": "3.14.8",
+ "device": "cpu",
+ "versions": {
+  "faster-whisper": "1.2.1",
+  "ctranslate2": "4.8.5",
+  "torch": "2.15.0+cpu",
+  "ultralytics": "8.4.208",
+  "onnxruntime": "1.31.1"
+ },
+ "ffmpeg": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+ "memory_scope": "process peak working set (Windows) / ru_maxrss (Linux) of the benchmark process: interpreter + imports + model + runtime buffers; ffmpeg child excluded"
+}

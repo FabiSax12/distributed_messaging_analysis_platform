@@ -67,7 +67,7 @@ def main() -> int:
     ax.set_xticks([1, 2, 4, 8])
     ax.set_ylim(bottom=0)
     style(ax, "Whisper throughput by threads (one process)", "CPU threads (MODEL_THREADS)", "audio seconds processed per wall second")
-    ax.legend(frameon=False, fontsize=8, loc="upper left")
+    ax.legend(frameon=False, fontsize=8, loc="lower right")
     fig.tight_layout()
     fig.savefig(out / "fig_audio_throughput_threads.png")
     plt.close(fig)

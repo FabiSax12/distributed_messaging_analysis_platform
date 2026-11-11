@@ -1,0 +1,242 @@
+[
+ {
+  "case_id": "case-001",
+  "rel": "media/IMG-20250225-WA0001.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-001\\media\\IMG-20250225-WA0001.jpg",
+  "bytes": 242115
+ },
+ {
+  "case_id": "case-002",
+  "rel": "media/IMG-20240201-WA0005.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-002\\media\\IMG-20240201-WA0005.jpg",
+  "bytes": 176390
+ },
+ {
+  "case_id": "case-002",
+  "rel": "media/IMG-20240202-WA0008.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-002\\media\\IMG-20240202-WA0008.jpg",
+  "bytes": 152355
+ },
+ {
+  "case_id": "case-003",
+  "rel": "media/IMG-20241121-WA0007.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-003\\media\\IMG-20241121-WA0007.jpg",
+  "bytes": 153990
+ },
+ {
+  "case_id": "case-003",
+  "rel": "media/IMG-20241122-WA0010.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-003\\media\\IMG-20241122-WA0010.jpg",
+  "bytes": 316061
+ },
+ {
+  "case_id": "case-003",
+  "rel": "media/IMG-20241123-WA0012.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-003\\media\\IMG-20241123-WA0012.jpg",
+  "bytes": 268677
+ },
+ {
+  "case_id": "case-005",
+  "rel": "media/IMG-20250427-WA0012.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-005\\media\\IMG-20250427-WA0012.jpg",
+  "bytes": 70321
+ },
+ {
+  "case_id": "case-006",
+  "rel": "media/IMG-20250101-WA0005.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-006\\media\\IMG-20250101-WA0005.jpg",
+  "bytes": 144093
+ },
+ {
+  "case_id": "case-006",
+  "rel": "media/IMG-20250104-WA0013.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-006\\media\\IMG-20250104-WA0013.jpg",
+  "bytes": 209467
+ },
+ {
+  "case_id": "case-007",
+  "rel": "media/IMG-20250622-WA0005.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-007\\media\\IMG-20250622-WA0005.jpg",
+  "bytes": 299109
+ },
+ {
+  "case_id": "case-007",
+  "rel": "media/IMG-20250624-WA0009.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-007\\media\\IMG-20250624-WA0009.jpg",
+  "bytes": 105290
+ },
+ {
+  "case_id": "case-008",
+  "rel": "chat/photos/photo_9@06-10-2024_09-25-29.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-008\\chat\\photos\\photo_9@06-10-2024_09-25-29.jpg",
+  "bytes": 166677
+ },
+ {
+  "case_id": "case-010",
+  "rel": "chat/photos/photo_2@08-08-2025_17-03-45.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-010\\chat\\photos\\photo_2@08-08-2025_17-03-45.jpg",
+  "bytes": 164141
+ },
+ {
+  "case_id": "case-011",
+  "rel": "media/IMG-20250325-WA0002.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-011\\media\\IMG-20250325-WA0002.jpg",
+  "bytes": 201995
+ },
+ {
+  "case_id": "case-014",
+  "rel": "chat/photos/photo_10@11-09-2024_07-08-10.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-014\\chat\\photos\\photo_10@11-09-2024_07-08-10.jpg",
+  "bytes": 117323
+ },
+ {
+  "case_id": "case-014",
+  "rel": "chat/photos/photo_6@09-09-2024_19-23-33.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-014\\chat\\photos\\photo_6@09-09-2024_19-23-33.jpg",
+  "bytes": 185180
+ },
+ {
+  "case_id": "case-016",
+  "rel": "media/IMG-20241206-WA0004.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-016\\media\\IMG-20241206-WA0004.jpg",
+  "bytes": 163610
+ },
+ {
+  "case_id": "case-016",
+  "rel": "media/IMG-20241209-WA0006.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-016\\media\\IMG-20241209-WA0006.jpg",
+  "bytes": 217566
+ },
+ {
+  "case_id": "case-016",
+  "rel": "media/IMG-20241210-WA0009.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-016\\media\\IMG-20241210-WA0009.jpg",
+  "bytes": 77912
+ },
+ {
+  "case_id": "case-017",
+  "rel": "media/IMG-20250825-WA0003.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-017\\media\\IMG-20250825-WA0003.jpg",
+  "bytes": 145415
+ },
+ {
+  "case_id": "case-019",
+  "rel": "media/IMG-20240523-WA0004.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-019\\media\\IMG-20240523-WA0004.jpg",
+  "bytes": 143442
+ },
+ {
+  "case_id": "case-020",
+  "rel": "media/IMG-20240502-WA0001.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-020\\media\\IMG-20240502-WA0001.jpg",
+  "bytes": 107637
+ },
+ {
+  "case_id": "case-021",
+  "rel": "media/IMG-20240602-WA0001.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-021\\media\\IMG-20240602-WA0001.jpg",
+  "bytes": 99206
+ },
+ {
+  "case_id": "case-023",
+  "rel": "media/IMG-20240128-WA0011.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-023\\media\\IMG-20240128-WA0011.jpg",
+  "bytes": 160050
+ },
+ {
+  "case_id": "case-023",
+  "rel": "media/IMG-20240128-WA0012.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-023\\media\\IMG-20240128-WA0012.jpg",
+  "bytes": 209730
+ },
+ {
+  "case_id": "case-024",
+  "rel": "media/IMG-20250302-WA0011.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-024\\media\\IMG-20250302-WA0011.jpg",
+  "bytes": 107845
+ },
+ {
+  "case_id": "case-025",
+  "rel": "media/IMG-20240125-WA0001.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-025\\media\\IMG-20240125-WA0001.jpg",
+  "bytes": 163133
+ },
+ {
+  "case_id": "case-025",
+  "rel": "media/IMG-20240128-WA0006.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-025\\media\\IMG-20240128-WA0006.jpg",
+  "bytes": 134403
+ },
+ {
+  "case_id": "case-026",
+  "rel": "media/IMG-20250429-WA0004.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-026\\media\\IMG-20250429-WA0004.jpg",
+  "bytes": 213178
+ },
+ {
+  "case_id": "case-026",
+  "rel": "media/IMG-20250430-WA0008.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-026\\media\\IMG-20250430-WA0008.jpg",
+  "bytes": 159939
+ },
+ {
+  "case_id": "case-028",
+  "rel": "media/IMG-20250417-WA0007.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-028\\media\\IMG-20250417-WA0007.jpg",
+  "bytes": 216017
+ },
+ {
+  "case_id": "case-029",
+  "rel": "media/IMG-20240409-WA0011.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-029\\media\\IMG-20240409-WA0011.jpg",
+  "bytes": 107308
+ },
+ {
+  "case_id": "case-030",
+  "rel": "media/IMG-20240617-WA0008.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-030\\media\\IMG-20240617-WA0008.jpg",
+  "bytes": 139667
+ },
+ {
+  "case_id": "case-031",
+  "rel": "chat/photos/photo_12@06-05-2024_20-52-26.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-031\\chat\\photos\\photo_12@06-05-2024_20-52-26.jpg",
+  "bytes": 111441
+ },
+ {
+  "case_id": "case-033",
+  "rel": "chat/photos/photo_4@10-06-2025_23-22-27.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-033\\chat\\photos\\photo_4@10-06-2025_23-22-27.jpg",
+  "bytes": 196830
+ },
+ {
+  "case_id": "case-035",
+  "rel": "chat/photos/photo_3@09-07-2025_12-10-55.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-035\\chat\\photos\\photo_3@09-07-2025_12-10-55.jpg",
+  "bytes": 105634
+ },
+ {
+  "case_id": "case-039",
+  "rel": "media/IMG-20250623-WA0006.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-039\\media\\IMG-20250623-WA0006.jpg",
+  "bytes": 210434
+ },
+ {
+  "case_id": "case-039",
+  "rel": "media/IMG-20250625-WA0008.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-039\\media\\IMG-20250625-WA0008.jpg",
+  "bytes": 324618
+ },
+ {
+  "case_id": "case-039",
+  "rel": "media/IMG-20250627-WA0012.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-039\\media\\IMG-20250627-WA0012.jpg",
+  "bytes": 148871
+ },
+ {
+  "case_id": "case-040",
+  "rel": "media/IMG-20250315-WA0003.jpg",
+  "path": "C:\\SO\\distributed_messaging_analysis_platform\\dataset\\cases\\case-040\\media\\IMG-20250315-WA0003.jpg",
+  "bytes": 99990
+ }
+]
