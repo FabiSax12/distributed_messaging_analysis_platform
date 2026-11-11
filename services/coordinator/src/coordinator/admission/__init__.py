@@ -21,6 +21,12 @@ def reserve(
 ) -> None:
     """Check limits and attach server-owned reservation before either INSERT.
 
+    Reservation = base(op) once per distinct operation in the case
+    + input size * multiplier per queued subtask. Each pool runs one analysis
+    at a time, so a case's subtasks of one operation load its model
+    sequentially, not side by side. Across cases it stays conservative: every
+    active case reserves its own model bases.
+
     Reservation lives in the first subtask's existing JSON params. No schema
     migration or separate release write: a terminal case stops counting.
     """
@@ -41,13 +47,12 @@ def reserve(
         task.params = {k: v for k, v in task.params.items() if k != RESERVATION_KEY}
     if not (settings.M1_MAX_ACTIVE_CASES or settings.M1_MEMORY_BUDGET_BYTES):
         return
+    queued = [task for task in subtasks if task.queue is not None]
     memory = sum(
-        settings.M1_OPERATION_BASE_BYTES.get(
-            str(task.operation), settings.M1_TASK_BASE_BYTES
-        )
-        + sizes[task.input_key] * settings.M1_INPUT_MEMORY_MULTIPLIER
-        for task in subtasks
-        if task.queue is not None
+        settings.M1_OPERATION_BASE_BYTES.get(operation, settings.M1_TASK_BASE_BYTES)
+        for operation in {str(task.operation) for task in queued}
+    ) + sum(
+        sizes[task.input_key] * settings.M1_INPUT_MEMORY_MULTIPLIER for task in queued
     )
 
     def unavailable(reason: str, **details: Any) -> None:

@@ -32,10 +32,10 @@ def main():
         _env_file=None,
     )
 
-    def task():
+    def task(subtask_id="t1", input_key="a.txt"):
         return SimpleNamespace(
-            subtask_id="t1",
-            input_key="a.txt",
+            subtask_id=subtask_id,
+            input_key=input_key,
             operation="text_analyze",
             queue="work.text",
             params={RESERVATION_KEY: {"memory_bytes": -100000}},
@@ -44,6 +44,11 @@ def main():
     tasks = [task()]
     reserve(Connection(), config, tasks, 10, {"a.txt": 10})
     assert tasks[0].params[RESERVATION_KEY]["memory_bytes"] == 140
+    # One operation's base is charged once per case, input bytes per subtask.
+    tasks = [task("t1", "a.txt"), task("t2", "b.txt")]
+    reserve(Connection(), config, tasks, 20, {"a.txt": 10, "b.txt": 10})
+    assert tasks[0].params[RESERVATION_KEY]["memory_bytes"] == 100 + 20 * 4
+    assert RESERVATION_KEY not in tasks[1].params
     for conn, expected in [
         (Connection(active=2), 503),
         (Connection(memory=900), 503),
@@ -61,7 +66,7 @@ def main():
     except HTTPException as exc:
         assert exc.status_code == 413
     print(
-        "Admission budget, overload, caller spoofing checks passed (SQL integration not tested)"
+        "Admission budget, per-operation base, overload, caller spoofing checks passed (SQL integration not tested)"
     )
 
 
