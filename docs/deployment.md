@@ -254,3 +254,5 @@ manually with `image_tag` set to the tag currently deployed on the others.
 ## Runtime settings and manual steps added after initial CI/CD
 
 See [handoff completion](handoff-completion.md) for `RUNTIME_CONFIG_JSON`, Cognito, cgroups, queue policy and optional TLS origin activation. The ECR role now includes manifest-read permissions; apply Terraform before retrying the failing cloud push.
+
+The evidence bucket has a CORS rule for the CloudFront URL (PUT, GET, HEAD; any request header; exposes `ETag`) so the dashboard can upload files and fetch the report with presigned URLs straight from the browser. It is Terraform-managed (`cors_allowed_origins` in `storage_evidence`), so run `terraform apply -target=module.storage_evidence` from `infra/terraform/environments/dev` once to activate it; until then the "Upload files" tab fails with "Could not upload ... to S3".
