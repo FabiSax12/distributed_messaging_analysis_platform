@@ -187,6 +187,13 @@ class Publisher:
                 )
                 time.sleep(delay)
 
+    def depth(self, pool: Pool) -> int:
+        return (
+            self._ensure_channel()
+            .queue_declare(work_queue(pool), passive=True)
+            .method.message_count
+        )
+
     def keepalive(self) -> None:
         if self._connection is None or not self._connection.is_open:
             return
@@ -259,7 +266,11 @@ def consume(
                     transient_failures += 1
                     logger.warning(
                         "transient error in message handler, requeueing",
-                        extra={"queue": queue, "consumer": name, "retry_in_s": round(delay, 2)},
+                        extra={
+                            "queue": queue,
+                            "consumer": name,
+                            "retry_in_s": round(delay, 2),
+                        },
                         exc_info=True,
                     )
                     connection.sleep(delay)  # keeps servicing AMQP heartbeats

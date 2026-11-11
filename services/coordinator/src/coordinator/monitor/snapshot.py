@@ -24,6 +24,7 @@ from ..repo.subtasks import SubTasksRepo
 from ..repo.workers import WorkersRepo
 from . import balancer
 from .broadcaster import Broadcaster
+from .notifications import emit
 
 logger = logging.getLogger(__name__)
 
@@ -113,6 +114,8 @@ def run_snapshot_once(
     except Exception:
         logger.exception("run_snapshot_once failed, keeping the previous snapshot")
         return
+
+    emit(snapshot)
 
     global _snapshot
     with _lock:

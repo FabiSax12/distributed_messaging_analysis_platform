@@ -210,20 +210,19 @@ outages are retried in place.
   but not acked can be applied after a retry was already scheduled; on the
   final attempt this can record `retries_exhausted` for work that actually
   completed.
-- Real in-flight cancellation is not implemented: `cancel_requested` is only
-  checked by workers before a sub-task starts.
+- Cancellation stops isolated analysis children; download/upload work can still take time to finish.
 
-## Seams for the OS modules (not implemented)
+## Implemented OS modules
 
-- **M1 admission control**: `api/cases.py::create_case`, before the outbox insert.
-- **M2 scheduling (aging)**: `routing/outbox.py` decides what is published
-  and with which priority (`shared.routing.message_priority`).
-- **M3 storage**: S3 access is `aws.s3_client()`; chunking/CAS belong in
-  `services/storage`.
-- **M4 security**: only `X-Origin-Verify` today (`security.py`); no user
-  auth, RBAC, TLS between nodes beyond AMQPS/RDS TLS, or custody log.
-- **Cancellation**: `DELETE /api/cases/{id}` sets `cancel_requested`;
-  workers skip sub-tasks that have not started. Running ones finish.
+- M1: transactional admission in `api/cases.py`, configurable active/input/memory limits.
+- M2: FIFO or priority aging in the durable outbox, per-pool publish windows.
+- M3: verified worker downloads and conditional SHA-256 CAS writes to S3.
+- M4: access-token JWT/RBAC, append-only hash-chain custody triggers, origin verification.
+- In-flight cancellation: isolated operation processes are killed and recorded cancelled.
+- Reports aggregate analyses, findings, categories and timeline entries.
+
+The rollout/configuration contract and remaining cloud experiments are in
+`docs/handoff-completion.md`; frontend authentication integration belongs to Camila.
 
 ## Dataset convention
 

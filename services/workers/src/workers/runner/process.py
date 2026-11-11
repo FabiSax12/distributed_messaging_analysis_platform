@@ -2,7 +2,7 @@
 
 `handle` is the `on_message` callback of `shared.broker.consume` (manual
 ack, prefetch=1). Every AMQP call happens on the consuming thread (pika is
-not thread-safe); the op itself runs on a helper thread while the consuming
+not thread-safe); the transfer supervisor runs on a helper thread; the op runs in a killable child while the consuming
 thread keeps servicing AMQP heartbeats and publishes the op's progress.
 
 Protocol:
@@ -35,6 +35,7 @@ Protocol:
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import mimetypes
 import queue
@@ -50,8 +51,10 @@ from botocore.exceptions import ClientError
 from pika.adapters.blocking_connection import BlockingChannel
 from pika.spec import Basic, BasicProperties
 from psycopg_pool import ConnectionPool
+from storage.chunking import ChunkIntegrityError
+from storage.chunking.file_chunker import DiskReassembler, FileChunker
 
-from shared.analysis import AnalysisOperation
+from shared.analysis import AnalysisOperation, AnalysisResult
 from shared.broker import backoff_delay, publish
 from shared.messages import ErrorCode, ErrorInfo, ResultMessage, SubTaskMessage, utcnow
 from shared.routing import RESULTS_QUEUE, Pool
@@ -60,6 +63,7 @@ from shared.states import SubTaskStatus
 from ..ops.base import Operation, OpError
 from .db import DB_ERRORS, subtask_state
 from .heartbeat import Heartbeat
+from .isolation import run_isolated
 
 logger = logging.getLogger(__name__)
 
@@ -188,7 +192,9 @@ def handle(
             # so its temp dir is removed and the executor is free before the
             # consumer reconnects; its result is discarded and the broker
             # redelivers the message, which is then reported as worker_lost.
-            logger.warning("connection lost mid-task, discarding the op result", extra=log)
+            logger.warning(
+                "connection lost mid-task, discarding the op result", extra=log
+            )
             wait([future])
             raise
     try:
@@ -287,7 +293,9 @@ def _failed(
 ) -> ResultMessage:
     return ctx.result(
         task,
-        status=SubTaskStatus.FAILED,
+        status=SubTaskStatus.CANCELLED
+        if code == ErrorCode.CANCELLED
+        else SubTaskStatus.FAILED,
         started_at=started_at,
         finished_at=utcnow(),
         error=ErrorInfo(code=code, message=message[-2000:]),
@@ -309,15 +317,44 @@ def _run(
         out_dir = Path(tmp) / "out"
         src.parent.mkdir()
         out_dir.mkdir()
-        _download(ctx, task.input_key, src)
+        _download(ctx, task.input_key, src, task.params.get("sha256"))
 
         on_progress(0)
-        output = op(
-            task, src, out_dir, timeout_s=ctx.op_timeout_s, on_progress=on_progress
+
+        def cancelled():
+            try:
+                current = subtask_state(ctx.db, task.subtask_id)
+                return current is None or current.closed or current.cancel_requested
+            except DB_ERRORS:
+                return False  # A transient DB outage must not discard valid work.
+
+        output = run_isolated(
+            op,
+            task,
+            src,
+            out_dir,
+            timeout_s=ctx.op_timeout_s,
+            on_progress=on_progress,
+            cancelled=cancelled,
         )
+        if cancelled():
+            raise OpError(ErrorCode.CANCELLED, "Case cancelled before upload")
+
+        analysis = AnalysisResult.from_meta(output.meta)
+        if analysis.operation != task.operation:
+            raise OpError(
+                ErrorCode.PROCESSING_ERROR, "Analysis operation does not match task"
+            )
 
         keys = []
         for path in output.files:
+            if (
+                not path.resolve().is_relative_to(out_dir.resolve())
+                or not path.is_file()
+            ):
+                raise OpError(
+                    ErrorCode.PROCESSING_ERROR, "Operation output escaped its directory"
+                )
             key = f"{task.output_prefix}{path.name}"
             content_type = (
                 mimetypes.guess_type(path.name)[0] or "application/octet-stream"
@@ -329,9 +366,48 @@ def _run(
         return keys, output.meta
 
 
-def _download(ctx: WorkerContext, key: str, dest: Path) -> None:
+def _download(
+    ctx: WorkerContext, key: str, dest: Path, expected_hash: str | None = None
+) -> None:
     try:
-        ctx.s3.download_file(ctx.bucket, key, str(dest))
+        response = ctx.s3.get_object(Bucket=ctx.bucket, Key=key)
+        size = response["ContentLength"]
+        block_size = 4 * 1024 * 1024
+        expected = expected_hash or response.get("Metadata", {}).get("sha256")
+        with response["Body"] as body, tempfile.TemporaryFile() as spool:
+            digest = hashlib.sha256()
+            for chunk in FileChunker().split(body, block_size):
+                digest.update(chunk.data)
+                spool.write(chunk.data)
+            actual = digest.hexdigest()
+            if expected and expected != actual:
+                raise OpError(ErrorCode.CORRUPT_INPUT, "Source SHA-256 mismatch")
+            spool.seek(0)
+            with DiskReassembler(
+                actual, (size + block_size - 1) // block_size
+            ) as receiver:
+                for chunk in FileChunker().split(spool, block_size):
+                    receiver.add(chunk)
+                with dest.open("wb") as out:
+                    receiver.finish(out)
+        # Conditional creation is atomic across workers; identical bytes have one key.
+        with dest.open("rb") as stream:
+            try:
+                ctx.s3.put_object(
+                    Bucket=ctx.bucket,
+                    Key="content/" + actual,
+                    Body=stream,
+                    IfNoneMatch="*",
+                    Metadata={"sha256": actual},
+                )
+            except ClientError as exc:
+                if exc.response.get("Error", {}).get("Code") not in {
+                    "PreconditionFailed",
+                    "412",
+                }:
+                    raise
+    except ChunkIntegrityError as exc:
+        raise OpError(ErrorCode.CORRUPT_INPUT, str(exc)) from exc
     except ClientError as exc:
         if exc.response.get("Error", {}).get("Code") in {"404", "NoSuchKey"}:
             raise OpError(

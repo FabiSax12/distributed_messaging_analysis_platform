@@ -1,0 +1,17 @@
+{
+  "pool": "text",
+  "input_bytes": 26,
+  "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+  "pid": 1,
+  "load_seconds": 0.0007965039999930923,
+  "before": {
+    "rss_bytes": 38887424,
+    "pss_bytes": 27008000
+  },
+  "loaded": {
+    "rss_bytes": 38887424,
+    "pss_bytes": 27008000
+  },
+  "peak_sampled_rss_bytes": 38965248,
+  "note": "PSS null on Windows; sampled RSS is not kernel peak; no cgroup limit on native host"
+}

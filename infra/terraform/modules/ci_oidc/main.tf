@@ -90,6 +90,8 @@ data "aws_iam_policy_document" "deploy" {
     actions = [
       "ecr:BatchGetImage",
       "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
       "ecr:InitiateLayerUpload",
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload",

@@ -1,5 +1,6 @@
 """YOLO COCO object detection; knife/scissors detections require human review."""
 
+import os
 import threading
 import time
 from functools import lru_cache
@@ -58,7 +59,12 @@ def image_analyze(task, src, out_dir, *, timeout_s, on_progress):
         load_s = time.perf_counter() - started
         remaining(end)
         started = time.perf_counter()
-        result = model.predict(str(src), device="cpu", conf=0.25, verbose=False)[0]
+        result = model.predict(
+            str(src),
+            device=os.environ.get("MODEL_DEVICE", "cpu"),
+            conf=0.25,
+            verbose=False,
+        )[0]
         infer_s = time.perf_counter() - started
     except (ImportError, OSError, RuntimeError, ValueError) as exc:
         raise OpError(ErrorCode.PROCESSING_ERROR, f"YOLO failed: {exc}") from exc

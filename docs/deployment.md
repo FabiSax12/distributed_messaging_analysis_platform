@@ -132,7 +132,7 @@ Terraform is never run by CI (its state is local and holds generated passwords).
    `aws iam list-open-id-connect-providers` already shows
    `token.actions.githubusercontent.com`, set `create_github_oidc_provider = false`
    and `existing_github_oidc_provider_arn = "<that arn>"` in `terraform.tfvars`.
-   The trusted repository defaults to `FabiSax12/messaging_analisis_distributed_platform`
+   The trusted repository defaults to `FabiSax12/distributed_messaging_analysis_platform`
    (`github_repository`); the trusted branch is `main`.
 
 2. Set the repository variables (Settings > Secrets and variables > Actions >
@@ -141,7 +141,7 @@ Terraform is never run by CI (its state is local and holds generated passwords).
 
    ```bash
    cd infra/terraform/environments/dev
-   REPO=FabiSax12/messaging_analisis_distributed_platform
+   REPO=FabiSax12/distributed_messaging_analysis_platform
    OUT="$(terraform output -json)"
    get() { printf '%s' "$OUT" | jq -er "$1"; }
    set_var() { gh variable set "$1" --repo "$REPO" --body "$2" && echo "set $1"; }
@@ -192,8 +192,7 @@ Terraform is never run by CI (its state is local and holds generated passwords).
 
 1. A push to `main` starts `deploy.yml`. Its image tag is the short commit SHA.
 2. The job assumes `msg-analysis-dev-ci-deploy` with a short-lived OIDC token
-   (valid only for `repo:FabiSax12@133717689/distributed_messaging_analysis_platform@1430573626:ref:refs/heads/main`;
-   the repo uses GitHub's immutable subject format, see `github_oidc_subject_prefix`).
+   (valid only for `repo:FabiSax12/distributed_messaging_analysis_platform:ref:refs/heads/main`).
 3. `build-and-push.sh` builds and pushes the four images.
 4. `deploy-app.sh` finds the instances by tag (`Project=msg-analysis`,
    `Environment=dev`, `Role=coordinator|worker-<pool>`), skips those that are not
@@ -238,16 +237,17 @@ manually with `image_tag` set to the tag currently deployed on the others.
   (Amazon Linux 2023) and the SSM agent. The compose file is not on the instance
   beforehand; the deploy script writes it to `/opt/dmap/compose.yml`.
 - Images are `linux/amd64` (the dev instances are x86_64).
-- `ANALYSIS_OPERATIONS` is still empty, so the worker images contain no ML
-  dependencies; the Dockerfiles have a TODO where they will be added. The audio
-  image installs `ffmpeg` because the worker refuses to start without it.
+- Worker images install their pool extra; image uses CPU PyTorch and YOLO weights, audio includes cached Whisper tiny and ffmpeg.
 - The audio GPU switch (M5) needs a CUDA base image and NVIDIA drivers on the
   node; neither is handled yet (see `infra/terraform/README.md`).
 - Not verified against real instances yet (they were stopped when this was
   written): the `remote-node.sh` run, `awslogs` delivery and the SSM round trip.
-- Not verified yet: a real OIDC login and a real run of `deploy.yml` (they need
-  the `ci_oidc` module applied and the variables set). The role's `ssm:SendCommand`
+- The handoff reports a successful OIDC login; the subsequent cloud ECR push failed. The ECR policy fix still needs apply and a new real deploy. The role's `ssm:SendCommand`
   tag condition (`ssm:resourceTag/Project|Environment`) is also untested against
   real instances.
 - The deploy builds with plain `docker build` (no layer cache), so every deploy
   rebuilds the four images.
+
+## Runtime settings and manual steps added after initial CI/CD
+
+See [handoff completion](handoff-completion.md) for `RUNTIME_CONFIG_JSON`, Cognito, cgroups, queue policy and optional TLS origin activation. The ECR role now includes manifest-read permissions; apply Terraform before retrying the failing cloud push.

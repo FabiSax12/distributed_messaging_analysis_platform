@@ -1,0 +1,7 @@
+scenario,result,evidence
+basic,OK,Transcribed from successful local_e2e console output before CSV logging was added
+unsupported,OK,Transcribed from successful local_e2e console output before CSV logging was added
+retries,OK,Transcribed from successful local_e2e console output before CSV logging was added
+crash,OK,Transcribed from successful local_e2e console output before CSV logging was added
+restart,OK,Transcribed from successful local_e2e console output before CSV logging was added
+dbdown,OK,Transcribed from successful local_e2e console output before CSV logging was added

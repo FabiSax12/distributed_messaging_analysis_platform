@@ -5,6 +5,7 @@
 # services/workers/src/workers/config.py); nothing is baked in except POOL.
 
 FROM python:3.12-slim AS build
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 && rm -rf /var/lib/apt/lists/*
 COPY --from=ghcr.io/astral-sh/uv:0.12.19 /uv /usr/local/bin/uv
 ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
@@ -24,7 +25,9 @@ RUN uv sync --frozen --package workers --extra audio --no-dev --no-install-works
 # Then the project itself, installed as regular (non-editable) wheels.
 COPY services/shared services/shared
 COPY services/workers services/workers
+COPY services/storage services/storage
 RUN uv sync --frozen --package workers --extra audio --no-dev --no-editable
+RUN HOME=/home/app /app/.venv/bin/python -c "from workers.ops.analysis.audio import load_model; load_model()"
 
 
 FROM python:3.12-slim
@@ -40,9 +43,11 @@ RUN apt-get update \
 
 RUN useradd --system --uid 10001 --create-home --shell /usr/sbin/nologin app
 COPY --from=build --chown=app:app /app/.venv /app/.venv
+COPY --from=build --chown=app:app /home/app/.cache /home/app/.cache
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
+    HF_HUB_OFFLINE=1 \
     POOL=audio
 
 USER app

@@ -26,10 +26,13 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import time
 
-from fastapi import APIRouter, WebSocket
+from fastapi import APIRouter, HTTPException, WebSocket
+from starlette.concurrency import run_in_threadpool
 from starlette.websockets import WebSocketDisconnect
 
+from ..auth import authorize, validate_token
 from ..security import verify_origin
 from .deps import SettingsDep
 
@@ -50,6 +53,15 @@ async def ws_state(websocket: WebSocket, settings: SettingsDep) -> None:
         await websocket.close(code=_CLOSE_UNAUTHORIZED)
         return
 
+    protocols = websocket.scope.get("subprotocols", [])
+    token = protocols[1] if len(protocols) == 2 and protocols[0] == "bearer" else ""
+    try:
+        claims = await run_in_threadpool(validate_token, token, settings)
+        authorize(claims, "GET", "/api/ws")
+    except HTTPException:
+        await websocket.close(code=_CLOSE_UNAUTHORIZED)
+        return
+
     broadcaster = websocket.app.state.broadcaster
     if broadcaster.client_count >= settings.WS_MAX_CLIENTS:
         await websocket.close(code=_CLOSE_TOO_MANY_CLIENTS)
@@ -65,7 +77,7 @@ async def ws_state(websocket: WebSocket, settings: SettingsDep) -> None:
     # `WS_MAX_CLIENTS`.
     queue = broadcaster.register(websocket)
     try:
-        await websocket.accept()
+        await websocket.accept(subprotocol="bearer" if token else None)
         if broadcaster.latest is not None:
             await websocket.send_text(broadcaster.latest)
 
@@ -75,6 +87,13 @@ async def ws_state(websocket: WebSocket, settings: SettingsDep) -> None:
         )
         recv_task = asyncio.create_task(_recv_loop(websocket))
         pending = {send_task, ping_task, recv_task}
+        if claims.get("exp"):
+
+            async def expire():
+                await asyncio.sleep(max(0, claims["exp"] - time.time()))
+                await websocket.close(code=_CLOSE_UNAUTHORIZED)
+
+            pending.add(asyncio.create_task(expire()))
 
         try:
             await asyncio.wait(pending, return_when=asyncio.FIRST_COMPLETED)

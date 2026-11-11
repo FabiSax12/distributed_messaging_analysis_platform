@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from shared.analysis import AnalysisOperation, ContentType
+from shared.analysis import AnalysisOperation, AnalysisResult, ContentType
 from shared.messages import ErrorCode
 from shared.models import (
     CaseItem,
@@ -59,7 +59,53 @@ def build_report(
     duration_s = (finished_at - case.created_at).total_seconds()
     summary = _build_summary(case, subtasks)
 
+    findings = [
+        finding
+        for subtask in report_subtasks
+        if subtask.analysis
+        for finding in subtask.analysis.findings
+    ]
+    categories = {
+        str(f.category): sum(other.category == f.category for other in findings)
+        for f in findings
+    }
+    timeline = sorted(
+        [
+            {
+                "type": "processing",
+                "subtask_id": task.subtask_id,
+                "status": task.status.value,
+                "time": (
+                    task.finished_at or task.started_at or task.created_at
+                ).isoformat(),
+                "input_key": task.input_key,
+            }
+            for task in subtasks
+        ],
+        key=lambda item: item["time"],
+    )
+    for subtask in report_subtasks:
+        if subtask.analysis is None:
+            continue
+        for finding in subtask.analysis.findings:
+            for evidence in finding.evidence:
+                timeline.append(
+                    {
+                        "type": "finding",
+                        "subtask_id": subtask.subtask_id,
+                        "time": evidence.timestamp.isoformat()
+                        if evidence.timestamp
+                        else None,
+                        "category": finding.category.value,
+                        "severity": finding.severity.value,
+                        "evidence": evidence.model_dump(mode="json", exclude_none=True),
+                    }
+                )
+    timeline.sort(key=lambda event: event["time"] or "9999")
     return CaseReport(
+        findings=findings,
+        categories=categories,
+        timeline=timeline,
         case_id=case.case_id,
         label=case.label,
         status=status,
@@ -79,7 +125,9 @@ def build_report(
 
 def _build_groups(subtasks: list[SubTaskItem]) -> list[ReportGroup]:
     """Group by (media_type, operation); prefailed ones fall into (None, None)."""
-    buckets: dict[tuple[ContentType | None, AnalysisOperation | None], dict[str, int]] = {}
+    buckets: dict[
+        tuple[ContentType | None, AnalysisOperation | None], dict[str, int]
+    ] = {}
     for subtask in subtasks:
         key = (subtask.media_type, subtask.operation)
         bucket = buckets.setdefault(
@@ -104,7 +152,13 @@ def _build_subtask_report(subtask: SubTaskItem) -> ReportSubTask:
     if subtask.started_at is not None and subtask.finished_at is not None:
         duration_s = (subtask.finished_at - subtask.started_at).total_seconds()
 
+    analysis = (
+        AnalysisResult.from_meta(subtask.output_meta)
+        if "analysis" in subtask.output_meta
+        else None
+    )
     return ReportSubTask(
+        analysis=analysis,
         subtask_id=subtask.subtask_id,
         input_key=subtask.input_key,
         media_type=subtask.media_type,

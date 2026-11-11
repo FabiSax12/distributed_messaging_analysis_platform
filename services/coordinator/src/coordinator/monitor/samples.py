@@ -103,9 +103,7 @@ def flush_samples_once(s3: Any, results_bucket: str) -> None:
     try:
         _flush_pending(s3, results_bucket, pending)
     except Exception:
-        logger.exception(
-            "metrics flush to S3 failed, will retry on the next cycle"
-        )
+        logger.exception("metrics flush to S3 failed, will retry on the next cycle")
         with _lock:
             _pending_flush[:0] = pending
 

@@ -1,0 +1,7 @@
+{
+  "pool": "image",
+  "mode": "shared",
+  "children": 3,
+  "total_rss_bytes": 893435904,
+  "total_pss_bytes": 310651904
+}

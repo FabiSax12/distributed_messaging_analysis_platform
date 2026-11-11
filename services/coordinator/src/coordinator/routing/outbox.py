@@ -35,9 +35,10 @@ import logging
 import threading
 
 from shared.broker import BROKER_ERRORS, Publisher, backoff_delay
-from shared.routing import message_priority
+from shared.routing import Pool
 
 from ..repo.subtasks import SubTasksRepo
+from ..scheduler import priority
 
 logger = logging.getLogger(__name__)
 
@@ -46,11 +47,21 @@ _BATCH = 500
 
 class OutboxRelay:
     def __init__(
-        self, *, subtasks_repo: SubTasksRepo, amqp_url: str, poll_s: float
+        self,
+        *,
+        subtasks_repo: SubTasksRepo,
+        amqp_url: str,
+        poll_s: float,
+        policy: str = "aging",
+        aging_s: float = 30,
+        queue_limit: int = 1,
     ) -> None:
         self._subtasks = subtasks_repo
         self._amqp_url = amqp_url
         self._poll_s = poll_s
+        self._queue_limit = queue_limit
+        self._policy = policy
+        self._aging_s = aging_s
         self._wakeup = threading.Event()
 
     def wake(self) -> None:
@@ -86,23 +97,31 @@ class OutboxRelay:
             publisher.close()
 
     def _publish_batch(self, publisher: Publisher) -> int:
-        subtasks = self._subtasks.list_dispatchable(_BATCH)
+        subtasks = self._subtasks.list_dispatchable(
+            _BATCH, policy=self._policy, aging_s=self._aging_s
+        )
+        if not subtasks:
+            return 0
+        capacity = {pool: self._queue_limit - publisher.depth(pool) for pool in Pool}
         published: list[tuple[str, int]] = []
         try:
             for subtask in subtasks:
                 # list_dispatchable skips prefailed rows, which have no pool.
                 assert subtask.pool is not None
+                if capacity[subtask.pool] <= 0:
+                    continue
                 publisher.publish(
                     subtask.pool.value,
                     subtask.to_message().to_body(),
-                    priority=message_priority(subtask.priority),
+                    priority=priority(subtask, self._policy, self._aging_s),
                     message_id=f"{subtask.subtask_id}:{subtask.attempt}",
                     headers={"case_id": subtask.case_id},
                 )
+                capacity[subtask.pool] -= 1
                 published.append((subtask.subtask_id, subtask.attempt))
         finally:
             # Mark what the broker confirmed even if the batch broke midway.
             self._subtasks.mark_enqueued(published)
         if published:
             logger.info("published sub-tasks", extra={"count": len(published)})
-        return len(subtasks)
+        return len(published)

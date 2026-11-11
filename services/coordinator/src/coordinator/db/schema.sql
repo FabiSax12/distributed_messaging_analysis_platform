@@ -72,3 +72,50 @@ CREATE TABLE IF NOT EXISTS workers (
     started_at      timestamptz      NOT NULL,
     last_seen       timestamptz      NOT NULL
 );
+
+-- Append-only custody chain; transaction-level lock precedes row mutations.
+CREATE TABLE IF NOT EXISTS custody (
+    sequence bigserial PRIMARY KEY,
+    payload text NOT NULL,
+    previous_hash text NOT NULL,
+    hash text NOT NULL,
+    recorded_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE OR REPLACE FUNCTION custody_lock() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    PERFORM pg_advisory_xact_lock(66000003);
+    RETURN NULL;
+END $$;
+CREATE OR REPLACE FUNCTION custody_record() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE
+    body text;
+    previous text;
+BEGIN
+    body := jsonb_build_object('table', TG_TABLE_NAME, 'operation', TG_OP,
+      'actor', COALESCE(NULLIF(current_setting('app.actor', true), ''), 'coordinator'),
+      'row', CASE WHEN TG_OP = 'DELETE' THEN to_jsonb(OLD) ELSE to_jsonb(NEW) END)::text;
+    SELECT hash INTO previous FROM custody ORDER BY sequence DESC LIMIT 1;
+    previous := COALESCE(previous, repeat('0', 64));
+    INSERT INTO custody(payload, previous_hash, hash)
+      VALUES (body, previous, encode(sha256(convert_to(previous || body, 'UTF8')), 'hex'));
+    RETURN NULL;
+END $$;
+CREATE OR REPLACE FUNCTION custody_immutable() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    RAISE EXCEPTION 'custody records are append-only';
+END $$;
+DROP TRIGGER IF EXISTS custody_immutable ON custody;
+CREATE TRIGGER custody_immutable BEFORE UPDATE OR DELETE OR TRUNCATE ON custody
+    FOR EACH STATEMENT EXECUTE FUNCTION custody_immutable();
+DROP TRIGGER IF EXISTS cases_custody_lock ON cases;
+CREATE TRIGGER cases_custody_lock BEFORE INSERT OR UPDATE OR DELETE ON cases
+    FOR EACH STATEMENT EXECUTE FUNCTION custody_lock();
+DROP TRIGGER IF EXISTS cases_custody_record ON cases;
+CREATE TRIGGER cases_custody_record AFTER INSERT OR UPDATE OR DELETE ON cases
+    FOR EACH ROW EXECUTE FUNCTION custody_record();
+DROP TRIGGER IF EXISTS subtasks_custody_lock ON subtasks;
+CREATE TRIGGER subtasks_custody_lock BEFORE INSERT OR UPDATE OR DELETE ON subtasks
+    FOR EACH STATEMENT EXECUTE FUNCTION custody_lock();
+DROP TRIGGER IF EXISTS subtasks_custody_record ON subtasks;
+CREATE TRIGGER subtasks_custody_record AFTER INSERT OR UPDATE OR DELETE ON subtasks
+    FOR EACH ROW EXECUTE FUNCTION custody_record();

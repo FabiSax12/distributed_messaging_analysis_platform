@@ -12,7 +12,7 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 
 from botocore.exceptions import ClientError
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from shared.api import (
     CaseDetailResponse,
     CaseOutputsResponse,
@@ -51,6 +51,7 @@ _HEAD_OBJECT_NOT_FOUND_CODES = {"404", "NoSuchKey", "NotFound"}
 @router.post("/cases", response_model=CreateCaseResponse, status_code=201)
 def create_case(
     payload: CreateCaseRequest,
+    request: Request,
     settings: SettingsDep,
     s3: S3Dep,
     db: DbDep,
@@ -72,6 +73,9 @@ def create_case(
     # commit only delays the publish: the relay finds `enqueued = false` rows
     # on its next pass, including after a coordinator restart.
     with db.connection() as conn:
+        conn.execute(
+            "SELECT set_config('app.actor', %s, true)", (request.state.identity["sub"],)
+        )
         reserve(conn, settings, subtasks, sum(sizes[key] for key in input_keys), sizes)
         cases_table.insert(
             conn,
@@ -148,9 +152,11 @@ def get_case(
 
 
 @router.delete("/cases/{case_id}", response_model=CaseItem)
-def cancel_case(case_id: str, cases_repo: CasesRepoDep) -> CaseItem:
+def cancel_case(case_id: str, cases_repo: CasesRepoDep, request: Request) -> CaseItem:
     try:
-        return cases_repo.update_cancel_requested(case_id)
+        return cases_repo.update_cancel_requested(
+            case_id, actor=request.state.identity["sub"]
+        )
     except CaseNotFound as exc:
         raise HTTPException(status_code=404, detail="case not found") from exc
     except CaseAlreadyTerminal as exc:

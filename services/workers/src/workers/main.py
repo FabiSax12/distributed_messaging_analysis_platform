@@ -81,7 +81,9 @@ def check_ffmpeg(pool: Pool) -> None:
         return
     missing = [name for name in ("ffmpeg", "ffprobe") if shutil.which(name) is None]
     if missing:
-        raise SystemExit(f"{', '.join(missing)} not found in PATH (see workers/README.md)")
+        raise SystemExit(
+            f"{', '.join(missing)} not found in PATH (see workers/README.md)"
+        )
 
 
 def s3_client(settings: Settings):
@@ -148,7 +150,12 @@ def run_worker(
         consumers.append(
             threading.Thread(
                 target=consume,
-                args=(settings.AMQP_URL, queue, functools.partial(handle, ctx), stop_event),
+                args=(
+                    settings.AMQP_URL,
+                    queue,
+                    functools.partial(handle, ctx),
+                    stop_event,
+                ),
                 kwargs={"name": f"{worker_id}-{i}", "prefetch": 1, "confirm": True},
                 name=f"consumer-{i}",
             )

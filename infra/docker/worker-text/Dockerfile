@@ -19,12 +19,12 @@ COPY services/coordinator/pyproject.toml services/coordinator/
 COPY services/workers/pyproject.toml services/workers/
 COPY services/storage/pyproject.toml services/storage/
 RUN uv sync --frozen --package workers --no-dev --no-install-workspace
-# TODO(text ops): add the text analysis dependencies to services/workers (an
-# optional extra) and sync it here once ANALYSIS_OPERATIONS is populated.
+# Text rules use only the base worker dependencies.
 
 # Then the project itself, installed as regular (non-editable) wheels.
 COPY services/shared services/shared
 COPY services/workers services/workers
+COPY services/storage services/storage
 RUN uv sync --frozen --package workers --no-dev --no-editable
 
 

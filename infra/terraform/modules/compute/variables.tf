@@ -94,3 +94,8 @@ variable "alerts_topic_name" {
   description = "Name of the alerts SNS topic (the ARN is built from it, so compute does not depend on observability)."
   type        = string
 }
+
+variable "cognito_user_pool_arn" {
+  type    = string
+  default = null
+}

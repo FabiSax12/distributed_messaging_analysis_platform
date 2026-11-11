@@ -134,3 +134,17 @@ variable "existing_github_oidc_provider_arn" {
   type        = string
   default     = null
 }
+
+variable "origin_tls_hostname" {
+  description = "Public DNS hostname for the TLS origin; requires a Route53 hosted zone. Enables the additional ALB."
+  type        = string
+  default     = ""
+}
+variable "origin_tls_zone_id" {
+  type    = string
+  default = ""
+  validation {
+    condition     = var.origin_tls_hostname == "" || var.origin_tls_zone_id != ""
+    error_message = "TLS origin requires its Route53 zone ID."
+  }
+}

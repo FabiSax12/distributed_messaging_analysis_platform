@@ -60,7 +60,9 @@ def parse_args() -> argparse.Namespace:
         "--expect", default="completed", help="final case status, or 'any'"
     )
     parser.add_argument("--timeout", type=float, default=180.0)
-    parser.add_argument("--case-id", help="poll an existing case instead of creating one")
+    parser.add_argument(
+        "--case-id", help="poll an existing case instead of creating one"
+    )
     parser.add_argument("--no-wait", action="store_true", help="create and exit")
     return parser.parse_args()
 
@@ -107,7 +109,9 @@ def poll(client: httpx.Client, case_id: str, timeout_s: float) -> dict:
         detail = resp.json()
         if detail["case"]["status"] != case_status:
             case_status = detail["case"]["status"]
-            print(f"  case    {case_status} (pending={detail['case']['pending_count']})")
+            print(
+                f"  case    {case_status} (pending={detail['case']['pending_count']})"
+            )
         for sub in detail["subtasks"]:
             state = (sub["status"], sub["attempt"])
             if seen.get(sub["subtask_id"]) != state:
@@ -129,7 +133,9 @@ def check_report(client: httpx.Client, detail: dict) -> None:
     case_id = detail["case"]["case_id"]
     resp = client.get(f"/api/cases/{case_id}/report")
     if resp.status_code != 200:
-        _fail(f"GET /api/cases/{case_id}/report returned {resp.status_code}: {resp.text}")
+        _fail(
+            f"GET /api/cases/{case_id}/report returned {resp.status_code}: {resp.text}"
+        )
     report = httpx.get(resp.json()["url"], timeout=30.0)
     if report.status_code != 200:
         _fail(f"the report's presigned URL returned {report.status_code}")
@@ -141,7 +147,9 @@ def check_report(client: httpx.Client, detail: dict) -> None:
         )
     ids = [s["subtask_id"] for s in detail["subtasks"]]
     if len(ids) != len(set(ids)) or detail["case"]["total"] != len(ids):
-        _fail(f"duplicated or missing sub-tasks: total={detail['case']['total']} ids={ids}")
+        _fail(
+            f"duplicated or missing sub-tasks: total={detail['case']['total']} ids={ids}"
+        )
     print(f"report: {body['summary']}")
 
 
