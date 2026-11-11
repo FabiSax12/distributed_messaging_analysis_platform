@@ -5,7 +5,10 @@ the sweeper finds a case that sat at zero without being closed (the process
 died between the barrier transaction and this function). It is IDEMPOTENT:
 it can run in parallel from several threads for the same case, because the
 only effect that cannot be repeated safely (`finalize_write`) is guarded in
-SQL by "status is not terminal yet".
+SQL by "status is not terminal yet". Only the call that wins that UPDATE
+publishes the case-finished notification, after the commit, so each case
+notifies at most once (best-effort) whichever path (results consumer, sweeper, prefailed
+case at creation) closes it.
 """
 
 from __future__ import annotations
@@ -17,6 +20,7 @@ from shared.messages import utcnow
 from shared.models import report_key
 from shared.states import TERMINAL_CASE, CaseStatus, final_case_status
 
+from ..monitor.notifications import case_finished_alert
 from ..repo.cases import CasesRepo
 from ..repo.subtasks import SubTasksRepo
 from ..reports.builder import build_report
@@ -66,4 +70,5 @@ def finalize(
         "case finalized",
         extra={"case_id": case_id, "status": status.value, "report_key": key},
     )
+    case_finished_alert(report, key)
     return status

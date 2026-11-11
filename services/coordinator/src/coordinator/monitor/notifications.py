@@ -8,12 +8,15 @@ import time
 import boto3
 from botocore.config import Config
 from shared.analysis import AnalysisResult, Severity
+from shared.models import CaseReport
+from shared.states import TERMINAL_SUBTASK
 
 from ..config import get_settings
 
 logger = logging.getLogger(__name__)
 _sent = {}
 _lock = threading.Lock()
+_SEVERITY_RANK = {severity: rank for rank, severity in enumerate(Severity)}
 
 
 def client(service, settings):
@@ -61,6 +64,52 @@ def findings_alert(result):
             _sent[key] = time.monotonic()
         except Exception:
             logger.exception("Severe-finding SNS publish failed")
+
+
+def case_finished_alert(report: CaseReport, report_key: str) -> None:
+    """Publish the case-finished message. Called only by the `finalize()` that
+    won the guarded terminal UPDATE, after it committed, so a case notifies at
+    most once (best-effort: a crash or SNS failure here drops it). Never raises."""
+    try:
+        settings = get_settings()
+        if not settings.ALERTS_TOPIC_ARN:
+            return
+        counts = {status.value: 0 for status in sorted(TERMINAL_SUBTASK)}
+        for subtask in report.subtasks:
+            if subtask.status in TERMINAL_SUBTASK:
+                counts[subtask.status.value] += 1
+        max_severity = max(
+            (finding.severity for finding in report.findings),
+            key=_SEVERITY_RANK.__getitem__,
+            default=None,
+        )
+        status = report.status.value
+        client("sns", settings).publish(
+            TopicArn=settings.ALERTS_TOPIC_ARN,
+            Subject=f"Case {report.case_id[-8:]} {status}",
+            Message=json.dumps(
+                {
+                    "event": "case_finished",
+                    "case_id": report.case_id,
+                    "label": (report.label or "")[:200],
+                    "status": status,
+                    "subtasks": {"total": report.subtask_count, **counts},
+                    "duration_s": round(report.duration_s, 1),
+                    "findings": len(report.findings),
+                    "max_severity": max_severity.value if max_severity else None,
+                    "report_key": report_key,
+                    "summary": report.summary[:500],
+                }
+            ),
+            # Lets subscribers filter by event type on the shared alerts topic.
+            MessageAttributes={
+                "event": {"DataType": "String", "StringValue": "case_finished"}
+            },
+        )
+    except Exception:
+        logger.exception(
+            "Case-finished SNS publish failed", extra={"case_id": report.case_id}
+        )
 
 
 def emit(snapshot):
