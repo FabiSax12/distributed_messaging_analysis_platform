@@ -1,0 +1,200 @@
+{
+  "case_id": "case-002",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 43
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 44
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 64
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 88
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 105
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 125
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 133
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 235
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 265
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 266
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 268
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 355
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 400
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 402
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 407
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 416
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 472
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 479
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 488
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240206-WA0014.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240201-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240204-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240205-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240131-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240202-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240202-WA0010.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240201-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240201-WA0003.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240201-WA0004.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.36,
+          "audio_end_s": 3.41,
+          "notes": "Watch your back on the way home tonight."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20240202-WA0011.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240129-WA0001.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240201-WA0006.opus",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.63,
+          "audio_end_s": 3.85,
+          "notes": "We are going to stab him when he leaves the bar."
+        }
+      ]
+    },
+    {
+      "path": "media/VID-20240202-WA0009.mp4",
+      "findings": []
+    }
+  ]
+}

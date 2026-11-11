@@ -1,0 +1,232 @@
+{
+  "case_id": "case-039",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 43
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 60
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 62
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 91
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 100
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 106
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 127
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 157
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 186
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 189
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 210
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 217
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 232
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 266
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 295
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 310
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 360
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 382
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 393
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 405
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250624-WA0007.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.0,
+            "y": 0.0,
+            "w": 0.316359,
+            "h": 0.312365
+          },
+          "notes": "COCO knife box, 7316.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250625-WA0010.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.814059,
+            "y": 0.285328,
+            "w": 0.142824,
+            "h": 0.421344
+          },
+          "notes": "COCO knife box, 6348.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250621-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250623-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250623-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250621-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250627-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250620-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.425979,
+            "y": 0.628578,
+            "w": 0.027708,
+            "h": 0.064922
+          },
+          "notes": "COCO knife box, 375.8 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250625-WA0009.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.549896,
+            "y": 0.027016,
+            "w": 0.056625,
+            "h": 0.212594
+          },
+          "notes": "COCO knife box, 1203.3 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250621-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250627-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250625-WA0008.jpg",
+      "findings": []
+    }
+  ]
+}

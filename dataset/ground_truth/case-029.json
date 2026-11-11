@@ -1,0 +1,76 @@
+{
+  "case_id": "case-029",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240409-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240407-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240405-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240404-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240405-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240405-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240406-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240408-WA0010.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.393453,
+            "y": 0.626033,
+            "w": 0.078531,
+            "h": 0.03615
+          },
+          "notes": "COCO knife box, 271.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240402-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240403-WA0002.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240404-WA0003.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240409-WA0012.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240410-WA0013.opus",
+      "findings": []
+    }
+  ]
+}

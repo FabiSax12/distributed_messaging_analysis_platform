@@ -1,0 +1,254 @@
+{
+  "case_id": "case-027",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 107
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 121
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 141
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 152
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 168
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 246
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 278
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 304
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 351
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 395
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 406
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 414
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240619-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.398105,
+            "y": 0.541601,
+            "w": 0.12585,
+            "h": 0.057435
+          },
+          "notes": "COCO knife box, 839.8 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240626-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240624-WA0010.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.614563,
+            "y": 0.462389,
+            "w": 0.018391,
+            "h": 0.043607
+          },
+          "notes": "COCO knife box, 65.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.606203,
+            "y": 0.455597,
+            "w": 0.013969,
+            "h": 0.035948
+          },
+          "notes": "COCO knife box, 67.5 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.616844,
+            "y": 0.454356,
+            "w": 0.018438,
+            "h": 0.042576
+          },
+          "notes": "COCO knife box, 81.2 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.616109,
+            "y": 0.492998,
+            "w": 0.016219,
+            "h": 0.036909
+          },
+          "notes": "COCO knife box, 44.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.619156,
+            "y": 0.443115,
+            "w": 0.018844,
+            "h": 0.047728
+          },
+          "notes": "COCO knife box, 61.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240624-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240622-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240625-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240621-WA0004.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.76854,
+            "y": 0.325467,
+            "w": 0.23146,
+            "h": 0.568533
+          },
+          "notes": "COCO scissors box, 7762.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240621-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240621-WA0003.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.757547,
+            "y": 0.287961,
+            "w": 0.054094,
+            "h": 0.045488
+          },
+          "notes": "COCO knife box, 205.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20240624-WA0011.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240621-WA0005.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240622-WA0006.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 3.71,
+          "audio_end_s": 6.11,
+          "notes": "I know where your kids go to school."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20240622-WA0008.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 3.55,
+          "audio_end_s": 6.0,
+          "notes": "Pay me by Friday or I will hurt you."
+        }
+      ]
+    }
+  ]
+}

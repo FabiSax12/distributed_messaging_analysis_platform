@@ -1,0 +1,93 @@
+{
+  "case_id": "case-008",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_13@07-10-2024_14-39-22.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_2@02-10-2024_09-39-13.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_10@06-10-2024_11-02-26.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.915219,
+            "y": 0.366125,
+            "w": 0.084781,
+            "h": 0.037812
+          },
+          "notes": "COCO knife box, 812.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_5@04-10-2024_20-15-57.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.003234,
+            "y": 0.444078,
+            "w": 0.175094,
+            "h": 0.120313
+          },
+          "notes": "COCO knife box, 4078.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_7@05-10-2024_14-50-58.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_8@06-10-2024_08-38-21.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_3@03-10-2024_08-44-51.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_9@06-10-2024_09-25-29.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_4@04-10-2024_07-04-39.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_11@06-10-2024_16-23-02.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_6@05-10-2024_13-17-31.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_14@07-10-2024_22-42-39.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_12@06-10-2024_18-03-50.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/video_files/video_1@01-10-2024_16-21-54.mp4",
+      "findings": []
+    }
+  ]
+}

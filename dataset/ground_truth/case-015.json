@@ -1,0 +1,165 @@
+{
+  "case_id": "case-015",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 16
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 45
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 131
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 149
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 158
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 167
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 254
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 268
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 297
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 318
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 395
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 430
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 436
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_6@29-01-2024_14-11-13.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_8@31-01-2024_23-07-28.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_4@28-01-2024_07-06-18.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_3@28-01-2024_06-38-56.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.679375,
+            "y": 0.625458,
+            "w": 0.245875,
+            "h": 0.374542
+          },
+          "notes": "COCO knife box, 6109.9 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_2@27-01-2024_15-29-20.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_1@26-01-2024_12-03-14.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.322375,
+            "y": 0.402894,
+            "w": 0.017828,
+            "h": 0.351247
+          },
+          "notes": "COCO knife box, 729.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/voice_messages/audio_7@30-01-2024_21-28-33.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_9@01-02-2024_08-26-40.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_5@29-01-2024_12-01-11.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/video_files/video_10@02-02-2024_15-11-11.mp4",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 3.48,
+          "audio_end_s": 6.75,
+          "notes": "We need to sell drugs at the party on Saturday."
+        }
+      ]
+    }
+  ]
+}

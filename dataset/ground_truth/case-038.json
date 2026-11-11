@@ -1,0 +1,336 @@
+{
+  "case_id": "case-038",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 23
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 24
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 31
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 47
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 51
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 118
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 132
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 183
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 184
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 193
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 240
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 271
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 296
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 336
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 343
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 346
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 382
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 424
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 426
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 434
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 441
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 444
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 454
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 494
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 516
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 567
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 586
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 608
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 611
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 615
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 617
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 626
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 639
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 662
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 668
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 670
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 685
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 690
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 695
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 699
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 718
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 719
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 724
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 733
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 739
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 758
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 759
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 781
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 792
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 826
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 862
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 865
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 866
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 871
+        }
+      ]
+    }
+  ]
+}

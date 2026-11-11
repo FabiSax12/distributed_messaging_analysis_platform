@@ -1,0 +1,3862 @@
+{
+ "name": "Fraud 51",
+ "type": "private_group",
+ "id": 1000015,
+ "messages": [
+  {
+   "id": 1,
+   "date": "2024-01-25T09:41:32",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "create_group",
+   "text": ""
+  },
+  {
+   "id": 2,
+   "date": "2024-01-25T09:44:04",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Camila Navarro",
+    "Morgan Mora"
+   ]
+  },
+  {
+   "id": 3,
+   "date": "2024-01-25T09:48:02",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 4,
+   "date": "2024-01-25T10:34:41",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 5,
+   "date": "2024-01-25T10:50:03",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 6,
+   "date": "2024-01-25T11:04:08",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 7,
+   "date": "2024-01-25T12:26:00",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 8,
+   "date": "2024-01-25T12:28:49",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 9,
+   "date": "2024-01-25T13:01:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 10,
+   "date": "2024-01-25T13:27:25",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 11,
+   "date": "2024-01-25T13:36:29",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 12,
+   "date": "2024-01-25T13:45:23",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 13,
+   "date": "2024-01-25T13:51:19",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 14,
+   "date": "2024-01-25T14:04:16",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 15,
+   "date": "2024-01-25T14:08:25",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 16,
+   "date": "2024-01-25T14:48:48",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 17,
+   "date": "2024-01-25T14:50:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I have the white stuff, 10 a gram"
+  },
+  {
+   "id": 18,
+   "date": "2024-01-25T15:00:04",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 19,
+   "date": "2024-01-25T15:06:17",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 20,
+   "date": "2024-01-25T15:08:12",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 21,
+   "date": "2024-01-25T15:15:28",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 22,
+   "date": "2024-01-25T15:34:32",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 23,
+   "date": "2024-01-25T15:57:27",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "reminder for Saturday: bring the umbrella and the signed form"
+  },
+  {
+   "id": 24,
+   "date": "2024-01-25T16:24:14",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 25,
+   "date": "2024-01-25T16:34:15",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 26,
+   "date": "2024-01-25T16:39:22",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "who has my jacket?"
+  },
+  {
+   "id": 27,
+   "date": "2024-01-25T16:39:52",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 28,
+   "date": "2024-01-25T16:41:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 29,
+   "date": "2024-01-25T16:43:31",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 30,
+   "date": "2024-01-25T16:54:29",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 31,
+   "date": "2024-01-25T17:00:56",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 32,
+   "date": "2024-01-25T17:19:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "reminder for Wednesday: bring the umbrella and the signed form"
+  },
+  {
+   "id": 33,
+   "date": "2024-01-25T17:35:30",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 34,
+   "date": "2024-01-25T17:37:32",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 35,
+   "date": "2024-01-25T18:05:39",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the meeting is at 7:30 at the office"
+  },
+  {
+   "id": 36,
+   "date": "2024-01-25T18:48:31",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 37,
+   "date": "2024-01-25T18:49:15",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "see you Friday"
+  },
+  {
+   "id": 38,
+   "date": "2024-01-25T18:51:42",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 39,
+   "date": "2024-01-25T19:00:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the gym already"
+  },
+  {
+   "id": 40,
+   "date": "2024-01-25T19:16:49",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 41,
+   "date": "2024-01-25T19:23:47",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 42,
+   "date": "2024-01-25T20:13:22",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 43,
+   "date": "2024-01-25T20:14:11",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 44,
+   "date": "2024-01-25T20:26:19",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "send me the location ",
+    {
+     "type": "bold",
+     "text": "please"
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "date": "2024-01-25T21:03:51",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 46,
+   "date": "2024-01-25T21:13:43",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the drug deal is at 7:30 behind the bus stop"
+  },
+  {
+   "id": 47,
+   "date": "2024-01-25T21:38:10",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 48,
+   "date": "2024-01-25T22:02:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 25 for the gallo pinto"
+  },
+  {
+   "id": 49,
+   "date": "2024-01-25T22:28:51",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 50,
+   "date": "2024-01-25T22:32:46",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 51,
+   "date": "2024-01-25T22:33:32",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 52,
+   "date": "2024-01-25T22:41:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 53,
+   "date": "2024-01-25T23:04:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 54,
+   "date": "2024-01-25T23:24:22",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 55,
+   "date": "2024-01-25T23:40:34",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 56,
+   "date": "2024-01-26T06:21:30",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'm at the office already"
+  },
+  {
+   "id": 57,
+   "date": "2024-01-26T06:23:22",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 58,
+   "date": "2024-01-26T07:20:43",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 59,
+   "date": "2024-01-26T07:23:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 60,
+   "date": "2024-01-26T07:32:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I left the charger at the office"
+  },
+  {
+   "id": 61,
+   "date": "2024-01-26T08:14:40",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "send me ",
+    {
+     "type": "bold",
+     "text": "the location please"
+    }
+   ]
+  },
+  {
+   "id": 62,
+   "date": "2024-01-26T08:53:53",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 63,
+   "date": "2024-01-26T09:18:51",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "address is 200m north of the clinic blue house"
+  },
+  {
+   "id": 64,
+   "date": "2024-01-26T09:37:20",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 65,
+   "date": "2024-01-26T09:57:58",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 66,
+   "date": "2024-01-26T10:41:46",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 67,
+   "date": "2024-01-26T10:44:33",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "see you Friday"
+  },
+  {
+   "id": 68,
+   "date": "2024-01-26T10:47:00",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 69,
+   "date": "2024-01-26T11:30:56",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the meeting is at 8 at the soda"
+  },
+  {
+   "id": 70,
+   "date": "2024-01-26T11:49:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 71,
+   "date": "2024-01-26T11:50:17",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 72,
+   "date": "2024-01-26T11:59:53",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 73,
+   "date": "2024-01-26T12:03:14",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "photo": "photos/photo_1@26-01-2024_12-03-14.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 74,
+   "date": "2024-01-26T13:36:08",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 75,
+   "date": "2024-01-26T14:04:24",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "let's vote ",
+    {
+     "type": "bold",
+     "text": "for the place"
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "date": "2024-01-26T14:11:41",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who ",
+    {
+     "type": "bold",
+     "text": "has the report?"
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "date": "2024-01-26T14:31:11",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 78,
+   "date": "2024-01-26T14:51:34",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 79,
+   "date": "2024-01-26T14:54:45",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 80,
+   "date": "2024-01-26T15:15:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 81,
+   "date": "2024-01-26T15:24:42",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 82,
+   "date": "2024-01-26T15:31:50",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 83,
+   "date": "2024-01-26T15:38:47",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 84,
+   "date": "2024-01-26T15:51:49",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 85,
+   "date": "2024-01-26T15:57:24",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Camila Navarro",
+    "Morgan Mora"
+   ]
+  },
+  {
+   "id": 86,
+   "date": "2024-01-26T17:36:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I owe you 25 ",
+    {
+     "type": "bold",
+     "text": "for the burgers"
+    }
+   ]
+  },
+  {
+   "id": 87,
+   "date": "2024-01-26T17:40:07",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 88,
+   "date": "2024-01-26T18:02:47",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 89,
+   "date": "2024-01-26T18:11:21",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 90,
+   "date": "2024-01-26T18:45:07",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 91,
+   "date": "2024-01-26T19:41:05",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 92,
+   "date": "2024-01-26T20:04:25",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 93,
+   "date": "2024-01-26T20:13:06",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 94,
+   "date": "2024-01-26T20:55:06",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 95,
+   "date": "2024-01-26T21:41:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 96,
+   "date": "2024-01-26T22:30:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 97,
+   "date": "2024-01-26T22:32:18",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 98,
+   "date": "2024-01-26T22:33:58",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 99,
+   "date": "2024-01-26T23:12:33",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 100,
+   "date": "2024-01-27T08:12:05",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 101,
+   "date": "2024-01-27T08:40:41",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 102,
+   "date": "2024-01-27T08:44:09",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 103,
+   "date": "2024-01-27T08:45:59",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 104,
+   "date": "2024-01-27T08:48:51",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who's ",
+    {
+     "type": "bold",
+     "text": "in for Thursday?"
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "date": "2024-01-27T09:40:41",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok see you at 8:15"
+  },
+  {
+   "id": 106,
+   "date": "2024-01-27T09:46:23",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "what time does it ",
+    {
+     "type": "bold",
+     "text": "close?"
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "date": "2024-01-27T10:06:24",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who's in ",
+    {
+     "type": "bold",
+     "text": "for Friday?"
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "date": "2024-01-27T11:07:30",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 109,
+   "date": "2024-01-27T11:24:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "is the gym open ",
+    {
+     "type": "bold",
+     "text": "on Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "date": "2024-01-27T11:35:58",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 111,
+   "date": "2024-01-27T11:43:04",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 112,
+   "date": "2024-01-27T11:49:24",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 113,
+   "date": "2024-01-27T12:16:27",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 114,
+   "date": "2024-01-27T12:32:58",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "anyone want pizza ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 115,
+   "date": "2024-01-27T12:41:04",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 116,
+   "date": "2024-01-27T12:55:26",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "the meeting is at 7 at ",
+    {
+     "type": "bold",
+     "text": "school"
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "date": "2024-01-27T13:40:35",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 118,
+   "date": "2024-01-27T13:59:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "anyone want rice and beans tonight?"
+  },
+  {
+   "id": 119,
+   "date": "2024-01-27T14:37:23",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 120,
+   "date": "2024-01-27T14:44:35",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 121,
+   "date": "2024-01-27T15:26:10",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "it's ",
+    {
+     "type": "bold",
+     "text": "raining a lot here"
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "date": "2024-01-27T15:29:20",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "photo": "photos/photo_2@27-01-2024_15-29-20.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 123,
+   "date": "2024-01-27T15:47:57",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 124,
+   "date": "2024-01-27T16:11:48",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 125,
+   "date": "2024-01-27T16:29:23",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 126,
+   "date": "2024-01-27T16:58:03",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 127,
+   "date": "2024-01-27T17:22:45",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 128,
+   "date": "2024-01-27T17:27:50",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 129,
+   "date": "2024-01-27T17:34:45",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the bus stop?"
+  },
+  {
+   "id": 130,
+   "date": "2024-01-27T18:03:43",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 131,
+   "date": "2024-01-27T18:15:27",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 132,
+   "date": "2024-01-27T18:44:39",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who wants to ",
+    {
+     "type": "bold",
+     "text": "sell drugs at the party?"
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "date": "2024-01-27T18:46:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 134,
+   "date": "2024-01-27T19:02:53",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 135,
+   "date": "2024-01-27T19:17:55",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 136,
+   "date": "2024-01-27T20:33:20",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 137,
+   "date": "2024-01-27T20:46:42",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 138,
+   "date": "2024-01-27T21:01:58",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 139,
+   "date": "2024-01-27T21:10:49",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "running 10 minutes late, ",
+    {
+     "type": "bold",
+     "text": "sorry"
+    }
+   ]
+  },
+  {
+   "id": 140,
+   "date": "2024-01-27T21:13:29",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 141,
+   "date": "2024-01-27T21:26:30",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Camila Navarro",
+    "Morgan Mora"
+   ]
+  },
+  {
+   "id": 142,
+   "date": "2024-01-27T21:34:47",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 143,
+   "date": "2024-01-27T22:33:24",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 144,
+   "date": "2024-01-27T23:36:20",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 145,
+   "date": "2024-01-28T06:38:56",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "photo": "photos/photo_3@28-01-2024_06-38-56.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 146,
+   "date": "2024-01-28T06:45:34",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 147,
+   "date": "2024-01-28T06:47:15",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the bus stop?"
+  },
+  {
+   "id": 148,
+   "date": "2024-01-28T07:06:18",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "photo": "photos/photo_4@28-01-2024_07-06-18.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 149,
+   "date": "2024-01-28T07:21:50",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 150,
+   "date": "2024-01-28T07:24:20",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the drug deal is at 7:30 behind the library"
+  },
+  {
+   "id": 151,
+   "date": "2024-01-28T07:58:52",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 152,
+   "date": "2024-01-28T08:23:35",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I left the charger at the library"
+  },
+  {
+   "id": 153,
+   "date": "2024-01-28T08:29:28",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "don't ",
+    {
+     "type": "bold",
+     "text": "forget to bring the charger"
+    }
+   ]
+  },
+  {
+   "id": 154,
+   "date": "2024-01-28T09:09:56",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8 at the mall"
+  },
+  {
+   "id": 155,
+   "date": "2024-01-28T10:09:08",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "address is 200m north of the clinic blue house"
+  },
+  {
+   "id": 156,
+   "date": "2024-01-28T10:12:49",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 157,
+   "date": "2024-01-28T10:17:35",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 158,
+   "date": "2024-01-28T11:03:08",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 159,
+   "date": "2024-01-28T11:05:05",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "who wants to sell drugs at the party?"
+  },
+  {
+   "id": 160,
+   "date": "2024-01-28T11:16:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 161,
+   "date": "2024-01-28T11:29:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8:15 at the gym"
+  },
+  {
+   "id": 162,
+   "date": "2024-01-28T11:39:46",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 163,
+   "date": "2024-01-28T11:44:55",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 164,
+   "date": "2024-01-28T11:50:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 165,
+   "date": "2024-01-28T12:07:28",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 166,
+   "date": "2024-01-28T12:13:21",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 167,
+   "date": "2024-01-28T12:24:53",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 168,
+   "date": "2024-01-28T12:53:24",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who wants to sell drugs at the party?"
+  },
+  {
+   "id": 169,
+   "date": "2024-01-28T12:59:23",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 170,
+   "date": "2024-01-28T13:17:33",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 171,
+   "date": "2024-01-28T13:29:48",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 172,
+   "date": "2024-01-28T13:53:22",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the meeting is at 8 at the clinic"
+  },
+  {
+   "id": 173,
+   "date": "2024-01-28T13:56:35",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "see you Wednesday"
+  },
+  {
+   "id": 174,
+   "date": "2024-01-28T13:58:03",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 175,
+   "date": "2024-01-28T14:26:41",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 176,
+   "date": "2024-01-28T14:36:21",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 177,
+   "date": "2024-01-28T14:40:02",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who's in for Monday?"
+  },
+  {
+   "id": 178,
+   "date": "2024-01-28T14:53:14",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 179,
+   "date": "2024-01-28T14:59:22",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 180,
+   "date": "2024-01-28T15:12:17",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 181,
+   "date": "2024-01-28T15:25:10",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 182,
+   "date": "2024-01-28T15:52:04",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 183,
+   "date": "2024-01-28T16:56:13",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the library?"
+  },
+  {
+   "id": 184,
+   "date": "2024-01-28T17:08:38",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8 at school"
+  },
+  {
+   "id": 185,
+   "date": "2024-01-28T17:43:57",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 186,
+   "date": "2024-01-28T17:44:48",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 187,
+   "date": "2024-01-28T18:38:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 188,
+   "date": "2024-01-28T18:39:13",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 189,
+   "date": "2024-01-28T19:28:10",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 190,
+   "date": "2024-01-28T19:48:15",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 191,
+   "date": "2024-01-28T19:58:59",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "don't forget to bring ",
+    {
+     "type": "bold",
+     "text": "the cable"
+    }
+   ]
+  },
+  {
+   "id": 192,
+   "date": "2024-01-28T20:48:02",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 193,
+   "date": "2024-01-28T21:08:05",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 194,
+   "date": "2024-01-28T21:46:04",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 195,
+   "date": "2024-01-28T21:48:55",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 196,
+   "date": "2024-01-28T21:59:47",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 197,
+   "date": "2024-01-28T22:57:16",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I left the keys at the bus stop"
+  },
+  {
+   "id": 198,
+   "date": "2024-01-28T23:14:06",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'm at the bus stop already"
+  },
+  {
+   "id": 199,
+   "date": "2024-01-28T23:19:55",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 200,
+   "date": "2024-01-28T23:21:12",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 201,
+   "date": "2024-01-28T23:39:31",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 202,
+   "date": "2024-01-29T06:04:37",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 203,
+   "date": "2024-01-29T06:16:04",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who's in ",
+    {
+     "type": "bold",
+     "text": "for Thursday?"
+    }
+   ]
+  },
+  {
+   "id": 204,
+   "date": "2024-01-29T06:29:41",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 205,
+   "date": "2024-01-29T06:49:28",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 206,
+   "date": "2024-01-29T07:11:51",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 207,
+   "date": "2024-01-29T07:16:16",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 208,
+   "date": "2024-01-29T07:34:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "it's raining ",
+    {
+     "type": "bold",
+     "text": "a lot here"
+    }
+   ]
+  },
+  {
+   "id": 209,
+   "date": "2024-01-29T08:07:25",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 210,
+   "date": "2024-01-29T08:22:31",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 211,
+   "date": "2024-01-29T08:52:48",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "I'll ",
+    {
+     "type": "bold",
+     "text": "call you later"
+    }
+   ]
+  },
+  {
+   "id": 212,
+   "date": "2024-01-29T09:01:11",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 213,
+   "date": "2024-01-29T09:03:57",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 214,
+   "date": "2024-01-29T09:34:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the soda?"
+  },
+  {
+   "id": 215,
+   "date": "2024-01-29T09:54:46",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 216,
+   "date": "2024-01-29T10:39:30",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "see you Monday"
+  },
+  {
+   "id": 217,
+   "date": "2024-01-29T11:45:30",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 218,
+   "date": "2024-01-29T12:01:11",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "file": "voice_messages/audio_5@29-01-2024_12-01-11.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 9,
+   "text": ""
+  },
+  {
+   "id": 219,
+   "date": "2024-01-29T12:05:18",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 220,
+   "date": "2024-01-29T12:08:47",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 221,
+   "date": "2024-01-29T12:09:33",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 222,
+   "date": "2024-01-29T12:39:11",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 223,
+   "date": "2024-01-29T12:41:48",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 224,
+   "date": "2024-01-29T13:05:17",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "edit_group_title",
+   "text": "",
+   "title": "Fraud 51"
+  },
+  {
+   "id": 225,
+   "date": "2024-01-29T13:09:32",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 226,
+   "date": "2024-01-29T13:16:26",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 227,
+   "date": "2024-01-29T13:46:23",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 228,
+   "date": "2024-01-29T14:11:13",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "photo": "photos/photo_6@29-01-2024_14-11-13.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 229,
+   "date": "2024-01-29T15:08:33",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 230,
+   "date": "2024-01-29T15:27:52",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 231,
+   "date": "2024-01-29T15:32:38",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 232,
+   "date": "2024-01-29T15:34:39",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "is ",
+    {
+     "type": "bold",
+     "text": "the gym open on Saturday?"
+    }
+   ]
+  },
+  {
+   "id": 233,
+   "date": "2024-01-29T15:46:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 234,
+   "date": "2024-01-29T15:51:34",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 235,
+   "date": "2024-01-29T16:11:57",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 236,
+   "date": "2024-01-29T16:18:51",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 237,
+   "date": "2024-01-29T16:26:27",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 238,
+   "date": "2024-01-29T17:05:15",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 239,
+   "date": "2024-01-29T17:38:07",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 240,
+   "date": "2024-01-29T17:40:24",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 241,
+   "date": "2024-01-29T17:49:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 242,
+   "date": "2024-01-29T17:50:42",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8:15 at the clinic"
+  },
+  {
+   "id": 243,
+   "date": "2024-01-29T18:20:45",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 244,
+   "date": "2024-01-29T18:21:10",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 245,
+   "date": "2024-01-29T18:25:06",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 246,
+   "date": "2024-01-29T18:35:44",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "edit_group_title",
+   "text": "",
+   "title": "Fraud 51"
+  },
+  {
+   "id": 247,
+   "date": "2024-01-29T18:53:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "reminder for Sunday: bring the notes and the signed form"
+  },
+  {
+   "id": 248,
+   "date": "2024-01-29T19:02:08",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 249,
+   "date": "2024-01-29T19:33:52",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 250,
+   "date": "2024-01-29T20:19:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who has the report?"
+  },
+  {
+   "id": 251,
+   "date": "2024-01-29T20:57:06",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 252,
+   "date": "2024-01-29T21:23:48",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 253,
+   "date": "2024-01-29T21:26:15",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 254,
+   "date": "2024-01-29T22:17:50",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 255,
+   "date": "2024-01-29T22:31:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the extortion money goes to the usual account"
+  },
+  {
+   "id": 256,
+   "date": "2024-01-29T22:33:08",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 257,
+   "date": "2024-01-29T23:01:03",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I left the charger at the park"
+  },
+  {
+   "id": 258,
+   "date": "2024-01-29T23:03:35",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the office already"
+  },
+  {
+   "id": 259,
+   "date": "2024-01-29T23:04:35",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 260,
+   "date": "2024-01-29T23:09:29",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "anyone ",
+    {
+     "type": "bold",
+     "text": "want pizza tonight?"
+    }
+   ]
+  },
+  {
+   "id": 261,
+   "date": "2024-01-29T23:42:16",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 262,
+   "date": "2024-01-30T06:59:41",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 263,
+   "date": "2024-01-30T07:23:45",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 264,
+   "date": "2024-01-30T07:42:48",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 265,
+   "date": "2024-01-30T08:14:39",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 266,
+   "date": "2024-01-30T08:37:51",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 267,
+   "date": "2024-01-30T09:34:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 268,
+   "date": "2024-01-30T09:55:11",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 269,
+   "date": "2024-01-30T10:04:06",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I have the white stuff, 40 a gram"
+  },
+  {
+   "id": 270,
+   "date": "2024-01-30T10:08:37",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 271,
+   "date": "2024-01-30T10:22:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 272,
+   "date": "2024-01-30T10:34:09",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 273,
+   "date": "2024-01-30T10:36:36",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 274,
+   "date": "2024-01-30T11:15:12",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 275,
+   "date": "2024-01-30T11:35:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 276,
+   "date": "2024-01-30T12:04:48",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 277,
+   "date": "2024-01-30T12:17:54",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "can someone pick me ",
+    {
+     "type": "bold",
+     "text": "up at school?"
+    }
+   ]
+  },
+  {
+   "id": 278,
+   "date": "2024-01-30T12:37:35",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 279,
+   "date": "2024-01-30T12:45:18",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "the bus is ",
+    {
+     "type": "bold",
+     "text": "full again"
+    }
+   ]
+  },
+  {
+   "id": 280,
+   "date": "2024-01-30T12:49:15",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 281,
+   "date": "2024-01-30T12:56:38",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 282,
+   "date": "2024-01-30T13:03:44",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 283,
+   "date": "2024-01-30T13:21:28",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the meeting is at 8 at the soda"
+  },
+  {
+   "id": 284,
+   "date": "2024-01-30T13:49:05",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 285,
+   "date": "2024-01-30T14:05:54",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I left the charger at school"
+  },
+  {
+   "id": 286,
+   "date": "2024-01-30T14:14:39",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 287,
+   "date": "2024-01-30T14:22:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 288,
+   "date": "2024-01-30T14:38:23",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 289,
+   "date": "2024-01-30T15:04:41",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 290,
+   "date": "2024-01-30T15:08:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 291,
+   "date": "2024-01-30T15:28:56",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 292,
+   "date": "2024-01-30T15:35:24",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "reminder for Thursday: bring the charger and the signed form"
+  },
+  {
+   "id": 293,
+   "date": "2024-01-30T16:29:19",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 294,
+   "date": "2024-01-30T17:01:53",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at noon at the office"
+  },
+  {
+   "id": 295,
+   "date": "2024-01-30T17:14:49",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 296,
+   "date": "2024-01-30T17:16:34",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the photo shoot is at 8 at the clinic"
+  },
+  {
+   "id": 297,
+   "date": "2024-01-30T17:28:20",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 298,
+   "date": "2024-01-30T17:33:40",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the drug deal is at 7:30 behind the bus stop"
+  },
+  {
+   "id": 299,
+   "date": "2024-01-30T17:43:38",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I left my jacket at the office"
+  },
+  {
+   "id": 300,
+   "date": "2024-01-30T17:44:12",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 301,
+   "date": "2024-01-30T17:46:01",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 302,
+   "date": "2024-01-30T17:48:41",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 303,
+   "date": "2024-01-30T17:51:49",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 304,
+   "date": "2024-01-30T18:10:38",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 305,
+   "date": "2024-01-30T18:38:57",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 306,
+   "date": "2024-01-30T18:41:13",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 307,
+   "date": "2024-01-30T18:51:37",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 308,
+   "date": "2024-01-30T20:38:02",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 309,
+   "date": "2024-01-30T20:46:01",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 310,
+   "date": "2024-01-30T20:52:40",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 311,
+   "date": "2024-01-30T21:17:29",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 312,
+   "date": "2024-01-30T21:28:33",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "file": "voice_messages/audio_7@30-01-2024_21-28-33.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 172,
+   "text": ""
+  },
+  {
+   "id": 313,
+   "date": "2024-01-30T21:30:26",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "is the gym open on Saturday?"
+  },
+  {
+   "id": 314,
+   "date": "2024-01-30T22:00:43",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Monday?"
+  },
+  {
+   "id": 315,
+   "date": "2024-01-30T22:12:11",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 316,
+   "date": "2024-01-30T22:40:53",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 317,
+   "date": "2024-01-30T23:03:51",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 318,
+   "date": "2024-01-30T23:26:47",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 319,
+   "date": "2024-01-30T23:32:30",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 320,
+   "date": "2024-01-30T23:58:51",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 321,
+   "date": "2024-01-31T08:17:47",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 322,
+   "date": "2024-01-31T08:26:38",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 323,
+   "date": "2024-01-31T08:35:31",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 324,
+   "date": "2024-01-31T08:47:05",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 325,
+   "date": "2024-01-31T09:21:27",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 326,
+   "date": "2024-01-31T09:48:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 327,
+   "date": "2024-01-31T09:58:41",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 328,
+   "date": "2024-01-31T10:09:55",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 329,
+   "date": "2024-01-31T10:33:46",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 330,
+   "date": "2024-01-31T10:52:48",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 7:30 at the bus stop"
+  },
+  {
+   "id": 331,
+   "date": "2024-01-31T11:58:41",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 332,
+   "date": "2024-01-31T12:25:04",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 333,
+   "date": "2024-01-31T12:25:40",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 334,
+   "date": "2024-01-31T12:32:45",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "we need 15 more ",
+    {
+     "type": "bold",
+     "text": "people"
+    }
+   ]
+  },
+  {
+   "id": 335,
+   "date": "2024-01-31T13:01:53",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 336,
+   "date": "2024-01-31T13:25:28",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I left the charger at the soda"
+  },
+  {
+   "id": 337,
+   "date": "2024-01-31T13:31:09",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 338,
+   "date": "2024-01-31T13:59:38",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 339,
+   "date": "2024-01-31T14:37:30",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 340,
+   "date": "2024-01-31T14:59:27",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 341,
+   "date": "2024-01-31T15:06:40",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 342,
+   "date": "2024-01-31T15:25:48",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 343,
+   "date": "2024-01-31T15:35:38",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 344,
+   "date": "2024-01-31T16:09:15",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "who's in for ",
+    {
+     "type": "bold",
+     "text": "Monday?"
+    }
+   ]
+  },
+  {
+   "id": 345,
+   "date": "2024-01-31T16:17:29",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 346,
+   "date": "2024-01-31T16:50:40",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 347,
+   "date": "2024-01-31T16:56:01",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 3 at the gym"
+  },
+  {
+   "id": 348,
+   "date": "2024-01-31T17:24:29",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 349,
+   "date": "2024-01-31T17:29:31",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 350,
+   "date": "2024-01-31T18:06:56",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 351,
+   "date": "2024-01-31T18:21:02",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 352,
+   "date": "2024-01-31T19:16:03",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 353,
+   "date": "2024-01-31T19:30:15",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 354,
+   "date": "2024-01-31T20:10:34",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 355,
+   "date": "2024-01-31T20:13:40",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Monday?"
+  },
+  {
+   "id": 356,
+   "date": "2024-01-31T20:15:26",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "don't forget to bring the keys"
+  },
+  {
+   "id": 357,
+   "date": "2024-01-31T20:45:05",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "shopping list: - rice - beans ",
+    {
+     "type": "bold",
+     "text": "- coffee"
+    }
+   ]
+  },
+  {
+   "id": 358,
+   "date": "2024-01-31T20:48:07",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 359,
+   "date": "2024-01-31T20:49:17",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 360,
+   "date": "2024-01-31T21:24:32",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 361,
+   "date": "2024-01-31T21:34:50",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 3 at the bus stop"
+  },
+  {
+   "id": 362,
+   "date": "2024-01-31T21:44:00",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who has the notes?"
+  },
+  {
+   "id": 363,
+   "date": "2024-01-31T21:49:23",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 364,
+   "date": "2024-01-31T22:26:10",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 365,
+   "date": "2024-01-31T22:33:28",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 366,
+   "date": "2024-01-31T22:39:13",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the meeting is at 7 at the soda"
+  },
+  {
+   "id": 367,
+   "date": "2024-01-31T22:51:12",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 368,
+   "date": "2024-01-31T23:07:28",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "photo": "photos/photo_8@31-01-2024_23-07-28.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 369,
+   "date": "2024-01-31T23:28:30",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 370,
+   "date": "2024-01-31T23:46:07",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 371,
+   "date": "2024-01-31T23:50:49",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 7 at the mall"
+  },
+  {
+   "id": 372,
+   "date": "2024-02-01T07:06:32",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 373,
+   "date": "2024-02-01T07:17:41",
+   "type": "service",
+   "actor": "Bryan Araya",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 374,
+   "date": "2024-02-01T08:05:58",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 375,
+   "date": "2024-02-01T08:26:40",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_9@01-02-2024_08-26-40.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 5,
+   "text": ""
+  },
+  {
+   "id": 376,
+   "date": "2024-02-01T08:38:27",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 377,
+   "date": "2024-02-01T08:48:20",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 378,
+   "date": "2024-02-01T09:24:16",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 379,
+   "date": "2024-02-01T09:41:58",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 380,
+   "date": "2024-02-01T09:54:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I owe you 15 for the tacos"
+  },
+  {
+   "id": 381,
+   "date": "2024-02-01T10:08:38",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the meeting is at 9 at the office"
+  },
+  {
+   "id": 382,
+   "date": "2024-02-01T10:21:18",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 383,
+   "date": "2024-02-01T10:28:30",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 384,
+   "date": "2024-02-01T10:39:57",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 385,
+   "date": "2024-02-01T10:54:51",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 386,
+   "date": "2024-02-01T11:07:46",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 387,
+   "date": "2024-02-01T11:35:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at noon"
+  },
+  {
+   "id": 388,
+   "date": "2024-02-01T11:43:26",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "running 10 ",
+    {
+     "type": "bold",
+     "text": "minutes late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 389,
+   "date": "2024-02-01T13:01:20",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 390,
+   "date": "2024-02-01T13:11:00",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 391,
+   "date": "2024-02-01T13:21:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "who has the notes?"
+  },
+  {
+   "id": 392,
+   "date": "2024-02-01T13:32:15",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 393,
+   "date": "2024-02-01T14:18:02",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 9 at the soda"
+  },
+  {
+   "id": 394,
+   "date": "2024-02-01T15:08:33",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 395,
+   "date": "2024-02-01T15:09:36",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 396,
+   "date": "2024-02-01T16:02:25",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the drug deal is at 6 behind the bus stop"
+  },
+  {
+   "id": 397,
+   "date": "2024-02-01T16:24:57",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 398,
+   "date": "2024-02-01T17:06:33",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 399,
+   "date": "2024-02-01T17:18:57",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 400,
+   "date": "2024-02-01T17:35:23",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the park?"
+  },
+  {
+   "id": 401,
+   "date": "2024-02-01T17:36:32",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 402,
+   "date": "2024-02-01T19:10:19",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": [
+    "what time ",
+    {
+     "type": "bold",
+     "text": "does it close?"
+    }
+   ]
+  },
+  {
+   "id": 403,
+   "date": "2024-02-01T19:36:18",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 404,
+   "date": "2024-02-01T19:45:56",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the tacos"
+  },
+  {
+   "id": 405,
+   "date": "2024-02-01T19:49:36",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 406,
+   "date": "2024-02-01T19:52:08",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 407,
+   "date": "2024-02-01T19:59:44",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 408,
+   "date": "2024-02-01T20:26:20",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "my ",
+    {
+     "type": "bold",
+     "text": "phone is almost dead"
+    }
+   ]
+  },
+  {
+   "id": 409,
+   "date": "2024-02-01T21:28:03",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 410,
+   "date": "2024-02-01T21:28:33",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the gym already"
+  },
+  {
+   "id": 411,
+   "date": "2024-02-01T22:11:21",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "don't forget to bring the tickets"
+  },
+  {
+   "id": 412,
+   "date": "2024-02-01T23:05:10",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 413,
+   "date": "2024-02-01T23:37:38",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": [
+    "I can't make it ",
+    {
+     "type": "bold",
+     "text": "Wednesday"
+    }
+   ]
+  },
+  {
+   "id": 414,
+   "date": "2024-02-02T06:28:25",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 415,
+   "date": "2024-02-02T06:47:19",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 416,
+   "date": "2024-02-02T06:49:38",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 417,
+   "date": "2024-02-02T06:57:21",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 418,
+   "date": "2024-02-02T07:03:53",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 419,
+   "date": "2024-02-02T07:08:02",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 420,
+   "date": "2024-02-02T07:36:13",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 421,
+   "date": "2024-02-02T07:39:11",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 422,
+   "date": "2024-02-02T07:55:03",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 423,
+   "date": "2024-02-02T08:00:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 424,
+   "date": "2024-02-02T08:02:18",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 425,
+   "date": "2024-02-02T08:05:15",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 426,
+   "date": "2024-02-02T08:37:11",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I left the notes at the ",
+    {
+     "type": "bold",
+     "text": "park"
+    }
+   ]
+  },
+  {
+   "id": 427,
+   "date": "2024-02-02T08:45:53",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 428,
+   "date": "2024-02-02T09:10:00",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 429,
+   "date": "2024-02-02T09:15:49",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 430,
+   "date": "2024-02-02T09:31:28",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": [
+    "can someone pick me up ",
+    {
+     "type": "bold",
+     "text": "at the office?"
+    }
+   ]
+  },
+  {
+   "id": 431,
+   "date": "2024-02-02T09:32:54",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "the extortion money goes to the usual account"
+  },
+  {
+   "id": 432,
+   "date": "2024-02-02T09:43:23",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 433,
+   "date": "2024-02-02T09:50:40",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 434,
+   "date": "2024-02-02T09:57:52",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 435,
+   "date": "2024-02-02T10:04:08",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 436,
+   "date": "2024-02-02T10:12:40",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 437,
+   "date": "2024-02-02T10:27:14",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "the drug deal is at 7 behind the gym"
+  },
+  {
+   "id": 438,
+   "date": "2024-02-02T10:29:54",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 439,
+   "date": "2024-02-02T10:34:42",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 440,
+   "date": "2024-02-02T11:18:08",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the sushi"
+  },
+  {
+   "id": 441,
+   "date": "2024-02-02T11:33:50",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 442,
+   "date": "2024-02-02T11:36:30",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 443,
+   "date": "2024-02-02T11:58:27",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the park already"
+  },
+  {
+   "id": 444,
+   "date": "2024-02-02T12:16:41",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 445,
+   "date": "2024-02-02T12:20:40",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "I left the tickets at the gym"
+  },
+  {
+   "id": 446,
+   "date": "2024-02-02T12:54:30",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 447,
+   "date": "2024-02-02T12:56:09",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 448,
+   "date": "2024-02-02T13:09:06",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 449,
+   "date": "2024-02-02T14:05:52",
+   "type": "message",
+   "from": "Camila Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 450,
+   "date": "2024-02-02T14:25:09",
+   "type": "message",
+   "from": "Morgan Mora",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 451,
+   "date": "2024-02-02T15:11:11",
+   "type": "message",
+   "from": "Bryan Araya",
+   "from_id": "user1000",
+   "file": "video_files/video_10@02-02-2024_15-11-11.mp4",
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 107,
+   "text": ""
+  }
+ ]
+}

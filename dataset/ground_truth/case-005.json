@@ -1,0 +1,93 @@
+{
+  "case_id": "case-005",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250428-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250426-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250423-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.684719,
+            "y": 0.006979,
+            "w": 0.315281,
+            "h": 0.788729
+          },
+          "notes": "COCO knife box, 17070.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250427-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250424-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250426-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250424-WA0003.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.438063,
+            "y": 0.285644,
+            "w": 0.046422,
+            "h": 0.383583
+          },
+          "notes": "COCO knife box, 1569.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250425-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250426-WA0009.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250426-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250425-WA0004.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250427-WA0010.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250427-WA0011.opus",
+      "findings": []
+    },
+    {
+      "path": "media/VID-20250428-WA0014.mp4",
+      "findings": []
+    }
+  ]
+}

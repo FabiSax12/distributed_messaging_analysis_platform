@@ -1,0 +1,258 @@
+{
+  "case_id": "case-001",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 78
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 141
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 180
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 205
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 206
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 209
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 288
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 339
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 370
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 378
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 395
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 416
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 424
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 453
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 518
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 550
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 553
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250228-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250304-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250305-WA0014.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250225-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250304-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250304-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250228-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250227-WA0004.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.364047,
+            "y": 0.801562,
+            "w": 0.008422,
+            "h": 0.087646
+          },
+          "notes": "COCO knife box, 172.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.736719,
+            "y": 0.613354,
+            "w": 0.017797,
+            "h": 0.075813
+          },
+          "notes": "COCO knife box, 233.8 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.302125,
+            "y": 0.654062,
+            "w": 0.067844,
+            "h": 0.045646
+          },
+          "notes": "COCO knife box, 163.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.536547,
+            "y": 0.497896,
+            "w": 0.047984,
+            "h": 0.019062
+          },
+          "notes": "COCO knife box, 98.8 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.359703,
+            "y": 0.788937,
+            "w": 0.023766,
+            "h": 0.097813
+          },
+          "notes": "COCO knife box, 169.0 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250228-WA0009.opus",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 31.48,
+          "audio_end_s": 34.39,
+          "notes": "You are such an idiot, I can't believe it."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250226-WA0002.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250227-WA0003.opus",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.44,
+          "audio_end_s": 3.68,
+          "notes": "They plan to shoot the guy from the store tonight."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250303-WA0010.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250228-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/VID-20250228-WA0005.mp4",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 16.21,
+          "audio_end_s": 19.01,
+          "notes": "I swear I will kill you if you come back here."
+        }
+      ]
+    }
+  ]
+}

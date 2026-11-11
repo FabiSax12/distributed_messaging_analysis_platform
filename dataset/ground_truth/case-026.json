@@ -1,0 +1,203 @@
+{
+  "case_id": "case-026",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 48
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 60
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 72
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 121
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 123
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 185
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 203
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 222
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250501-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250429-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250430-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250429-WA0004.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.399547,
+            "y": 0.34271,
+            "w": 0.00525,
+            "h": 0.047196
+          },
+          "notes": "COCO knife box, 58.0 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.392422,
+            "y": 0.337523,
+            "w": 0.007141,
+            "h": 0.051963
+          },
+          "notes": "COCO knife box, 92.5 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.424234,
+            "y": 0.338762,
+            "w": 0.009016,
+            "h": 0.051963
+          },
+          "notes": "COCO knife box, 99.8 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.417281,
+            "y": 0.335584,
+            "w": 0.007891,
+            "h": 0.056145
+          },
+          "notes": "COCO knife box, 95.1 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.411125,
+            "y": 0.338318,
+            "w": 0.006,
+            "h": 0.051121
+          },
+          "notes": "COCO knife box, 68.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.404797,
+            "y": 0.339089,
+            "w": 0.006391,
+            "h": 0.051402
+          },
+          "notes": "COCO knife box, 80.1 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250429-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250427-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250426-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.076146,
+            "y": 0.390203,
+            "w": 0.034937,
+            "h": 0.055734
+          },
+          "notes": "COCO knife box, 354.1 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250427-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250501-WA0010.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250501-WA0012.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.8,
+          "audio_end_s": 4.88,
+          "notes": "If you tell anyone about this, you will regret it."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250429-WA0005.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250430-WA0009.opus",
+      "findings": []
+    }
+  ]
+}

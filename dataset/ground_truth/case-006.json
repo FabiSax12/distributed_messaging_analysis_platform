@@ -1,0 +1,165 @@
+{
+  "case_id": "case-006",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 22
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 61
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 115
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 117
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 185
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 214
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 232
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 300
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 345
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 366
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 376
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250104-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250104-WA0009.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.547719,
+            "y": 0.587635,
+            "w": 0.081578,
+            "h": 0.079227
+          },
+          "notes": "COCO knife box, 406.7 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250101-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250101-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250104-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250101-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250103-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250101-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241228-WA0001.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250101-WA0006.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241229-WA0002.opus",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.56,
+          "audio_end_s": 4.3,
+          "notes": "We need to sell drugs at the party on Saturday."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250104-WA0010.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250104-WA0011.opus",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 22.2,
+          "audio_end_s": 25.58,
+          "notes": "The drug deal is tonight behind the stadium."
+        }
+      ]
+    },
+    {
+      "path": "media/VID-20250104-WA0014.mp4",
+      "findings": []
+    }
+  ]
+}

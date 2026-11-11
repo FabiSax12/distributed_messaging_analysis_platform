@@ -1,0 +1,115 @@
+{
+  "case_id": "case-009",
+  "title": "Synthetic: Neighborhood dispute that escalates",
+  "priority": "high",
+  "heterogeneous": true,
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "content_type": "text",
+      "chat_format": "telegram",
+      "timezone": "Europe/Madrid",
+      "sha256": "28cff9c59591f5db5613e683e48fb4784d09bc881192942e0e8c7abcebe16202",
+      "size_bytes": 87883
+    },
+    {
+      "path": "chat/photos/photo_13@20-04-2025_22-39-52.jpg",
+      "content_type": "image",
+      "sha256": "409a0b4438f67db00f69697f9b1728eb75fc511031e6fa176b029410aa9c537d",
+      "size_bytes": 108331,
+      "notes": "COCO val2017 000000500663.jpg (Attribution License, http://farm3.staticflickr.com/2452/4046745441_5a2f435499_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_7@16-04-2025_08-09-09.jpg",
+      "content_type": "image",
+      "sha256": "2c8d100ab71de8b3ef22f3d0999aec2174bf10a911712e1d7bb3de1e2def6eb7",
+      "size_bytes": 84297,
+      "notes": "COCO val2017 000000229358.jpg (Attribution License, http://farm4.staticflickr.com/3300/3512771461_b79b84be7d_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_4@13-04-2025_23-17-53.jpg",
+      "content_type": "image",
+      "sha256": "c01d3b4a2d2a32d2a6059832f4823fafc6cc2aff8830860a82a6e4a0baaa4cd7",
+      "size_bytes": 125895,
+      "notes": "COCO val2017 000000320664.jpg (Attribution-NoDerivs License, http://farm4.staticflickr.com/3094/2448447028_40c0247324_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_14@21-04-2025_18-02-27.jpg",
+      "content_type": "image",
+      "sha256": "7b953b528b2ae9fdc1c768710a8581c397ea552651ceeab6b59d2603f3223417",
+      "size_bytes": 169613,
+      "notes": "COCO val2017 000000419312.jpg (Attribution License, http://farm4.staticflickr.com/3276/3064530534_3b508c25c6_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_5@13-04-2025_23-40-30.jpg",
+      "content_type": "image",
+      "sha256": "0b7f35a9bfd6b2cc01f6798ac97688ea06263b48f89348c5170d264d8cdb67d5",
+      "size_bytes": 109831,
+      "notes": "COCO val2017 000000416256.jpg (Attribution-ShareAlike License, http://farm1.staticflickr.com/34/64280333_7acf38cfb3_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_1@13-04-2025_16-40-41.jpg",
+      "content_type": "image",
+      "sha256": "060235d75ac8a669d705e7685f73f53a09da291583f45faf45ac4ac1dbab4388",
+      "size_bytes": 201077,
+      "notes": "COCO val2017 000000199771.jpg (Attribution License, http://farm6.staticflickr.com/5035/7115744429_7d4deeb996_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_8@16-04-2025_10-24-16.jpg",
+      "content_type": "image",
+      "sha256": "a11ec29e6543dcb6a453e87782b37b13e45edf374d9ebfe5080ee70dd174abae",
+      "size_bytes": 165530,
+      "notes": "COCO val2017 000000532761.jpg (Attribution-NoDerivs License, http://farm8.staticflickr.com/7133/7544629434_724e339b8d_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_11@18-04-2025_08-54-10.jpg",
+      "content_type": "image",
+      "sha256": "536b78fa08534eb0778e58838065ba773fe8751dd87c13bf070f726affaab6e0",
+      "size_bytes": 112582,
+      "notes": "COCO val2017 000000213255.jpg (Attribution License, http://farm3.staticflickr.com/2021/2521020235_f252d7108f_z.jpg)"
+    },
+    {
+      "path": "chat/voice_messages/audio_3@13-04-2025_23-05-29.ogg",
+      "content_type": "audio",
+      "sha256": "66987cdd1ba93123e8fe25ada3e5ba47e36b44cd8513011c4c3a7d3e22cd63e3",
+      "size_bytes": 46902,
+      "notes": "synthetic speech (Windows SAPI TTS), 24.2 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_10@16-04-2025_19-11-45.ogg",
+      "content_type": "audio",
+      "sha256": "fd837ae1df1b25b4131907e21bd562dfb22b4a8c4e418f774500c9369ea0ca9b",
+      "size_bytes": 33606,
+      "notes": "synthetic speech (Windows SAPI TTS), 18.8 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_2@13-04-2025_22-06-59.ogg",
+      "content_type": "audio",
+      "sha256": "8cc350223f5e7f93bbb58aaacec66b99da57a09abc3745834fd16c468260f591",
+      "size_bytes": 68295,
+      "notes": "synthetic speech (Windows SAPI TTS), 35.3 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_9@16-04-2025_12-04-39.ogg",
+      "content_type": "audio",
+      "sha256": "50f4704f682be1976fb912ae65b716e59907b1654b6522fbc0df2e998fa5e22f",
+      "size_bytes": 49352,
+      "notes": "synthetic speech (Windows SAPI TTS), 25.7 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_12@18-04-2025_09-03-32.ogg",
+      "content_type": "audio",
+      "sha256": "3035a2ea28ab0c0c32ba1e426850a2dd801e99767be281b7cc396dbdad21b01c",
+      "size_bytes": 5786,
+      "notes": "synthetic speech (Windows SAPI TTS), 3.8 s"
+    },
+    {
+      "path": "chat/video_files/video_6@14-04-2025_23-24-43.mp4",
+      "content_type": "video",
+      "sha256": "a4d43ebb05d612a23169efd16ae3b502d5f63ac930eb73666fadbdfd43079e75",
+      "size_bytes": 409882,
+      "notes": "synthetic speech (Windows SAPI TTS), 17.3 s"
+    }
+  ],
+  "notes": "Generated by dataset/generators/generate_dataset.py, seed 42; scenario neighbors; kind hetero; chat language en; synthetic people and events."
+}

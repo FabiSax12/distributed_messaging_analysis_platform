@@ -1,0 +1,117 @@
+{
+  "case_id": "case-004",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240703-WA0014.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240629-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240629-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240630-WA0009.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.58175,
+            "y": 0.278784,
+            "w": 0.193484,
+            "h": 0.109243
+          },
+          "notes": "COCO knife box, 1440.8 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.613969,
+            "y": 0.289748,
+            "w": 0.213922,
+            "h": 0.105298
+          },
+          "notes": "COCO knife box, 1405.3 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.535359,
+            "y": 0.27133,
+            "w": 0.214688,
+            "h": 0.116606
+          },
+          "notes": "COCO knife box, 1134.6 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240630-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240627-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240629-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240628-WA0002.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.295984,
+            "y": 0.831979,
+            "w": 0.080328,
+            "h": 0.044167
+          },
+          "notes": "COCO scissors box, 382.6 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20240630-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240702-WA0012.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240702-WA0013.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240702-WA0011.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240701-WA0010.opus",
+      "findings": []
+    },
+    {
+      "path": "media/VID-20240630-WA0006.mp4",
+      "findings": []
+    }
+  ]
+}

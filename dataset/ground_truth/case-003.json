@@ -1,0 +1,198 @@
+{
+  "case_id": "case-003",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 4
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 14
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 71
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 107
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 134
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 201
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 283
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 291
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 319
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 327
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 335
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 403
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 425
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 470
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 473
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20241122-WA0010.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241119-WA0003.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.719833,
+            "y": 0.815719,
+            "w": 0.061771,
+            "h": 0.184281
+          },
+          "notes": "COCO knife box, 2056.3 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20241119-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241124-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241125-WA0014.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241122-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241123-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241121-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241122-WA0009.opus",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 5.94,
+          "audio_end_s": 9.17,
+          "notes": "Stop being stupid and answer the phone."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20241119-WA0004.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241120-WA0005.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241119-WA0001.opus",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 3.1,
+          "audio_end_s": 5.72,
+          "notes": "Stop being stupid and answer the phone."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20241122-WA0008.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.55,
+          "audio_end_s": 4.36,
+          "notes": "If you tell anyone about this, you will regret it."
+        }
+      ]
+    },
+    {
+      "path": "media/VID-20241120-WA0006.mp4",
+      "findings": []
+    }
+  ]
+}
