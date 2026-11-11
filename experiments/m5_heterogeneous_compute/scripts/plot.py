@@ -17,7 +17,7 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.pyplot as plt
 
 # Fixed categorical order (one hue per model/precision, never cycled).
 SERIES = {

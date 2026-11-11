@@ -71,7 +71,7 @@ with contextlib.redirect_stdout(sys.stderr):
         # (run by the first predict) forces torch.set_num_threads(NUM_THREADS)
         # with NUM_THREADS = min(8, cpu_count - 1), whatever OMP_NUM_THREADS
         # says. Pin ultralytics' own constant so the configuration holds.
-        import ultralytics.utils.torch_utils as torch_utils
+        from ultralytics.utils import torch_utils
 
         threads_after_load = torch_utils.NUM_THREADS  # what production gets
         torch_utils.NUM_THREADS = int(os.environ.get("MODEL_THREADS", "1"))

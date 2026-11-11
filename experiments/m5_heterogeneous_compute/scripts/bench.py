@@ -18,8 +18,9 @@ Suites:
 
 Outputs (one directory per host): ``runs.csv`` (one row per warm run),
 ``processes.csv`` (cold start, load time, memory per process), ``parallel.csv``,
-``summary.csv``/``summary.md`` (p50/p95, throughput, memory per configuration),
-``host.json``. ``--device cuda`` with ``float16`` configurations is accepted
+``summary.csv`` (p50/p95, throughput, memory per configuration), ``raw/`` (the
+full per-process record) and ``host.json``. CSVs are rewritten after every
+configuration; ``--resume`` continues an interrupted campaign. ``--device cuda`` with ``float16`` configurations is accepted
 for a GPU host (e.g. Colab) but CPU PyTorch is what the repo pins.
 """
 
@@ -179,6 +180,8 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=ROOT / "experiments/m5_heterogeneous_compute/results" / platform.node().lower())
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--device", default="cpu")
+    parser.add_argument("--resume", action="store_true",
+                        help="keep the CSVs in --out and skip configurations already measured")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     rng = random.Random(42)
@@ -196,7 +199,22 @@ def main() -> int:
     seconds = {i["path"]: i["seconds"] for i in audio_inputs}
     refs = {i["path"]: i["reference"] for i in audio_inputs}
 
-    runs, procs, summary, parallel = [], [], [], []
+    names = {"runs": "runs.csv", "procs": "processes.csv", "summary": "summary.csv", "parallel": "parallel.csv"}
+    tables: dict[str, list[dict]] = {k: [] for k in names}
+    if args.resume:
+        for key, name in names.items():
+            if (args.out / name).is_file():
+                with (args.out / name).open(encoding="utf-8") as fh:
+                    tables[key] = list(csv.DictReader(fh))
+    runs, procs, summary, parallel = tables["runs"], tables["procs"], tables["summary"], tables["parallel"]
+    done = {s["config"] for s in summary} | {f"{p['processes']}x{p['threads_each']}" for p in parallel}
+
+    def flush() -> None:
+        # Rewritten after every configuration: an interrupted campaign keeps
+        # everything measured so far (rerun with --resume).
+        rounded = [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in s.items()} for s in summary]
+        for key, rows in (("runs", runs), ("procs", procs), ("summary", rounded), ("parallel", parallel)):
+            write_csv(args.out / names[key], rows)
 
     def record(config: str, op: str, meta: dict, spawned: float, extra: dict) -> None:
         procs.append({"config": config, "op": op, **extra, "cold_import_s": meta["t_import"] - spawned,
@@ -232,12 +250,17 @@ def main() -> int:
         else:
             s["images_per_s"] = len(lat) / total_wall
         summary.append(s)
+        (args.out / "raw").mkdir(exist_ok=True)
+        (args.out / "raw" / f"{config}.json").write_text(json.dumps(meta), encoding="utf-8")
+        flush()
         print(json.dumps({k: (round(v, 3) if isinstance(v, float) else v) for k, v in s.items()}), flush=True)
 
     if args.suite in ("all", "audio"):
         path = args.out / "inputs_audio.json"
         for model, compute, threads in AUDIO_CONFIGS:
             config = f"whisper-{model}-{compute}-t{threads}"
+            if config in done:
+                continue
             env = {"AUDIO_MODEL": model, "AUDIO_COMPUTE_TYPE": compute, "MODEL_THREADS": threads,
                    "MODEL_DEVICE": args.device, "OMP_NUM_THREADS": threads}
             meta, spawned = run_process("audio", path, env, args.repeats)
@@ -246,6 +269,8 @@ def main() -> int:
     if args.suite in ("all", "image"):
         path = args.out / "inputs_image.json"
         for threads in IMAGE_THREADS:
+            if f"yolov8n-t{threads}" in done:
+                continue
             env = {"MODEL_THREADS": threads, "OMP_NUM_THREADS": threads, "MKL_NUM_THREADS": threads, "MODEL_DEVICE": args.device}
             meta, spawned = run_process("image", path, env, args.repeats)
             record(f"yolov8n-t{threads}", "image", meta, spawned,
@@ -254,6 +279,8 @@ def main() -> int:
     if args.suite in ("all", "parallel"):
         work = [i for i in audio_inputs if i["seconds"] >= 10]  # medium + long notes
         for procs_n, threads in PARALLEL:
+            if f"{procs_n}x{threads}" in done:
+                continue
             shards = [work[k::procs_n] for k in range(procs_n)]
             files = []
             for k, shard in enumerate(shards):
@@ -277,13 +304,10 @@ def main() -> int:
                              "max_load_s": round(max(m["t_load"] - m["t_import"] for m in metas), 2)})
             for f in files:
                 f.unlink()
+            flush()
             print(json.dumps(parallel[-1]), flush=True)
 
-    suffix = "" if args.suite == "all" else f"_{args.suite}"
-    write_csv(args.out / f"runs{suffix}.csv", runs)
-    write_csv(args.out / f"processes{suffix}.csv", procs)
-    write_csv(args.out / f"summary{suffix}.csv", [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in s.items()} for s in summary])
-    write_csv(args.out / f"parallel{suffix}.csv", parallel)
+    flush()
     return 0
 
 
