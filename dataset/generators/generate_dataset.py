@@ -68,6 +68,9 @@ SCENARIOS = {
 }
 HARMFUL_SCENARIOS = [s for s, v in SCENARIOS.items() if v[1]]
 BENIGN_SCENARIOS = [s for s, v in SCENARIOS.items() if not v[1]]
+GROUP_NAMES = ["Los Pinos", "Equipo Norte", "Amigos del cole", "La Familia", "Team Ops", "Barrio Centro",
+               "Futbol Domingos", "Proyecto", "Vecinos Torre B", "Grupo Estudio", "Weekend Crew", "La Soda",
+               "Turno Noche", "Primos", "Gym Bros", "Clase 11-2"]
 TIMEZONES = ["America/Costa_Rica"] * 6 + ["America/Mexico_City", "America/Bogota", "Europe/Madrid"]
 
 
@@ -214,7 +217,9 @@ def _plan_chat(rng: random.Random, plan: CasePlan) -> list[Entry]:
     people = [f"{f} {l}" for f, l in zip(rng.sample(C.FIRST_NAMES, 6), rng.sample(C.LAST_NAMES, 6))]
     members = people[: rng.randint(3, 6)]
     _, categories, harmful_rate, _, _ = SCENARIOS[plan.scenario]
-    group = f"{plan.scenario.replace('_', ' ').title()} {rng.randint(1, 99)}"
+    # Neutral names: a real group is not called after its crime (and a name
+    # like "Extortion 35" would make the rules flag every system line).
+    group = f"{GROUP_NAMES[int(plan.case_id[-3:]) % len(GROUP_NAMES)]} {rng.randint(1, 99)}"
 
     body: list[Entry] = []
     n = plan.n_user_messages

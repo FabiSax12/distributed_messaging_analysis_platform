@@ -1,5 +1,5 @@
 {
- "name": "Family 31",
+ "name": "Weekend Crew 31",
  "type": "private_group",
  "id": 1000010,
  "messages": [
@@ -1782,7 +1782,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Family 31"
+   "title": "Weekend Crew 31"
   },
   {
    "id": 211,
@@ -2857,7 +2857,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Family 31"
+   "title": "Weekend Crew 31"
   },
   {
    "id": 339,

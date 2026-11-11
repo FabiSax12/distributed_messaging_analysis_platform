@@ -1,5 +1,5 @@
 {
- "name": "Work 37",
+ "name": "Vecinos Torre B 37",
  "type": "private_group",
  "id": 1000008,
  "messages": [
@@ -332,7 +332,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Work 37"
+   "title": "Vecinos Torre B 37"
   },
   {
    "id": 38,
@@ -1582,7 +1582,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Work 37"
+   "title": "Vecinos Torre B 37"
   },
   {
    "id": 190,
@@ -1843,7 +1843,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Work 37"
+   "title": "Vecinos Torre B 37"
   },
   {
    "id": 221,

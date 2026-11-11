@@ -1,5 +1,5 @@
 {
- "name": "Gang Violence 2",
+ "name": "Amigos del cole 2",
  "type": "private_group",
  "id": 1000034,
  "messages": [
@@ -2676,7 +2676,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Gang Violence 2"
+   "title": "Amigos del cole 2"
   },
   {
    "id": 315,

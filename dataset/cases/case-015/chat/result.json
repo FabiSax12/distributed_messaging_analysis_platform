@@ -1,5 +1,5 @@
 {
- "name": "Fraud 51",
+ "name": "Clase 11-2 51",
  "type": "private_group",
  "id": 1000015,
  "messages": [
@@ -1941,7 +1941,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Fraud 51"
+   "title": "Clase 11-2 51"
   },
   {
    "id": 225,
@@ -2128,7 +2128,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Fraud 51"
+   "title": "Clase 11-2 51"
   },
   {
    "id": 247,

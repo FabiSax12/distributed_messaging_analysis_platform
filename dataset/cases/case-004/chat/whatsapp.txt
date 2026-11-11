@@ -1,5 +1,5 @@
 25/06/24, 21:06 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
-25/06/24, 21:14 - Natalia Example created group "Sports 27"
+25/06/24, 21:14 - Natalia Example created group "Team Ops 27"
 25/06/24, 21:39 - Natalia Example added Sam Ureña
 25/06/24, 22:40 - Natalia Example added Jose Navarro
 25/06/24, 23:12 - Natalia Example added Jamie Sample
@@ -93,7 +93,7 @@ blue house
 27/06/24, 16:26 - Jose Navarro: can we move it to Tuesday?
 27/06/24, 16:33 - Natalia Example: what time does it close?
 27/06/24, 16:49 - Jamie Sample: the meeting is at noon at the office
-27/06/24, 17:02 - Natalia Example changed the subject to "Sports 27"
+27/06/24, 17:02 - Natalia Example changed the subject to "Team Ops 27"
 27/06/24, 17:06 - Jamie Sample: haha true
 27/06/24, 18:17 - Jose Navarro: I'm at the park already
 27/06/24, 18:24 - Jose Navarro: did you finish the assignment?

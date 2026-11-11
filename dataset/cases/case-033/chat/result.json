@@ -1,5 +1,5 @@
 {
- "name": "Sports 43",
+ "name": "Equipo Norte 43",
  "type": "private_group",
  "id": 1000033,
  "messages": [
@@ -2629,7 +2629,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Sports 43"
+   "title": "Equipo Norte 43"
   },
   {
    "id": 316,
@@ -2713,7 +2713,7 @@
    "actor_id": "user1000",
    "action": "edit_group_title",
    "text": "",
-   "title": "Sports 43"
+   "title": "Equipo Norte 43"
   },
   {
    "id": 325,
