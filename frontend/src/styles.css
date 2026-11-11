@@ -97,6 +97,7 @@ code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-2)
 .tone-text-bad { color: var(--bad); }
 .row-gap { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .stack-lg { display: flex; flex-direction: column; gap: 20px; }
+.stack-sm { display: flex; flex-direction: column; gap: 10px; }
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px; }
 .grid-2 > * { min-width: 0; }
 

@@ -88,7 +88,7 @@ export function FindingsList({ findings, limit = 25 }) {
   }
   const visible = sorted.filter((f) => category === 'all' || f.category === category)
   return (
-    <div className="stack">
+    <div className="stack-sm">
       <div className="chips" role="group" aria-label="Filter findings by category">
         <button type="button" className={`chip ${category === 'all' ? 'on' : ''}`} onClick={() => setCategory('all')}>
           All <span className="num">{findings.length}</span>
@@ -116,7 +116,7 @@ export function Timeline({ events }) {
   const list = events.filter((e) => kind === 'all' || e.type === kind)
   const undated = list.filter((e) => !e.time).length
   return (
-    <div className="stack">
+    <div className="stack-sm">
       <div className="chips" role="group" aria-label="Timeline events">
         {[['finding', 'Evidence (original time)'], ['processing', 'Processing (platform time)'], ['all', 'Both']].map(([k, label]) => (
           <button key={k} type="button" className={`chip ${kind === k ? 'on' : ''}`} onClick={() => setKind(k)}>{label}</button>
