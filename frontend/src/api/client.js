@@ -2,8 +2,9 @@
 //
 // Every request carries the Cognito ACCESS token as `Authorization: Bearer`
 // (set by AuthProvider through `configureAuth`). On a 401 the client refreshes
-// once and retries; a second 401 ends the session. Presigned S3 requests
-// (putToS3, report download) never carry the API token.
+// once and retries. A failed refresh ends the session (AuthProvider); a 401 on
+// the retry is thrown to the caller as an ApiError of kind 'session'. Presigned
+// S3 requests (putToS3, report download) never carry the API token.
 
 import { API_BASE } from '../config.js'
 
