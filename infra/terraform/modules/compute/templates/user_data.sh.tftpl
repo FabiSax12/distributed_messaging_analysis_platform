@@ -6,9 +6,12 @@ set -euxo pipefail
 dnf install -y docker amazon-cloudwatch-agent
 
 # Docker Compose v2 plugin (not packaged in Amazon Linux 2023 repositories).
+# Workers reach GitHub through the NAT gateway, which may not route yet at
+# first boot; retry for about 5 minutes instead of aborting the bootstrap.
 ARCH="$(uname -m)"
 mkdir -p /usr/local/lib/docker/cli-plugins
-curl -fsSL -o /usr/local/lib/docker/cli-plugins/docker-compose \
+curl -fsSL --connect-timeout 10 --retry 20 --retry-delay 15 --retry-all-errors \
+  -o /usr/local/lib/docker/cli-plugins/docker-compose \
   "https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-linux-$ARCH"
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
