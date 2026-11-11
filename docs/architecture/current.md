@@ -18,7 +18,7 @@ flowchart LR
     A --> S3
     Q --> API
     API --> CW[CloudWatch metrics / alarms]
-    API --> SNS[SNS severe / operational alerts]
+    API --> SNS[SNS case finished / severe / operational alerts]
     CW --> SNS
 ```
 
