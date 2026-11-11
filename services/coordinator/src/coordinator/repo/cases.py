@@ -90,17 +90,21 @@ class CasesRepo:
         """Write the final status unless the case is already terminal.
 
         Returns False when another `finalize()` won the race; that is why
-        `barrier/finalize.py` can run concurrently from several threads.
+        `barrier/finalize.py` can run concurrently from several threads. True
+        means this call wrote the terminal state and it is committed (the
+        pooled connection commits when the block exits), so the caller owns
+        the one-off side effects such as the case-finished notification.
         """
         with self._pool.connection() as conn:
-            cur = conn.execute(
+            row = conn.execute(
                 """
                 UPDATE cases SET status = %s, finished_at = %s, report_key = %s
                 WHERE case_id = %s AND status <> ALL(%s)
+                RETURNING case_id
                 """,
                 (status.value, finished_at, report_key, case_id, TERMINAL_CASE_VALUES),
-            )
-            return cur.rowcount == 1
+            ).fetchone()
+        return row is not None
 
     def mark_processing_if_needed(self, case_id: str) -> None:
         """queued/retrying -> processing the first time a sub-task starts."""
