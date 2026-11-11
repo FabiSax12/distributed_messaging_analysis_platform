@@ -489,6 +489,13 @@ label.field { flex: 1; min-width: 220px; max-width: 480px; }
 .file-analyses { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
 .file-analyses > li { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
 .sub-analysis { margin-bottom: 4px; }
+.media-file { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-right: 12px; vertical-align: top; }
+.media-preview > summary { cursor: pointer; color: var(--accent); }
+.media-preview[open] { flex-basis: 100%; }
+.media-preview img, .media-preview video { display: block; max-width: min(100%, 480px); max-height: 360px; margin-top: 6px; border-radius: 6px; background: var(--surface-2); }
+.media-preview audio { display: block; width: min(100%, 360px); margin-top: 6px; }
+.subtasks .file-row .input-file { font-weight: 400; margin-left: 12px; }
+.file-input { margin: 6px 0 2px; }
 .center { text-align: center; }
 .role-help { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
 

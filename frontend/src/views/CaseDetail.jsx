@@ -17,6 +17,9 @@ import { ERROR_CODES, MEDIA_TYPES, OPERATIONS, PRIORITIES, SUBTASK_STATUS, TERMI
 import { basename, durationBetween, formatDateTime, formatDuration, formatTime, shortId } from '../lib/format.js'
 
 const DETAIL_REFRESH_MS = 5000
+// Presigned URLs live PRESIGN_EXPIRES_S (15 min by default): a finished case
+// stops polling, so its input/output links are re-signed at this slower pace.
+const PRESIGN_REFRESH_MS = 5 * 60 * 1000
 
 export default function CaseDetail({ caseId }) {
   const { data: live } = useLiveState()
@@ -48,6 +51,13 @@ export default function CaseDetail({ caseId }) {
     return map
   }, [outputs])
 
+  // input_key -> presigned URL of the input file (shared by its sub-tasks).
+  const inputsByKey = useMemo(() => {
+    const map = new Map()
+    for (const s of outputs?.subtasks ?? []) if (s.input) map.set(s.input.key, s.input)
+    return map
+  }, [outputs])
+
   useEffect(() => {
     setDetail(null)
     load()
@@ -61,7 +71,7 @@ export default function CaseDetail({ caseId }) {
   }, [signature, load])
 
   const terminal = detail && TERMINAL_CASE.has(detail.case.status)
-  useInterval(load, detail && !terminal ? DETAIL_REFRESH_MS : null)
+  useInterval(load, detail ? (terminal ? PRESIGN_REFRESH_MS : DETAIL_REFRESH_MS) : null)
 
   if (error && !detail) {
     return (
@@ -78,8 +88,8 @@ export default function CaseDetail({ caseId }) {
       <a href="#/cases" className="back">← Cases</a>
       <CaseHeader c={detail.case} onChanged={load} />
       <Barrier c={detail.case} subtasks={detail.subtasks} />
-      {terminal && <Report caseId={caseId} status={detail.case.status} />}
-      <SubTasks subtasks={detail.subtasks} outputsBySubtask={outputsBySubtask} />
+      {terminal && <Report caseId={caseId} status={detail.case.status} inputsByKey={inputsByKey} />}
+      <SubTasks subtasks={detail.subtasks} outputsBySubtask={outputsBySubtask} inputsByKey={inputsByKey} />
     </div>
   )
 }
@@ -186,7 +196,7 @@ function Barrier({ c, subtasks }) {
   )
 }
 
-function SubTasks({ subtasks, outputsBySubtask }) {
+function SubTasks({ subtasks, outputsBySubtask, inputsByKey }) {
   const [filter, setFilter] = useState('all')
 
   const groups = useMemo(() => {
@@ -240,6 +250,7 @@ function SubTasks({ subtasks, outputsBySubtask }) {
                 <td colSpan={8}>
                   <span className="mono">{basename(inputKey)}</span>
                   <span className="muted small"> · {MEDIA_TYPES[list[0].media_type] ?? 'Unsupported type'} · {inputKey}</span>
+                  <InputFile file={inputsByKey.get(inputKey)} />
                 </td>
               </tr>
               {list.map((s) => (
@@ -253,20 +264,56 @@ function SubTasks({ subtasks, outputsBySubtask }) {
   )
 }
 
-// Extension -> inline preview type. Any other extension (metadata
-// JSON, etc.) only gets the download link.
+// Extension -> inline preview type: what shared/routing.py accepts and a
+// browser can plausibly decode (.avi has no browser codec support). Any other
+// extension (metadata JSON, chat exports, etc.) only gets the download link.
 const PREVIEW_KIND = {
-  mp4: 'video', mkv: 'video', webm: 'video',
-  mp3: 'audio', wav: 'audio', ogg: 'audio', m4a: 'audio',
-  jpg: 'image', jpeg: 'image', png: 'image', webp: 'image',
+  mp4: 'video', mkv: 'video', webm: 'video', mov: 'video',
+  mp3: 'audio', wav: 'audio', ogg: 'audio', opus: 'audio', m4a: 'audio', aac: 'audio', flac: 'audio',
+  jpg: 'image', jpeg: 'image', png: 'image', webp: 'image', gif: 'image', bmp: 'image',
 }
+
+const PREVIEW_LABEL = { image: 'View', audio: 'Listen', video: 'Play' }
 
 function previewKind(key) {
   return PREVIEW_KIND[key.split('.').pop()?.toLowerCase()] ?? null
 }
 
-// Download + inline preview (under a <details>, so heavy video/audio/images
-// are not loaded up front) of a sub-task's output_keys. The URLs are
+// Download link + inline preview of one presigned file ({key, url}). The
+// media element only mounts while the <details> is open, so nothing is
+// fetched up front, and it keeps the URL it opened with: polling re-signs
+// every URL, and a new src would restart playback.
+function MediaPreview({ file, label = basename(file.key) }) {
+  const [src, setSrc] = useState(null)
+  const url = toDevS3Url(file.url)
+  const kind = previewKind(file.key)
+
+  return (
+    <span className="media-file">
+      <a href={url} download>{label}</a>
+      {kind && (
+        <details className="media-preview" onToggle={(e) => setSrc(e.currentTarget.open ? url : null)}>
+          <summary>{PREVIEW_LABEL[kind]}</summary>
+          {src && kind === 'video' && <video controls preload="none" src={src} />}
+          {src && kind === 'audio' && <audio controls preload="none" src={src} />}
+          {src && kind === 'image' && <img src={src} alt={basename(file.key)} loading="lazy" />}
+        </details>
+      )}
+    </span>
+  )
+}
+
+// The original file a sub-task analyzed (GET /api/cases/{id}/outputs `input`).
+function InputFile({ file }) {
+  if (!file) return null // outputs not loaded yet or the call failed
+  return (
+    <span className="small input-file">
+      <MediaPreview file={file} label="Original" />
+    </span>
+  )
+}
+
+// Downloads + inline previews of a sub-task's output_keys. The URLs are
 // presigned (private bucket) and come from GET /api/cases/{id}/outputs.
 function OutputFiles({ keys, outputs }) {
   const byKey = useMemo(() => new Map(outputs.map((o) => [o.key, o])), [outputs])
@@ -277,21 +324,7 @@ function OutputFiles({ keys, outputs }) {
       {keys.map((k) => {
         const output = byKey.get(k)
         if (!output) return <code key={k}>{basename(k)}</code> // no presigned URL yet
-        const url = toDevS3Url(output.url)
-        const kind = previewKind(k)
-        return (
-          <span key={k} className="output-file">
-            <a href={url} download>{basename(k)}</a>
-            {kind && (
-              <details>
-                <summary>View</summary>
-                {kind === 'video' && <video controls src={url} />}
-                {kind === 'audio' && <audio controls src={url} />}
-                {kind === 'image' && <img src={url} alt={basename(k)} />}
-              </details>
-            )}
-          </span>
-        )
+        return <MediaPreview key={k} file={output} />
       })}
     </span>
   )
@@ -350,7 +383,7 @@ function SubTaskRow({ s, outputs }) {
 }
 
 // Consolidated report (results/{case_id}/report.json) via presigned GET URL.
-function Report({ caseId, status }) {
+function Report({ caseId, status, inputsByKey }) {
   const [state, setState] = useState({ loading: false })
 
   const open = async () => {
@@ -473,6 +506,9 @@ function Report({ caseId, status }) {
                     <StatusPill status={st.status} kind="subtask" />{' '}
                     <span className="muted small">{st.analysis ? `${st.analysis.findings?.length ?? 0} finding(s)` : st.error ? ERROR_CODES[st.error.code] ?? st.error.code : 'no analysis'}</span>
                   </summary>
+                  {inputsByKey.has(st.input_key) && (
+                    <div className="small file-input"><MediaPreview file={inputsByKey.get(st.input_key)} label="Original file" /></div>
+                  )}
                   {st.analysis ? <AnalysisDetails analysis={st.analysis} /> : st.error && <p className="err small">{st.error.message}</p>}
                 </details>
               </li>

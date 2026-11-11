@@ -39,6 +39,40 @@ contains original source keys/hashes and message indexes, bounding boxes or
 audio segment times. Render user text escaped by React; never use raw HTML.
 Empty findings are valid. Rule scores are not calibrated probabilities.
 
+## Input and output files
+
+`GET /api/cases/{id}/outputs` presigns the files of every sub-task, also while
+the case is still running:
+
+```json
+{
+  "case_id": "...",
+  "subtasks": [
+    {
+      "subtask_id": "...",
+      "outputs": [{"key": "results/.../analysis.json", "url": "...", "expires_in": 900}],
+      "input": {"key": "uploads/.../voice.opus", "url": "...", "expires_in": 900}
+    }
+  ]
+}
+```
+
+Every sub-task is listed; `outputs` is empty until the worker writes results.
+`input` presigns the original `input_key` (never moved or deleted; the
+`content/<sha256>` copy is internal) and forces a `Content-Type` from the
+extension (`.opus` -> `audio/ogg`, `.m4a` -> `audio/mp4`, `.mkv` ->
+`video/x-matroska`, ...), because dashboard uploads are stored without one.
+`input` is `null` when the key is under a coordinator-owned prefix
+(`results/`, `metrics/`, `content/`) or has an extension the routing table does
+not accept: `POST /api/cases` accepts any existing key, so this endpoint must
+not become a reader for reports or internal objects.
+Fetch the URLs without the API bearer header; they expire after
+`expires_in` seconds, so request the endpoint again to re-sign them. The case
+detail view uses `input` for the inline image/audio/video preview of each
+file and of each entry of the report's per-file analysis.
+
+## Health
+
 `/api/healthz` is the unauthenticated liveness route through CloudFront (it
 still requires the edge-added origin header). No client token is needed by
 the deploy smoke check. A 401/403 must not be treated as dashboard JSON.
