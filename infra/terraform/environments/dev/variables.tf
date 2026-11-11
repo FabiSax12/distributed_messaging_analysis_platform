@@ -114,7 +114,13 @@ variable "secret_recovery_window_days" {
 variable "github_repository" {
   description = "GitHub repository (owner/name) whose main branch may deploy through OIDC."
   type        = string
-  default     = "FabiSax12/messaging_analisis_distributed_platform"
+  default     = "FabiSax12/distributed_messaging_analysis_platform"
+}
+
+variable "github_oidc_subject_prefix" {
+  description = "OIDC sub claim prefix of the repository. This repo uses GitHub's immutable subject format (owner@id/name@id)."
+  type        = string
+  default     = "repo:FabiSax12@133717689/distributed_messaging_analysis_platform@1430573626"
 }
 
 variable "create_github_oidc_provider" {

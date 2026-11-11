@@ -129,6 +129,7 @@ module "ci_oidc" {
 
   name_prefix                = local.name_prefix
   github_repository          = var.github_repository
+  github_subject_prefix      = var.github_oidc_subject_prefix
   create_oidc_provider       = var.create_github_oidc_provider
   existing_oidc_provider_arn = var.existing_github_oidc_provider_arn
 

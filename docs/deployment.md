@@ -192,7 +192,8 @@ Terraform is never run by CI (its state is local and holds generated passwords).
 
 1. A push to `main` starts `deploy.yml`. Its image tag is the short commit SHA.
 2. The job assumes `msg-analysis-dev-ci-deploy` with a short-lived OIDC token
-   (valid only for `repo:FabiSax12/messaging_analisis_distributed_platform:ref:refs/heads/main`).
+   (valid only for `repo:FabiSax12@133717689/distributed_messaging_analysis_platform@1430573626:ref:refs/heads/main`;
+   the repo uses GitHub's immutable subject format, see `github_oidc_subject_prefix`).
 3. `build-and-push.sh` builds and pushes the four images.
 4. `deploy-app.sh` finds the instances by tag (`Project=msg-analysis`,
    `Environment=dev`, `Role=coordinator|worker-<pool>`), skips those that are not

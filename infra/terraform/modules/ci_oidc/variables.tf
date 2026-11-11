@@ -13,6 +13,17 @@ variable "github_repository" {
   }
 }
 
+variable "github_subject_prefix" {
+  description = "OIDC sub claim prefix GitHub sends for this repository. Null means repo:<github_repository>. Repositories with use_immutable_subject send repo:<owner>@<owner_id>/<name>@<repo_id>; read it from GET /repos/<owner>/<name>/actions/oidc/customization/sub (sub_claim_prefix)."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.github_subject_prefix == null || can(regex("^repo:[^*:]+$", var.github_subject_prefix))
+    error_message = "github_subject_prefix must look like repo:<owner>/<name> or repo:<owner>@<id>/<name>@<id>, without wildcards or colons."
+  }
+}
+
 variable "github_branch" {
   description = "Branch whose workflow runs may assume the role (matched exactly, no wildcards)."
   type        = string
