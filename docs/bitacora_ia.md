@@ -43,3 +43,17 @@ and external prerequisites. Corrected the report contract wording to distinguish
 the API's presigned URL envelope from the downloaded report JSON. Documentation
 links and referenced paths were checked locally; no new cloud or model run was
 needed for this documentation change.
+
+## Camila Hidalgo: dataset, M5 and frontend (Claude Code, Claude Opus 5.5)
+
+Claude Code worked from `docs/handoff-camila.md` in Camila's session; Camila
+supplied the scope, the team's instructions, the Terraform outputs and the
+Cognito test users, and reviewed the results. Rows below are only this work.
+
+| Date · member | Tool | Component | Purpose | Summarized prompt | Result obtained | Validated / corrected / discarded | How it was validated |
+|---|---|---|---|---|---|---|---|
+| 2026-11-11 - Camila Hidalgo | Claude Code (Opus 5.5) | Dataset generators | Build the 40-case dataset | Implement the dataset part of handoff-camila.md with synthetic or licensed data | `fetch_coco.py`, `corpus.py`, `tts.py`, `generate_dataset.py`, `dataset_stats.py`, `evaluate.py`; 40 cases, 21,000 messages, 300 COCO images, 150 SAPI voice notes, 15 videos, 5 heavy cases | Validated | `validate_manifests.py --verify-files` (0 errors); independent recount with the worker parser and ffprobe; full evaluation over 505 labeled sources with 0 op errors |
+| 2026-11-11 - Camila Hidalgo | Claude Code | AI error: COCO selection | Pick image positives | Select 80 knife/scissors images with permissive licenses | The plan assumed 80 positives; only 73 permissively licensed val2017 images exist, and the first generator sampled 300 of 310 images at random, which could silently drop positives | Corrected: take all 73 positives plus seeded negatives | Script aborted with "only 73 positive images available"; selection rerun; generator now asserts all positives are kept |
+| 2026-11-11 - Camila Hidalgo | Claude Code | AI error: chat group names | Realistic exports | Generate group chats per scenario | Group names were derived from the scenario ("Extortion 35"), which no real chat uses and which made the rules flag group-created system lines as illicit activity | Corrected: neutral group names with the same RNG sequence (labels and media unchanged) | Found in the false-positive breakdown of the first evaluation; after the fix those FPs disappeared and the ground truth diff was empty |
+| 2026-11-11 - Camila Hidalgo | Claude Code | AI error: line endings | Commit chat exports | Commit manifests and small exports | First commit plan relied on default Git settings; with `core.autocrlf=true` a Windows checkout would rewrite the exports and break their SHA-256 in the manifests | Corrected: `dataset/.gitattributes` marks `cases/**` as `-text` | Git CRLF warning on the generator files; `--verify-files` passes on the committed bytes |
+| 2026-11-11 - Camila Hidalgo | Claude Code | Ground-truth wording | Hard negatives | Add harmless messages that contain rule keywords | One proposed hard negative ("qué mierda de clima hoy") is arguably offensive language, so labeling it negative would be disputable | Corrected: replaced with "golpear la bola más fuerte" | Manual review of every hard negative in `corpus.py` |
