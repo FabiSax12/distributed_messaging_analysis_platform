@@ -161,10 +161,12 @@ jobs:
         run: pnpm build
 
       - name: Smoke check through CloudFront
-        # /api/state is served by the coordinator through CloudFront, which adds
-        # X-Origin-Verify itself: the request below carries no secret. /healthz
-        # is not routed by CloudFront, and a 403/404 from the origin would come
-        # back as 200 index.html (SPA fallback), so the body must be the JSON state.
+        # A dry run rolls nothing out, so the coordinator may still run an older
+        # image without /healthz; checking it would only report stale state.
+        if: steps.plan.outputs.dry_run != 'true'
+        # /api/healthz is served by the coordinator through CloudFront, which adds
+        # X-Origin-Verify itself: the request below carries no secret and no user
+        # token. The body must be the coordinator's JSON, not any 200 response.
         run: |
           base="${CLOUDFRONT_URL%/}"
           curl -fsS --max-time 20 -o /dev/null "$base/"
