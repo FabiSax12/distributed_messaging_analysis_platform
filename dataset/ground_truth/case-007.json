@@ -1,0 +1,472 @@
+{
+  "case_id": "case-007",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 29
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 77
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 95
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 127
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 166
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 189
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 194
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 208
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 213
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 224
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 267
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 297
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 319
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 323
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 325
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 331
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 362
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 377
+        },
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 383
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250621-WA0003.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.0,
+            "y": 0.47082,
+            "w": 0.096984,
+            "h": 0.058337
+          },
+          "notes": "COCO knife box, 970.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250622-WA0005.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.512937,
+            "y": 0.624289,
+            "w": 0.108078,
+            "h": 0.064858
+          },
+          "notes": "COCO knife box, 459.5 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.368625,
+            "y": 0.465689,
+            "w": 0.130609,
+            "h": 0.029344
+          },
+          "notes": "COCO knife box, 652.0 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250625-WA0012.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.00184,
+            "y": 0.107854,
+            "w": 0.81264,
+            "h": 0.373049
+          },
+          "notes": "COCO knife box, 9859.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250621-WA0004.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.639516,
+            "y": 0.363229,
+            "w": 0.016156,
+            "h": 0.042146
+          },
+          "notes": "COCO scissors box, 108.9 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.661016,
+            "y": 0.363,
+            "w": 0.020047,
+            "h": 0.029083
+          },
+          "notes": "COCO scissors box, 108.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.220562,
+            "y": 0.307479,
+            "w": 0.062875,
+            "h": 0.018354
+          },
+          "notes": "COCO knife box, 211.3 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.233047,
+            "y": 0.332813,
+            "w": 0.044516,
+            "h": 0.014375
+          },
+          "notes": "COCO knife box, 118.3 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.232516,
+            "y": 0.362104,
+            "w": 0.047438,
+            "h": 0.016167
+          },
+          "notes": "COCO knife box, 98.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.241297,
+            "y": 0.394083,
+            "w": 0.030391,
+            "h": 0.005167
+          },
+          "notes": "COCO knife box, 27.9 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.241328,
+            "y": 0.383708,
+            "w": 0.034578,
+            "h": 0.004562
+          },
+          "notes": "COCO knife box, 26.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.243063,
+            "y": 0.403917,
+            "w": 0.029797,
+            "h": 0.004687
+          },
+          "notes": "COCO knife box, 31.3 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.240234,
+            "y": 0.408542,
+            "w": 0.033406,
+            "h": 0.007417
+          },
+          "notes": "COCO knife box, 37.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.244438,
+            "y": 0.429292,
+            "w": 0.027516,
+            "h": 0.005917
+          },
+          "notes": "COCO knife box, 37.8 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.216391,
+            "y": 0.433354,
+            "w": 0.008125,
+            "h": 0.079937
+          },
+          "notes": "COCO knife box, 78.2 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.590062,
+            "y": 0.543083,
+            "w": 0.006875,
+            "h": 0.091687
+          },
+          "notes": "COCO knife box, 91.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.601125,
+            "y": 0.55425,
+            "w": 0.011234,
+            "h": 0.062604
+          },
+          "notes": "COCO knife box, 96.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.627781,
+            "y": 0.537875,
+            "w": 0.012234,
+            "h": 0.082417
+          },
+          "notes": "COCO knife box, 108.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250624-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250622-WA0006.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.0,
+            "y": 0.5852,
+            "w": 0.0557,
+            "h": 0.129733
+          },
+          "notes": "COCO knife box, 682.0 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.71672,
+            "y": 0.580773,
+            "w": 0.282,
+            "h": 0.130693
+          },
+          "notes": "COCO knife box, 1338.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250620-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250625-WA0013.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250624-WA0010.opus",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.6,
+          "audio_end_s": 4.35,
+          "notes": "We need to sell drugs at the party on Saturday."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250625-WA0011.opus",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.66,
+          "audio_end_s": 3.93,
+          "notes": "We need to sell drugs at the party on Saturday."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250623-WA0008.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 32.29,
+          "audio_end_s": 34.74,
+          "notes": "Pay me by Friday or I will hurt you."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250623-WA0007.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 5.3,
+          "audio_end_s": 9.38,
+          "notes": "If you tell anyone about this, you will regret it."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250626-WA0014.opus",
+      "findings": [
+        {
+          "category": "illicit_activity",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.7,
+          "audio_end_s": 4.54,
+          "notes": "I have the white stuff, twenty a gram, cash only."
+        }
+      ]
+    },
+    {
+      "path": "media/VID-20250620-WA0002.mp4",
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,3163 @@
+{
+ "name": "La Familia 90",
+ "type": "private_group",
+ "id": 1000035,
+ "messages": [
+  {
+   "id": 1,
+   "date": "2025-07-07T20:59:59",
+   "type": "service",
+   "actor": "Diego Vargas",
+   "actor_id": "user1000",
+   "action": "create_group",
+   "text": ""
+  },
+  {
+   "id": 2,
+   "date": "2025-07-07T21:34:40",
+   "type": "service",
+   "actor": "Diego Vargas",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Esteban Alfaro",
+    "Taylor Solano",
+    "Josue Sample"
+   ]
+  },
+  {
+   "id": 3,
+   "date": "2025-07-07T21:59:08",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenas noches"
+  },
+  {
+   "id": 4,
+   "date": "2025-07-07T21:59:24",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "pura vida"
+  },
+  {
+   "id": 5,
+   "date": "2025-07-07T22:05:31",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 6,
+   "date": "2025-07-07T22:59:54",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "buenas noches"
+  },
+  {
+   "id": 7,
+   "date": "2025-07-07T23:01:58",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no puedo el viernes"
+  },
+  {
+   "id": 8,
+   "date": "2025-07-07T23:29:09",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 9,
+   "date": "2025-07-07T23:47:28",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 10,
+   "date": "2025-07-08T06:36:08",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 11,
+   "date": "2025-07-08T06:37:00",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "no se les olvide el informe"
+  },
+  {
+   "id": 12,
+   "date": "2025-07-08T07:14:12",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "nos vemos el miércoles"
+  },
+  {
+   "id": 13,
+   "date": "2025-07-08T07:25:17",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "la profe pasó el examen para el miércoles"
+  },
+  {
+   "id": 14,
+   "date": "2025-07-08T07:51:43",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 15,
+   "date": "2025-07-08T07:54:52",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 16,
+   "date": "2025-07-08T07:57:58",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "sos un imbécil"
+  },
+  {
+   "id": 17,
+   "date": "2025-07-08T08:23:12",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "diay sí"
+  },
+  {
+   "id": 18,
+   "date": "2025-07-08T08:27:10",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "faltan 15 personas"
+  },
+  {
+   "id": 19,
+   "date": "2025-07-08T08:35:04",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tuanis"
+  },
+  {
+   "id": 20,
+   "date": "2025-07-08T08:54:24",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "jajaja"
+  },
+  {
+   "id": 21,
+   "date": "2025-07-08T09:05:59",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 22,
+   "date": "2025-07-08T09:20:44",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la reunión es a las 8 en la soda"
+  },
+  {
+   "id": 23,
+   "date": "2025-07-08T09:34:19",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 24,
+   "date": "2025-07-08T09:48:38",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tuanis"
+  },
+  {
+   "id": 25,
+   "date": "2025-07-08T09:52:58",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tuanis"
+  },
+  {
+   "id": 26,
+   "date": "2025-07-08T10:11:08",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 27,
+   "date": "2025-07-08T10:23:18",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "diay sí"
+  },
+  {
+   "id": 28,
+   "date": "2025-07-08T10:56:11",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "mándame la ubicación porfa"
+  },
+  {
+   "id": 29,
+   "date": "2025-07-08T10:59:39",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "jajaja"
+  },
+  {
+   "id": 30,
+   "date": "2025-07-08T11:05:28",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿quién se apunta el martes?"
+  },
+  {
+   "id": 31,
+   "date": "2025-07-08T11:08:08",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "revisen el correo"
+  },
+  {
+   "id": 32,
+   "date": "2025-07-08T11:17:57",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿el gym abre el jueves?"
+  },
+  {
+   "id": 33,
+   "date": "2025-07-08T11:41:19",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 34,
+   "date": "2025-07-08T12:26:08",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "no puedo el viernes"
+  },
+  {
+   "id": 35,
+   "date": "2025-07-08T12:41:06",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 36,
+   "date": "2025-07-08T13:12:06",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "photo": "photos/photo_1@08-07-2025_13-12-06.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 37,
+   "date": "2025-07-08T13:16:12",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 38,
+   "date": "2025-07-08T13:26:29",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "nos vemos el viernes"
+  },
+  {
+   "id": 39,
+   "date": "2025-07-08T13:28:03",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 40,
+   "date": "2025-07-08T13:36:23",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 41,
+   "date": "2025-07-08T13:53:17",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "revisen el correo"
+  },
+  {
+   "id": 42,
+   "date": "2025-07-08T14:09:54",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 43,
+   "date": "2025-07-08T14:39:44",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 44,
+   "date": "2025-07-08T15:05:06",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 45,
+   "date": "2025-07-08T15:14:26",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tuanis"
+  },
+  {
+   "id": 46,
+   "date": "2025-07-08T15:25:16",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 47,
+   "date": "2025-07-08T16:00:12",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "esto es una mierda igual que vos"
+  },
+  {
+   "id": 48,
+   "date": "2025-07-08T16:02:50",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 49,
+   "date": "2025-07-08T16:56:07",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 50,
+   "date": "2025-07-08T17:16:07",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien me recoge en el parque?"
+  },
+  {
+   "id": 51,
+   "date": "2025-07-08T17:21:41",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "mándame la ubicación porfa"
+  },
+  {
+   "id": 52,
+   "date": "2025-07-08T17:25:58",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": [
+    "nos ",
+    {
+     "type": "bold",
+     "text": "vemos el sábado"
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "date": "2025-07-08T17:45:05",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "te debo 20 mil del arroz con pollo"
+  },
+  {
+   "id": 54,
+   "date": "2025-07-08T18:08:15",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": [
+    "la reunión es a las 7 en ",
+    {
+     "type": "bold",
+     "text": "la clínica"
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "date": "2025-07-08T18:11:32",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿quién tiene los apuntes?"
+  },
+  {
+   "id": 56,
+   "date": "2025-07-08T18:37:18",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "diay sí"
+  },
+  {
+   "id": 57,
+   "date": "2025-07-08T19:05:24",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿el gym abre el jueves?"
+  },
+  {
+   "id": 58,
+   "date": "2025-07-08T19:07:13",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "photo": "photos/photo_2@08-07-2025_19-07-13.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 59,
+   "date": "2025-07-08T19:20:35",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 60,
+   "date": "2025-07-08T19:44:36",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": [
+    "no ",
+    {
+     "type": "bold",
+     "text": "puedo el miércoles"
+    }
+   ]
+  },
+  {
+   "id": 61,
+   "date": "2025-07-08T20:15:45",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 62,
+   "date": "2025-07-08T20:20:57",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "diay sí"
+  },
+  {
+   "id": 63,
+   "date": "2025-07-08T20:21:27",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 64,
+   "date": "2025-07-08T20:58:56",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿el gym abre el martes?"
+  },
+  {
+   "id": 65,
+   "date": "2025-07-08T21:12:57",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 66,
+   "date": "2025-07-08T21:17:25",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 67,
+   "date": "2025-07-08T21:24:17",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "jaja sí"
+  },
+  {
+   "id": 68,
+   "date": "2025-07-08T21:30:04",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no puedo el viernes"
+  },
+  {
+   "id": 69,
+   "date": "2025-07-08T21:44:39",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tuanis"
+  },
+  {
+   "id": 70,
+   "date": "2025-07-08T21:54:47",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "la profe pasó el examen para el miércoles"
+  },
+  {
+   "id": 71,
+   "date": "2025-07-08T22:55:46",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "no se les olvide las entradas"
+  },
+  {
+   "id": 72,
+   "date": "2025-07-08T23:13:26",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "te debo 15 mil del sushi"
+  },
+  {
+   "id": 73,
+   "date": "2025-07-08T23:17:39",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 74,
+   "date": "2025-07-08T23:21:11",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "voy en camino"
+  },
+  {
+   "id": 75,
+   "date": "2025-07-09T08:00:36",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿quién se apunta el jueves?"
+  },
+  {
+   "id": 76,
+   "date": "2025-07-09T08:05:25",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "dejé las entradas en la oficina"
+  },
+  {
+   "id": 77,
+   "date": "2025-07-09T08:30:50",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tuanis"
+  },
+  {
+   "id": 78,
+   "date": "2025-07-09T08:43:39",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 79,
+   "date": "2025-07-09T09:11:49",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya estoy en la biblioteca"
+  },
+  {
+   "id": 80,
+   "date": "2025-07-09T09:39:36",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "la profe pasó el examen para el domingo"
+  },
+  {
+   "id": 81,
+   "date": "2025-07-09T10:02:09",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "sé dónde vivís, cuidate"
+  },
+  {
+   "id": 82,
+   "date": "2025-07-09T10:08:52",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 83,
+   "date": "2025-07-09T10:39:09",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": [
+    "la reunión es a las 5 ",
+    {
+     "type": "bold",
+     "text": "en la biblioteca"
+    }
+   ]
+  },
+  {
+   "id": 84,
+   "date": "2025-07-09T11:00:10",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenas noches"
+  },
+  {
+   "id": 85,
+   "date": "2025-07-09T11:48:13",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "faltan 25 personas"
+  },
+  {
+   "id": 86,
+   "date": "2025-07-09T11:53:11",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy en camino"
+  },
+  {
+   "id": 87,
+   "date": "2025-07-09T11:58:09",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 88,
+   "date": "2025-07-09T12:10:55",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "photo": "photos/photo_3@09-07-2025_12-10-55.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 89,
+   "date": "2025-07-09T12:11:25",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 90,
+   "date": "2025-07-09T12:26:55",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "faltan 100 personas"
+  },
+  {
+   "id": 91,
+   "date": "2025-07-09T13:20:55",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿alguien quiere gallo pinto hoy?"
+  },
+  {
+   "id": 92,
+   "date": "2025-07-09T13:29:50",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 93,
+   "date": "2025-07-09T13:31:01",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 94,
+   "date": "2025-07-09T13:34:22",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 95,
+   "date": "2025-07-09T14:02:55",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": [
+    "la dirección es ",
+    {
+     "type": "bold",
+     "text": "200m norte de el gimnasio casa azul"
+    }
+   ]
+  },
+  {
+   "id": 96,
+   "date": "2025-07-09T14:09:29",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no puedo el domingo"
+  },
+  {
+   "id": 97,
+   "date": "2025-07-09T14:20:37",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 98,
+   "date": "2025-07-09T14:22:18",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "no se les olvide mi jacket"
+  },
+  {
+   "id": 99,
+   "date": "2025-07-09T15:01:26",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "jajaja"
+  },
+  {
+   "id": 100,
+   "date": "2025-07-09T15:38:17",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "faltan 25 personas"
+  },
+  {
+   "id": 101,
+   "date": "2025-07-09T15:41:57",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": [
+    "sos un inútil, ",
+    {
+     "type": "bold",
+     "text": "payaso"
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "date": "2025-07-09T15:55:06",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 103,
+   "date": "2025-07-09T15:56:26",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 104,
+   "date": "2025-07-09T16:06:25",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 105,
+   "date": "2025-07-09T16:07:12",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "no se les olvide los apuntes"
+  },
+  {
+   "id": 106,
+   "date": "2025-07-09T16:19:02",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 107,
+   "date": "2025-07-09T16:58:40",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 108,
+   "date": "2025-07-09T17:26:42",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": [
+    "¿el gym abre ",
+    {
+     "type": "bold",
+     "text": "el martes?"
+    }
+   ]
+  },
+  {
+   "id": 109,
+   "date": "2025-07-09T17:45:11",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "esto no se queda así, ya vas a ver"
+  },
+  {
+   "id": 110,
+   "date": "2025-07-09T17:47:22",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "te vas a arrepentir de haber hablado"
+  },
+  {
+   "id": 111,
+   "date": "2025-07-09T18:00:22",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 112,
+   "date": "2025-07-09T18:01:22",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ok nos vemos a las 3"
+  },
+  {
+   "id": 113,
+   "date": "2025-07-09T18:09:48",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "pura vida"
+  },
+  {
+   "id": 114,
+   "date": "2025-07-09T18:28:35",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 115,
+   "date": "2025-07-09T18:33:35",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ya estoy en el estadio"
+  },
+  {
+   "id": 116,
+   "date": "2025-07-09T18:36:20",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "te debo 20 mil del casado"
+  },
+  {
+   "id": 117,
+   "date": "2025-07-09T19:48:59",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 118,
+   "date": "2025-07-09T21:13:17",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tuanis"
+  },
+  {
+   "id": 119,
+   "date": "2025-07-09T21:36:12",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 120,
+   "date": "2025-07-09T21:46:56",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿el gym abre el martes?"
+  },
+  {
+   "id": 121,
+   "date": "2025-07-09T21:52:22",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 122,
+   "date": "2025-07-09T21:57:58",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 123,
+   "date": "2025-07-09T22:22:09",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 124,
+   "date": "2025-07-09T22:54:31",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "revisen el correo"
+  },
+  {
+   "id": 125,
+   "date": "2025-07-09T23:12:31",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": [
+    "¿alguien ",
+    {
+     "type": "bold",
+     "text": "quiere pizza hoy?"
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "date": "2025-07-09T23:28:47",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 127,
+   "date": "2025-07-09T23:37:36",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien me recoge en la soda?"
+  },
+  {
+   "id": 128,
+   "date": "2025-07-09T23:45:26",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿lo pasamos para el jueves?"
+  },
+  {
+   "id": 129,
+   "date": "2025-07-09T23:50:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿quién se apunta el viernes?"
+  },
+  {
+   "id": 130,
+   "date": "2025-07-09T23:50:42",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "te debo 100 mil del empanadas"
+  },
+  {
+   "id": 131,
+   "date": "2025-07-10T06:23:05",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "faltan 10 personas"
+  },
+  {
+   "id": 132,
+   "date": "2025-07-10T06:43:23",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿quién tiene el cargador?"
+  },
+  {
+   "id": 133,
+   "date": "2025-07-10T06:47:58",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "cuidado cuando salgás solo"
+  },
+  {
+   "id": 134,
+   "date": "2025-07-10T07:19:45",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "revisen el correo"
+  },
+  {
+   "id": 135,
+   "date": "2025-07-10T07:46:05",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 136,
+   "date": "2025-07-10T07:47:18",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "diay sí"
+  },
+  {
+   "id": 137,
+   "date": "2025-07-10T07:50:29",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no se les olvide la sombrilla"
+  },
+  {
+   "id": 138,
+   "date": "2025-07-10T08:24:11",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 139,
+   "date": "2025-07-10T08:25:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 140,
+   "date": "2025-07-10T08:33:16",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tuanis"
+  },
+  {
+   "id": 141,
+   "date": "2025-07-10T09:07:10",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿alguien me recoge en la biblioteca?"
+  },
+  {
+   "id": 142,
+   "date": "2025-07-10T09:28:52",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿el gym abre el martes?"
+  },
+  {
+   "id": 143,
+   "date": "2025-07-10T09:55:10",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "jaja sí"
+  },
+  {
+   "id": 144,
+   "date": "2025-07-10T10:06:44",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 145,
+   "date": "2025-07-10T10:07:48",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "nos vemos el lunes"
+  },
+  {
+   "id": 146,
+   "date": "2025-07-10T10:49:29",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 147,
+   "date": "2025-07-10T10:53:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 148,
+   "date": "2025-07-10T11:06:31",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "dejé la sombrilla en la soda"
+  },
+  {
+   "id": 149,
+   "date": "2025-07-10T11:17:13",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "recordatorio para el martes: traer el cargador y el formulario firmado"
+  },
+  {
+   "id": 150,
+   "date": "2025-07-10T11:20:28",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "no se les olvide la sombrilla"
+  },
+  {
+   "id": 151,
+   "date": "2025-07-10T11:49:52",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿quién se apunta el miércoles?"
+  },
+  {
+   "id": 152,
+   "date": "2025-07-10T12:02:26",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 153,
+   "date": "2025-07-10T12:03:16",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ya estoy en la oficina"
+  },
+  {
+   "id": 154,
+   "date": "2025-07-10T12:18:40",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 155,
+   "date": "2025-07-10T12:30:18",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 156,
+   "date": "2025-07-10T12:53:30",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 157,
+   "date": "2025-07-10T13:04:01",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 158,
+   "date": "2025-07-10T14:08:20",
+   "type": "service",
+   "actor": "Diego Vargas",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 159,
+   "date": "2025-07-10T14:16:29",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "la reunión es a las 4 en la oficina"
+  },
+  {
+   "id": 160,
+   "date": "2025-07-10T14:28:56",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿el gym abre el martes?"
+  },
+  {
+   "id": 161,
+   "date": "2025-07-10T14:36:22",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "pura vida"
+  },
+  {
+   "id": 162,
+   "date": "2025-07-10T14:41:30",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "file": "voice_messages/audio_4@10-07-2025_14-41-30.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 23,
+   "text": ""
+  },
+  {
+   "id": 163,
+   "date": "2025-07-10T14:43:57",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 164,
+   "date": "2025-07-10T14:54:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "te voy a matar si abrís la boca"
+  },
+  {
+   "id": 165,
+   "date": "2025-07-10T15:36:46",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 166,
+   "date": "2025-07-10T16:50:51",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "la profe pasó el examen para el viernes"
+  },
+  {
+   "id": 167,
+   "date": "2025-07-10T17:10:57",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 168,
+   "date": "2025-07-10T17:15:21",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 169,
+   "date": "2025-07-10T17:25:10",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "ya estoy en la biblioteca"
+  },
+  {
+   "id": 170,
+   "date": "2025-07-10T17:28:45",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_5@10-07-2025_17-28-45.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 9,
+   "text": ""
+  },
+  {
+   "id": 171,
+   "date": "2025-07-10T18:02:03",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién tiene los apuntes?"
+  },
+  {
+   "id": 172,
+   "date": "2025-07-10T18:14:05",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "ok nos vemos a las 5"
+  },
+  {
+   "id": 173,
+   "date": "2025-07-10T18:22:47",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": [
+    "lista del súper: - arroz - frijoles ",
+    {
+     "type": "bold",
+     "text": "- café"
+    }
+   ]
+  },
+  {
+   "id": 174,
+   "date": "2025-07-10T18:57:18",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "nos vemos el jueves"
+  },
+  {
+   "id": 175,
+   "date": "2025-07-10T20:00:16",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ok nos vemos a las 9"
+  },
+  {
+   "id": 176,
+   "date": "2025-07-10T20:10:17",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": [
+    "el entrenador dijo ",
+    {
+     "type": "bold",
+     "text": "que hay que golpear la bola más fuerte"
+    }
+   ]
+  },
+  {
+   "id": 177,
+   "date": "2025-07-10T20:30:17",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 178,
+   "date": "2025-07-10T20:37:15",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy en camino"
+  },
+  {
+   "id": 179,
+   "date": "2025-07-10T20:57:42",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "nos vemos el sábado"
+  },
+  {
+   "id": 180,
+   "date": "2025-07-10T21:25:22",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "photo": "photos/photo_6@10-07-2025_21-25-22.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 181,
+   "date": "2025-07-10T22:24:50",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "voy en camino"
+  },
+  {
+   "id": 182,
+   "date": "2025-07-10T22:32:45",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 183,
+   "date": "2025-07-10T23:17:20",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 184,
+   "date": "2025-07-10T23:45:05",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "faltan 20 personas"
+  },
+  {
+   "id": 185,
+   "date": "2025-07-11T07:04:24",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "faltan 100 personas"
+  },
+  {
+   "id": 186,
+   "date": "2025-07-11T07:35:57",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenas noches"
+  },
+  {
+   "id": 187,
+   "date": "2025-07-11T08:16:46",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 188,
+   "date": "2025-07-11T08:25:56",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 189,
+   "date": "2025-07-11T08:28:35",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 190,
+   "date": "2025-07-11T08:41:03",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 191,
+   "date": "2025-07-11T08:48:54",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién tiene las llaves?"
+  },
+  {
+   "id": 192,
+   "date": "2025-07-11T08:58:48",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "dejé los apuntes en el parque"
+  },
+  {
+   "id": 193,
+   "date": "2025-07-11T09:07:43",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien quiere gallo pinto hoy?"
+  },
+  {
+   "id": 194,
+   "date": "2025-07-11T09:15:44",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "te voy a matar si abrís la boca"
+  },
+  {
+   "id": 195,
+   "date": "2025-07-11T09:45:44",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 196,
+   "date": "2025-07-11T09:51:15",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "pura vida"
+  },
+  {
+   "id": 197,
+   "date": "2025-07-11T10:07:49",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 198,
+   "date": "2025-07-11T10:12:57",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "ya estoy en la soda"
+  },
+  {
+   "id": 199,
+   "date": "2025-07-11T10:15:26",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 200,
+   "date": "2025-07-11T10:55:38",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "mándame la ubicación porfa"
+  },
+  {
+   "id": 201,
+   "date": "2025-07-11T11:15:59",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "photo": "photos/photo_7@11-07-2025_11-15-59.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 202,
+   "date": "2025-07-11T12:08:24",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 203,
+   "date": "2025-07-11T12:32:39",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "jaja sí"
+  },
+  {
+   "id": 204,
+   "date": "2025-07-11T12:50:49",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tuanis"
+  },
+  {
+   "id": 205,
+   "date": "2025-07-11T13:25:01",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "no puedo el jueves"
+  },
+  {
+   "id": 206,
+   "date": "2025-07-11T14:49:23",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "file": "voice_messages/audio_8@11-07-2025_14-49-23.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 142,
+   "text": ""
+  },
+  {
+   "id": 207,
+   "date": "2025-07-11T14:50:18",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "cuidado cuando salgás solo"
+  },
+  {
+   "id": 208,
+   "date": "2025-07-11T14:56:44",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 209,
+   "date": "2025-07-11T15:04:17",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 210,
+   "date": "2025-07-11T15:24:38",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 211,
+   "date": "2025-07-11T15:34:05",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la dirección es 200m norte de el mall casa azul"
+  },
+  {
+   "id": 212,
+   "date": "2025-07-11T16:11:25",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 213,
+   "date": "2025-07-11T16:34:38",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "👍"
+  },
+  {
+   "id": 214,
+   "date": "2025-07-11T16:48:46",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "faltan 100 personas"
+  },
+  {
+   "id": 215,
+   "date": "2025-07-11T16:57:46",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿alguien me recoge en la oficina?"
+  },
+  {
+   "id": 216,
+   "date": "2025-07-11T17:22:21",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 217,
+   "date": "2025-07-11T17:41:13",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "photo": "photos/photo_9@11-07-2025_17-41-13.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 218,
+   "date": "2025-07-11T17:50:09",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 219,
+   "date": "2025-07-11T18:00:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 220,
+   "date": "2025-07-11T18:35:00",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 221,
+   "date": "2025-07-11T19:34:38",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 222,
+   "date": "2025-07-11T19:41:16",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿lo pasamos para el miércoles?"
+  },
+  {
+   "id": 223,
+   "date": "2025-07-11T19:45:33",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "nos vemos el martes"
+  },
+  {
+   "id": 224,
+   "date": "2025-07-11T20:45:33",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 225,
+   "date": "2025-07-11T20:50:44",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 226,
+   "date": "2025-07-11T21:05:48",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 227,
+   "date": "2025-07-11T21:18:30",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "jajaja"
+  },
+  {
+   "id": 228,
+   "date": "2025-07-11T21:33:32",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "no puedo el lunes"
+  },
+  {
+   "id": 229,
+   "date": "2025-07-11T22:58:55",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿lo pasamos para el lunes?"
+  },
+  {
+   "id": 230,
+   "date": "2025-07-11T23:01:37",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 231,
+   "date": "2025-07-11T23:16:27",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 232,
+   "date": "2025-07-11T23:39:59",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿el gym abre el sábado?"
+  },
+  {
+   "id": 233,
+   "date": "2025-07-12T08:07:33",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": [
+    "¿lo pasamos para el ",
+    {
+     "type": "bold",
+     "text": "miércoles?"
+    }
+   ]
+  },
+  {
+   "id": 234,
+   "date": "2025-07-12T08:11:42",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "te debo 100 mil del empanadas"
+  },
+  {
+   "id": 235,
+   "date": "2025-07-12T08:23:11",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "photo": "photos/photo_10@12-07-2025_08-23-11.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 236,
+   "date": "2025-07-12T09:28:31",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 237,
+   "date": "2025-07-12T09:46:41",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 238,
+   "date": "2025-07-12T10:02:57",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "lista del súper: - arroz - frijoles - café"
+  },
+  {
+   "id": 239,
+   "date": "2025-07-12T10:17:27",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 240,
+   "date": "2025-07-12T10:20:38",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 241,
+   "date": "2025-07-12T10:28:44",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 242,
+   "date": "2025-07-12T10:52:34",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 243,
+   "date": "2025-07-12T11:21:47",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 244,
+   "date": "2025-07-12T11:25:11",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": [
+    "buenos días a ",
+    {
+     "type": "bold",
+     "text": "todos"
+    }
+   ]
+  },
+  {
+   "id": 245,
+   "date": "2025-07-12T11:27:18",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "la profe pasó el examen para el lunes"
+  },
+  {
+   "id": 246,
+   "date": "2025-07-12T11:54:55",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "pura vida"
+  },
+  {
+   "id": 247,
+   "date": "2025-07-12T12:09:07",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "👍"
+  },
+  {
+   "id": 248,
+   "date": "2025-07-12T12:13:10",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿el gym abre el domingo?"
+  },
+  {
+   "id": 249,
+   "date": "2025-07-12T12:47:01",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "buenas noches"
+  },
+  {
+   "id": 250,
+   "date": "2025-07-12T12:58:49",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 251,
+   "date": "2025-07-12T13:14:34",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "jaja sí"
+  },
+  {
+   "id": 252,
+   "date": "2025-07-12T13:24:39",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": [
+    "buenos días a ",
+    {
+     "type": "bold",
+     "text": "todos"
+    }
+   ]
+  },
+  {
+   "id": 253,
+   "date": "2025-07-12T14:05:39",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "jajaja"
+  },
+  {
+   "id": 254,
+   "date": "2025-07-12T14:15:02",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 255,
+   "date": "2025-07-12T14:27:30",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no puedo el lunes"
+  },
+  {
+   "id": 256,
+   "date": "2025-07-12T14:42:10",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 257,
+   "date": "2025-07-12T15:03:29",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 258,
+   "date": "2025-07-12T15:07:56",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿alguien me recoge en la soda?"
+  },
+  {
+   "id": 259,
+   "date": "2025-07-12T15:10:04",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 260,
+   "date": "2025-07-12T15:14:06",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la profe pasó el examen para el domingo"
+  },
+  {
+   "id": 261,
+   "date": "2025-07-12T15:14:30",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "voy en camino"
+  },
+  {
+   "id": 262,
+   "date": "2025-07-12T17:07:56",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿a qué hora cierran?"
+  },
+  {
+   "id": 263,
+   "date": "2025-07-12T17:12:32",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien quiere gallo pinto hoy?"
+  },
+  {
+   "id": 264,
+   "date": "2025-07-12T17:14:36",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿alguien quiere sushi hoy?"
+  },
+  {
+   "id": 265,
+   "date": "2025-07-12T17:46:28",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 266,
+   "date": "2025-07-12T18:45:11",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "photo": "photos/photo_11@12-07-2025_18-45-11.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 267,
+   "date": "2025-07-12T18:51:52",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 268,
+   "date": "2025-07-12T19:14:14",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 269,
+   "date": "2025-07-12T19:15:18",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "voy en camino"
+  },
+  {
+   "id": 270,
+   "date": "2025-07-12T19:35:40",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién tiene las llaves?"
+  },
+  {
+   "id": 271,
+   "date": "2025-07-12T19:39:32",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "sos el más idiota del grupo"
+  },
+  {
+   "id": 272,
+   "date": "2025-07-12T19:42:11",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 273,
+   "date": "2025-07-12T19:43:24",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "faltan 50 personas"
+  },
+  {
+   "id": 274,
+   "date": "2025-07-12T19:49:01",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": [
+    "no puedo el ",
+    {
+     "type": "bold",
+     "text": "lunes"
+    }
+   ]
+  },
+  {
+   "id": 275,
+   "date": "2025-07-12T19:52:00",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "no se les olvide el cargador"
+  },
+  {
+   "id": 276,
+   "date": "2025-07-12T20:05:29",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "esto es una mierda igual que vos"
+  },
+  {
+   "id": 277,
+   "date": "2025-07-12T20:58:55",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "buenas noches"
+  },
+  {
+   "id": 278,
+   "date": "2025-07-12T21:11:08",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¡feliz cumple!! 🎉"
+  },
+  {
+   "id": 279,
+   "date": "2025-07-12T21:13:40",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 280,
+   "date": "2025-07-12T21:15:04",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la profe pasó el examen para el martes"
+  },
+  {
+   "id": 281,
+   "date": "2025-07-12T22:01:53",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "👍"
+  },
+  {
+   "id": 282,
+   "date": "2025-07-12T22:07:50",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién tiene las entradas?"
+  },
+  {
+   "id": 283,
+   "date": "2025-07-12T22:11:07",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 284,
+   "date": "2025-07-12T22:12:30",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "se me cayó el café, qué idiota yo jaja"
+  },
+  {
+   "id": 285,
+   "date": "2025-07-12T22:18:16",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "tuanis"
+  },
+  {
+   "id": 286,
+   "date": "2025-07-12T22:24:32",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": [
+    "votemos por ",
+    {
+     "type": "bold",
+     "text": "el lugar"
+    }
+   ]
+  },
+  {
+   "id": 287,
+   "date": "2025-07-12T22:51:11",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya estoy en el mall"
+  },
+  {
+   "id": 288,
+   "date": "2025-07-12T23:07:10",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 289,
+   "date": "2025-07-12T23:31:48",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ya estoy en la clínica"
+  },
+  {
+   "id": 290,
+   "date": "2025-07-12T23:45:56",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿alguien me recoge en el cole?"
+  },
+  {
+   "id": 291,
+   "date": "2025-07-13T08:05:27",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 292,
+   "date": "2025-07-13T08:17:43",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "la dirección es 200m norte de el estadio casa azul"
+  },
+  {
+   "id": 293,
+   "date": "2025-07-13T08:23:50",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 294,
+   "date": "2025-07-13T08:36:01",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy en camino"
+  },
+  {
+   "id": 295,
+   "date": "2025-07-13T08:37:09",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la profe pasó el examen para el lunes"
+  },
+  {
+   "id": 296,
+   "date": "2025-07-13T08:39:35",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 297,
+   "date": "2025-07-13T08:53:36",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 298,
+   "date": "2025-07-13T08:58:00",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 299,
+   "date": "2025-07-13T09:36:15",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 300,
+   "date": "2025-07-13T09:42:25",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 301,
+   "date": "2025-07-13T09:58:29",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "la profe pasó el examen para el jueves"
+  },
+  {
+   "id": 302,
+   "date": "2025-07-13T10:05:33",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 303,
+   "date": "2025-07-13T10:20:51",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "dejé las entradas en el gimnasio"
+  },
+  {
+   "id": 304,
+   "date": "2025-07-13T10:35:01",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "diay sí"
+  },
+  {
+   "id": 305,
+   "date": "2025-07-13T10:39:00",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "revisen el correo"
+  },
+  {
+   "id": 306,
+   "date": "2025-07-13T10:41:00",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "pura vida"
+  },
+  {
+   "id": 307,
+   "date": "2025-07-13T11:12:05",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 308,
+   "date": "2025-07-13T11:13:37",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "pura vida"
+  },
+  {
+   "id": 309,
+   "date": "2025-07-13T12:16:23",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "excelente trabajo hoy"
+  },
+  {
+   "id": 310,
+   "date": "2025-07-13T12:33:26",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿lo pasamos para el sábado?"
+  },
+  {
+   "id": 311,
+   "date": "2025-07-13T12:34:42",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "el bus viene llenísimo"
+  },
+  {
+   "id": 312,
+   "date": "2025-07-13T12:44:50",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "qué buena foto"
+  },
+  {
+   "id": 313,
+   "date": "2025-07-13T13:36:29",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 314,
+   "date": "2025-07-13T15:09:24",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 315,
+   "date": "2025-07-13T15:30:39",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "file": "voice_messages/audio_12@13-07-2025_15-30-39.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 8,
+   "text": ""
+  },
+  {
+   "id": 316,
+   "date": "2025-07-13T15:58:08",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 317,
+   "date": "2025-07-13T16:08:24",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿alguien quiere sushi hoy?"
+  },
+  {
+   "id": 318,
+   "date": "2025-07-13T16:13:27",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿alguien me recoge en la soda?"
+  },
+  {
+   "id": 319,
+   "date": "2025-07-13T16:29:23",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "la reunión es a las noon en la soda"
+  },
+  {
+   "id": 320,
+   "date": "2025-07-13T16:58:38",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "voy en camino"
+  },
+  {
+   "id": 321,
+   "date": "2025-07-13T17:01:54",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 322,
+   "date": "2025-07-13T17:17:45",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "la dirección es 200m norte de el cole casa azul"
+  },
+  {
+   "id": 323,
+   "date": "2025-07-13T18:13:57",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿alguien quiere tacos hoy?"
+  },
+  {
+   "id": 324,
+   "date": "2025-07-13T18:28:36",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién tiene los apuntes?"
+  },
+  {
+   "id": 325,
+   "date": "2025-07-13T19:06:49",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 326,
+   "date": "2025-07-13T19:56:28",
+   "type": "service",
+   "actor": "Diego Vargas",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 327,
+   "date": "2025-07-13T19:59:42",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿quién se apunta el miércoles?"
+  },
+  {
+   "id": 328,
+   "date": "2025-07-13T20:37:56",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "jajaja"
+  },
+  {
+   "id": 329,
+   "date": "2025-07-13T21:05:57",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "diay sí"
+  },
+  {
+   "id": 330,
+   "date": "2025-07-13T21:41:27",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿dónde estás?"
+  },
+  {
+   "id": 331,
+   "date": "2025-07-13T21:45:14",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 332,
+   "date": "2025-07-13T21:52:30",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 333,
+   "date": "2025-07-13T22:25:31",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¡gracias!"
+  },
+  {
+   "id": 334,
+   "date": "2025-07-13T22:37:13",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien me recoge en la parada?"
+  },
+  {
+   "id": 335,
+   "date": "2025-07-13T23:14:52",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "ahorita te llamo"
+  },
+  {
+   "id": 336,
+   "date": "2025-07-13T23:27:10",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 337,
+   "date": "2025-07-14T08:07:45",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "tengo el cel casi muerto"
+  },
+  {
+   "id": 338,
+   "date": "2025-07-14T08:09:04",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "ya estoy en el estadio"
+  },
+  {
+   "id": 339,
+   "date": "2025-07-14T08:30:09",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": [
+    "¿alguien me recoge en ",
+    {
+     "type": "bold",
+     "text": "el mall?"
+    }
+   ]
+  },
+  {
+   "id": 340,
+   "date": "2025-07-14T08:59:50",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenos días a todos"
+  },
+  {
+   "id": 341,
+   "date": "2025-07-14T09:01:51",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "mándame la ubicación porfa"
+  },
+  {
+   "id": 342,
+   "date": "2025-07-14T09:15:59",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "te voy a matar, ya sabés"
+  },
+  {
+   "id": 343,
+   "date": "2025-07-14T09:27:20",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "callate, imbécil"
+  },
+  {
+   "id": 344,
+   "date": "2025-07-14T09:30:17",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "nos vemos el martes"
+  },
+  {
+   "id": 345,
+   "date": "2025-07-14T10:12:53",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no se les olvide el informe"
+  },
+  {
+   "id": 346,
+   "date": "2025-07-14T10:24:05",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "está lloviendo durísimo"
+  },
+  {
+   "id": 347,
+   "date": "2025-07-14T10:29:14",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿quién tiene el cargador?"
+  },
+  {
+   "id": 348,
+   "date": "2025-07-14T10:30:53",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "¿quién se apunta el sábado?"
+  },
+  {
+   "id": 349,
+   "date": "2025-07-14T11:06:55",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 350,
+   "date": "2025-07-14T11:20:00",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "no puedo el miércoles"
+  },
+  {
+   "id": 351,
+   "date": "2025-07-14T11:33:54",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 352,
+   "date": "2025-07-14T11:36:39",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿terminaron la tarea?"
+  },
+  {
+   "id": 353,
+   "date": "2025-07-14T11:38:02",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "no puedo el lunes"
+  },
+  {
+   "id": 354,
+   "date": "2025-07-14T11:45:16",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "buenas noches"
+  },
+  {
+   "id": 355,
+   "date": "2025-07-14T11:50:58",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 356,
+   "date": "2025-07-14T12:43:14",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "no puedo el viernes"
+  },
+  {
+   "id": 357,
+   "date": "2025-07-14T13:02:39",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "nos vemos el domingo"
+  },
+  {
+   "id": 358,
+   "date": "2025-07-14T13:11:02",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 359,
+   "date": "2025-07-14T13:16:53",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "votemos por el lugar"
+  },
+  {
+   "id": 360,
+   "date": "2025-07-14T13:18:06",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿alguien me recoge en la soda?"
+  },
+  {
+   "id": 361,
+   "date": "2025-07-14T13:39:35",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿quién se apunta el miércoles?"
+  },
+  {
+   "id": 362,
+   "date": "2025-07-14T13:53:10",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "¿lo pasamos para el sábado?"
+  },
+  {
+   "id": 363,
+   "date": "2025-07-14T13:55:06",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "ya pagué, gracias"
+  },
+  {
+   "id": 364,
+   "date": "2025-07-14T13:59:05",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 365,
+   "date": "2025-07-14T14:07:42",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "photo": "photos/photo_13@14-07-2025_14-07-42.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 366,
+   "date": "2025-07-14T14:17:08",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "voy 10 minutos tarde, perdón"
+  },
+  {
+   "id": 367,
+   "date": "2025-07-14T15:06:51",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "¿vienen mañana?"
+  },
+  {
+   "id": 368,
+   "date": "2025-07-14T15:15:07",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "jajaja"
+  },
+  {
+   "id": 369,
+   "date": "2025-07-14T15:27:11",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "buenas noches"
+  },
+  {
+   "id": 370,
+   "date": "2025-07-14T15:30:25",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "nos vemos el viernes"
+  },
+  {
+   "id": 371,
+   "date": "2025-07-14T15:34:09",
+   "type": "message",
+   "from": "Josue Sample",
+   "from_id": "user1003",
+   "text": "👍"
+  },
+  {
+   "id": 372,
+   "date": "2025-07-14T16:16:35",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "la dirección es 200m norte de el parque casa azul"
+  },
+  {
+   "id": 373,
+   "date": "2025-07-14T16:23:18",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "dejé el cable en la parada"
+  },
+  {
+   "id": 374,
+   "date": "2025-07-14T16:39:41",
+   "type": "message",
+   "from": "Taylor Solano",
+   "from_id": "user1002",
+   "text": "lista del súper: - arroz - frijoles - café"
+  },
+  {
+   "id": 375,
+   "date": "2025-07-14T16:43:51",
+   "type": "message",
+   "from": "Diego Vargas",
+   "from_id": "user1000",
+   "text": "¿lo pasamos para el martes?"
+  },
+  {
+   "id": 376,
+   "date": "2025-07-14T16:45:59",
+   "type": "message",
+   "from": "Esteban Alfaro",
+   "from_id": "user1001",
+   "text": "buenas noches"
+  }
+ ]
+}

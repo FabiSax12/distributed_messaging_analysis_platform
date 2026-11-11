@@ -1,0 +1,3 @@
+# Chat exports are hashed in manifest.json: keep their bytes exactly as generated
+# (no CRLF conversion on Windows checkouts).
+cases/** -text

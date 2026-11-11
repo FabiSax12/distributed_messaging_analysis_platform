@@ -1,25 +1,23 @@
 #!/usr/bin/env bash
-# Uploads a local dataset folder to the dataset bucket as 30 copies (batch-01 to batch-30),
-# plus dataset/manifest.json when it exists.
+# Publishes the generated dataset (docs/dataset.md) to S3 with the layout
+# <prefix>cases/<case_id>/<manifest path>, plus every manifest.json and the
+# ground truth under <prefix>ground_truth/. Raw media is not in git, so this
+# bucket copy (or rerunning the generators) is how others get it.
 #
-# NOTE: inherited from Project I (video/audio/metadata files). The messaging dataset
-# (text, image, audio; see docs/dataset.md) replaces it, and its layout and manifest
-# are not defined yet, so adapt the batch/manifest handling when they are.
-#
-# Usage:  DATASET_BUCKET=<bucket> bash scripts/dataset/upload-dataset.sh <folder> [bucket]
+# Usage:  bash scripts/dataset/upload-dataset.sh <bucket> [prefix]
+#   prefix defaults to "dataset/" (e.g. s3://<bucket>/dataset/cases/case-001/...).
+#   Pass "" to write at the bucket root.
+# Terraform has no dedicated dataset bucket; use one agreed with the team. The
+# files are synthetic or permissively licensed (see docs/dataset.md).
+# Uses `aws s3 sync`, so reruns only upload changed files.
 set -euo pipefail
 
-SRC="${1:?missing the folder with the base files}"
-BUCKET="${2:-${DATASET_BUCKET:-}}"
-if [ -z "$BUCKET" ]; then
-  echo "missing the bucket: pass it as the 2nd argument or set DATASET_BUCKET" >&2
-  exit 1
-fi
-HERE="$(cd "$(dirname "$0")/../../dataset" && pwd)"
+BUCKET="${1:?usage: upload-dataset.sh <bucket> [prefix]}"
+PREFIX="${2-dataset/}"
+ROOT="$(cd "$(dirname "$0")/../../dataset" && pwd)"
 
-for i in $(seq -w 1 30); do
-  aws s3 cp "$SRC" "s3://${BUCKET}/batch-${i}/" --recursive --exclude "manifest.json" --exclude "*.sh"
-done
-if [ -f "$HERE/manifest.json" ]; then
-  aws s3 cp "$HERE/manifest.json" "s3://${BUCKET}/manifest.json"
-fi
+uv run --group dataset python "$ROOT/generators/validate_manifests.py" --verify-files >/dev/null
+
+aws s3 sync "$ROOT/cases" "s3://${BUCKET}/${PREFIX}cases" --exclude "*/build/*"
+aws s3 sync "$ROOT/ground_truth" "s3://${BUCKET}/${PREFIX}ground_truth"
+echo "published s3://${BUCKET}/${PREFIX}{cases,ground_truth}"

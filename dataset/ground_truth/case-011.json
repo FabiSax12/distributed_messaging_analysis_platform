@@ -1,0 +1,222 @@
+{
+  "case_id": "case-011",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 71
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 83
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 104
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 123
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 153
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 179
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 182
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 262
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 266
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 314
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 325
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 326
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 327
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 336
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 382
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250324-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.001266,
+            "y": 0.438189,
+            "w": 0.229406,
+            "h": 0.278663
+          },
+          "notes": "COCO knife box, 2875.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.010203,
+            "y": 0.322089,
+            "w": 0.225828,
+            "h": 0.122061
+          },
+          "notes": "COCO knife box, 2016.2 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250325-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250326-WA0006.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.845313,
+            "y": 0.780531,
+            "w": 0.154687,
+            "h": 0.010453
+          },
+          "notes": "COCO knife box, 349.9 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.866729,
+            "y": 0.691688,
+            "w": 0.074417,
+            "h": 0.005031
+          },
+          "notes": "COCO knife box, 72.1 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.046875,
+            "y": 0.661047,
+            "w": 0.063104,
+            "h": 0.004781
+          },
+          "notes": "COCO knife box, 64.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250328-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250329-WA0010.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250328-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250325-WA0003.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.32,
+          "audio_end_s": 3.56,
+          "notes": "If you tell anyone about this, you will regret it."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250325-WA0004.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250326-WA0005.opus",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 0.63,
+          "audio_end_s": 3.99,
+          "notes": "I swear I will kill you if you come back here."
+        }
+      ]
+    },
+    {
+      "path": "media/VID-20250329-WA0009.mp4",
+      "findings": []
+    }
+  ]
+}

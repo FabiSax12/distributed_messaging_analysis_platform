@@ -8,6 +8,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api, toDevS3Url } from '../api/client.js'
+import { useAuth } from '../auth/AuthProvider.jsx'
+import { AnalysisDetails, CATEGORY, FindingsList, Timeline } from '../components/Findings.jsx'
 import { Empty, ErrorBanner, Section, StackedProgress, StatusLegend, StatusPill } from '../components/ui.jsx'
 import { useInterval } from '../hooks/useInterval.js'
 import { useLiveState } from '../hooks/useLiveState.jsx'
@@ -83,6 +85,7 @@ export default function CaseDetail({ caseId }) {
 }
 
 function CaseHeader({ c, onChanged }) {
+  const auth = useAuth()
   const [confirming, setConfirming] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
@@ -122,7 +125,10 @@ function CaseHeader({ c, onChanged }) {
         <div><dt>Duration</dt><dd className="num">{formatDuration(durationBetween(c.started_at || c.created_at, c.finished_at))}</dd></div>
       </dl>
 
-      {!terminal && !c.cancel_requested && (
+      {!terminal && !c.cancel_requested && !auth.can('cancel') && (
+        <p className="muted small case-actions">Cancelling a case requires the supervisor or administrator role.</p>
+      )}
+      {!terminal && !c.cancel_requested && auth.can('cancel') && (
         <div className="case-actions">
           {confirming ? (
             <div className="confirm">
@@ -293,6 +299,7 @@ function OutputFiles({ keys, outputs }) {
 
 function SubTaskRow({ s, outputs }) {
   const running = s.status === 'running'
+  const analysis = s.output_meta?.analysis
   return (
     <>
       <tr>
@@ -317,9 +324,18 @@ function SubTaskRow({ s, outputs }) {
         <td className="small num">{formatTime(s.started_at)}</td>
         <td className="right small num">{s.started_at ? formatDuration(durationBetween(s.started_at, s.finished_at)) : '—'}</td>
       </tr>
-      {(s.error || s.output_keys.length > 0) && (
+      {(s.error || s.output_keys.length > 0 || analysis) && (
         <tr className="sub-extra">
           <td colSpan={8}>
+            {analysis && (
+              <details className="sub-analysis">
+                <summary className="small">
+                  Analysis: {analysis.findings?.length ?? 0} finding(s)
+                  {analysis.findings?.length > 0 && ` · ${[...new Set(analysis.findings.map((f) => CATEGORY[f.category] ?? f.category))].join(', ')}`}
+                </summary>
+                <AnalysisDetails analysis={analysis} />
+              </details>
+            )}
             {s.error && (
               <span className="err">
                 <b>{ERROR_CODES[s.error.code] ?? s.error.code}:</b> {s.error.message}
@@ -340,9 +356,11 @@ function Report({ caseId, status }) {
   const open = async () => {
     setState({ loading: true })
     try {
+      // Two steps: the API returns a presigned URL envelope; the report itself
+      // is read from S3 WITHOUT the API bearer token.
       const { url } = await api.reportUrl(caseId)
       try {
-        const res = await fetch(toDevS3Url(url))
+        const res = await fetch(toDevS3Url(url), { credentials: 'omit' })
         if (!res.ok) throw new Error(`S3 responded ${res.status}`)
         setState({ url, report: await res.json() })
       } catch (err) {
@@ -420,6 +438,46 @@ function Report({ caseId, status }) {
           <p className="small muted">
             Responsible workers: {r.workers_used.map((w) => <code key={w}>{w}</code>)}
           </p>
+
+          <h3 className="report-h">Findings by category</h3>
+          {Object.keys(r.categories || {}).length ? (
+            <div className="category-tiles">
+              {Object.entries(r.categories).map(([c, n]) => (
+                <div key={c} className="category-tile">
+                  <span className="num">{n}</span>
+                  <span className="small">{CATEGORY[c] ?? c}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">No findings in this case.</p>
+          )}
+          <p className="muted small">
+            Findings are review cues from keyword rules and object detection; scores are not calibrated probabilities.
+            Every finding links to its source file, hash and location.
+          </p>
+
+          <h3 className="report-h">Findings</h3>
+          <FindingsList findings={r.findings || []} />
+
+          <h3 className="report-h">Timeline</h3>
+          <Timeline events={r.timeline || []} />
+
+          <h3 className="report-h">Per-file analysis</h3>
+          <ul className="file-analyses">
+            {(r.subtasks || []).map((st) => (
+              <li key={st.subtask_id}>
+                <details>
+                  <summary>
+                    <span className="mono">{basename(st.input_key)}</span>{' '}
+                    <StatusPill status={st.status} kind="subtask" />{' '}
+                    <span className="muted small">{st.analysis ? `${st.analysis.findings?.length ?? 0} finding(s)` : st.error ? ERROR_CODES[st.error.code] ?? st.error.code : 'no analysis'}</span>
+                  </summary>
+                  {st.analysis ? <AnalysisDetails analysis={st.analysis} /> : st.error && <p className="err small">{st.error.message}</p>}
+                </details>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </Section>

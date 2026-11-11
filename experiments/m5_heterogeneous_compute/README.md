@@ -32,3 +32,18 @@ m5_heterogeneous_compute/
 `results/` contents are git-ignored except `.gitkeep` (root `.gitignore`); add
 the final CSVs and plots explicitly (`git add -f`) or copy them into
 `docs/img/` when they go in the report.
+
+## Running it
+
+```sh
+uv sync --all-packages --all-extras --group dataset   # needs the generated dataset (docs/dataset.md) and ffmpeg
+uv run --all-packages --all-extras --group dataset python experiments/m5_heterogeneous_compute/scripts/bench.py \
+    --out experiments/m5_heterogeneous_compute/results/<host> [--resume]
+uv run --all-packages --all-extras python experiments/m5_heterogeneous_compute/scripts/plot.py \
+    experiments/m5_heterogeneous_compute/results/<host>
+```
+
+The full campaign (9 Whisper, 4 YOLO and 7 process x thread configurations)
+took about an hour on a 4-core laptop. Results are saved after every
+configuration; `--resume` continues an interrupted run. Committed evidence:
+`results/laptop-i5-11320h/` (CSVs, `raw/`, `host.json`, input lists, PNGs).

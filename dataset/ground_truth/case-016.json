@@ -1,0 +1,97 @@
+{
+  "case_id": "case-016",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241210-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241206-WA0004.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.465125,
+            "y": 0.480304,
+            "w": 0.015906,
+            "h": 0.059649
+          },
+          "notes": "COCO knife box, 96.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.491516,
+            "y": 0.48,
+            "w": 0.005312,
+            "h": 0.023115
+          },
+          "notes": "COCO knife box, 26.3 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20241209-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241204-WA0002.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.0435,
+            "y": 0.592514,
+            "w": 0.920297,
+            "h": 0.268005
+          },
+          "notes": "COCO knife box, 21460.5 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20241212-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241208-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241205-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20241210-WA0010.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241212-WA0012.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241210-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241209-WA0007.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20241204-WA0001.opus",
+      "findings": []
+    }
+  ]
+}

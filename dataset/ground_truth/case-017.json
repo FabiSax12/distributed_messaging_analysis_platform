@@ -1,0 +1,175 @@
+{
+  "case_id": "case-017",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 87
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 134
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 174
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 180
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 186
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 194
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 218
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 223
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 264
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 283
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 298
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 334
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 357
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 359
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 413
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 421
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 450
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250823-WA0001.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.221389,
+            "y": 0.756993,
+            "w": 0.110131,
+            "h": 0.051748
+          },
+          "notes": "COCO knife box, 343.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250825-WA0003.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250828-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250827-WA0006.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250826-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250826-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250829-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250827-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250825-WA0002.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250827-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250828-WA0011.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250828-WA0010.opus",
+      "findings": []
+    }
+  ]
+}

@@ -29,7 +29,13 @@ LOCK = threading.Lock()
 @lru_cache(maxsize=1)
 def load_model():
     from ultralytics import YOLO
+    from ultralytics.utils import torch_utils
 
+    # ultralytics' select_device() (first predict) forces
+    # torch.set_num_threads(min(8, cpu_count - 1)), ignoring OMP_NUM_THREADS.
+    # Honor MODEL_THREADS like the audio op does (measured in M5).
+    if threads := os.environ.get("MODEL_THREADS"):
+        torch_utils.NUM_THREADS = int(threads)
     cache = Path.home() / ".cache" / "madp"
     cache.mkdir(parents=True, exist_ok=True)
     return YOLO(str(cache / "yolov8n.pt"))

@@ -1,0 +1,7570 @@
+{
+ "name": "Futbol Domingos 55",
+ "type": "private_group",
+ "id": 1000038,
+ "messages": [
+  {
+   "id": 1,
+   "date": "2024-02-08T18:58:41",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "create_group",
+   "text": ""
+  },
+  {
+   "id": 2,
+   "date": "2024-02-08T19:02:59",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Andres Navarro",
+    "Esteban Rojas"
+   ]
+  },
+  {
+   "id": 3,
+   "date": "2024-02-08T19:03:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 40 for the burgers"
+  },
+  {
+   "id": 4,
+   "date": "2024-02-08T19:28:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "running 10 ",
+    {
+     "type": "bold",
+     "text": "minutes late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "date": "2024-02-08T19:45:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 6,
+   "date": "2024-02-08T20:09:18",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 7,
+   "date": "2024-02-08T20:11:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 8,
+   "date": "2024-02-08T20:28:08",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who has the report?"
+  },
+  {
+   "id": 9,
+   "date": "2024-02-08T21:00:34",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Thursday?"
+  },
+  {
+   "id": 10,
+   "date": "2024-02-08T21:20:54",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 11,
+   "date": "2024-02-08T21:53:31",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 12,
+   "date": "2024-02-08T22:17:06",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I owe you 20 for the burgers"
+  },
+  {
+   "id": 13,
+   "date": "2024-02-08T22:33:24",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 14,
+   "date": "2024-02-08T22:45:29",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 15,
+   "date": "2024-02-08T22:51:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 16,
+   "date": "2024-02-08T23:40:46",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 17,
+   "date": "2024-02-09T07:02:16",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 18,
+   "date": "2024-02-09T07:03:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 19,
+   "date": "2024-02-09T07:16:08",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I left ",
+    {
+     "type": "bold",
+     "text": "the notes at the soda"
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "date": "2024-02-09T07:27:02",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "can someone pick ",
+    {
+     "type": "bold",
+     "text": "me up at the mall?"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "date": "2024-02-09T07:40:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the meeting is at 8 at the stadium"
+  },
+  {
+   "id": 22,
+   "date": "2024-02-09T08:11:25",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 23,
+   "date": "2024-02-09T08:14:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 7 at the stadium"
+  },
+  {
+   "id": 24,
+   "date": "2024-02-09T08:16:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 25,
+   "date": "2024-02-09T08:21:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 26,
+   "date": "2024-02-09T08:24:33",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 27,
+   "date": "2024-02-09T08:33:17",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 28,
+   "date": "2024-02-09T09:42:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 5 for the empanadas"
+  },
+  {
+   "id": 29,
+   "date": "2024-02-09T10:19:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "is the ",
+    {
+     "type": "bold",
+     "text": "gym open on Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "date": "2024-02-09T10:55:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 31,
+   "date": "2024-02-09T11:12:11",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 32,
+   "date": "2024-02-09T11:45:41",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 33,
+   "date": "2024-02-09T12:06:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 34,
+   "date": "2024-02-09T12:25:43",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 35,
+   "date": "2024-02-09T12:35:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 36,
+   "date": "2024-02-09T12:44:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 37,
+   "date": "2024-02-09T14:13:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 38,
+   "date": "2024-02-09T14:39:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 39,
+   "date": "2024-02-09T15:07:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 40,
+   "date": "2024-02-09T15:08:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 41,
+   "date": "2024-02-09T15:53:52",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 42,
+   "date": "2024-02-09T16:14:40",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "anyone want pizza ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "date": "2024-02-09T16:18:51",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 44,
+   "date": "2024-02-09T16:43:47",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 45,
+   "date": "2024-02-09T16:44:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 46,
+   "date": "2024-02-09T16:49:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 47,
+   "date": "2024-02-09T17:22:51",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 48,
+   "date": "2024-02-09T17:37:00",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I know where your kids go to school"
+  },
+  {
+   "id": 49,
+   "date": "2024-02-09T18:13:37",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 50,
+   "date": "2024-02-09T19:07:56",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 51,
+   "date": "2024-02-09T19:22:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who has the umbrella?"
+  },
+  {
+   "id": 52,
+   "date": "2024-02-09T19:31:12",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 53,
+   "date": "2024-02-09T19:31:21",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 54,
+   "date": "2024-02-09T19:36:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 55,
+   "date": "2024-02-09T20:14:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 56,
+   "date": "2024-02-09T20:17:51",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 57,
+   "date": "2024-02-09T20:20:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 58,
+   "date": "2024-02-09T20:28:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 59,
+   "date": "2024-02-09T20:32:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "anyone want ",
+    {
+     "type": "bold",
+     "text": "sushi tonight?"
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "date": "2024-02-09T20:44:45",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "watched a documentary about a drug deal investigation"
+  },
+  {
+   "id": 61,
+   "date": "2024-02-09T20:59:56",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 62,
+   "date": "2024-02-09T21:35:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 63,
+   "date": "2024-02-09T21:36:40",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 64,
+   "date": "2024-02-09T21:37:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 65,
+   "date": "2024-02-09T21:49:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 66,
+   "date": "2024-02-09T21:57:17",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 67,
+   "date": "2024-02-09T22:11:33",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 68,
+   "date": "2024-02-09T22:21:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 69,
+   "date": "2024-02-09T22:24:06",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 70,
+   "date": "2024-02-09T22:29:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "who's in for ",
+    {
+     "type": "bold",
+     "text": "Thursday?"
+    }
+   ]
+  },
+  {
+   "id": 71,
+   "date": "2024-02-09T22:37:32",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 72,
+   "date": "2024-02-09T23:14:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 73,
+   "date": "2024-02-09T23:52:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Friday?"
+  },
+  {
+   "id": 74,
+   "date": "2024-02-10T06:16:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 75,
+   "date": "2024-02-10T06:18:18",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 76,
+   "date": "2024-02-10T06:18:19",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the cable at the stadium"
+  },
+  {
+   "id": 77,
+   "date": "2024-02-10T06:27:39",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "running 10 ",
+    {
+     "type": "bold",
+     "text": "minutes late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 78,
+   "date": "2024-02-10T06:35:39",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "I'll call ",
+    {
+     "type": "bold",
+     "text": "you later"
+    }
+   ]
+  },
+  {
+   "id": 79,
+   "date": "2024-02-10T07:06:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 80,
+   "date": "2024-02-10T07:15:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 81,
+   "date": "2024-02-10T07:57:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 82,
+   "date": "2024-02-10T08:19:27",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 83,
+   "date": "2024-02-10T09:17:42",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 84,
+   "date": "2024-02-10T09:35:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 85,
+   "date": "2024-02-10T10:09:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 86,
+   "date": "2024-02-10T10:40:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm at the office already"
+  },
+  {
+   "id": 87,
+   "date": "2024-02-10T10:48:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the meeting is at 7:30 at the park"
+  },
+  {
+   "id": 88,
+   "date": "2024-02-10T11:34:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 89,
+   "date": "2024-02-10T12:16:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 90,
+   "date": "2024-02-10T14:19:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at school already"
+  },
+  {
+   "id": 91,
+   "date": "2024-02-10T14:29:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 92,
+   "date": "2024-02-10T14:54:42",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 9"
+  },
+  {
+   "id": 93,
+   "date": "2024-02-10T15:10:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 50 for the pizza"
+  },
+  {
+   "id": 94,
+   "date": "2024-02-10T15:14:48",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 95,
+   "date": "2024-02-10T15:18:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Saturday?"
+  },
+  {
+   "id": 96,
+   "date": "2024-02-10T15:31:06",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 97,
+   "date": "2024-02-10T15:58:55",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 98,
+   "date": "2024-02-10T16:31:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 99,
+   "date": "2024-02-10T16:32:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the charger at school"
+  },
+  {
+   "id": 100,
+   "date": "2024-02-10T16:46:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 101,
+   "date": "2024-02-10T16:47:21",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 102,
+   "date": "2024-02-10T17:08:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 103,
+   "date": "2024-02-10T17:10:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 104,
+   "date": "2024-02-10T17:33:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 105,
+   "date": "2024-02-10T18:16:19",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 106,
+   "date": "2024-02-10T18:44:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 107,
+   "date": "2024-02-10T19:46:34",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 50 for the pizza"
+  },
+  {
+   "id": 108,
+   "date": "2024-02-10T19:50:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 109,
+   "date": "2024-02-10T20:04:42",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the burgers"
+  },
+  {
+   "id": 110,
+   "date": "2024-02-10T20:18:38",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 111,
+   "date": "2024-02-10T20:23:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 112,
+   "date": "2024-02-10T20:55:07",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 113,
+   "date": "2024-02-10T21:32:56",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 114,
+   "date": "2024-02-10T21:41:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 115,
+   "date": "2024-02-10T21:59:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 116,
+   "date": "2024-02-10T22:18:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 117,
+   "date": "2024-02-10T22:30:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 118,
+   "date": "2024-02-10T23:12:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 10 for the rice and beans"
+  },
+  {
+   "id": 119,
+   "date": "2024-02-10T23:28:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 120,
+   "date": "2024-02-10T23:49:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the umbrella at the office"
+  },
+  {
+   "id": 121,
+   "date": "2024-02-10T23:52:34",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 122,
+   "date": "2024-02-11T08:08:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 123,
+   "date": "2024-02-11T08:26:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 124,
+   "date": "2024-02-11T08:46:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Friday?"
+  },
+  {
+   "id": 125,
+   "date": "2024-02-11T09:26:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 126,
+   "date": "2024-02-11T09:42:34",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 127,
+   "date": "2024-02-11T09:46:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 128,
+   "date": "2024-02-11T10:18:03",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the notes at the bus stop"
+  },
+  {
+   "id": 129,
+   "date": "2024-02-11T10:58:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 130,
+   "date": "2024-02-11T11:02:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 131,
+   "date": "2024-02-11T11:17:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 132,
+   "date": "2024-02-11T11:26:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 9"
+  },
+  {
+   "id": 133,
+   "date": "2024-02-11T11:37:05",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "you're a worthless clown"
+  },
+  {
+   "id": 134,
+   "date": "2024-02-11T12:15:53",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 135,
+   "date": "2024-02-11T12:22:16",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 136,
+   "date": "2024-02-11T12:28:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 137,
+   "date": "2024-02-11T12:44:27",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 138,
+   "date": "2024-02-11T12:46:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 139,
+   "date": "2024-02-11T13:32:47",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 5"
+  },
+  {
+   "id": 140,
+   "date": "2024-02-11T13:46:27",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 141,
+   "date": "2024-02-11T13:50:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 142,
+   "date": "2024-02-11T13:51:32",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 143,
+   "date": "2024-02-11T13:55:18",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 144,
+   "date": "2024-02-11T14:14:26",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 145,
+   "date": "2024-02-11T14:17:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 146,
+   "date": "2024-02-11T15:08:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 147,
+   "date": "2024-02-11T15:18:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 148,
+   "date": "2024-02-11T15:32:00",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 149,
+   "date": "2024-02-11T15:39:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Sunday?"
+  },
+  {
+   "id": 150,
+   "date": "2024-02-11T15:53:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 151,
+   "date": "2024-02-11T16:16:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 152,
+   "date": "2024-02-11T16:26:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 153,
+   "date": "2024-02-11T16:33:26",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 154,
+   "date": "2024-02-11T16:52:45",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 155,
+   "date": "2024-02-11T17:15:18",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 156,
+   "date": "2024-02-11T17:56:46",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 157,
+   "date": "2024-02-11T18:21:06",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 158,
+   "date": "2024-02-11T18:27:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 159,
+   "date": "2024-02-11T18:40:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 160,
+   "date": "2024-02-11T18:53:30",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Thursday?"
+  },
+  {
+   "id": 161,
+   "date": "2024-02-11T19:39:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 162,
+   "date": "2024-02-11T19:42:06",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 163,
+   "date": "2024-02-11T19:43:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 164,
+   "date": "2024-02-11T19:47:15",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 165,
+   "date": "2024-02-11T19:59:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 166,
+   "date": "2024-02-11T20:18:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 167,
+   "date": "2024-02-11T20:43:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 168,
+   "date": "2024-02-11T20:50:39",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 169,
+   "date": "2024-02-11T20:52:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 170,
+   "date": "2024-02-11T20:57:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 171,
+   "date": "2024-02-11T21:06:24",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 5"
+  },
+  {
+   "id": 172,
+   "date": "2024-02-11T21:11:54",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 173,
+   "date": "2024-02-11T21:15:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 174,
+   "date": "2024-02-11T21:26:43",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 175,
+   "date": "2024-02-11T21:55:44",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 176,
+   "date": "2024-02-11T22:27:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 177,
+   "date": "2024-02-11T22:34:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 178,
+   "date": "2024-02-11T22:36:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I left the umbrella at the stadium"
+  },
+  {
+   "id": 179,
+   "date": "2024-02-11T22:42:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 180,
+   "date": "2024-02-11T22:44:21",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 181,
+   "date": "2024-02-11T22:58:33",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 182,
+   "date": "2024-02-11T23:20:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 183,
+   "date": "2024-02-11T23:28:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 184,
+   "date": "2024-02-11T23:56:08",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 185,
+   "date": "2024-02-12T07:13:59",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 186,
+   "date": "2024-02-12T07:46:30",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 187,
+   "date": "2024-02-12T08:14:06",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 188,
+   "date": "2024-02-12T08:15:43",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 189,
+   "date": "2024-02-12T08:20:27",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 190,
+   "date": "2024-02-12T08:26:01",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 191,
+   "date": "2024-02-12T08:34:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 192,
+   "date": "2024-02-12T08:40:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 193,
+   "date": "2024-02-12T08:47:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 194,
+   "date": "2024-02-12T08:54:27",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "you are such an idiot"
+  },
+  {
+   "id": 195,
+   "date": "2024-02-12T08:59:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 196,
+   "date": "2024-02-12T09:15:54",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 197,
+   "date": "2024-02-12T09:26:09",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 198,
+   "date": "2024-02-12T09:42:43",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 199,
+   "date": "2024-02-12T10:21:42",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "can we move it to ",
+    {
+     "type": "bold",
+     "text": "Saturday?"
+    }
+   ]
+  },
+  {
+   "id": 200,
+   "date": "2024-02-12T10:52:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 201,
+   "date": "2024-02-12T10:52:30",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 202,
+   "date": "2024-02-12T11:08:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 203,
+   "date": "2024-02-12T11:11:23",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 204,
+   "date": "2024-02-12T11:13:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 205,
+   "date": "2024-02-12T11:21:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the notes at the library"
+  },
+  {
+   "id": 206,
+   "date": "2024-02-12T11:29:33",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 207,
+   "date": "2024-02-12T11:30:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 208,
+   "date": "2024-02-12T11:35:18",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 209,
+   "date": "2024-02-12T11:38:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the meeting is at 8:15 at the office"
+  },
+  {
+   "id": 210,
+   "date": "2024-02-12T11:44:53",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Friday"
+  },
+  {
+   "id": 211,
+   "date": "2024-02-12T11:46:16",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 212,
+   "date": "2024-02-12T12:45:53",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 213,
+   "date": "2024-02-12T12:53:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 214,
+   "date": "2024-02-12T13:04:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 215,
+   "date": "2024-02-12T13:14:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 216,
+   "date": "2024-02-12T13:47:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the park?"
+  },
+  {
+   "id": 217,
+   "date": "2024-02-12T14:10:41",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 218,
+   "date": "2024-02-12T14:25:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 219,
+   "date": "2024-02-12T14:41:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 220,
+   "date": "2024-02-12T15:01:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 221,
+   "date": "2024-02-12T15:30:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 222,
+   "date": "2024-02-12T15:58:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 223,
+   "date": "2024-02-12T16:11:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Wednesday?"
+  },
+  {
+   "id": 224,
+   "date": "2024-02-12T16:23:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 225,
+   "date": "2024-02-12T16:27:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 226,
+   "date": "2024-02-12T16:38:04",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 227,
+   "date": "2024-02-12T16:44:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 228,
+   "date": "2024-02-12T16:55:22",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 229,
+   "date": "2024-02-12T17:17:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Friday"
+  },
+  {
+   "id": 230,
+   "date": "2024-02-12T17:18:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 231,
+   "date": "2024-02-12T17:31:52",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 232,
+   "date": "2024-02-12T17:37:17",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 233,
+   "date": "2024-02-12T18:11:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 234,
+   "date": "2024-02-12T19:04:45",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 235,
+   "date": "2024-02-12T19:24:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 236,
+   "date": "2024-02-12T19:25:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 237,
+   "date": "2024-02-12T20:06:42",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 238,
+   "date": "2024-02-12T20:15:36",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 239,
+   "date": "2024-02-12T20:20:45",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "the meeting is ",
+    {
+     "type": "bold",
+     "text": "at 5 at the gym"
+    }
+   ]
+  },
+  {
+   "id": 240,
+   "date": "2024-02-12T20:27:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "address is 200m north of school blue house"
+  },
+  {
+   "id": 241,
+   "date": "2024-02-12T20:45:27",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 242,
+   "date": "2024-02-12T22:07:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "reminder for Sunday: bring the umbrella and the signed form"
+  },
+  {
+   "id": 243,
+   "date": "2024-02-12T22:44:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 244,
+   "date": "2024-02-12T23:54:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 245,
+   "date": "2024-02-12T23:58:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "we ",
+    {
+     "type": "bold",
+     "text": "need 5 more people"
+    }
+   ]
+  },
+  {
+   "id": 246,
+   "date": "2024-02-13T07:09:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "send ",
+    {
+     "type": "bold",
+     "text": "me the location please"
+    }
+   ]
+  },
+  {
+   "id": 247,
+   "date": "2024-02-13T07:59:00",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8:15 at school"
+  },
+  {
+   "id": 248,
+   "date": "2024-02-13T08:02:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 249,
+   "date": "2024-02-13T08:07:12",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 250,
+   "date": "2024-02-13T08:15:27",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 251,
+   "date": "2024-02-13T08:26:07",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 252,
+   "date": "2024-02-13T08:34:43",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 253,
+   "date": "2024-02-13T08:50:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 254,
+   "date": "2024-02-13T09:30:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 255,
+   "date": "2024-02-13T09:38:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 256,
+   "date": "2024-02-13T09:41:31",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 257,
+   "date": "2024-02-13T09:54:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 258,
+   "date": "2024-02-13T10:36:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 259,
+   "date": "2024-02-13T12:05:21",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 9"
+  },
+  {
+   "id": 260,
+   "date": "2024-02-13T12:13:26",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Sunday"
+  },
+  {
+   "id": 261,
+   "date": "2024-02-13T12:27:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 262,
+   "date": "2024-02-13T12:35:25",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 263,
+   "date": "2024-02-13T13:16:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 264,
+   "date": "2024-02-13T13:22:33",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 265,
+   "date": "2024-02-13T13:24:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Thursday?"
+  },
+  {
+   "id": 266,
+   "date": "2024-02-13T13:29:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 267,
+   "date": "2024-02-13T13:37:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I left my jacket at the park"
+  },
+  {
+   "id": 268,
+   "date": "2024-02-13T13:38:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 269,
+   "date": "2024-02-13T13:52:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 270,
+   "date": "2024-02-13T14:03:40",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 271,
+   "date": "2024-02-13T14:12:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "I'm at the office ",
+    {
+     "type": "bold",
+     "text": "already"
+    }
+   ]
+  },
+  {
+   "id": 272,
+   "date": "2024-02-13T14:34:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I know people who can hurt you"
+  },
+  {
+   "id": 273,
+   "date": "2024-02-13T14:53:46",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 274,
+   "date": "2024-02-13T15:01:17",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 275,
+   "date": "2024-02-13T15:23:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 276,
+   "date": "2024-02-13T15:39:25",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 277,
+   "date": "2024-02-13T15:49:48",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "can we move it to ",
+    {
+     "type": "bold",
+     "text": "Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 278,
+   "date": "2024-02-13T16:00:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 279,
+   "date": "2024-02-13T16:12:48",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 280,
+   "date": "2024-02-13T16:21:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the notes at the bus stop"
+  },
+  {
+   "id": 281,
+   "date": "2024-02-13T17:50:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 282,
+   "date": "2024-02-13T18:04:03",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 283,
+   "date": "2024-02-13T19:52:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "ok see you at ",
+    {
+     "type": "bold",
+     "text": "6"
+    }
+   ]
+  },
+  {
+   "id": 284,
+   "date": "2024-02-13T20:23:36",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 285,
+   "date": "2024-02-13T20:25:38",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "don't forget to bring the tickets"
+  },
+  {
+   "id": 286,
+   "date": "2024-02-13T20:41:45",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 287,
+   "date": "2024-02-13T21:08:46",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "reminder for Tuesday: bring the keys and the signed form"
+  },
+  {
+   "id": 288,
+   "date": "2024-02-13T21:12:30",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 289,
+   "date": "2024-02-13T21:19:51",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 290,
+   "date": "2024-02-13T21:26:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 291,
+   "date": "2024-02-13T21:33:15",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 292,
+   "date": "2024-02-13T21:43:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 293,
+   "date": "2024-02-13T22:07:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "address is 200m north of the bus stop blue house"
+  },
+  {
+   "id": 294,
+   "date": "2024-02-13T22:11:40",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 295,
+   "date": "2024-02-13T22:25:16",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 296,
+   "date": "2024-02-13T22:38:42",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 297,
+   "date": "2024-02-13T22:41:08",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nobody here can stand you, loser"
+  },
+  {
+   "id": 298,
+   "date": "2024-02-13T22:52:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 299,
+   "date": "2024-02-13T22:56:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the clinic already"
+  },
+  {
+   "id": 300,
+   "date": "2024-02-13T23:17:01",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 301,
+   "date": "2024-02-13T23:21:12",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 302,
+   "date": "2024-02-13T23:23:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 303,
+   "date": "2024-02-13T23:25:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "did you finish the ",
+    {
+     "type": "bold",
+     "text": "assignment?"
+    }
+   ]
+  },
+  {
+   "id": 304,
+   "date": "2024-02-13T23:28:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 305,
+   "date": "2024-02-13T23:39:19",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 306,
+   "date": "2024-02-14T08:14:44",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 307,
+   "date": "2024-02-14T08:22:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 308,
+   "date": "2024-02-14T08:45:08",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the park?"
+  },
+  {
+   "id": 309,
+   "date": "2024-02-14T08:47:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 310,
+   "date": "2024-02-14T08:57:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Sunday?"
+  },
+  {
+   "id": 311,
+   "date": "2024-02-14T09:13:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 312,
+   "date": "2024-02-14T09:50:59",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 313,
+   "date": "2024-02-14T10:09:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 314,
+   "date": "2024-02-14T10:11:52",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 315,
+   "date": "2024-02-14T10:12:27",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 316,
+   "date": "2024-02-14T10:37:30",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 317,
+   "date": "2024-02-14T10:49:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 318,
+   "date": "2024-02-14T11:23:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 319,
+   "date": "2024-02-14T11:38:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 320,
+   "date": "2024-02-14T11:56:05",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 321,
+   "date": "2024-02-14T12:11:16",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 322,
+   "date": "2024-02-14T12:28:46",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 323,
+   "date": "2024-02-14T12:30:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "we need 5 ",
+    {
+     "type": "bold",
+     "text": "more people"
+    }
+   ]
+  },
+  {
+   "id": 324,
+   "date": "2024-02-14T12:40:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 325,
+   "date": "2024-02-14T12:46:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8 at the clinic"
+  },
+  {
+   "id": 326,
+   "date": "2024-02-14T12:59:17",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 327,
+   "date": "2024-02-14T13:12:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 328,
+   "date": "2024-02-14T13:29:39",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Friday"
+  },
+  {
+   "id": 329,
+   "date": "2024-02-14T15:08:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 330,
+   "date": "2024-02-14T15:09:20",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 331,
+   "date": "2024-02-14T15:22:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I owe you 25 for the sushi"
+  },
+  {
+   "id": 332,
+   "date": "2024-02-14T15:25:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 333,
+   "date": "2024-02-14T15:29:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "reminder for Monday: bring the umbrella and the signed form"
+  },
+  {
+   "id": 334,
+   "date": "2024-02-14T15:49:42",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 335,
+   "date": "2024-02-14T16:08:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "can someone pick me up at ",
+    {
+     "type": "bold",
+     "text": "the mall?"
+    }
+   ]
+  },
+  {
+   "id": 336,
+   "date": "2024-02-14T16:43:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 337,
+   "date": "2024-02-14T16:48:23",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I know where your kids go to school"
+  },
+  {
+   "id": 338,
+   "date": "2024-02-14T17:17:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 339,
+   "date": "2024-02-14T17:26:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 340,
+   "date": "2024-02-14T17:36:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 341,
+   "date": "2024-02-14T17:40:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the keys at the stadium"
+  },
+  {
+   "id": 342,
+   "date": "2024-02-14T18:04:08",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 343,
+   "date": "2024-02-14T18:20:40",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 344,
+   "date": "2024-02-14T18:56:30",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 345,
+   "date": "2024-02-14T19:07:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the charger at the mall"
+  },
+  {
+   "id": 346,
+   "date": "2024-02-14T19:12:53",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 347,
+   "date": "2024-02-14T19:18:24",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "you are such an idiot"
+  },
+  {
+   "id": 348,
+   "date": "2024-02-14T19:26:46",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 349,
+   "date": "2024-02-14T20:27:19",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "great job today ",
+    {
+     "type": "bold",
+     "text": "team"
+    }
+   ]
+  },
+  {
+   "id": 350,
+   "date": "2024-02-14T20:58:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the library?"
+  },
+  {
+   "id": 351,
+   "date": "2024-02-14T21:12:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 352,
+   "date": "2024-02-14T21:23:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 353,
+   "date": "2024-02-14T21:26:54",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 354,
+   "date": "2024-02-14T21:28:02",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 355,
+   "date": "2024-02-14T21:41:48",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I'll ",
+    {
+     "type": "bold",
+     "text": "call you later"
+    }
+   ]
+  },
+  {
+   "id": 356,
+   "date": "2024-02-14T22:16:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 357,
+   "date": "2024-02-14T22:21:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 358,
+   "date": "2024-02-14T22:48:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 359,
+   "date": "2024-02-15T07:02:07",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 360,
+   "date": "2024-02-15T07:17:53",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the clinic?"
+  },
+  {
+   "id": 361,
+   "date": "2024-02-15T07:57:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 362,
+   "date": "2024-02-15T08:00:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 363,
+   "date": "2024-02-15T08:01:01",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Monday"
+  },
+  {
+   "id": 364,
+   "date": "2024-02-15T08:15:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 365,
+   "date": "2024-02-15T08:16:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 366,
+   "date": "2024-02-15T08:24:00",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 367,
+   "date": "2024-02-15T08:47:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 368,
+   "date": "2024-02-15T09:11:55",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 369,
+   "date": "2024-02-15T09:39:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 370,
+   "date": "2024-02-15T09:43:36",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 371,
+   "date": "2024-02-15T10:12:15",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 372,
+   "date": "2024-02-15T10:16:56",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 373,
+   "date": "2024-02-15T10:19:04",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 374,
+   "date": "2024-02-15T10:36:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 375,
+   "date": "2024-02-15T10:51:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 376,
+   "date": "2024-02-15T11:10:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 5 for the pizza"
+  },
+  {
+   "id": 377,
+   "date": "2024-02-15T11:29:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 378,
+   "date": "2024-02-15T12:11:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 4"
+  },
+  {
+   "id": 379,
+   "date": "2024-02-15T12:37:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at school already"
+  },
+  {
+   "id": 380,
+   "date": "2024-02-15T12:56:04",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 381,
+   "date": "2024-02-15T13:25:22",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 382,
+   "date": "2024-02-15T13:37:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 8:15"
+  },
+  {
+   "id": 383,
+   "date": "2024-02-15T13:50:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "you are such an idiot"
+  },
+  {
+   "id": 384,
+   "date": "2024-02-15T13:59:34",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 385,
+   "date": "2024-02-15T14:04:21",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 386,
+   "date": "2024-02-15T14:20:25",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 387,
+   "date": "2024-02-15T14:24:47",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 388,
+   "date": "2024-02-15T15:33:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 389,
+   "date": "2024-02-15T15:38:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 390,
+   "date": "2024-02-15T15:56:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 391,
+   "date": "2024-02-15T15:56:39",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 392,
+   "date": "2024-02-15T16:23:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 393,
+   "date": "2024-02-15T17:15:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 394,
+   "date": "2024-02-15T17:19:38",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 395,
+   "date": "2024-02-15T17:41:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 396,
+   "date": "2024-02-15T17:49:26",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Monday"
+  },
+  {
+   "id": 397,
+   "date": "2024-02-15T18:14:40",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 398,
+   "date": "2024-02-15T18:37:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 399,
+   "date": "2024-02-15T19:02:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 400,
+   "date": "2024-02-15T19:09:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 401,
+   "date": "2024-02-15T19:53:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 402,
+   "date": "2024-02-15T20:04:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 403,
+   "date": "2024-02-15T20:24:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 10 for the burgers"
+  },
+  {
+   "id": 404,
+   "date": "2024-02-15T20:37:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 405,
+   "date": "2024-02-15T21:01:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I left the ",
+    {
+     "type": "bold",
+     "text": "tickets at the office"
+    }
+   ]
+  },
+  {
+   "id": 406,
+   "date": "2024-02-15T21:15:03",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 407,
+   "date": "2024-02-15T21:19:51",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 408,
+   "date": "2024-02-15T21:30:41",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 409,
+   "date": "2024-02-15T21:36:35",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "running 10 minutes late, ",
+    {
+     "type": "bold",
+     "text": "sorry"
+    }
+   ]
+  },
+  {
+   "id": 410,
+   "date": "2024-02-15T21:40:21",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 411,
+   "date": "2024-02-15T22:26:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 412,
+   "date": "2024-02-16T08:09:14",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 413,
+   "date": "2024-02-16T08:26:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 414,
+   "date": "2024-02-16T08:28:23",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "reminder for Tuesday: ",
+    {
+     "type": "bold",
+     "text": "bring the cable and the signed form"
+    }
+   ]
+  },
+  {
+   "id": 415,
+   "date": "2024-02-16T08:31:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 416,
+   "date": "2024-02-16T08:42:26",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 417,
+   "date": "2024-02-16T08:50:08",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the library?"
+  },
+  {
+   "id": 418,
+   "date": "2024-02-16T08:51:49",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 419,
+   "date": "2024-02-16T09:28:28",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 420,
+   "date": "2024-02-16T09:32:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 421,
+   "date": "2024-02-16T09:33:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 422,
+   "date": "2024-02-16T09:48:56",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 423,
+   "date": "2024-02-16T10:37:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "address ",
+    {
+     "type": "bold",
+     "text": "is 200m north of the library blue house"
+    }
+   ]
+  },
+  {
+   "id": 424,
+   "date": "2024-02-16T10:44:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the clinic?"
+  },
+  {
+   "id": 425,
+   "date": "2024-02-16T10:51:23",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 426,
+   "date": "2024-02-16T11:31:01",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 427,
+   "date": "2024-02-16T11:35:40",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what an asshole you are"
+  },
+  {
+   "id": 428,
+   "date": "2024-02-16T12:21:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 429,
+   "date": "2024-02-16T13:09:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 430,
+   "date": "2024-02-16T13:25:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the sushi"
+  },
+  {
+   "id": 431,
+   "date": "2024-02-16T13:44:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 432,
+   "date": "2024-02-16T14:59:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 433,
+   "date": "2024-02-16T15:01:05",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 434,
+   "date": "2024-02-16T15:04:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 435,
+   "date": "2024-02-16T15:06:25",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "stop being stupid and answer"
+  },
+  {
+   "id": 436,
+   "date": "2024-02-16T15:19:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 437,
+   "date": "2024-02-16T15:31:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 438,
+   "date": "2024-02-16T15:50:39",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 439,
+   "date": "2024-02-16T16:09:36",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "address is 200m north of the clinic blue house"
+  },
+  {
+   "id": 440,
+   "date": "2024-02-16T16:20:53",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 441,
+   "date": "2024-02-16T16:45:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "the meeting is at ",
+    {
+     "type": "bold",
+     "text": "7 at the mall"
+    }
+   ]
+  },
+  {
+   "id": 442,
+   "date": "2024-02-16T16:48:54",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 443,
+   "date": "2024-02-16T16:59:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "ok see ",
+    {
+     "type": "bold",
+     "text": "you at 6"
+    }
+   ]
+  },
+  {
+   "id": 444,
+   "date": "2024-02-16T17:08:46",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 445,
+   "date": "2024-02-16T17:15:31",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 446,
+   "date": "2024-02-16T17:34:19",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 447,
+   "date": "2024-02-16T17:46:11",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 448,
+   "date": "2024-02-16T17:48:32",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 449,
+   "date": "2024-02-16T17:59:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 450,
+   "date": "2024-02-16T18:11:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 451,
+   "date": "2024-02-16T18:16:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 10 at the park"
+  },
+  {
+   "id": 452,
+   "date": "2024-02-16T18:19:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 453,
+   "date": "2024-02-16T18:43:05",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 454,
+   "date": "2024-02-16T18:45:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I owe you 10 for the ",
+    {
+     "type": "bold",
+     "text": "pizza"
+    }
+   ]
+  },
+  {
+   "id": 455,
+   "date": "2024-02-16T18:47:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "only an idiot would do that"
+  },
+  {
+   "id": 456,
+   "date": "2024-02-16T18:52:15",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 457,
+   "date": "2024-02-16T18:53:46",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 458,
+   "date": "2024-02-16T20:37:32",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "the teacher moved the ",
+    {
+     "type": "bold",
+     "text": "exam to Saturday"
+    }
+   ]
+  },
+  {
+   "id": 459,
+   "date": "2024-02-16T20:39:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "address is 200m north of the office blue house"
+  },
+  {
+   "id": 460,
+   "date": "2024-02-16T21:21:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "I left ",
+    {
+     "type": "bold",
+     "text": "the charger at the clinic"
+    }
+   ]
+  },
+  {
+   "id": 461,
+   "date": "2024-02-16T22:07:45",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the soda already"
+  },
+  {
+   "id": 462,
+   "date": "2024-02-16T22:13:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 463,
+   "date": "2024-02-16T22:18:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 464,
+   "date": "2024-02-16T22:33:06",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the tickets"
+  },
+  {
+   "id": 465,
+   "date": "2024-02-16T22:34:22",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 466,
+   "date": "2024-02-16T22:38:58",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Sunday?"
+  },
+  {
+   "id": 467,
+   "date": "2024-02-16T22:56:26",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 468,
+   "date": "2024-02-16T23:11:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the meeting is at 7:30 at school"
+  },
+  {
+   "id": 469,
+   "date": "2024-02-16T23:28:06",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 470,
+   "date": "2024-02-16T23:36:53",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 471,
+   "date": "2024-02-17T08:37:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 472,
+   "date": "2024-02-17T08:40:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 473,
+   "date": "2024-02-17T08:52:37",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 474,
+   "date": "2024-02-17T09:03:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "reminder for Wednesday: bring the cable ",
+    {
+     "type": "bold",
+     "text": "and the signed form"
+    }
+   ]
+  },
+  {
+   "id": 475,
+   "date": "2024-02-17T09:34:10",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 476,
+   "date": "2024-02-17T10:17:05",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 477,
+   "date": "2024-02-17T10:33:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 478,
+   "date": "2024-02-17T10:35:15",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 479,
+   "date": "2024-02-17T10:41:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "who's ",
+    {
+     "type": "bold",
+     "text": "in for Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 480,
+   "date": "2024-02-17T11:06:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 481,
+   "date": "2024-02-17T11:20:26",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 482,
+   "date": "2024-02-17T11:21:53",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 483,
+   "date": "2024-02-17T11:25:30",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 484,
+   "date": "2024-02-17T11:30:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 485,
+   "date": "2024-02-17T11:38:43",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "who ",
+    {
+     "type": "bold",
+     "text": "has the keys?"
+    }
+   ]
+  },
+  {
+   "id": 486,
+   "date": "2024-02-17T11:46:42",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 487,
+   "date": "2024-02-17T12:04:12",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 488,
+   "date": "2024-02-17T12:05:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 489,
+   "date": "2024-02-17T12:52:59",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 490,
+   "date": "2024-02-17T13:09:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 491,
+   "date": "2024-02-17T13:52:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "I'm at ",
+    {
+     "type": "bold",
+     "text": "the soda already"
+    }
+   ]
+  },
+  {
+   "id": 492,
+   "date": "2024-02-17T14:04:17",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Andres Navarro",
+    "Esteban Rojas"
+   ]
+  },
+  {
+   "id": 493,
+   "date": "2024-02-17T14:24:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 3"
+  },
+  {
+   "id": 494,
+   "date": "2024-02-17T14:40:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 495,
+   "date": "2024-02-17T14:50:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 496,
+   "date": "2024-02-17T14:57:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 497,
+   "date": "2024-02-17T15:16:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 498,
+   "date": "2024-02-17T15:59:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 499,
+   "date": "2024-02-17T17:08:34",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 500,
+   "date": "2024-02-17T17:54:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 40 for the tacos"
+  },
+  {
+   "id": 501,
+   "date": "2024-02-17T18:16:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 502,
+   "date": "2024-02-17T19:18:39",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 503,
+   "date": "2024-02-17T19:48:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 504,
+   "date": "2024-02-17T19:53:05",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 505,
+   "date": "2024-02-17T20:07:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 506,
+   "date": "2024-02-17T20:20:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 507,
+   "date": "2024-02-17T20:31:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 508,
+   "date": "2024-02-17T21:03:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 509,
+   "date": "2024-02-17T21:11:14",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 510,
+   "date": "2024-02-17T21:24:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 511,
+   "date": "2024-02-17T21:38:53",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 512,
+   "date": "2024-02-17T22:05:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 513,
+   "date": "2024-02-17T22:55:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 514,
+   "date": "2024-02-17T23:10:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 515,
+   "date": "2024-02-17T23:17:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the umbrella at the library"
+  },
+  {
+   "id": 516,
+   "date": "2024-02-17T23:37:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the gym already"
+  },
+  {
+   "id": 517,
+   "date": "2024-02-18T07:11:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "I swear I will ",
+    {
+     "type": "bold",
+     "text": "kill you if you show up"
+    }
+   ]
+  },
+  {
+   "id": 518,
+   "date": "2024-02-18T07:23:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 519,
+   "date": "2024-02-18T07:30:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 520,
+   "date": "2024-02-18T07:58:06",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 521,
+   "date": "2024-02-18T08:00:48",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 522,
+   "date": "2024-02-18T08:12:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the library?"
+  },
+  {
+   "id": 523,
+   "date": "2024-02-18T08:17:39",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 524,
+   "date": "2024-02-18T08:48:11",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 525,
+   "date": "2024-02-18T09:02:56",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 526,
+   "date": "2024-02-18T09:11:37",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 527,
+   "date": "2024-02-18T09:26:04",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 528,
+   "date": "2024-02-18T09:32:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 3"
+  },
+  {
+   "id": 529,
+   "date": "2024-02-18T09:44:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 530,
+   "date": "2024-02-18T09:46:00",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 531,
+   "date": "2024-02-18T09:46:45",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 532,
+   "date": "2024-02-18T09:50:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 533,
+   "date": "2024-02-18T09:53:08",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 534,
+   "date": "2024-02-18T10:01:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 535,
+   "date": "2024-02-18T10:08:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 536,
+   "date": "2024-02-18T11:04:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 537,
+   "date": "2024-02-18T11:15:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 538,
+   "date": "2024-02-18T11:43:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 539,
+   "date": "2024-02-18T11:50:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 540,
+   "date": "2024-02-18T12:42:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 541,
+   "date": "2024-02-18T12:55:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Saturday?"
+  },
+  {
+   "id": 542,
+   "date": "2024-02-18T12:58:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 543,
+   "date": "2024-02-18T12:59:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 544,
+   "date": "2024-02-18T13:07:20",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 545,
+   "date": "2024-02-18T13:19:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 546,
+   "date": "2024-02-18T13:31:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 547,
+   "date": "2024-02-18T13:41:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 548,
+   "date": "2024-02-18T13:54:55",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "I owe you 10 ",
+    {
+     "type": "bold",
+     "text": "for the burgers"
+    }
+   ]
+  },
+  {
+   "id": 549,
+   "date": "2024-02-18T14:23:30",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 550,
+   "date": "2024-02-18T14:36:16",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 551,
+   "date": "2024-02-18T14:38:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 552,
+   "date": "2024-02-18T14:44:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Wednesday"
+  },
+  {
+   "id": 553,
+   "date": "2024-02-18T15:15:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 554,
+   "date": "2024-02-18T15:30:02",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 555,
+   "date": "2024-02-18T15:32:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 556,
+   "date": "2024-02-18T16:21:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 557,
+   "date": "2024-02-18T16:25:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Sunday"
+  },
+  {
+   "id": 558,
+   "date": "2024-02-18T17:01:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "address is 200m north of the mall blue house"
+  },
+  {
+   "id": 559,
+   "date": "2024-02-18T17:02:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 560,
+   "date": "2024-02-18T17:19:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 561,
+   "date": "2024-02-18T17:23:53",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 562,
+   "date": "2024-02-18T17:59:09",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 563,
+   "date": "2024-02-18T18:16:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "reminder for Sunday: bring the umbrella and the signed form"
+  },
+  {
+   "id": 564,
+   "date": "2024-02-18T18:38:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 565,
+   "date": "2024-02-18T19:00:41",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 566,
+   "date": "2024-02-18T19:07:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 567,
+   "date": "2024-02-18T19:11:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 568,
+   "date": "2024-02-18T19:22:48",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 569,
+   "date": "2024-02-18T19:29:11",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 570,
+   "date": "2024-02-18T19:32:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 571,
+   "date": "2024-02-18T19:42:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 572,
+   "date": "2024-02-18T20:20:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 573,
+   "date": "2024-02-18T20:54:25",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "address is 200m north of the soda blue house"
+  },
+  {
+   "id": 574,
+   "date": "2024-02-18T20:59:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "reminder for Sunday: bring the cable and the signed form"
+  },
+  {
+   "id": 575,
+   "date": "2024-02-18T21:12:09",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 576,
+   "date": "2024-02-18T21:38:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the bus stop already"
+  },
+  {
+   "id": 577,
+   "date": "2024-02-18T22:04:39",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 578,
+   "date": "2024-02-18T22:43:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 579,
+   "date": "2024-02-18T22:57:25",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the meeting is at 8:15 at the mall"
+  },
+  {
+   "id": 580,
+   "date": "2024-02-18T23:44:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "running 10 ",
+    {
+     "type": "bold",
+     "text": "minutes late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 581,
+   "date": "2024-02-18T23:46:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 582,
+   "date": "2024-02-18T23:52:44",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 583,
+   "date": "2024-02-19T07:02:19",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Friday?"
+  },
+  {
+   "id": 584,
+   "date": "2024-02-19T07:04:01",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 585,
+   "date": "2024-02-19T07:35:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 586,
+   "date": "2024-02-19T07:44:04",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 587,
+   "date": "2024-02-19T07:49:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 588,
+   "date": "2024-02-19T08:43:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 589,
+   "date": "2024-02-19T08:51:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 590,
+   "date": "2024-02-19T08:53:36",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 591,
+   "date": "2024-02-19T08:55:31",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 592,
+   "date": "2024-02-19T09:04:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 593,
+   "date": "2024-02-19T09:07:54",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 594,
+   "date": "2024-02-19T09:13:10",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the keys"
+  },
+  {
+   "id": 595,
+   "date": "2024-02-19T09:20:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 596,
+   "date": "2024-02-19T09:20:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 597,
+   "date": "2024-02-19T09:25:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 598,
+   "date": "2024-02-19T09:52:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 599,
+   "date": "2024-02-19T11:33:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 600,
+   "date": "2024-02-19T11:38:22",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 601,
+   "date": "2024-02-19T12:12:17",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 602,
+   "date": "2024-02-19T12:25:46",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 603,
+   "date": "2024-02-19T12:57:11",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 604,
+   "date": "2024-02-19T13:05:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "reminder for Friday: bring the cable and the signed form"
+  },
+  {
+   "id": 605,
+   "date": "2024-02-19T13:13:28",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "watched a documentary about a drug deal investigation"
+  },
+  {
+   "id": 606,
+   "date": "2024-02-19T13:40:23",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 607,
+   "date": "2024-02-19T13:55:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 608,
+   "date": "2024-02-19T14:13:16",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 609,
+   "date": "2024-02-19T14:48:35",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "you're a worthless clown"
+  },
+  {
+   "id": 610,
+   "date": "2024-02-19T15:14:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "anyone want burgers ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 611,
+   "date": "2024-02-19T15:57:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "are you coming ",
+    {
+     "type": "bold",
+     "text": "tomorrow?"
+    }
+   ]
+  },
+  {
+   "id": 612,
+   "date": "2024-02-19T16:12:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 613,
+   "date": "2024-02-19T16:13:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 614,
+   "date": "2024-02-19T16:16:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 615,
+   "date": "2024-02-19T16:51:26",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 616,
+   "date": "2024-02-19T16:59:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 617,
+   "date": "2024-02-19T17:06:24",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "reminder for Thursday: bring the tickets and the signed form"
+  },
+  {
+   "id": 618,
+   "date": "2024-02-19T17:09:26",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 619,
+   "date": "2024-02-19T17:33:47",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 620,
+   "date": "2024-02-19T17:47:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 621,
+   "date": "2024-02-19T17:49:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 622,
+   "date": "2024-02-19T18:45:24",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "who's in for ",
+    {
+     "type": "bold",
+     "text": "Wednesday?"
+    }
+   ]
+  },
+  {
+   "id": 623,
+   "date": "2024-02-19T19:20:01",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 624,
+   "date": "2024-02-19T19:21:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I owe you 50 for the tacos"
+  },
+  {
+   "id": 625,
+   "date": "2024-02-19T19:30:19",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 626,
+   "date": "2024-02-19T20:16:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 627,
+   "date": "2024-02-19T21:17:55",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "only an idiot ",
+    {
+     "type": "bold",
+     "text": "would do that"
+    }
+   ]
+  },
+  {
+   "id": 628,
+   "date": "2024-02-19T21:25:38",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 629,
+   "date": "2024-02-19T21:54:49",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 630,
+   "date": "2024-02-19T21:55:38",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 631,
+   "date": "2024-02-19T21:56:11",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 632,
+   "date": "2024-02-19T22:15:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 633,
+   "date": "2024-02-19T22:23:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 634,
+   "date": "2024-02-19T22:37:05",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "reminder for Wednesday: bring the keys and the signed form"
+  },
+  {
+   "id": 635,
+   "date": "2024-02-19T22:40:39",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 636,
+   "date": "2024-02-19T22:48:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "reminder for Tuesday: bring the cable and the signed form"
+  },
+  {
+   "id": 637,
+   "date": "2024-02-19T23:12:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 638,
+   "date": "2024-02-19T23:23:42",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 639,
+   "date": "2024-02-19T23:31:46",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "are ",
+    {
+     "type": "bold",
+     "text": "you coming tomorrow?"
+    }
+   ]
+  },
+  {
+   "id": 640,
+   "date": "2024-02-19T23:32:19",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 641,
+   "date": "2024-02-19T23:49:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 642,
+   "date": "2024-02-19T23:59:00",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 5"
+  },
+  {
+   "id": 643,
+   "date": "2024-02-20T07:08:01",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 644,
+   "date": "2024-02-20T07:12:48",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 645,
+   "date": "2024-02-20T07:23:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 646,
+   "date": "2024-02-20T07:55:45",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 647,
+   "date": "2024-02-20T08:14:11",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 648,
+   "date": "2024-02-20T08:15:28",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Monday?"
+  },
+  {
+   "id": 649,
+   "date": "2024-02-20T08:45:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 650,
+   "date": "2024-02-20T08:47:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 651,
+   "date": "2024-02-20T09:12:19",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at 8 at school"
+  },
+  {
+   "id": 652,
+   "date": "2024-02-20T09:42:18",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 653,
+   "date": "2024-02-20T09:46:13",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 654,
+   "date": "2024-02-20T09:56:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "don't ",
+    {
+     "type": "bold",
+     "text": "forget to bring the tickets"
+    }
+   ]
+  },
+  {
+   "id": 655,
+   "date": "2024-02-20T10:05:04",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 4"
+  },
+  {
+   "id": 656,
+   "date": "2024-02-20T11:24:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 657,
+   "date": "2024-02-20T11:47:03",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 658,
+   "date": "2024-02-20T11:55:43",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 659,
+   "date": "2024-02-20T12:10:03",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "my ",
+    {
+     "type": "bold",
+     "text": "phone is almost dead"
+    }
+   ]
+  },
+  {
+   "id": 660,
+   "date": "2024-02-20T12:36:07",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 661,
+   "date": "2024-02-20T12:46:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the meeting is at noon at the gym"
+  },
+  {
+   "id": 662,
+   "date": "2024-02-20T13:04:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 7"
+  },
+  {
+   "id": 663,
+   "date": "2024-02-20T13:48:15",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "watch your back on the way home"
+  },
+  {
+   "id": 664,
+   "date": "2024-02-20T14:01:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I left the charger at the mall"
+  },
+  {
+   "id": 665,
+   "date": "2024-02-20T14:07:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 666,
+   "date": "2024-02-20T14:42:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 667,
+   "date": "2024-02-20T15:02:42",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I owe you 20 for the sushi"
+  },
+  {
+   "id": 668,
+   "date": "2024-02-20T15:03:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 669,
+   "date": "2024-02-20T15:20:06",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "stop being stupid and answer"
+  },
+  {
+   "id": 670,
+   "date": "2024-02-20T15:36:39",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the meeting is at 9 at the bus stop"
+  },
+  {
+   "id": 671,
+   "date": "2024-02-20T15:54:44",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what an asshole you are"
+  },
+  {
+   "id": 672,
+   "date": "2024-02-20T17:01:35",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who has my jacket?"
+  },
+  {
+   "id": 673,
+   "date": "2024-02-20T17:20:03",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 674,
+   "date": "2024-02-20T17:23:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 675,
+   "date": "2024-02-20T17:35:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 676,
+   "date": "2024-02-20T18:07:31",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 677,
+   "date": "2024-02-20T19:04:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 678,
+   "date": "2024-02-20T19:07:10",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 679,
+   "date": "2024-02-20T19:27:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 680,
+   "date": "2024-02-20T19:50:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "anyone want pizza ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 681,
+   "date": "2024-02-20T19:58:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 682,
+   "date": "2024-02-20T20:02:53",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 683,
+   "date": "2024-02-20T20:09:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 684,
+   "date": "2024-02-20T21:22:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 685,
+   "date": "2024-02-20T21:25:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 686,
+   "date": "2024-02-20T22:29:08",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 687,
+   "date": "2024-02-20T22:59:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 688,
+   "date": "2024-02-20T23:02:11",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 689,
+   "date": "2024-02-20T23:13:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 690,
+   "date": "2024-02-20T23:34:43",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 691,
+   "date": "2024-02-20T23:38:27",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "you are such an idiot"
+  },
+  {
+   "id": 692,
+   "date": "2024-02-21T07:27:55",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "send me the ",
+    {
+     "type": "bold",
+     "text": "location please"
+    }
+   ]
+  },
+  {
+   "id": 693,
+   "date": "2024-02-21T07:38:30",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 694,
+   "date": "2024-02-21T08:57:42",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 695,
+   "date": "2024-02-21T09:02:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 696,
+   "date": "2024-02-21T09:31:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nobody here can stand you, loser"
+  },
+  {
+   "id": 697,
+   "date": "2024-02-21T09:52:43",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 698,
+   "date": "2024-02-21T10:13:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 699,
+   "date": "2024-02-21T10:13:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 700,
+   "date": "2024-02-21T10:21:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "stop being stupid and answer"
+  },
+  {
+   "id": 701,
+   "date": "2024-02-21T11:54:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 702,
+   "date": "2024-02-21T12:12:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Friday"
+  },
+  {
+   "id": 703,
+   "date": "2024-02-21T12:54:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 704,
+   "date": "2024-02-21T13:56:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 705,
+   "date": "2024-02-21T14:04:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 706,
+   "date": "2024-02-21T14:12:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 707,
+   "date": "2024-02-21T14:16:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 708,
+   "date": "2024-02-21T14:50:54",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 709,
+   "date": "2024-02-21T14:57:21",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 710,
+   "date": "2024-02-21T15:12:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 711,
+   "date": "2024-02-21T15:35:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the tickets"
+  },
+  {
+   "id": 712,
+   "date": "2024-02-21T16:08:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want rice and beans tonight?"
+  },
+  {
+   "id": 713,
+   "date": "2024-02-21T16:21:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 714,
+   "date": "2024-02-21T16:31:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who has my jacket?"
+  },
+  {
+   "id": 715,
+   "date": "2024-02-21T16:31:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 716,
+   "date": "2024-02-21T16:51:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the meeting is at noon at school"
+  },
+  {
+   "id": 717,
+   "date": "2024-02-21T17:03:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 718,
+   "date": "2024-02-21T17:07:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 719,
+   "date": "2024-02-21T17:07:34",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "what an asshole you are"
+  },
+  {
+   "id": 720,
+   "date": "2024-02-21T17:19:58",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "you are such an idiot"
+  },
+  {
+   "id": 721,
+   "date": "2024-02-21T18:03:34",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 722,
+   "date": "2024-02-21T18:13:33",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 723,
+   "date": "2024-02-21T18:49:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 724,
+   "date": "2024-02-21T19:01:23",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 725,
+   "date": "2024-02-21T19:06:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 726,
+   "date": "2024-02-21T19:16:07",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I left the umbrella at the clinic"
+  },
+  {
+   "id": 727,
+   "date": "2024-02-21T19:26:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "I ",
+    {
+     "type": "bold",
+     "text": "owe you 20 for the tacos"
+    }
+   ]
+  },
+  {
+   "id": 728,
+   "date": "2024-02-21T19:27:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 729,
+   "date": "2024-02-21T20:51:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "the bus is full ",
+    {
+     "type": "bold",
+     "text": "again"
+    }
+   ]
+  },
+  {
+   "id": 730,
+   "date": "2024-02-21T20:52:50",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 731,
+   "date": "2024-02-21T21:10:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 732,
+   "date": "2024-02-21T21:16:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 733,
+   "date": "2024-02-21T21:28:08",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "this stupid printer jammed again"
+  },
+  {
+   "id": 734,
+   "date": "2024-02-21T21:30:29",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "you're a worthless clown"
+  },
+  {
+   "id": 735,
+   "date": "2024-02-21T22:08:20",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 736,
+   "date": "2024-02-21T22:26:00",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 737,
+   "date": "2024-02-21T22:27:57",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 738,
+   "date": "2024-02-21T22:29:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 739,
+   "date": "2024-02-21T22:43:09",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 740,
+   "date": "2024-02-22T08:43:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 741,
+   "date": "2024-02-22T08:53:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 742,
+   "date": "2024-02-22T09:04:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": [
+    "shopping list: - rice - ",
+    {
+     "type": "bold",
+     "text": "beans - coffee"
+    }
+   ]
+  },
+  {
+   "id": 743,
+   "date": "2024-02-22T09:08:42",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 744,
+   "date": "2024-02-22T09:27:48",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "edit_group_title",
+   "text": "",
+   "title": "Futbol Domingos 55"
+  },
+  {
+   "id": 745,
+   "date": "2024-02-22T09:42:00",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 746,
+   "date": "2024-02-22T09:48:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 747,
+   "date": "2024-02-22T09:49:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 748,
+   "date": "2024-02-22T10:07:03",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 749,
+   "date": "2024-02-22T10:12:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 750,
+   "date": "2024-02-22T10:15:25",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 751,
+   "date": "2024-02-22T10:27:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 752,
+   "date": "2024-02-22T10:30:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 753,
+   "date": "2024-02-22T10:42:12",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "reminder for Sunday: bring the report and the signed form"
+  },
+  {
+   "id": 754,
+   "date": "2024-02-22T10:58:28",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 755,
+   "date": "2024-02-22T11:08:38",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Monday"
+  },
+  {
+   "id": 756,
+   "date": "2024-02-22T11:32:43",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 757,
+   "date": "2024-02-22T11:43:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Monday?"
+  },
+  {
+   "id": 758,
+   "date": "2024-02-22T11:50:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 759,
+   "date": "2024-02-22T12:03:07",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 760,
+   "date": "2024-02-22T12:19:00",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 761,
+   "date": "2024-02-22T12:21:24",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who has the umbrella?"
+  },
+  {
+   "id": 762,
+   "date": "2024-02-22T12:39:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 763,
+   "date": "2024-02-22T12:58:58",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 764,
+   "date": "2024-02-22T13:24:45",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 765,
+   "date": "2024-02-22T13:46:12",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 766,
+   "date": "2024-02-22T13:50:31",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 767,
+   "date": "2024-02-22T14:02:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 768,
+   "date": "2024-02-22T14:23:41",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 769,
+   "date": "2024-02-22T14:27:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 770,
+   "date": "2024-02-22T14:32:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "is the gym open on Wednesday?"
+  },
+  {
+   "id": 771,
+   "date": "2024-02-22T14:43:10",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 772,
+   "date": "2024-02-22T15:10:50",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 773,
+   "date": "2024-02-22T15:12:05",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok see you at 8:15"
+  },
+  {
+   "id": 774,
+   "date": "2024-02-22T15:18:35",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 775,
+   "date": "2024-02-22T15:27:15",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 776,
+   "date": "2024-02-22T16:20:45",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 777,
+   "date": "2024-02-22T16:27:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 778,
+   "date": "2024-02-22T16:30:07",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 779,
+   "date": "2024-02-22T16:55:04",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 780,
+   "date": "2024-02-22T17:54:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 781,
+   "date": "2024-02-22T18:14:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 782,
+   "date": "2024-02-22T18:23:44",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 783,
+   "date": "2024-02-22T18:28:32",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I left my jacket at the park"
+  },
+  {
+   "id": 784,
+   "date": "2024-02-22T18:40:18",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 785,
+   "date": "2024-02-22T18:51:29",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 786,
+   "date": "2024-02-22T19:06:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 787,
+   "date": "2024-02-22T19:49:46",
+   "type": "service",
+   "actor": "Daniel Quesada",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 788,
+   "date": "2024-02-22T20:03:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 789,
+   "date": "2024-02-22T20:28:05",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 790,
+   "date": "2024-02-22T20:40:49",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 791,
+   "date": "2024-02-22T20:50:28",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "I ",
+    {
+     "type": "bold",
+     "text": "can't make it Sunday"
+    }
+   ]
+  },
+  {
+   "id": 792,
+   "date": "2024-02-22T20:56:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 793,
+   "date": "2024-02-22T20:57:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "shut up, stupid"
+  },
+  {
+   "id": 794,
+   "date": "2024-02-22T21:21:13",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 795,
+   "date": "2024-02-22T21:26:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 796,
+   "date": "2024-02-22T22:13:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 797,
+   "date": "2024-02-22T22:48:21",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 798,
+   "date": "2024-02-22T23:18:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 799,
+   "date": "2024-02-23T08:04:38",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 800,
+   "date": "2024-02-23T08:15:01",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 801,
+   "date": "2024-02-23T08:37:48",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 802,
+   "date": "2024-02-23T09:32:35",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 803,
+   "date": "2024-02-23T10:50:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 8:15"
+  },
+  {
+   "id": 804,
+   "date": "2024-02-23T10:58:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 805,
+   "date": "2024-02-23T11:39:16",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 806,
+   "date": "2024-02-23T12:19:34",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 807,
+   "date": "2024-02-23T12:48:48",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 808,
+   "date": "2024-02-23T14:40:20",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'm at the park already"
+  },
+  {
+   "id": 809,
+   "date": "2024-02-23T15:22:02",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 810,
+   "date": "2024-02-23T15:54:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 811,
+   "date": "2024-02-23T16:06:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 812,
+   "date": "2024-02-23T17:04:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 813,
+   "date": "2024-02-23T17:53:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 814,
+   "date": "2024-02-23T18:14:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 815,
+   "date": "2024-02-23T18:15:41",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 816,
+   "date": "2024-02-23T18:47:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 817,
+   "date": "2024-02-23T18:54:27",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I left the cable at the gym"
+  },
+  {
+   "id": 818,
+   "date": "2024-02-23T18:58:31",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 819,
+   "date": "2024-02-23T19:45:24",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 820,
+   "date": "2024-02-23T19:50:56",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 821,
+   "date": "2024-02-23T20:45:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 822,
+   "date": "2024-02-23T20:57:07",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I left the notes at the stadium"
+  },
+  {
+   "id": 823,
+   "date": "2024-02-23T20:57:57",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "the teacher moved ",
+    {
+     "type": "bold",
+     "text": "the exam to Friday"
+    }
+   ]
+  },
+  {
+   "id": 824,
+   "date": "2024-02-23T21:21:22",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 825,
+   "date": "2024-02-23T21:25:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 826,
+   "date": "2024-02-23T21:39:57",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 827,
+   "date": "2024-02-23T22:11:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "nobody here can stand you, loser"
+  },
+  {
+   "id": 828,
+   "date": "2024-02-23T22:31:14",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "address is 200m north of the library blue house"
+  },
+  {
+   "id": 829,
+   "date": "2024-02-23T22:57:36",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 830,
+   "date": "2024-02-23T23:57:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 831,
+   "date": "2024-02-24T06:12:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 832,
+   "date": "2024-02-24T06:23:53",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 833,
+   "date": "2024-02-24T06:25:23",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 834,
+   "date": "2024-02-24T06:26:12",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the meeting is at 7 at the mall"
+  },
+  {
+   "id": 835,
+   "date": "2024-02-24T06:51:35",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 836,
+   "date": "2024-02-24T07:10:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 837,
+   "date": "2024-02-24T07:51:36",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 838,
+   "date": "2024-02-24T08:31:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 839,
+   "date": "2024-02-24T08:58:15",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 840,
+   "date": "2024-02-24T09:13:51",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 841,
+   "date": "2024-02-24T09:43:23",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 842,
+   "date": "2024-02-24T09:50:09",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 843,
+   "date": "2024-02-24T09:56:40",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 844,
+   "date": "2024-02-24T10:08:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 845,
+   "date": "2024-02-24T10:23:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 846,
+   "date": "2024-02-24T10:28:35",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 847,
+   "date": "2024-02-24T10:31:48",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 848,
+   "date": "2024-02-24T10:50:32",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the bus stop?"
+  },
+  {
+   "id": 849,
+   "date": "2024-02-24T10:56:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 850,
+   "date": "2024-02-24T11:09:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the rice and beans"
+  },
+  {
+   "id": 851,
+   "date": "2024-02-24T11:19:52",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 852,
+   "date": "2024-02-24T11:32:29",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 853,
+   "date": "2024-02-24T11:43:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 854,
+   "date": "2024-02-24T12:18:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 855,
+   "date": "2024-02-24T12:18:55",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "reminder for Tuesday: bring the keys and the signed form"
+  },
+  {
+   "id": 856,
+   "date": "2024-02-24T12:43:40",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 857,
+   "date": "2024-02-24T13:10:13",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 858,
+   "date": "2024-02-24T13:39:17",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 859,
+   "date": "2024-02-24T13:41:22",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 860,
+   "date": "2024-02-24T13:43:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 861,
+   "date": "2024-02-24T13:53:41",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 862,
+   "date": "2024-02-24T15:17:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Friday"
+  },
+  {
+   "id": 863,
+   "date": "2024-02-24T15:20:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 864,
+   "date": "2024-02-24T15:37:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 865,
+   "date": "2024-02-24T15:42:04",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 866,
+   "date": "2024-02-24T15:47:59",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "stop being stupid and answer"
+  },
+  {
+   "id": 867,
+   "date": "2024-02-24T15:48:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "stop being stupid and answer"
+  },
+  {
+   "id": 868,
+   "date": "2024-02-24T16:16:56",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 869,
+   "date": "2024-02-24T16:25:47",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 870,
+   "date": "2024-02-24T16:27:59",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 871,
+   "date": "2024-02-24T16:36:39",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 872,
+   "date": "2024-02-24T16:59:08",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 873,
+   "date": "2024-02-24T17:19:52",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 874,
+   "date": "2024-02-24T17:26:02",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 875,
+   "date": "2024-02-24T17:33:17",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": [
+    "reminder for Wednesday: bring the keys and the ",
+    {
+     "type": "bold",
+     "text": "signed form"
+    }
+   ]
+  },
+  {
+   "id": 876,
+   "date": "2024-02-24T17:34:33",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 877,
+   "date": "2024-02-24T18:29:30",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 878,
+   "date": "2024-02-24T18:34:38",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "can we move it to Wednesday?"
+  },
+  {
+   "id": 879,
+   "date": "2024-02-24T18:38:07",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 880,
+   "date": "2024-02-24T20:11:44",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 881,
+   "date": "2024-02-24T21:02:10",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "I'll ",
+    {
+     "type": "bold",
+     "text": "call you later"
+    }
+   ]
+  },
+  {
+   "id": 882,
+   "date": "2024-02-24T21:03:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": [
+    "who's in ",
+    {
+     "type": "bold",
+     "text": "for Thursday?"
+    }
+   ]
+  },
+  {
+   "id": 883,
+   "date": "2024-02-24T21:06:27",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 884,
+   "date": "2024-02-24T21:07:49",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 885,
+   "date": "2024-02-24T21:14:03",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 886,
+   "date": "2024-02-24T21:51:44",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I owe you 25 for the pizza"
+  },
+  {
+   "id": 887,
+   "date": "2024-02-24T22:08:00",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 888,
+   "date": "2024-02-24T22:32:51",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 889,
+   "date": "2024-02-24T22:41:49",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 890,
+   "date": "2024-02-24T22:51:21",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "I left the umbrella at the park"
+  },
+  {
+   "id": 891,
+   "date": "2024-02-24T22:59:38",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 892,
+   "date": "2024-02-24T23:10:26",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 893,
+   "date": "2024-02-24T23:25:22",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "is the gym open on Saturday?"
+  },
+  {
+   "id": 894,
+   "date": "2024-02-24T23:52:29",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 895,
+   "date": "2024-02-25T07:12:16",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "I'm at the clinic already"
+  },
+  {
+   "id": 896,
+   "date": "2024-02-25T07:18:37",
+   "type": "message",
+   "from": "Daniel Quesada",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 897,
+   "date": "2024-02-25T08:20:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 898,
+   "date": "2024-02-25T08:28:38",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 899,
+   "date": "2024-02-25T08:49:52",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 900,
+   "date": "2024-02-25T09:00:54",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 901,
+   "date": "2024-02-25T09:18:50",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 902,
+   "date": "2024-02-25T09:22:10",
+   "type": "message",
+   "from": "Esteban Rojas",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 903,
+   "date": "2024-02-25T09:35:38",
+   "type": "message",
+   "from": "Andres Navarro",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  }
+ ]
+}

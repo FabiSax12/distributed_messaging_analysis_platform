@@ -1,0 +1,245 @@
+{
+  "case_id": "case-023",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240117-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240126-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240118-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240125-WA0005.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240125-WA0006.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.271344,
+            "y": 0.426583,
+            "w": 0.168547,
+            "h": 0.496646
+          },
+          "notes": "COCO scissors box, 5646.0 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.704344,
+            "y": 0.696854,
+            "w": 0.030078,
+            "h": 0.120875
+          },
+          "notes": "COCO scissors box, 371.3 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240128-WA0011.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.843016,
+            "y": 0.460941,
+            "w": 0.040266,
+            "h": 0.007624
+          },
+          "notes": "COCO knife box, 59.2 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.815453,
+            "y": 0.489906,
+            "w": 0.004469,
+            "h": 0.079506
+          },
+          "notes": "COCO knife box, 67.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.532844,
+            "y": 0.404753,
+            "w": 0.068781,
+            "h": 0.011059
+          },
+          "notes": "COCO knife box, 139.6 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.843781,
+            "y": 0.470235,
+            "w": 0.039859,
+            "h": 0.006824
+          },
+          "notes": "COCO knife box, 48.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.846828,
+            "y": 0.495718,
+            "w": 0.032937,
+            "h": 0.007624
+          },
+          "notes": "COCO knife box, 51.2 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.837516,
+            "y": 0.430988,
+            "w": 0.057375,
+            "h": 0.015765
+          },
+          "notes": "COCO knife box, 100.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.833969,
+            "y": 0.378729,
+            "w": 0.071734,
+            "h": 0.015718
+          },
+          "notes": "COCO knife box, 197.3 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.836547,
+            "y": 0.399365,
+            "w": 0.058453,
+            "h": 0.016353
+          },
+          "notes": "COCO knife box, 147.1 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.841844,
+            "y": 0.449647,
+            "w": 0.047719,
+            "h": 0.007835
+          },
+          "notes": "COCO knife box, 64.1 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.847063,
+            "y": 0.4868,
+            "w": 0.034875,
+            "h": 0.007671
+          },
+          "notes": "COCO knife box, 43.4 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.549578,
+            "y": 0.453718,
+            "w": 0.041828,
+            "h": 0.008612
+          },
+          "notes": "COCO knife box, 66.5 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.503406,
+            "y": 0.3748,
+            "w": 0.096094,
+            "h": 0.012212
+          },
+          "notes": "COCO knife box, 174.7 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.541109,
+            "y": 0.438047,
+            "w": 0.059844,
+            "h": 0.015388
+          },
+          "notes": "COCO knife box, 125.3 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20240127-WA0009.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20240128-WA0012.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240126-WA0008.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240122-WA0004.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240120-WA0003.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240129-WA0013.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20240127-WA0010.opus",
+      "findings": []
+    }
+  ]
+}

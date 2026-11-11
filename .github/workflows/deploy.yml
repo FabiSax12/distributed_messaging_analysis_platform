@@ -61,6 +61,9 @@ jobs:
       SITE_BUCKET: ${{ vars.SITE_BUCKET }}
       DISTRIBUTION_ID: ${{ vars.DISTRIBUTION_ID }}
       CLOUDFRONT_URL: ${{ vars.CLOUDFRONT_URL }}
+      # Public Cognito SPA client settings baked into the dashboard build.
+      VITE_COGNITO_DOMAIN: ${{ vars.COGNITO_DOMAIN }}
+      VITE_COGNITO_CLIENT_ID: ${{ vars.COGNITO_CLIENT_ID }}
     steps:
       - uses: actions/checkout@v7
         with:

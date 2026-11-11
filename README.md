@@ -17,8 +17,8 @@ REST and WebSocket access when configured. Production compose supports cgroup
 limits. Terraform includes SNS/application alarms and optional managed origin
 TLS; cloud activation and experiments remain manual.
 
-Frontend login/views, full dataset generation and the M5 benchmark remain
-Camila's independent deliverables. See [completion status and manual steps](docs/handoff-completion.md).
+Frontend login/views, the dataset and the M5 benchmark are Camila's
+deliverables (status in [responsibilities](docs/responsabilidades.md)). See [completion status and manual steps](docs/handoff-completion.md).
 
 Camila and her agents: start with the [dataset, frontend and M5 handoff](docs/handoff-camila.md) for setup, code locations, integration contracts and completion checks.
 

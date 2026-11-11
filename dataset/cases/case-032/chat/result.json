@@ -1,0 +1,4860 @@
+{
+ "name": "Los Pinos 56",
+ "type": "private_group",
+ "id": 1000032,
+ "messages": [
+  {
+   "id": 1,
+   "date": "2025-01-19T14:02:33",
+   "type": "service",
+   "actor": "Kevin Calderon",
+   "actor_id": "user1000",
+   "action": "create_group",
+   "text": ""
+  },
+  {
+   "id": 2,
+   "date": "2025-01-19T14:33:18",
+   "type": "service",
+   "actor": "Kevin Calderon",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Casey Mora",
+    "Mariana Quesada"
+   ]
+  },
+  {
+   "id": 3,
+   "date": "2025-01-19T15:03:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 4,
+   "date": "2025-01-19T15:33:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 5,
+   "date": "2025-01-19T16:18:07",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 6,
+   "date": "2025-01-19T16:20:50",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 7,
+   "date": "2025-01-19T17:22:12",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 8,
+   "date": "2025-01-19T17:36:59",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 9,
+   "date": "2025-01-19T17:59:25",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 10,
+   "date": "2025-01-19T18:06:16",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the meeting is at 5 at the library"
+  },
+  {
+   "id": 11,
+   "date": "2025-01-19T18:08:58",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 12,
+   "date": "2025-01-19T18:44:17",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "photo": "photos/photo_1@19-01-2025_18-44-17.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 13,
+   "date": "2025-01-19T19:33:15",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the meeting is at 3 at the mall"
+  },
+  {
+   "id": 14,
+   "date": "2025-01-19T20:23:40",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok see you at 10"
+  },
+  {
+   "id": 15,
+   "date": "2025-01-19T20:27:56",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 16,
+   "date": "2025-01-19T20:51:39",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 17,
+   "date": "2025-01-19T21:05:16",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 18,
+   "date": "2025-01-19T21:13:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 19,
+   "date": "2025-01-19T21:39:31",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 20,
+   "date": "2025-01-19T21:52:01",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "anyone want sushi ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "date": "2025-01-19T22:06:25",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 22,
+   "date": "2025-01-19T22:11:54",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 23,
+   "date": "2025-01-19T22:26:05",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the notes"
+  },
+  {
+   "id": 24,
+   "date": "2025-01-19T22:29:21",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 25,
+   "date": "2025-01-19T23:06:34",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 26,
+   "date": "2025-01-19T23:11:32",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 27,
+   "date": "2025-01-19T23:25:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 28,
+   "date": "2025-01-19T23:31:12",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 29,
+   "date": "2025-01-19T23:36:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 30,
+   "date": "2025-01-19T23:39:08",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 31,
+   "date": "2025-01-20T08:30:02",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 32,
+   "date": "2025-01-20T09:42:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "reminder for Friday: bring the charger and ",
+    {
+     "type": "bold",
+     "text": "the signed form"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "date": "2025-01-20T09:43:49",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 34,
+   "date": "2025-01-20T09:46:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 35,
+   "date": "2025-01-20T09:47:50",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 36,
+   "date": "2025-01-20T09:52:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 37,
+   "date": "2025-01-20T10:22:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'm at the park already"
+  },
+  {
+   "id": 38,
+   "date": "2025-01-20T10:43:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 39,
+   "date": "2025-01-20T10:45:51",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_2@20-01-2025_10-45-51.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 15,
+   "text": ""
+  },
+  {
+   "id": 40,
+   "date": "2025-01-20T11:11:37",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the meeting is at 6 at the office"
+  },
+  {
+   "id": 41,
+   "date": "2025-01-20T11:15:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 42,
+   "date": "2025-01-20T11:20:11",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 43,
+   "date": "2025-01-20T11:41:57",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 44,
+   "date": "2025-01-20T12:02:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 45,
+   "date": "2025-01-20T12:23:19",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 46,
+   "date": "2025-01-20T12:28:29",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 47,
+   "date": "2025-01-20T12:46:08",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 48,
+   "date": "2025-01-20T12:50:51",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 49,
+   "date": "2025-01-20T12:51:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 50,
+   "date": "2025-01-20T13:25:07",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "anyone want rice and beans tonight?"
+  },
+  {
+   "id": 51,
+   "date": "2025-01-20T13:50:35",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 52,
+   "date": "2025-01-20T14:28:19",
+   "type": "service",
+   "actor": "Kevin Calderon",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Casey Mora",
+    "Mariana Quesada"
+   ]
+  },
+  {
+   "id": 53,
+   "date": "2025-01-20T15:25:06",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 54,
+   "date": "2025-01-20T16:11:27",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the meeting is at 4 at the office"
+  },
+  {
+   "id": 55,
+   "date": "2025-01-20T16:14:28",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 56,
+   "date": "2025-01-20T16:21:55",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 57,
+   "date": "2025-01-20T16:42:47",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 58,
+   "date": "2025-01-20T17:03:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 59,
+   "date": "2025-01-20T17:21:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 60,
+   "date": "2025-01-20T17:23:00",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 61,
+   "date": "2025-01-20T17:26:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 62,
+   "date": "2025-01-20T17:42:38",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 63,
+   "date": "2025-01-20T18:03:09",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 64,
+   "date": "2025-01-20T18:08:50",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 65,
+   "date": "2025-01-20T18:28:41",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 66,
+   "date": "2025-01-20T18:36:13",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "let's vote for the ",
+    {
+     "type": "bold",
+     "text": "place"
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "date": "2025-01-20T18:37:11",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 68,
+   "date": "2025-01-20T19:17:16",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I owe you 15 for the gallo pinto"
+  },
+  {
+   "id": 69,
+   "date": "2025-01-20T19:52:51",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 70,
+   "date": "2025-01-20T20:02:02",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left the tickets at the bus stop"
+  },
+  {
+   "id": 71,
+   "date": "2025-01-20T20:06:19",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I owe you 50 for the rice and beans"
+  },
+  {
+   "id": 72,
+   "date": "2025-01-20T20:07:15",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 73,
+   "date": "2025-01-20T20:11:45",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "who has my jacket?"
+  },
+  {
+   "id": 74,
+   "date": "2025-01-20T20:28:54",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 75,
+   "date": "2025-01-20T20:37:00",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 76,
+   "date": "2025-01-20T20:45:33",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 77,
+   "date": "2025-01-20T20:59:36",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 78,
+   "date": "2025-01-20T21:18:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 79,
+   "date": "2025-01-20T21:35:06",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 80,
+   "date": "2025-01-20T21:37:55",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 81,
+   "date": "2025-01-20T22:13:38",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who has the notes?"
+  },
+  {
+   "id": 82,
+   "date": "2025-01-20T22:31:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "the teacher moved the exam ",
+    {
+     "type": "bold",
+     "text": "to Tuesday"
+    }
+   ]
+  },
+  {
+   "id": 83,
+   "date": "2025-01-20T22:45:12",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 84,
+   "date": "2025-01-20T22:48:35",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "who has the report?"
+  },
+  {
+   "id": 85,
+   "date": "2025-01-20T22:52:24",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 86,
+   "date": "2025-01-20T22:58:10",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 87,
+   "date": "2025-01-20T22:59:46",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 88,
+   "date": "2025-01-20T23:09:12",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 89,
+   "date": "2025-01-20T23:12:34",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 90,
+   "date": "2025-01-20T23:39:51",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'm at the office already"
+  },
+  {
+   "id": 91,
+   "date": "2025-01-20T23:55:51",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "address is 200m north of the park blue house"
+  },
+  {
+   "id": 92,
+   "date": "2025-01-21T08:00:53",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the bus stop?"
+  },
+  {
+   "id": 93,
+   "date": "2025-01-21T08:03:30",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "anyone want tacos ",
+    {
+     "type": "bold",
+     "text": "tonight?"
+    }
+   ]
+  },
+  {
+   "id": 94,
+   "date": "2025-01-21T08:24:13",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 95,
+   "date": "2025-01-21T08:32:33",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 96,
+   "date": "2025-01-21T08:47:56",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 97,
+   "date": "2025-01-21T08:58:43",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "we can clean it with ",
+    {
+     "type": "bold",
+     "text": "money laundering through the shop"
+    }
+   ]
+  },
+  {
+   "id": 98,
+   "date": "2025-01-21T09:22:10",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "photo": "photos/photo_3@21-01-2025_09-22-10.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 99,
+   "date": "2025-01-21T09:23:24",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "send me ",
+    {
+     "type": "bold",
+     "text": "the location please"
+    }
+   ]
+  },
+  {
+   "id": 100,
+   "date": "2025-01-21T09:37:09",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 101,
+   "date": "2025-01-21T10:01:33",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I owe you 25 for the empanadas"
+  },
+  {
+   "id": 102,
+   "date": "2025-01-21T10:21:44",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 103,
+   "date": "2025-01-21T10:43:04",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 104,
+   "date": "2025-01-21T10:53:49",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 105,
+   "date": "2025-01-21T11:10:13",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 106,
+   "date": "2025-01-21T11:11:44",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 107,
+   "date": "2025-01-21T11:28:21",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 108,
+   "date": "2025-01-21T11:53:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I owe you 40 for the rice and beans"
+  },
+  {
+   "id": 109,
+   "date": "2025-01-21T11:57:39",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 110,
+   "date": "2025-01-21T12:09:40",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I owe you 40 for the rice and beans"
+  },
+  {
+   "id": 111,
+   "date": "2025-01-21T12:23:51",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 112,
+   "date": "2025-01-21T13:06:34",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 113,
+   "date": "2025-01-21T13:07:29",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 114,
+   "date": "2025-01-21T13:20:37",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 115,
+   "date": "2025-01-21T13:58:23",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 116,
+   "date": "2025-01-21T14:35:41",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 117,
+   "date": "2025-01-21T14:42:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 118,
+   "date": "2025-01-21T14:43:14",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 119,
+   "date": "2025-01-21T15:23:17",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 120,
+   "date": "2025-01-21T15:30:26",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 121,
+   "date": "2025-01-21T15:39:51",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 122,
+   "date": "2025-01-21T15:46:11",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 123,
+   "date": "2025-01-21T16:12:21",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 124,
+   "date": "2025-01-21T16:17:54",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 125,
+   "date": "2025-01-21T17:17:31",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 126,
+   "date": "2025-01-21T17:42:40",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 127,
+   "date": "2025-01-21T17:51:15",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 128,
+   "date": "2025-01-21T17:59:44",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 129,
+   "date": "2025-01-21T18:08:14",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 130,
+   "date": "2025-01-21T18:23:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "is the gym open on Wednesday?"
+  },
+  {
+   "id": 131,
+   "date": "2025-01-21T18:52:29",
+   "type": "service",
+   "actor": "Kevin Calderon",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Casey Mora",
+    "Mariana Quesada"
+   ]
+  },
+  {
+   "id": 132,
+   "date": "2025-01-21T19:03:07",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left my jacket at the stadium"
+  },
+  {
+   "id": 133,
+   "date": "2025-01-21T19:06:40",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I left my jacket at school"
+  },
+  {
+   "id": 134,
+   "date": "2025-01-21T19:28:46",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "don't forget to bring the notes"
+  },
+  {
+   "id": 135,
+   "date": "2025-01-21T19:35:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 136,
+   "date": "2025-01-21T20:04:38",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 137,
+   "date": "2025-01-21T20:16:22",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 138,
+   "date": "2025-01-21T21:30:05",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 139,
+   "date": "2025-01-21T21:34:50",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 140,
+   "date": "2025-01-21T21:40:25",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 141,
+   "date": "2025-01-21T22:13:06",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 142,
+   "date": "2025-01-21T22:30:09",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 143,
+   "date": "2025-01-21T22:34:54",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left the umbrella at the office"
+  },
+  {
+   "id": 144,
+   "date": "2025-01-21T23:00:25",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 145,
+   "date": "2025-01-21T23:09:46",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 146,
+   "date": "2025-01-21T23:38:58",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "photo": "photos/photo_4@21-01-2025_23-38-58.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 147,
+   "date": "2025-01-21T23:48:24",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 148,
+   "date": "2025-01-21T23:49:58",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who has the tickets?"
+  },
+  {
+   "id": 149,
+   "date": "2025-01-21T23:59:51",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 150,
+   "date": "2025-01-22T08:05:18",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 151,
+   "date": "2025-01-22T08:27:58",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 152,
+   "date": "2025-01-22T08:33:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left my jacket at the clinic"
+  },
+  {
+   "id": 153,
+   "date": "2025-01-22T09:27:48",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "nobody will find you if this goes wrong"
+  },
+  {
+   "id": 154,
+   "date": "2025-01-22T09:38:52",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 155,
+   "date": "2025-01-22T10:14:16",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the meeting is at noon at the soda"
+  },
+  {
+   "id": 156,
+   "date": "2025-01-22T10:40:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 157,
+   "date": "2025-01-22T10:42:41",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 158,
+   "date": "2025-01-22T10:46:08",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 159,
+   "date": "2025-01-22T11:12:18",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 160,
+   "date": "2025-01-22T11:18:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 161,
+   "date": "2025-01-22T11:20:51",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 162,
+   "date": "2025-01-22T11:26:31",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want rice and beans tonight?"
+  },
+  {
+   "id": 163,
+   "date": "2025-01-22T12:36:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 164,
+   "date": "2025-01-22T13:04:19",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 165,
+   "date": "2025-01-22T13:44:11",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left the tickets at the clinic"
+  },
+  {
+   "id": 166,
+   "date": "2025-01-22T14:30:22",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 167,
+   "date": "2025-01-22T14:33:16",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the bus stop already"
+  },
+  {
+   "id": 168,
+   "date": "2025-01-22T15:01:25",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 169,
+   "date": "2025-01-22T15:04:57",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 170,
+   "date": "2025-01-22T15:37:20",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I have the white stuff, 5 a gram"
+  },
+  {
+   "id": 171,
+   "date": "2025-01-22T16:01:44",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the meeting is at 10 at the park"
+  },
+  {
+   "id": 172,
+   "date": "2025-01-22T16:21:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 173,
+   "date": "2025-01-22T16:22:57",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm going to kill you at chess tonight haha"
+  },
+  {
+   "id": 174,
+   "date": "2025-01-22T17:32:35",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 175,
+   "date": "2025-01-22T18:43:17",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 176,
+   "date": "2025-01-22T19:00:41",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 177,
+   "date": "2025-01-22T19:31:24",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 178,
+   "date": "2025-01-22T20:26:14",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 179,
+   "date": "2025-01-22T20:57:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 180,
+   "date": "2025-01-22T20:57:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I left the umbrella at the office"
+  },
+  {
+   "id": 181,
+   "date": "2025-01-22T21:16:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "the meeting is at 6 at the ",
+    {
+     "type": "bold",
+     "text": "bus stop"
+    }
+   ]
+  },
+  {
+   "id": 182,
+   "date": "2025-01-22T21:38:02",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 183,
+   "date": "2025-01-22T21:39:27",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I owe you 100 for the tacos"
+  },
+  {
+   "id": 184,
+   "date": "2025-01-22T22:06:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 185,
+   "date": "2025-01-22T22:06:53",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 186,
+   "date": "2025-01-22T22:25:13",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 187,
+   "date": "2025-01-22T22:56:39",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 188,
+   "date": "2025-01-22T23:34:10",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 189,
+   "date": "2025-01-23T07:31:48",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 190,
+   "date": "2025-01-23T07:51:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 191,
+   "date": "2025-01-23T08:28:28",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 192,
+   "date": "2025-01-23T08:45:34",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Sunday"
+  },
+  {
+   "id": 193,
+   "date": "2025-01-23T09:02:26",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 194,
+   "date": "2025-01-23T09:29:30",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 195,
+   "date": "2025-01-23T10:02:37",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 196,
+   "date": "2025-01-23T10:34:25",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 197,
+   "date": "2025-01-23T11:58:05",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 198,
+   "date": "2025-01-23T12:44:57",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the meeting is at 9 at the bus stop"
+  },
+  {
+   "id": 199,
+   "date": "2025-01-23T12:48:14",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 200,
+   "date": "2025-01-23T13:20:53",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 201,
+   "date": "2025-01-23T13:23:42",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 202,
+   "date": "2025-01-23T13:37:57",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 203,
+   "date": "2025-01-23T13:49:36",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 204,
+   "date": "2025-01-23T14:19:55",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 205,
+   "date": "2025-01-23T14:49:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left the notes at the office"
+  },
+  {
+   "id": 206,
+   "date": "2025-01-23T15:57:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "it's raining a lot ",
+    {
+     "type": "bold",
+     "text": "here"
+    }
+   ]
+  },
+  {
+   "id": 207,
+   "date": "2025-01-23T17:14:09",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 208,
+   "date": "2025-01-23T17:14:52",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 209,
+   "date": "2025-01-23T17:56:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 210,
+   "date": "2025-01-23T18:00:47",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 211,
+   "date": "2025-01-23T18:03:10",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 212,
+   "date": "2025-01-23T18:09:13",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 213,
+   "date": "2025-01-23T18:13:36",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left the charger at the soda"
+  },
+  {
+   "id": 214,
+   "date": "2025-01-23T18:55:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 215,
+   "date": "2025-01-23T19:18:08",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "photo": "photos/photo_5@23-01-2025_19-18-08.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 216,
+   "date": "2025-01-23T19:28:09",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 217,
+   "date": "2025-01-23T20:09:38",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 218,
+   "date": "2025-01-23T20:17:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 219,
+   "date": "2025-01-23T20:38:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 220,
+   "date": "2025-01-23T21:39:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 221,
+   "date": "2025-01-23T21:42:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 222,
+   "date": "2025-01-23T21:45:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "who has the report?"
+  },
+  {
+   "id": 223,
+   "date": "2025-01-23T22:03:33",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 224,
+   "date": "2025-01-23T22:04:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "don't forget to bring the tickets"
+  },
+  {
+   "id": 225,
+   "date": "2025-01-23T22:37:08",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 226,
+   "date": "2025-01-23T22:54:00",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 227,
+   "date": "2025-01-23T23:24:58",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 228,
+   "date": "2025-01-23T23:39:59",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 229,
+   "date": "2025-01-23T23:41:10",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 230,
+   "date": "2025-01-23T23:44:47",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 231,
+   "date": "2025-01-24T08:15:37",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 232,
+   "date": "2025-01-24T08:54:11",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 233,
+   "date": "2025-01-24T09:29:18",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 234,
+   "date": "2025-01-24T09:46:29",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 235,
+   "date": "2025-01-24T10:26:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Wednesday"
+  },
+  {
+   "id": 236,
+   "date": "2025-01-24T11:08:00",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 237,
+   "date": "2025-01-24T11:15:37",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 238,
+   "date": "2025-01-24T11:21:39",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 239,
+   "date": "2025-01-24T11:23:20",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the meeting is at 10 at the clinic"
+  },
+  {
+   "id": 240,
+   "date": "2025-01-24T11:40:08",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'm at the park already"
+  },
+  {
+   "id": 241,
+   "date": "2025-01-24T12:13:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "I'll call you ",
+    {
+     "type": "bold",
+     "text": "later"
+    }
+   ]
+  },
+  {
+   "id": 242,
+   "date": "2025-01-24T12:25:36",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 243,
+   "date": "2025-01-24T12:32:55",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I owe you 20 for the tacos"
+  },
+  {
+   "id": 244,
+   "date": "2025-01-24T13:23:10",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 245,
+   "date": "2025-01-24T13:27:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 246,
+   "date": "2025-01-24T13:37:33",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 247,
+   "date": "2025-01-24T13:41:05",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 248,
+   "date": "2025-01-24T13:41:52",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 249,
+   "date": "2025-01-24T13:53:17",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I owe you 50 for the sushi"
+  },
+  {
+   "id": 250,
+   "date": "2025-01-24T13:58:03",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 251,
+   "date": "2025-01-24T14:37:59",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 252,
+   "date": "2025-01-24T14:44:34",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 253,
+   "date": "2025-01-24T14:52:55",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 254,
+   "date": "2025-01-24T14:55:48",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 255,
+   "date": "2025-01-24T17:20:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "photo": "photos/photo_6@24-01-2025_17-20-01.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 256,
+   "date": "2025-01-24T17:56:27",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 257,
+   "date": "2025-01-24T18:27:29",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 258,
+   "date": "2025-01-24T18:27:40",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 259,
+   "date": "2025-01-24T19:05:09",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 260,
+   "date": "2025-01-24T19:23:18",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 261,
+   "date": "2025-01-24T19:24:54",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 262,
+   "date": "2025-01-24T19:50:14",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 263,
+   "date": "2025-01-24T20:10:48",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the meeting is at 10 at the mall"
+  },
+  {
+   "id": 264,
+   "date": "2025-01-24T20:59:14",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 265,
+   "date": "2025-01-24T21:25:37",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 266,
+   "date": "2025-01-24T21:48:34",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "who's ",
+    {
+     "type": "bold",
+     "text": "in for Friday?"
+    }
+   ]
+  },
+  {
+   "id": 267,
+   "date": "2025-01-24T22:32:05",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 268,
+   "date": "2025-01-24T22:46:28",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 269,
+   "date": "2025-01-24T22:49:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 270,
+   "date": "2025-01-24T23:05:57",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 271,
+   "date": "2025-01-24T23:11:38",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 272,
+   "date": "2025-01-24T23:18:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the package from the port arrives Monday, cash only"
+  },
+  {
+   "id": 273,
+   "date": "2025-01-24T23:21:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 274,
+   "date": "2025-01-24T23:33:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 275,
+   "date": "2025-01-24T23:38:08",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 276,
+   "date": "2025-01-24T23:55:44",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'm at school already"
+  },
+  {
+   "id": 277,
+   "date": "2025-01-25T07:08:12",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 278,
+   "date": "2025-01-25T07:17:50",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "photo": "photos/photo_7@25-01-2025_07-17-50.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 279,
+   "date": "2025-01-25T07:22:50",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 280,
+   "date": "2025-01-25T07:59:40",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 281,
+   "date": "2025-01-25T08:08:40",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 282,
+   "date": "2025-01-25T08:17:32",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 283,
+   "date": "2025-01-25T08:39:42",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 284,
+   "date": "2025-01-25T08:45:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 285,
+   "date": "2025-01-25T09:39:14",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 286,
+   "date": "2025-01-25T10:07:28",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 287,
+   "date": "2025-01-25T10:37:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the soda?"
+  },
+  {
+   "id": 288,
+   "date": "2025-01-25T11:38:00",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 289,
+   "date": "2025-01-25T11:50:04",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 290,
+   "date": "2025-01-25T12:14:02",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "don't forget to bring the notes"
+  },
+  {
+   "id": 291,
+   "date": "2025-01-25T12:15:54",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "file": "voice_messages/audio_8@25-01-2025_12-15-54.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 5,
+   "text": ""
+  },
+  {
+   "id": 292,
+   "date": "2025-01-25T12:17:47",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "who's in ",
+    {
+     "type": "bold",
+     "text": "for Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 293,
+   "date": "2025-01-25T12:40:11",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 294,
+   "date": "2025-01-25T12:40:55",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 295,
+   "date": "2025-01-25T13:02:14",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 296,
+   "date": "2025-01-25T13:27:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 297,
+   "date": "2025-01-25T13:46:52",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 298,
+   "date": "2025-01-25T14:00:53",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 299,
+   "date": "2025-01-25T14:03:55",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "file": "voice_messages/audio_9@25-01-2025_14-03-55.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 4,
+   "text": ""
+  },
+  {
+   "id": 300,
+   "date": "2025-01-25T14:53:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the meeting is at 9 at the mall"
+  },
+  {
+   "id": 301,
+   "date": "2025-01-25T15:22:00",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "can someone pick me ",
+    {
+     "type": "bold",
+     "text": "up at the soda?"
+    }
+   ]
+  },
+  {
+   "id": 302,
+   "date": "2025-01-25T16:11:49",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 303,
+   "date": "2025-01-25T17:28:26",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 304,
+   "date": "2025-01-25T17:49:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 305,
+   "date": "2025-01-25T17:53:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 306,
+   "date": "2025-01-25T17:55:00",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 307,
+   "date": "2025-01-25T18:05:16",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "pay by Friday or I will hurt you"
+  },
+  {
+   "id": 308,
+   "date": "2025-01-25T18:19:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 309,
+   "date": "2025-01-25T18:37:16",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the report"
+  },
+  {
+   "id": 310,
+   "date": "2025-01-25T19:16:02",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 311,
+   "date": "2025-01-25T19:22:13",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 312,
+   "date": "2025-01-25T20:00:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 313,
+   "date": "2025-01-25T20:26:17",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 314,
+   "date": "2025-01-25T20:54:55",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 40 more people"
+  },
+  {
+   "id": 315,
+   "date": "2025-01-25T21:13:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 316,
+   "date": "2025-01-25T21:22:47",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the package from the port arrives Sunday, cash only"
+  },
+  {
+   "id": 317,
+   "date": "2025-01-25T21:27:01",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 318,
+   "date": "2025-01-25T21:44:18",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 319,
+   "date": "2025-01-25T22:24:16",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "reminder for Wednesday: bring the cable and the signed form"
+  },
+  {
+   "id": 320,
+   "date": "2025-01-25T22:35:52",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 321,
+   "date": "2025-01-25T22:44:47",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 322,
+   "date": "2025-01-25T23:12:10",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 323,
+   "date": "2025-01-25T23:24:21",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 324,
+   "date": "2025-01-25T23:36:34",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 325,
+   "date": "2025-01-26T08:16:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "we need 25 more people"
+  },
+  {
+   "id": 326,
+   "date": "2025-01-26T08:18:37",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I left the keys at the soda"
+  },
+  {
+   "id": 327,
+   "date": "2025-01-26T08:47:30",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 328,
+   "date": "2025-01-26T08:54:37",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 329,
+   "date": "2025-01-26T09:04:42",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "can someone pick me up at the ",
+    {
+     "type": "bold",
+     "text": "bus stop?"
+    }
+   ]
+  },
+  {
+   "id": 330,
+   "date": "2025-01-26T09:09:08",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the meeting is at 8 at school"
+  },
+  {
+   "id": 331,
+   "date": "2025-01-26T09:12:02",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 332,
+   "date": "2025-01-26T09:26:17",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 333,
+   "date": "2025-01-26T09:39:51",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 334,
+   "date": "2025-01-26T10:04:35",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 335,
+   "date": "2025-01-26T10:10:15",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 336,
+   "date": "2025-01-26T10:11:09",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok see you at noon"
+  },
+  {
+   "id": 337,
+   "date": "2025-01-26T10:12:06",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 338,
+   "date": "2025-01-26T11:16:13",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 339,
+   "date": "2025-01-26T11:27:34",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 340,
+   "date": "2025-01-26T11:42:20",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 341,
+   "date": "2025-01-26T11:58:58",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 342,
+   "date": "2025-01-26T12:12:50",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok see you at 7"
+  },
+  {
+   "id": 343,
+   "date": "2025-01-26T12:30:26",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "reminder for Thursday: bring my jacket and the signed form"
+  },
+  {
+   "id": 344,
+   "date": "2025-01-26T12:39:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "who has ",
+    {
+     "type": "bold",
+     "text": "the charger?"
+    }
+   ]
+  },
+  {
+   "id": 345,
+   "date": "2025-01-26T12:53:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "reminder for Tuesday: bring the keys and the signed form"
+  },
+  {
+   "id": 346,
+   "date": "2025-01-26T13:21:14",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 347,
+   "date": "2025-01-26T14:40:10",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 348,
+   "date": "2025-01-26T15:17:42",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 349,
+   "date": "2025-01-26T16:37:15",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 350,
+   "date": "2025-01-26T17:17:39",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 351,
+   "date": "2025-01-26T17:31:36",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "don't forget to bring the keys"
+  },
+  {
+   "id": 352,
+   "date": "2025-01-26T17:41:36",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 353,
+   "date": "2025-01-26T18:12:51",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 354,
+   "date": "2025-01-26T18:35:45",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 355,
+   "date": "2025-01-26T18:48:29",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left the notes at the mall"
+  },
+  {
+   "id": 356,
+   "date": "2025-01-26T19:39:11",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 357,
+   "date": "2025-01-26T19:51:58",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "the ",
+    {
+     "type": "bold",
+     "text": "teacher moved the exam to Saturday"
+    }
+   ]
+  },
+  {
+   "id": 358,
+   "date": "2025-01-26T20:15:00",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 359,
+   "date": "2025-01-26T20:32:51",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 360,
+   "date": "2025-01-26T20:36:21",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 361,
+   "date": "2025-01-26T20:40:01",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Friday"
+  },
+  {
+   "id": 362,
+   "date": "2025-01-26T20:48:15",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 363,
+   "date": "2025-01-26T21:03:36",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 364,
+   "date": "2025-01-26T21:21:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 365,
+   "date": "2025-01-26T21:40:43",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the extortion money goes to the usual account"
+  },
+  {
+   "id": 366,
+   "date": "2025-01-26T21:45:15",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "address is 200m north of the park blue house"
+  },
+  {
+   "id": 367,
+   "date": "2025-01-26T21:49:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 368,
+   "date": "2025-01-26T22:12:38",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 369,
+   "date": "2025-01-26T22:14:31",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left the notes at the gym"
+  },
+  {
+   "id": 370,
+   "date": "2025-01-26T22:24:50",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 371,
+   "date": "2025-01-26T23:09:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 372,
+   "date": "2025-01-26T23:09:49",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 373,
+   "date": "2025-01-26T23:10:40",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Friday"
+  },
+  {
+   "id": 374,
+   "date": "2025-01-26T23:39:31",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 375,
+   "date": "2025-01-26T23:42:57",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 376,
+   "date": "2025-01-26T23:59:22",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 377,
+   "date": "2025-01-27T08:18:35",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 378,
+   "date": "2025-01-27T08:19:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 379,
+   "date": "2025-01-27T08:30:46",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 380,
+   "date": "2025-01-27T08:52:13",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 381,
+   "date": "2025-01-27T08:54:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 382,
+   "date": "2025-01-27T09:02:08",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 383,
+   "date": "2025-01-27T09:18:18",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 384,
+   "date": "2025-01-27T09:51:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 385,
+   "date": "2025-01-27T10:09:47",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok see you at 9"
+  },
+  {
+   "id": 386,
+   "date": "2025-01-27T10:29:20",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 387,
+   "date": "2025-01-27T10:31:24",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 388,
+   "date": "2025-01-27T10:37:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 389,
+   "date": "2025-01-27T10:51:47",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "let's vote for the ",
+    {
+     "type": "bold",
+     "text": "place"
+    }
+   ]
+  },
+  {
+   "id": 390,
+   "date": "2025-01-27T11:07:25",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 391,
+   "date": "2025-01-27T11:10:38",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the drug deal is at 8 behind the mall"
+  },
+  {
+   "id": 392,
+   "date": "2025-01-27T11:21:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "who's in for ",
+    {
+     "type": "bold",
+     "text": "Friday?"
+    }
+   ]
+  },
+  {
+   "id": 393,
+   "date": "2025-01-27T11:35:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 394,
+   "date": "2025-01-27T11:39:37",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 395,
+   "date": "2025-01-27T12:29:06",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 396,
+   "date": "2025-01-27T13:27:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 397,
+   "date": "2025-01-27T13:45:25",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 398,
+   "date": "2025-01-27T13:50:11",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I can't make it Tuesday"
+  },
+  {
+   "id": 399,
+   "date": "2025-01-27T14:17:07",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "see you Monday"
+  },
+  {
+   "id": 400,
+   "date": "2025-01-27T14:17:44",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 401,
+   "date": "2025-01-27T14:44:33",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 402,
+   "date": "2025-01-27T15:43:50",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the drug deal is at 3 behind the office"
+  },
+  {
+   "id": 403,
+   "date": "2025-01-27T15:58:53",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 404,
+   "date": "2025-01-27T16:26:27",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 405,
+   "date": "2025-01-27T16:43:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 406,
+   "date": "2025-01-27T16:54:50",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I have the white stuff, 15 a gram"
+  },
+  {
+   "id": 407,
+   "date": "2025-01-27T17:02:29",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 408,
+   "date": "2025-01-27T17:12:32",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 409,
+   "date": "2025-01-27T17:17:52",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 410,
+   "date": "2025-01-27T17:52:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 411,
+   "date": "2025-01-27T18:56:28",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 412,
+   "date": "2025-01-27T19:06:57",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 413,
+   "date": "2025-01-27T19:22:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 414,
+   "date": "2025-01-27T19:26:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 415,
+   "date": "2025-01-27T20:08:10",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 416,
+   "date": "2025-01-27T20:31:11",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "I can't make it ",
+    {
+     "type": "bold",
+     "text": "Wednesday"
+    }
+   ]
+  },
+  {
+   "id": 417,
+   "date": "2025-01-27T20:56:00",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 418,
+   "date": "2025-01-27T20:57:27",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'm at school already"
+  },
+  {
+   "id": 419,
+   "date": "2025-01-27T21:17:46",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 420,
+   "date": "2025-01-27T21:26:57",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 421,
+   "date": "2025-01-27T22:05:02",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 422,
+   "date": "2025-01-27T22:13:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 423,
+   "date": "2025-01-27T22:27:48",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 424,
+   "date": "2025-01-27T22:37:04",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 425,
+   "date": "2025-01-27T23:05:29",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 426,
+   "date": "2025-01-28T08:20:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 427,
+   "date": "2025-01-28T08:21:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 428,
+   "date": "2025-01-28T08:41:03",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 429,
+   "date": "2025-01-28T08:47:40",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 430,
+   "date": "2025-01-28T09:20:20",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I have the white stuff, 15 a gram"
+  },
+  {
+   "id": 431,
+   "date": "2025-01-28T09:41:22",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 432,
+   "date": "2025-01-28T09:42:55",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the library?"
+  },
+  {
+   "id": 433,
+   "date": "2025-01-28T09:59:47",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 434,
+   "date": "2025-01-28T10:04:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 435,
+   "date": "2025-01-28T10:15:26",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 436,
+   "date": "2025-01-28T10:57:01",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I have the white stuff, 100 a gram"
+  },
+  {
+   "id": 437,
+   "date": "2025-01-28T11:12:25",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 438,
+   "date": "2025-01-28T11:49:43",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 439,
+   "date": "2025-01-28T12:21:16",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we can clean it with money laundering through the shop"
+  },
+  {
+   "id": 440,
+   "date": "2025-01-28T12:33:41",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 441,
+   "date": "2025-01-28T12:41:52",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 442,
+   "date": "2025-01-28T13:01:04",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "reminder for Sunday: bring the charger and the signed form"
+  },
+  {
+   "id": 443,
+   "date": "2025-01-28T13:35:03",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 444,
+   "date": "2025-01-28T13:56:34",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 445,
+   "date": "2025-01-28T14:04:54",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 446,
+   "date": "2025-01-28T15:25:26",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 447,
+   "date": "2025-01-28T15:49:36",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'm at the soda already"
+  },
+  {
+   "id": 448,
+   "date": "2025-01-28T16:05:39",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 449,
+   "date": "2025-01-28T16:12:51",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 450,
+   "date": "2025-01-28T16:58:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 451,
+   "date": "2025-01-28T18:00:27",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 452,
+   "date": "2025-01-28T18:20:21",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 453,
+   "date": "2025-01-28T18:20:44",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 454,
+   "date": "2025-01-28T18:30:45",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 455,
+   "date": "2025-01-28T19:00:00",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 456,
+   "date": "2025-01-28T19:08:09",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 457,
+   "date": "2025-01-28T19:17:06",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Saturday"
+  },
+  {
+   "id": 458,
+   "date": "2025-01-28T19:49:11",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 459,
+   "date": "2025-01-28T20:15:48",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 460,
+   "date": "2025-01-28T20:31:15",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the meeting is at 5 at the gym"
+  },
+  {
+   "id": 461,
+   "date": "2025-01-28T20:52:27",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "who's in for Monday?"
+  },
+  {
+   "id": 462,
+   "date": "2025-01-28T21:38:31",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left the notes at the clinic"
+  },
+  {
+   "id": 463,
+   "date": "2025-01-28T22:13:00",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 464,
+   "date": "2025-01-28T22:26:10",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I left the notes at the soda"
+  },
+  {
+   "id": 465,
+   "date": "2025-01-28T22:44:37",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the meeting is at 7 at the gym"
+  },
+  {
+   "id": 466,
+   "date": "2025-01-28T22:49:12",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 467,
+   "date": "2025-01-28T23:18:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 468,
+   "date": "2025-01-28T23:41:15",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 469,
+   "date": "2025-01-28T23:49:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 470,
+   "date": "2025-01-29T07:04:29",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 471,
+   "date": "2025-01-29T07:14:13",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "my ",
+    {
+     "type": "bold",
+     "text": "phone is almost dead"
+    }
+   ]
+  },
+  {
+   "id": 472,
+   "date": "2025-01-29T07:26:21",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 473,
+   "date": "2025-01-29T07:47:32",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 474,
+   "date": "2025-01-29T07:48:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 475,
+   "date": "2025-01-29T07:50:06",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 476,
+   "date": "2025-01-29T07:57:23",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 477,
+   "date": "2025-01-29T07:59:54",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 478,
+   "date": "2025-01-29T08:01:23",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Friday"
+  },
+  {
+   "id": 479,
+   "date": "2025-01-29T08:18:31",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I left the tickets at the bus stop"
+  },
+  {
+   "id": 480,
+   "date": "2025-01-29T08:54:24",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 481,
+   "date": "2025-01-29T09:21:38",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "don't forget to bring the notes"
+  },
+  {
+   "id": 482,
+   "date": "2025-01-29T09:31:05",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "did you finish ",
+    {
+     "type": "bold",
+     "text": "the assignment?"
+    }
+   ]
+  },
+  {
+   "id": 483,
+   "date": "2025-01-29T09:39:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the bus stop already"
+  },
+  {
+   "id": 484,
+   "date": "2025-01-29T09:42:42",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 485,
+   "date": "2025-01-29T09:47:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "see you Monday"
+  },
+  {
+   "id": 486,
+   "date": "2025-01-29T10:41:27",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": [
+    "the bus ",
+    {
+     "type": "bold",
+     "text": "is full again"
+    }
+   ]
+  },
+  {
+   "id": 487,
+   "date": "2025-01-29T10:52:59",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 488,
+   "date": "2025-01-29T11:41:41",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 489,
+   "date": "2025-01-29T12:54:55",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 490,
+   "date": "2025-01-29T13:08:17",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 491,
+   "date": "2025-01-29T13:10:24",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 492,
+   "date": "2025-01-29T13:19:33",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 493,
+   "date": "2025-01-29T13:24:07",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 494,
+   "date": "2025-01-29T13:27:28",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I know where your kids go to school"
+  },
+  {
+   "id": 495,
+   "date": "2025-01-29T13:32:08",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "it's ",
+    {
+     "type": "bold",
+     "text": "raining a lot here"
+    }
+   ]
+  },
+  {
+   "id": 496,
+   "date": "2025-01-29T13:35:03",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 497,
+   "date": "2025-01-29T13:42:49",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "anyone want pizza tonight?"
+  },
+  {
+   "id": 498,
+   "date": "2025-01-29T14:32:58",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 499,
+   "date": "2025-01-29T14:55:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 500,
+   "date": "2025-01-29T15:18:47",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 501,
+   "date": "2025-01-29T15:22:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the office?"
+  },
+  {
+   "id": 502,
+   "date": "2025-01-29T15:23:23",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "the photo shoot is at 7:30 at the office"
+  },
+  {
+   "id": 503,
+   "date": "2025-01-29T16:45:30",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 504,
+   "date": "2025-01-29T17:19:27",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 505,
+   "date": "2025-01-29T17:44:01",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 506,
+   "date": "2025-01-29T17:48:04",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "photo": "photos/photo_10@29-01-2025_17-48-04.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 507,
+   "date": "2025-01-29T18:07:55",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 508,
+   "date": "2025-01-29T18:10:49",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "don't forget to bring the charger"
+  },
+  {
+   "id": 509,
+   "date": "2025-01-29T18:22:24",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 510,
+   "date": "2025-01-29T19:25:23",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "if you tell anyone, you will ",
+    {
+     "type": "bold",
+     "text": "regret it"
+    }
+   ]
+  },
+  {
+   "id": 511,
+   "date": "2025-01-29T19:33:03",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I left my jacket at the mall"
+  },
+  {
+   "id": 512,
+   "date": "2025-01-29T19:36:30",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Tuesday"
+  },
+  {
+   "id": 513,
+   "date": "2025-01-29T19:40:35",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 514,
+   "date": "2025-01-29T20:21:24",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 515,
+   "date": "2025-01-29T20:28:09",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the soda?"
+  },
+  {
+   "id": 516,
+   "date": "2025-01-29T20:39:46",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 517,
+   "date": "2025-01-29T20:50:39",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 518,
+   "date": "2025-01-29T21:08:54",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 519,
+   "date": "2025-01-29T21:09:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 520,
+   "date": "2025-01-29T21:36:15",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 521,
+   "date": "2025-01-29T21:41:35",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "photo": "photos/photo_11@29-01-2025_21-41-35.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 522,
+   "date": "2025-01-29T21:51:43",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 523,
+   "date": "2025-01-29T21:52:42",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 524,
+   "date": "2025-01-29T22:06:10",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "file": "voice_messages/audio_12@29-01-2025_22-06-10.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 16,
+   "text": ""
+  },
+  {
+   "id": 525,
+   "date": "2025-01-29T22:35:30",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 526,
+   "date": "2025-01-29T22:41:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 527,
+   "date": "2025-01-29T22:42:48",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 528,
+   "date": "2025-01-29T22:44:53",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 529,
+   "date": "2025-01-29T22:51:24",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "ok ",
+    {
+     "type": "bold",
+     "text": "see you at noon"
+    }
+   ]
+  },
+  {
+   "id": 530,
+   "date": "2025-01-29T23:35:24",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Thursday"
+  },
+  {
+   "id": 531,
+   "date": "2025-01-29T23:39:07",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 532,
+   "date": "2025-01-29T23:41:25",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 533,
+   "date": "2025-01-29T23:57:09",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 534,
+   "date": "2025-01-30T06:02:54",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 535,
+   "date": "2025-01-30T06:07:03",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 536,
+   "date": "2025-01-30T06:13:28",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok see you at 8"
+  },
+  {
+   "id": 537,
+   "date": "2025-01-30T06:15:52",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 538,
+   "date": "2025-01-30T06:31:17",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 539,
+   "date": "2025-01-30T06:48:58",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 540,
+   "date": "2025-01-30T07:08:06",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'm at the clinic already"
+  },
+  {
+   "id": 541,
+   "date": "2025-01-30T07:29:31",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "is the gym open on Thursday?"
+  },
+  {
+   "id": 542,
+   "date": "2025-01-30T08:25:23",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 543,
+   "date": "2025-01-30T08:42:38",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": [
+    "don't forget to ",
+    {
+     "type": "bold",
+     "text": "bring the notes"
+    }
+   ]
+  },
+  {
+   "id": 544,
+   "date": "2025-01-30T08:46:44",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "photo": "photos/photo_13@30-01-2025_08-46-44.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 545,
+   "date": "2025-01-30T08:48:26",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 546,
+   "date": "2025-01-30T08:56:28",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 547,
+   "date": "2025-01-30T09:00:08",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I left the cable at the stadium"
+  },
+  {
+   "id": 548,
+   "date": "2025-01-30T09:40:15",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 549,
+   "date": "2025-01-30T09:53:55",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 550,
+   "date": "2025-01-30T10:00:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "who's in for Sunday?"
+  },
+  {
+   "id": 551,
+   "date": "2025-01-30T10:02:45",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 552,
+   "date": "2025-01-30T10:05:11",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "pay by Tuesday or I will hurt you"
+  },
+  {
+   "id": 553,
+   "date": "2025-01-30T11:22:37",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 554,
+   "date": "2025-01-30T11:37:07",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 555,
+   "date": "2025-01-30T11:38:20",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 556,
+   "date": "2025-01-30T11:41:56",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 557,
+   "date": "2025-01-30T11:51:10",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 558,
+   "date": "2025-01-30T11:55:07",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 559,
+   "date": "2025-01-30T11:58:57",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 560,
+   "date": "2025-01-30T12:14:02",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 561,
+   "date": "2025-01-30T12:29:45",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 562,
+   "date": "2025-01-30T13:10:51",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 563,
+   "date": "2025-01-30T13:14:31",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 564,
+   "date": "2025-01-30T13:30:59",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "the teacher moved the exam to Friday"
+  },
+  {
+   "id": 565,
+   "date": "2025-01-30T13:36:19",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "see you Sunday"
+  },
+  {
+   "id": 566,
+   "date": "2025-01-30T13:56:22",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "I know where your kids go to school"
+  },
+  {
+   "id": 567,
+   "date": "2025-01-30T14:04:28",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 568,
+   "date": "2025-01-30T14:05:04",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "is the gym open on Wednesday?"
+  },
+  {
+   "id": 569,
+   "date": "2025-01-30T14:44:56",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 570,
+   "date": "2025-01-30T15:28:45",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 571,
+   "date": "2025-01-30T15:40:32",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 572,
+   "date": "2025-01-30T15:47:48",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 573,
+   "date": "2025-01-30T16:01:48",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 574,
+   "date": "2025-01-30T16:06:35",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": [
+    "the teacher ",
+    {
+     "type": "bold",
+     "text": "moved the exam to Thursday"
+    }
+   ]
+  },
+  {
+   "id": 575,
+   "date": "2025-01-30T16:44:37",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 576,
+   "date": "2025-01-30T16:48:00",
+   "type": "message",
+   "from": "Mariana Quesada",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 577,
+   "date": "2025-01-30T17:00:24",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 578,
+   "date": "2025-01-30T17:28:56",
+   "type": "message",
+   "from": "Casey Mora",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 579,
+   "date": "2025-01-30T18:14:26",
+   "type": "message",
+   "from": "Kevin Calderon",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  }
+ ]
+}

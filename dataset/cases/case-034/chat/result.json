@@ -1,0 +1,4431 @@
+{
+ "name": "Amigos del cole 2",
+ "type": "private_group",
+ "id": 1000034,
+ "messages": [
+  {
+   "id": 1,
+   "date": "2024-06-14T08:25:35",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "create_group",
+   "text": ""
+  },
+  {
+   "id": 2,
+   "date": "2024-06-14T10:26:01",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Bryan Salas",
+    "Jose Jimenez"
+   ]
+  },
+  {
+   "id": 3,
+   "date": "2024-06-14T11:05:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 4,
+   "date": "2024-06-14T11:18:34",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 5,
+   "date": "2024-06-14T11:22:53",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Sunday"
+  },
+  {
+   "id": 6,
+   "date": "2024-06-14T12:34:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who has the report?"
+  },
+  {
+   "id": 7,
+   "date": "2024-06-14T13:03:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 8,
+   "date": "2024-06-14T13:12:36",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 9,
+   "date": "2024-06-14T14:54:36",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 10,
+   "date": "2024-06-14T15:17:15",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 11,
+   "date": "2024-06-14T15:37:43",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 12,
+   "date": "2024-06-14T15:43:38",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 13,
+   "date": "2024-06-14T15:47:46",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 14,
+   "date": "2024-06-14T15:57:59",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 15,
+   "date": "2024-06-14T15:59:08",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 16,
+   "date": "2024-06-14T16:01:16",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 17,
+   "date": "2024-06-14T16:52:02",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_1@14-06-2024_16-52-02.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 27,
+   "text": ""
+  },
+  {
+   "id": 18,
+   "date": "2024-06-14T17:01:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 19,
+   "date": "2024-06-14T17:38:41",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I owe you 100 for the burgers"
+  },
+  {
+   "id": 20,
+   "date": "2024-06-14T17:42:59",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the clinic?"
+  },
+  {
+   "id": 21,
+   "date": "2024-06-14T18:24:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 22,
+   "date": "2024-06-14T18:41:20",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 23,
+   "date": "2024-06-14T19:03:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 24,
+   "date": "2024-06-14T19:20:04",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 25,
+   "date": "2024-06-14T19:22:21",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 26,
+   "date": "2024-06-14T19:28:13",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 27,
+   "date": "2024-06-14T19:33:58",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 28,
+   "date": "2024-06-14T20:14:11",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "who's in ",
+    {
+     "type": "bold",
+     "text": "for Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "date": "2024-06-14T20:20:44",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 30,
+   "date": "2024-06-14T20:25:50",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can we move it to Monday?"
+  },
+  {
+   "id": 31,
+   "date": "2024-06-14T20:35:04",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 32,
+   "date": "2024-06-14T20:36:36",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 33,
+   "date": "2024-06-14T20:39:32",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "can someone pick me ",
+    {
+     "type": "bold",
+     "text": "up at the gym?"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "date": "2024-06-14T20:49:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 35,
+   "date": "2024-06-14T20:59:05",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 36,
+   "date": "2024-06-14T21:19:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 37,
+   "date": "2024-06-14T21:35:12",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the notes?"
+  },
+  {
+   "id": 38,
+   "date": "2024-06-14T21:51:34",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 39,
+   "date": "2024-06-14T22:14:04",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "thanks!"
+  },
+  {
+   "id": 40,
+   "date": "2024-06-14T23:07:07",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 41,
+   "date": "2024-06-14T23:15:54",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 42,
+   "date": "2024-06-15T07:07:33",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 43,
+   "date": "2024-06-15T07:33:33",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 44,
+   "date": "2024-06-15T08:12:33",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 45,
+   "date": "2024-06-15T08:28:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 46,
+   "date": "2024-06-15T08:30:32",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 47,
+   "date": "2024-06-15T08:56:03",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I owe you 5 for the burgers"
+  },
+  {
+   "id": 48,
+   "date": "2024-06-15T09:04:15",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 49,
+   "date": "2024-06-15T09:18:10",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I left my jacket at the park"
+  },
+  {
+   "id": 50,
+   "date": "2024-06-15T09:30:06",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "file": "voice_messages/audio_2@15-06-2024_09-30-06.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 5,
+   "text": ""
+  },
+  {
+   "id": 51,
+   "date": "2024-06-15T09:48:17",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "pay by Wednesday or I will hurt you"
+  },
+  {
+   "id": 52,
+   "date": "2024-06-15T09:52:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who has the cable?"
+  },
+  {
+   "id": 53,
+   "date": "2024-06-15T10:03:31",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 100 more people"
+  },
+  {
+   "id": 54,
+   "date": "2024-06-15T10:18:06",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 55,
+   "date": "2024-06-15T10:57:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 56,
+   "date": "2024-06-15T11:07:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 57,
+   "date": "2024-06-15T11:32:30",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "I'll ",
+    {
+     "type": "bold",
+     "text": "call you later"
+    }
+   ]
+  },
+  {
+   "id": 58,
+   "date": "2024-06-15T11:35:26",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 59,
+   "date": "2024-06-15T11:59:58",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 60,
+   "date": "2024-06-15T12:06:01",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the meeting is at 7 at the soda"
+  },
+  {
+   "id": 61,
+   "date": "2024-06-15T12:30:27",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 62,
+   "date": "2024-06-15T12:40:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 63,
+   "date": "2024-06-15T12:48:22",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "the ",
+    {
+     "type": "bold",
+     "text": "bus is full again"
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "date": "2024-06-15T13:23:15",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 65,
+   "date": "2024-06-15T14:02:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the meeting is at 7:30 at school"
+  },
+  {
+   "id": 66,
+   "date": "2024-06-15T14:25:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the meeting is at 8 at the office"
+  },
+  {
+   "id": 67,
+   "date": "2024-06-15T14:46:10",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 68,
+   "date": "2024-06-15T14:57:00",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 69,
+   "date": "2024-06-15T16:01:14",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 70,
+   "date": "2024-06-15T16:08:49",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 71,
+   "date": "2024-06-15T16:29:49",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 72,
+   "date": "2024-06-15T17:03:36",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Friday?"
+  },
+  {
+   "id": 73,
+   "date": "2024-06-15T17:13:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 74,
+   "date": "2024-06-15T17:19:16",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 75,
+   "date": "2024-06-15T17:43:37",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "can we move it ",
+    {
+     "type": "bold",
+     "text": "to Thursday?"
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "date": "2024-06-15T17:51:29",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 77,
+   "date": "2024-06-15T18:42:06",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "don't forget to bring the umbrella"
+  },
+  {
+   "id": 78,
+   "date": "2024-06-15T18:56:59",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 79,
+   "date": "2024-06-15T19:23:38",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 80,
+   "date": "2024-06-15T19:47:26",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I owe you 15 for the sushi"
+  },
+  {
+   "id": 81,
+   "date": "2024-06-15T19:52:36",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the soda?"
+  },
+  {
+   "id": 82,
+   "date": "2024-06-15T20:09:22",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 83,
+   "date": "2024-06-15T20:21:00",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 84,
+   "date": "2024-06-15T20:23:38",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 85,
+   "date": "2024-06-15T20:29:35",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 86,
+   "date": "2024-06-15T21:09:21",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "see you Wednesday"
+  },
+  {
+   "id": 87,
+   "date": "2024-06-15T21:45:13",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "see you Friday"
+  },
+  {
+   "id": 88,
+   "date": "2024-06-15T22:07:01",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Wednesday"
+  },
+  {
+   "id": 89,
+   "date": "2024-06-15T23:02:07",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "reminder for Monday: bring the keys and the signed form"
+  },
+  {
+   "id": 90,
+   "date": "2024-06-16T07:25:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 91,
+   "date": "2024-06-16T08:32:09",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 92,
+   "date": "2024-06-16T08:41:25",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 93,
+   "date": "2024-06-16T09:11:54",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the stadium?"
+  },
+  {
+   "id": 94,
+   "date": "2024-06-16T09:16:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 95,
+   "date": "2024-06-16T09:18:09",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 96,
+   "date": "2024-06-16T09:28:49",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 97,
+   "date": "2024-06-16T09:55:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 98,
+   "date": "2024-06-16T10:12:37",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "let's break his legs on Thursday"
+  },
+  {
+   "id": 99,
+   "date": "2024-06-16T10:33:06",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 100,
+   "date": "2024-06-16T10:34:37",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 101,
+   "date": "2024-06-16T10:39:30",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 102,
+   "date": "2024-06-16T11:07:24",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I left the cable at the soda"
+  },
+  {
+   "id": 103,
+   "date": "2024-06-16T11:12:47",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 40 more people"
+  },
+  {
+   "id": 104,
+   "date": "2024-06-16T11:14:05",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 105,
+   "date": "2024-06-16T11:32:38",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "see you Friday"
+  },
+  {
+   "id": 106,
+   "date": "2024-06-16T11:37:38",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 107,
+   "date": "2024-06-16T11:39:06",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 5 for the sushi"
+  },
+  {
+   "id": 108,
+   "date": "2024-06-16T11:42:46",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 109,
+   "date": "2024-06-16T12:04:37",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 110,
+   "date": "2024-06-16T13:00:37",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who's in for Thursday?"
+  },
+  {
+   "id": 111,
+   "date": "2024-06-16T13:13:13",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 112,
+   "date": "2024-06-16T13:22:12",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 113,
+   "date": "2024-06-16T13:36:04",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 114,
+   "date": "2024-06-16T13:59:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 115,
+   "date": "2024-06-16T14:41:06",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I owe you 5 for the gallo pinto"
+  },
+  {
+   "id": 116,
+   "date": "2024-06-16T14:44:04",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 117,
+   "date": "2024-06-16T15:10:59",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 118,
+   "date": "2024-06-16T15:13:00",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 119,
+   "date": "2024-06-16T15:51:19",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 120,
+   "date": "2024-06-16T16:11:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "is the gym open on Tuesday?"
+  },
+  {
+   "id": 121,
+   "date": "2024-06-16T16:33:22",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 122,
+   "date": "2024-06-16T16:34:19",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 123,
+   "date": "2024-06-16T17:04:48",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 124,
+   "date": "2024-06-16T17:12:52",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 125,
+   "date": "2024-06-16T17:26:00",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "they want to shoot the guy from the store"
+  },
+  {
+   "id": 126,
+   "date": "2024-06-16T17:30:08",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 127,
+   "date": "2024-06-16T17:41:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'm at the gym already"
+  },
+  {
+   "id": 128,
+   "date": "2024-06-16T17:55:12",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I left the notes at the soda"
+  },
+  {
+   "id": 129,
+   "date": "2024-06-16T18:08:35",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 130,
+   "date": "2024-06-16T18:22:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok see you at 4"
+  },
+  {
+   "id": 131,
+   "date": "2024-06-16T18:25:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 132,
+   "date": "2024-06-16T18:34:31",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 133,
+   "date": "2024-06-16T18:45:43",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 134,
+   "date": "2024-06-16T19:53:53",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 135,
+   "date": "2024-06-16T20:19:50",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_3@16-06-2024_20-19-50.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 18,
+   "text": ""
+  },
+  {
+   "id": 136,
+   "date": "2024-06-16T20:25:15",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "reminder for Saturday: bring the charger and the signed form"
+  },
+  {
+   "id": 137,
+   "date": "2024-06-16T20:26:32",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 138,
+   "date": "2024-06-16T20:35:01",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 139,
+   "date": "2024-06-16T22:58:40",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 140,
+   "date": "2024-06-16T22:59:33",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 141,
+   "date": "2024-06-16T23:27:13",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 142,
+   "date": "2024-06-16T23:35:29",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 143,
+   "date": "2024-06-16T23:44:10",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "who has ",
+    {
+     "type": "bold",
+     "text": "the keys?"
+    }
+   ]
+  },
+  {
+   "id": 144,
+   "date": "2024-06-16T23:58:18",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 145,
+   "date": "2024-06-17T08:24:45",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "send me the location ",
+    {
+     "type": "bold",
+     "text": "please"
+    }
+   ]
+  },
+  {
+   "id": 146,
+   "date": "2024-06-17T08:46:30",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 147,
+   "date": "2024-06-17T09:50:56",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 148,
+   "date": "2024-06-17T10:26:59",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "can someone pick me up at school?"
+  },
+  {
+   "id": 149,
+   "date": "2024-06-17T10:32:00",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 150,
+   "date": "2024-06-17T11:04:11",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok see you at 6"
+  },
+  {
+   "id": 151,
+   "date": "2024-06-17T11:14:40",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "I swear I will kill you ",
+    {
+     "type": "bold",
+     "text": "if you show up"
+    }
+   ]
+  },
+  {
+   "id": 152,
+   "date": "2024-06-17T12:54:29",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 153,
+   "date": "2024-06-17T13:32:44",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 154,
+   "date": "2024-06-17T13:34:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I know where your kids go to school"
+  },
+  {
+   "id": 155,
+   "date": "2024-06-17T13:37:09",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 156,
+   "date": "2024-06-17T13:40:24",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 157,
+   "date": "2024-06-17T14:31:16",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 158,
+   "date": "2024-06-17T15:08:02",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 159,
+   "date": "2024-06-17T15:08:14",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 160,
+   "date": "2024-06-17T15:17:02",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 161,
+   "date": "2024-06-17T15:21:51",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 162,
+   "date": "2024-06-17T16:02:01",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "reminder for Wednesday: bring the report and the signed form"
+  },
+  {
+   "id": 163,
+   "date": "2024-06-17T16:21:07",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the meeting is at 4 at the park"
+  },
+  {
+   "id": 164,
+   "date": "2024-06-17T16:32:22",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "see you Monday"
+  },
+  {
+   "id": 165,
+   "date": "2024-06-17T16:46:00",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 166,
+   "date": "2024-06-17T16:58:24",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 167,
+   "date": "2024-06-17T17:00:11",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "the bus is ",
+    {
+     "type": "bold",
+     "text": "full again"
+    }
+   ]
+  },
+  {
+   "id": 168,
+   "date": "2024-06-17T17:19:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I swear I will kill you if you show up"
+  },
+  {
+   "id": 169,
+   "date": "2024-06-17T17:38:32",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 170,
+   "date": "2024-06-17T17:43:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 171,
+   "date": "2024-06-17T17:51:15",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 172,
+   "date": "2024-06-17T18:38:17",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 173,
+   "date": "2024-06-17T19:53:18",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 174,
+   "date": "2024-06-17T20:34:12",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 175,
+   "date": "2024-06-17T21:28:50",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 176,
+   "date": "2024-06-17T21:30:42",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the tickets?"
+  },
+  {
+   "id": 177,
+   "date": "2024-06-17T22:31:26",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 178,
+   "date": "2024-06-17T22:32:14",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "see you Monday"
+  },
+  {
+   "id": 179,
+   "date": "2024-06-17T22:34:14",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 180,
+   "date": "2024-06-17T22:48:13",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 181,
+   "date": "2024-06-17T23:27:40",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "can someone pick me up at the clinic?"
+  },
+  {
+   "id": 182,
+   "date": "2024-06-17T23:32:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "send me the ",
+    {
+     "type": "bold",
+     "text": "location please"
+    }
+   ]
+  },
+  {
+   "id": 183,
+   "date": "2024-06-17T23:35:43",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 184,
+   "date": "2024-06-17T23:44:11",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 185,
+   "date": "2024-06-18T08:43:34",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "shopping list: - rice - beans - ",
+    {
+     "type": "bold",
+     "text": "coffee"
+    }
+   ]
+  },
+  {
+   "id": 186,
+   "date": "2024-06-18T08:50:05",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "running 10 minutes late, ",
+    {
+     "type": "bold",
+     "text": "sorry"
+    }
+   ]
+  },
+  {
+   "id": 187,
+   "date": "2024-06-18T09:37:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "who's ",
+    {
+     "type": "bold",
+     "text": "in for Sunday?"
+    }
+   ]
+  },
+  {
+   "id": 188,
+   "date": "2024-06-18T09:41:25",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I know people who can hurt you"
+  },
+  {
+   "id": 189,
+   "date": "2024-06-18T09:52:48",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the keys?"
+  },
+  {
+   "id": 190,
+   "date": "2024-06-18T11:03:47",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "photo": "photos/photo_4@18-06-2024_11-03-47.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 191,
+   "date": "2024-06-18T11:07:12",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 192,
+   "date": "2024-06-18T11:42:34",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 193,
+   "date": "2024-06-18T11:54:42",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 194,
+   "date": "2024-06-18T11:59:13",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 195,
+   "date": "2024-06-18T12:19:50",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 196,
+   "date": "2024-06-18T12:42:14",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "photo": "photos/photo_5@18-06-2024_12-42-14.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 197,
+   "date": "2024-06-18T12:44:34",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 198,
+   "date": "2024-06-18T13:20:03",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 199,
+   "date": "2024-06-18T13:38:21",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 200,
+   "date": "2024-06-18T13:44:04",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'm at school already"
+  },
+  {
+   "id": 201,
+   "date": "2024-06-18T14:03:34",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "is ",
+    {
+     "type": "bold",
+     "text": "the gym open on Friday?"
+    }
+   ]
+  },
+  {
+   "id": 202,
+   "date": "2024-06-18T14:27:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Saturday?"
+  },
+  {
+   "id": 203,
+   "date": "2024-06-18T14:35:50",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 204,
+   "date": "2024-06-18T14:54:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "running 10 minutes ",
+    {
+     "type": "bold",
+     "text": "late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 205,
+   "date": "2024-06-18T15:00:06",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 206,
+   "date": "2024-06-18T15:10:45",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 207,
+   "date": "2024-06-18T15:19:47",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 208,
+   "date": "2024-06-18T15:21:01",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "address is 200m north of school blue house"
+  },
+  {
+   "id": 209,
+   "date": "2024-06-18T16:01:00",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 210,
+   "date": "2024-06-18T16:16:35",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "send me the location please"
+  },
+  {
+   "id": 211,
+   "date": "2024-06-18T16:18:08",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 212,
+   "date": "2024-06-18T16:25:28",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 213,
+   "date": "2024-06-18T16:31:28",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "photo": "photos/photo_6@18-06-2024_16-31-28.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 214,
+   "date": "2024-06-18T16:47:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I left my jacket at the library"
+  },
+  {
+   "id": 215,
+   "date": "2024-06-18T17:02:43",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 216,
+   "date": "2024-06-18T17:18:24",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 217,
+   "date": "2024-06-18T17:25:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "lol"
+  },
+  {
+   "id": 218,
+   "date": "2024-06-18T17:36:46",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 219,
+   "date": "2024-06-18T17:53:37",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the meeting is at 8 at the clinic"
+  },
+  {
+   "id": 220,
+   "date": "2024-06-18T18:11:33",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Wednesday?"
+  },
+  {
+   "id": 221,
+   "date": "2024-06-18T18:13:08",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 222,
+   "date": "2024-06-18T18:52:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 223,
+   "date": "2024-06-18T19:24:05",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "photo": "photos/photo_7@18-06-2024_19-24-05.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 224,
+   "date": "2024-06-18T19:38:26",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 225,
+   "date": "2024-06-18T20:06:59",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who's in for Sunday?"
+  },
+  {
+   "id": 226,
+   "date": "2024-06-18T20:38:29",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "shopping list: - rice - beans - coffee"
+  },
+  {
+   "id": 227,
+   "date": "2024-06-18T20:44:43",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 228,
+   "date": "2024-06-18T20:45:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 229,
+   "date": "2024-06-18T20:53:09",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "pin_message",
+   "text": ""
+  },
+  {
+   "id": 230,
+   "date": "2024-06-18T21:05:44",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I can't make it Thursday"
+  },
+  {
+   "id": 231,
+   "date": "2024-06-18T21:07:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 232,
+   "date": "2024-06-18T21:17:15",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 233,
+   "date": "2024-06-18T21:41:09",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 234,
+   "date": "2024-06-18T21:47:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 235,
+   "date": "2024-06-18T21:49:30",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 236,
+   "date": "2024-06-18T22:09:08",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the meeting is at noon at the soda"
+  },
+  {
+   "id": 237,
+   "date": "2024-06-18T22:21:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 238,
+   "date": "2024-06-18T22:26:19",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 239,
+   "date": "2024-06-18T22:30:07",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "is the gym open on ",
+    {
+     "type": "bold",
+     "text": "Monday?"
+    }
+   ]
+  },
+  {
+   "id": 240,
+   "date": "2024-06-18T22:54:52",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 241,
+   "date": "2024-06-18T23:39:00",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 242,
+   "date": "2024-06-18T23:51:29",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 243,
+   "date": "2024-06-18T23:53:30",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 244,
+   "date": "2024-06-18T23:59:56",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "see you Friday"
+  },
+  {
+   "id": 245,
+   "date": "2024-06-19T08:14:11",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "photo": "photos/photo_8@19-06-2024_08-14-11.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 246,
+   "date": "2024-06-19T08:17:06",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 247,
+   "date": "2024-06-19T09:01:23",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 248,
+   "date": "2024-06-19T09:06:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "see you Wednesday"
+  },
+  {
+   "id": 249,
+   "date": "2024-06-19T09:09:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 100 for the pizza"
+  },
+  {
+   "id": 250,
+   "date": "2024-06-19T09:24:02",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 251,
+   "date": "2024-06-19T09:32:22",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 252,
+   "date": "2024-06-19T09:38:40",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 253,
+   "date": "2024-06-19T09:42:29",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "address is 200m north of the stadium blue house"
+  },
+  {
+   "id": 254,
+   "date": "2024-06-19T09:50:08",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who has the notes?"
+  },
+  {
+   "id": 255,
+   "date": "2024-06-19T10:27:45",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 256,
+   "date": "2024-06-19T10:33:18",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 257,
+   "date": "2024-06-19T11:08:02",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "don't forget to bring the cable"
+  },
+  {
+   "id": 258,
+   "date": "2024-06-19T11:30:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 259,
+   "date": "2024-06-19T11:33:05",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 260,
+   "date": "2024-06-19T11:40:50",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 261,
+   "date": "2024-06-19T11:49:27",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 262,
+   "date": "2024-06-19T11:53:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Monday"
+  },
+  {
+   "id": 263,
+   "date": "2024-06-19T11:56:26",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "haha true"
+  },
+  {
+   "id": 264,
+   "date": "2024-06-19T12:11:00",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'm at the library already"
+  },
+  {
+   "id": 265,
+   "date": "2024-06-19T12:14:05",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 266,
+   "date": "2024-06-19T12:37:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 267,
+   "date": "2024-06-19T13:16:39",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "sounds good"
+  },
+  {
+   "id": 268,
+   "date": "2024-06-19T14:02:02",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 269,
+   "date": "2024-06-19T14:17:46",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 5 for the gallo pinto"
+  },
+  {
+   "id": 270,
+   "date": "2024-06-19T14:30:28",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 271,
+   "date": "2024-06-19T14:31:40",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 10 more people"
+  },
+  {
+   "id": 272,
+   "date": "2024-06-19T14:42:41",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want burgers tonight?"
+  },
+  {
+   "id": 273,
+   "date": "2024-06-19T14:45:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 274,
+   "date": "2024-06-19T14:57:06",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 275,
+   "date": "2024-06-19T15:06:31",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 276,
+   "date": "2024-06-19T15:54:44",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 277,
+   "date": "2024-06-19T16:11:55",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 278,
+   "date": "2024-06-19T16:16:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'm at the soda already"
+  },
+  {
+   "id": 279,
+   "date": "2024-06-19T16:40:38",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "see you Monday"
+  },
+  {
+   "id": 280,
+   "date": "2024-06-19T17:05:35",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'm at the mall already"
+  },
+  {
+   "id": 281,
+   "date": "2024-06-19T17:30:14",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 282,
+   "date": "2024-06-19T17:36:01",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the meeting is at 9 at the office"
+  },
+  {
+   "id": 283,
+   "date": "2024-06-19T17:44:04",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 284,
+   "date": "2024-06-19T17:57:32",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 285,
+   "date": "2024-06-19T18:38:12",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 286,
+   "date": "2024-06-19T18:43:10",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 287,
+   "date": "2024-06-19T18:49:41",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "don't forget to bring the notes"
+  },
+  {
+   "id": 288,
+   "date": "2024-06-19T19:06:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 289,
+   "date": "2024-06-19T19:09:24",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 290,
+   "date": "2024-06-19T19:15:59",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "the dentist said it won't hurt you, ",
+    {
+     "type": "bold",
+     "text": "relax"
+    }
+   ]
+  },
+  {
+   "id": 291,
+   "date": "2024-06-19T19:31:52",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "good night"
+  },
+  {
+   "id": 292,
+   "date": "2024-06-19T19:40:33",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 293,
+   "date": "2024-06-19T19:43:50",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 20 more people"
+  },
+  {
+   "id": 294,
+   "date": "2024-06-19T20:36:28",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "address is 200m ",
+    {
+     "type": "bold",
+     "text": "north of the stadium blue house"
+    }
+   ]
+  },
+  {
+   "id": 295,
+   "date": "2024-06-19T20:52:32",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 20 for the tacos"
+  },
+  {
+   "id": 296,
+   "date": "2024-06-19T21:03:27",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 297,
+   "date": "2024-06-19T21:11:26",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I'm at the office already"
+  },
+  {
+   "id": 298,
+   "date": "2024-06-19T21:34:50",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 299,
+   "date": "2024-06-19T21:36:06",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 300,
+   "date": "2024-06-19T21:38:26",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok see you at 7:30"
+  },
+  {
+   "id": 301,
+   "date": "2024-06-19T21:51:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 302,
+   "date": "2024-06-19T22:02:55",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 303,
+   "date": "2024-06-19T22:17:52",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 304,
+   "date": "2024-06-19T23:00:42",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the mall?"
+  },
+  {
+   "id": 305,
+   "date": "2024-06-19T23:42:30",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 306,
+   "date": "2024-06-20T08:07:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "running ",
+    {
+     "type": "bold",
+     "text": "10 minutes late, sorry"
+    }
+   ]
+  },
+  {
+   "id": 307,
+   "date": "2024-06-20T08:08:40",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "good night"
+  },
+  {
+   "id": 308,
+   "date": "2024-06-20T08:12:58",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "who's ",
+    {
+     "type": "bold",
+     "text": "in for Monday?"
+    }
+   ]
+  },
+  {
+   "id": 309,
+   "date": "2024-06-20T08:30:52",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 310,
+   "date": "2024-06-20T08:43:59",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "nice photo"
+  },
+  {
+   "id": 311,
+   "date": "2024-06-20T09:22:41",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "watched a documentary about a drug deal investigation"
+  },
+  {
+   "id": 312,
+   "date": "2024-06-20T09:25:06",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 5 more people"
+  },
+  {
+   "id": 313,
+   "date": "2024-06-20T09:48:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "can we move ",
+    {
+     "type": "bold",
+     "text": "it to Tuesday?"
+    }
+   ]
+  },
+  {
+   "id": 314,
+   "date": "2024-06-20T09:56:45",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "edit_group_title",
+   "text": "",
+   "title": "Amigos del cole 2"
+  },
+  {
+   "id": 315,
+   "date": "2024-06-20T09:58:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 316,
+   "date": "2024-06-20T10:02:50",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 317,
+   "date": "2024-06-20T10:22:11",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 318,
+   "date": "2024-06-20T10:58:36",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 319,
+   "date": "2024-06-20T11:15:37",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 320,
+   "date": "2024-06-20T11:36:13",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 321,
+   "date": "2024-06-20T11:42:29",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 322,
+   "date": "2024-06-20T11:45:06",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 323,
+   "date": "2024-06-20T11:46:41",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 324,
+   "date": "2024-06-20T11:47:33",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "address is 200m north of the clinic blue house"
+  },
+  {
+   "id": 325,
+   "date": "2024-06-20T11:54:48",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I can't make it Wednesday"
+  },
+  {
+   "id": 326,
+   "date": "2024-06-20T12:26:40",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 327,
+   "date": "2024-06-20T13:21:21",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "file": "voice_messages/audio_9@20-06-2024_13-21-21.ogg",
+   "media_type": "voice_message",
+   "mime_type": "audio/ogg",
+   "duration_seconds": 4,
+   "text": ""
+  },
+  {
+   "id": 328,
+   "date": "2024-06-20T13:31:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 329,
+   "date": "2024-06-20T13:52:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 330,
+   "date": "2024-06-20T13:57:54",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 331,
+   "date": "2024-06-20T14:17:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I left the keys at the office"
+  },
+  {
+   "id": 332,
+   "date": "2024-06-20T14:37:19",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I owe you 25 for the sushi"
+  },
+  {
+   "id": 333,
+   "date": "2024-06-20T14:50:24",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 334,
+   "date": "2024-06-20T15:11:22",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 335,
+   "date": "2024-06-20T15:47:57",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 336,
+   "date": "2024-06-20T15:52:54",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 337,
+   "date": "2024-06-20T15:59:52",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 338,
+   "date": "2024-06-20T16:04:28",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 339,
+   "date": "2024-06-20T16:09:03",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Bryan Salas",
+    "Jose Jimenez"
+   ]
+  },
+  {
+   "id": 340,
+   "date": "2024-06-20T16:53:45",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I know people who can hurt you"
+  },
+  {
+   "id": 341,
+   "date": "2024-06-20T16:54:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "let's break ",
+    {
+     "type": "bold",
+     "text": "his legs on Saturday"
+    }
+   ]
+  },
+  {
+   "id": 342,
+   "date": "2024-06-20T16:56:07",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 343,
+   "date": "2024-06-20T16:57:46",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 344,
+   "date": "2024-06-20T17:02:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 345,
+   "date": "2024-06-20T18:08:01",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 346,
+   "date": "2024-06-20T18:13:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 347,
+   "date": "2024-06-20T18:39:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 348,
+   "date": "2024-06-20T18:43:37",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Friday"
+  },
+  {
+   "id": 349,
+   "date": "2024-06-20T18:57:31",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 350,
+   "date": "2024-06-20T19:23:30",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "address is 200m north of the stadium blue house"
+  },
+  {
+   "id": 351,
+   "date": "2024-06-20T19:48:48",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 352,
+   "date": "2024-06-20T20:04:49",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 353,
+   "date": "2024-06-20T20:58:17",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 354,
+   "date": "2024-06-20T21:24:29",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 355,
+   "date": "2024-06-20T21:39:18",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "where are you?"
+  },
+  {
+   "id": 356,
+   "date": "2024-06-20T21:45:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 357,
+   "date": "2024-06-20T21:47:33",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I can't make it Sunday"
+  },
+  {
+   "id": 358,
+   "date": "2024-06-20T22:33:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 359,
+   "date": "2024-06-20T22:42:52",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 360,
+   "date": "2024-06-20T23:09:54",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 361,
+   "date": "2024-06-20T23:14:43",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 362,
+   "date": "2024-06-20T23:26:33",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's break his legs on Sunday"
+  },
+  {
+   "id": 363,
+   "date": "2024-06-20T23:42:16",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 364,
+   "date": "2024-06-21T06:37:43",
+   "type": "service",
+   "actor": "Morgan Sample",
+   "actor_id": "user1000",
+   "action": "invite_members",
+   "text": "",
+   "members": [
+    "Bryan Salas",
+    "Jose Jimenez"
+   ]
+  },
+  {
+   "id": 365,
+   "date": "2024-06-21T06:44:29",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 366,
+   "date": "2024-06-21T06:47:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 367,
+   "date": "2024-06-21T06:51:25",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 368,
+   "date": "2024-06-21T07:01:07",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "did you finish the assignment?"
+  },
+  {
+   "id": 369,
+   "date": "2024-06-21T07:58:56",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "lol"
+  },
+  {
+   "id": 370,
+   "date": "2024-06-21T08:01:10",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want tacos tonight?"
+  },
+  {
+   "id": 371,
+   "date": "2024-06-21T08:03:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 372,
+   "date": "2024-06-21T08:22:18",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 373,
+   "date": "2024-06-21T08:26:53",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 374,
+   "date": "2024-06-21T08:36:09",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I owe you 40 for the empanadas"
+  },
+  {
+   "id": 375,
+   "date": "2024-06-21T08:36:29",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 376,
+   "date": "2024-06-21T08:42:27",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 377,
+   "date": "2024-06-21T08:43:39",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "anyone want sushi tonight?"
+  },
+  {
+   "id": 378,
+   "date": "2024-06-21T08:46:45",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "check your email"
+  },
+  {
+   "id": 379,
+   "date": "2024-06-21T09:18:03",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 380,
+   "date": "2024-06-21T09:36:52",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 381,
+   "date": "2024-06-21T09:53:23",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 382,
+   "date": "2024-06-21T10:07:13",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I left my jacket at the stadium"
+  },
+  {
+   "id": 383,
+   "date": "2024-06-21T10:25:58",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "address is 200m north of the soda blue house"
+  },
+  {
+   "id": 384,
+   "date": "2024-06-21T10:47:12",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 385,
+   "date": "2024-06-21T10:55:31",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "we need 50 more people"
+  },
+  {
+   "id": 386,
+   "date": "2024-06-21T11:12:23",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 387,
+   "date": "2024-06-21T11:43:05",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 388,
+   "date": "2024-06-21T11:43:24",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "photo": "photos/photo_10@21-06-2024_11-43-24.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 389,
+   "date": "2024-06-21T12:06:39",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 390,
+   "date": "2024-06-21T12:21:48",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 391,
+   "date": "2024-06-21T14:09:07",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "who has the cable?"
+  },
+  {
+   "id": 392,
+   "date": "2024-06-21T14:12:35",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can we move it to Tuesday?"
+  },
+  {
+   "id": 393,
+   "date": "2024-06-21T14:28:22",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 394,
+   "date": "2024-06-21T14:37:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 395,
+   "date": "2024-06-21T15:31:48",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "anyone want empanadas tonight?"
+  },
+  {
+   "id": 396,
+   "date": "2024-06-21T15:53:26",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Tuesday"
+  },
+  {
+   "id": 397,
+   "date": "2024-06-21T16:39:48",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can we move it to Thursday?"
+  },
+  {
+   "id": 398,
+   "date": "2024-06-21T16:53:44",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "great job today ",
+    {
+     "type": "bold",
+     "text": "team"
+    }
+   ]
+  },
+  {
+   "id": 399,
+   "date": "2024-06-21T17:32:22",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 400,
+   "date": "2024-06-21T17:47:15",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who's in for Wednesday?"
+  },
+  {
+   "id": 401,
+   "date": "2024-06-21T18:15:44",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "we need 15 more people"
+  },
+  {
+   "id": 402,
+   "date": "2024-06-21T18:28:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "my phone is almost dead"
+  },
+  {
+   "id": 403,
+   "date": "2024-06-21T18:34:48",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 404,
+   "date": "2024-06-21T19:03:13",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 405,
+   "date": "2024-06-21T19:47:47",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 25 for the burgers"
+  },
+  {
+   "id": 406,
+   "date": "2024-06-21T19:52:39",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 407,
+   "date": "2024-06-21T20:41:48",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 408,
+   "date": "2024-06-21T20:52:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Saturday"
+  },
+  {
+   "id": 409,
+   "date": "2024-06-21T21:20:19",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 410,
+   "date": "2024-06-21T21:33:08",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 411,
+   "date": "2024-06-21T21:47:45",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 412,
+   "date": "2024-06-21T22:32:01",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 413,
+   "date": "2024-06-21T22:40:47",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 414,
+   "date": "2024-06-21T22:49:40",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "nice photo"
+  },
+  {
+   "id": 415,
+   "date": "2024-06-21T22:53:29",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the meeting is at 4 at the clinic"
+  },
+  {
+   "id": 416,
+   "date": "2024-06-21T23:10:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 417,
+   "date": "2024-06-21T23:13:32",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 418,
+   "date": "2024-06-21T23:17:46",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who's in for Friday?"
+  },
+  {
+   "id": 419,
+   "date": "2024-06-21T23:32:14",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 420,
+   "date": "2024-06-21T23:32:35",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 421,
+   "date": "2024-06-22T06:09:48",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 422,
+   "date": "2024-06-22T06:23:54",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "reminder for Thursday: bring the keys and the signed form"
+  },
+  {
+   "id": 423,
+   "date": "2024-06-22T07:20:23",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the gym?"
+  },
+  {
+   "id": 424,
+   "date": "2024-06-22T07:26:37",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 425,
+   "date": "2024-06-22T07:44:05",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 426,
+   "date": "2024-06-22T08:00:44",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "on my way"
+  },
+  {
+   "id": 427,
+   "date": "2024-06-22T08:31:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 428,
+   "date": "2024-06-22T08:39:29",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "ok"
+  },
+  {
+   "id": 429,
+   "date": "2024-06-22T08:57:17",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 430,
+   "date": "2024-06-22T09:03:09",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "see you Saturday"
+  },
+  {
+   "id": 431,
+   "date": "2024-06-22T09:25:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 432,
+   "date": "2024-06-22T10:38:48",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok"
+  },
+  {
+   "id": 433,
+   "date": "2024-06-22T10:40:34",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok see you at 9"
+  },
+  {
+   "id": 434,
+   "date": "2024-06-22T10:49:31",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "check your email"
+  },
+  {
+   "id": 435,
+   "date": "2024-06-22T11:10:57",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "where are you?"
+  },
+  {
+   "id": 436,
+   "date": "2024-06-22T11:25:19",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": [
+    "the meeting is at ",
+    {
+     "type": "bold",
+     "text": "6 at the park"
+    }
+   ]
+  },
+  {
+   "id": 437,
+   "date": "2024-06-22T12:42:26",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 438,
+   "date": "2024-06-22T12:48:16",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "where are you?"
+  },
+  {
+   "id": 439,
+   "date": "2024-06-22T12:55:47",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "perfect"
+  },
+  {
+   "id": 440,
+   "date": "2024-06-22T13:19:33",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 441,
+   "date": "2024-06-22T13:45:44",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "already paid, thanks"
+  },
+  {
+   "id": 442,
+   "date": "2024-06-22T14:22:12",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "happy birthday!! 🎉"
+  },
+  {
+   "id": 443,
+   "date": "2024-06-22T14:54:07",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 444,
+   "date": "2024-06-22T14:57:32",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "great job today team"
+  },
+  {
+   "id": 445,
+   "date": "2024-06-22T15:16:40",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "running 10 minutes late, sorry"
+  },
+  {
+   "id": 446,
+   "date": "2024-06-22T15:32:30",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "great job today team"
+  },
+  {
+   "id": 447,
+   "date": "2024-06-22T15:34:30",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "sounds good"
+  },
+  {
+   "id": 448,
+   "date": "2024-06-22T15:45:32",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "thanks!"
+  },
+  {
+   "id": 449,
+   "date": "2024-06-22T16:47:37",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 450,
+   "date": "2024-06-22T16:49:37",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "you won't see next week if you talk"
+  },
+  {
+   "id": 451,
+   "date": "2024-06-22T17:15:08",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 15 for the sushi"
+  },
+  {
+   "id": 452,
+   "date": "2024-06-22T17:21:47",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 453,
+   "date": "2024-06-22T17:23:17",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 454,
+   "date": "2024-06-22T17:30:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I owe you 5 for the gallo pinto"
+  },
+  {
+   "id": 455,
+   "date": "2024-06-22T17:33:55",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 456,
+   "date": "2024-06-22T17:42:47",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "address is 200m north of school blue house"
+  },
+  {
+   "id": 457,
+   "date": "2024-06-22T17:45:54",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "the meeting is at 7:30 at the mall"
+  },
+  {
+   "id": 458,
+   "date": "2024-06-22T17:47:34",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 459,
+   "date": "2024-06-22T18:15:47",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "perfect"
+  },
+  {
+   "id": 460,
+   "date": "2024-06-22T18:16:46",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 461,
+   "date": "2024-06-22T18:49:04",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 462,
+   "date": "2024-06-22T19:08:51",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": [
+    "I owe you ",
+    {
+     "type": "bold",
+     "text": "15 for the empanadas"
+    }
+   ]
+  },
+  {
+   "id": 463,
+   "date": "2024-06-22T19:16:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 464,
+   "date": "2024-06-22T19:39:16",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 465,
+   "date": "2024-06-22T19:46:22",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I'm at the soda already"
+  },
+  {
+   "id": 466,
+   "date": "2024-06-22T19:53:55",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 467,
+   "date": "2024-06-22T19:57:09",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "it's raining a lot here"
+  },
+  {
+   "id": 468,
+   "date": "2024-06-22T20:02:40",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "👍"
+  },
+  {
+   "id": 469,
+   "date": "2024-06-22T20:12:51",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 470,
+   "date": "2024-06-22T20:18:06",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "thanks!"
+  },
+  {
+   "id": 471,
+   "date": "2024-06-22T20:29:58",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "great job today team"
+  },
+  {
+   "id": 472,
+   "date": "2024-06-22T20:31:39",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who's in for Tuesday?"
+  },
+  {
+   "id": 473,
+   "date": "2024-06-22T20:54:47",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who's in for Saturday?"
+  },
+  {
+   "id": 474,
+   "date": "2024-06-22T21:41:13",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 475,
+   "date": "2024-06-22T21:57:36",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 476,
+   "date": "2024-06-22T22:18:22",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'm at the stadium already"
+  },
+  {
+   "id": 477,
+   "date": "2024-06-22T22:28:54",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "keep talking and you will regret it"
+  },
+  {
+   "id": 478,
+   "date": "2024-06-22T22:41:52",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 479,
+   "date": "2024-06-23T06:09:12",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "haha true"
+  },
+  {
+   "id": 480,
+   "date": "2024-06-23T06:16:29",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "good night"
+  },
+  {
+   "id": 481,
+   "date": "2024-06-23T06:28:51",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "photo": "photos/photo_11@23-06-2024_06-28-51.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 482,
+   "date": "2024-06-23T06:38:16",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "check your email"
+  },
+  {
+   "id": 483,
+   "date": "2024-06-23T06:47:56",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "can someone pick me up at the bus stop?"
+  },
+  {
+   "id": 484,
+   "date": "2024-06-23T06:50:04",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 485,
+   "date": "2024-06-23T06:50:20",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "anyone want gallo pinto tonight?"
+  },
+  {
+   "id": 486,
+   "date": "2024-06-23T06:54:00",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the teacher moved the exam to Monday"
+  },
+  {
+   "id": 487,
+   "date": "2024-06-23T07:09:43",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who has my jacket?"
+  },
+  {
+   "id": 488,
+   "date": "2024-06-23T07:45:38",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "send me the location please"
+  },
+  {
+   "id": 489,
+   "date": "2024-06-23T08:14:50",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "I'll call you later"
+  },
+  {
+   "id": 490,
+   "date": "2024-06-23T08:20:45",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the umbrella?"
+  },
+  {
+   "id": 491,
+   "date": "2024-06-23T08:33:27",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "👍"
+  },
+  {
+   "id": 492,
+   "date": "2024-06-23T08:47:45",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 493,
+   "date": "2024-06-23T09:08:08",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "the bus is full again"
+  },
+  {
+   "id": 494,
+   "date": "2024-06-23T10:15:32",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "I can't make it Friday"
+  },
+  {
+   "id": 495,
+   "date": "2024-06-23T10:44:59",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "sounds good"
+  },
+  {
+   "id": 496,
+   "date": "2024-06-23T10:50:51",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "on my way"
+  },
+  {
+   "id": 497,
+   "date": "2024-06-23T11:25:56",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "are you coming tomorrow?"
+  },
+  {
+   "id": 498,
+   "date": "2024-06-23T11:31:56",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 499,
+   "date": "2024-06-23T11:43:41",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "if you tell anyone, you will regret it"
+  },
+  {
+   "id": 500,
+   "date": "2024-06-23T11:50:55",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 501,
+   "date": "2024-06-23T12:05:36",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can we move it to Saturday?"
+  },
+  {
+   "id": 502,
+   "date": "2024-06-23T13:13:44",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "send me the location please"
+  },
+  {
+   "id": 503,
+   "date": "2024-06-23T13:47:47",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "is the gym open on Sunday?"
+  },
+  {
+   "id": 504,
+   "date": "2024-06-23T14:27:10",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "👍"
+  },
+  {
+   "id": 505,
+   "date": "2024-06-23T14:30:20",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "perfect"
+  },
+  {
+   "id": 506,
+   "date": "2024-06-23T15:08:49",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "lol"
+  },
+  {
+   "id": 507,
+   "date": "2024-06-23T15:21:04",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "the meeting is at 10 at the library"
+  },
+  {
+   "id": 508,
+   "date": "2024-06-23T15:37:17",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "see you Thursday"
+  },
+  {
+   "id": 509,
+   "date": "2024-06-23T15:45:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "can someone pick me up at the clinic?"
+  },
+  {
+   "id": 510,
+   "date": "2024-06-23T15:56:31",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok see you at 7"
+  },
+  {
+   "id": 511,
+   "date": "2024-06-23T16:03:23",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "haha true"
+  },
+  {
+   "id": 512,
+   "date": "2024-06-23T16:42:06",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "ok see you at noon"
+  },
+  {
+   "id": 513,
+   "date": "2024-06-23T17:30:57",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "photo": "photos/photo_12@23-06-2024_17-30-57.jpg",
+   "width": 640,
+   "height": 480,
+   "text": ""
+  },
+  {
+   "id": 514,
+   "date": "2024-06-23T17:40:51",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "is the gym open on Monday?"
+  },
+  {
+   "id": 515,
+   "date": "2024-06-23T18:42:59",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 516,
+   "date": "2024-06-23T18:47:07",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 517,
+   "date": "2024-06-23T19:06:34",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "who has the charger?"
+  },
+  {
+   "id": 518,
+   "date": "2024-06-23T19:08:17",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "let's vote for the place"
+  },
+  {
+   "id": 519,
+   "date": "2024-06-23T19:36:41",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "ok"
+  },
+  {
+   "id": 520,
+   "date": "2024-06-23T19:40:24",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "good morning everyone"
+  },
+  {
+   "id": 521,
+   "date": "2024-06-23T19:56:05",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "what time does it close?"
+  },
+  {
+   "id": 522,
+   "date": "2024-06-23T20:06:36",
+   "type": "message",
+   "from": "Morgan Sample",
+   "from_id": "user1000",
+   "text": "who has the report?"
+  },
+  {
+   "id": 523,
+   "date": "2024-06-23T20:40:42",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": "nice photo"
+  },
+  {
+   "id": 524,
+   "date": "2024-06-23T20:46:37",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "on my way"
+  },
+  {
+   "id": 525,
+   "date": "2024-06-23T21:50:32",
+   "type": "message",
+   "from": "Jose Jimenez",
+   "from_id": "user1002",
+   "text": "this stupid printer jammed again"
+  },
+  {
+   "id": 526,
+   "date": "2024-06-23T22:30:26",
+   "type": "message",
+   "from": "Bryan Salas",
+   "from_id": "user1001",
+   "text": [
+    "are ",
+    {
+     "type": "bold",
+     "text": "you coming tomorrow?"
+    }
+   ]
+  }
+ ]
+}

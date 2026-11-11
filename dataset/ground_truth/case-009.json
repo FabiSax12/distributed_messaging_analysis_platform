@@ -1,0 +1,209 @@
+{
+  "case_id": "case-009",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 27
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 39
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 44
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 50
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 64
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 66
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 146
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 165
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 185
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 205
+        },
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 237
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 332
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 345
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 364
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_13@20-04-2025_22-39-52.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_7@16-04-2025_08-09-09.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_4@13-04-2025_23-17-53.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.630344,
+            "y": 0.294375,
+            "w": 0.369656,
+            "h": 0.101125
+          },
+          "notes": "COCO knife box, 6870.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_14@21-04-2025_18-02-27.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.67968,
+            "y": 0.4878,
+            "w": 0.32032,
+            "h": 0.0903
+          },
+          "notes": "COCO knife box, 1740.8 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_5@13-04-2025_23-40-30.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_1@13-04-2025_16-40-41.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.615031,
+            "y": 0.789929,
+            "w": 0.292672,
+            "h": 0.196871
+          },
+          "notes": "COCO knife box, 3419.8 px²"
+        }
+      ]
+    },
+    {
+      "path": "chat/photos/photo_8@16-04-2025_10-24-16.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_11@18-04-2025_08-54-10.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_3@13-04-2025_23-05-29.ogg",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 12.3,
+          "audio_end_s": 15.6,
+          "notes": "Stop being stupid and answer the phone."
+        }
+      ]
+    },
+    {
+      "path": "chat/voice_messages/audio_10@16-04-2025_19-11-45.ogg",
+      "findings": [
+        {
+          "category": "violence",
+          "severity": "high",
+          "kind": "audio_segment",
+          "audio_start_s": 10.78,
+          "audio_end_s": 13.6,
+          "notes": "They plan to shoot the guy from the store tonight."
+        }
+      ]
+    },
+    {
+      "path": "chat/voice_messages/audio_2@13-04-2025_22-06-59.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_9@16-04-2025_12-04-39.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_12@18-04-2025_09-03-32.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/video_files/video_6@14-04-2025_23-24-43.mp4",
+      "findings": []
+    }
+  ]
+}

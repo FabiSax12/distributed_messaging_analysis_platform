@@ -1,0 +1,586 @@
+03/02/24, 08:34 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+03/02/24, 08:38 - Mateo Placeholder created group "Futbol Domingos 25"
+03/02/24, 09:03 - Mateo Placeholder added Andrea Salas
+03/02/24, 09:46 - Mateo Placeholder added Pablo Solano
+03/02/24, 09:52 - Mateo Placeholder added Valeria Castro
+03/02/24, 10:37 - Mateo Placeholder added Sofia Example
+03/02/24, 10:45 - Mateo Placeholder added Morgan Brenes
+03/02/24, 10:50 - Pablo Solano: the teacher moved the exam to Wednesday
+03/02/24, 10:52 - Sofia Example: is the gym open on Thursday?
+03/02/24, 11:29 - Morgan Brenes: I owe you 20 for the tacos
+03/02/24, 11:51 - Sofia Example: I'll call you later
+03/02/24, 12:11 - Pablo Solano: good night
+03/02/24, 12:24 - Andrea Salas: ok see you at 10
+03/02/24, 12:54 - Andrea Salas: can we move it to Sunday?
+03/02/24, 12:59 - Pablo Solano: thanks!
+03/02/24, 14:06 - Morgan Brenes: can someone pick me up at the library?
+03/02/24, 14:50 - Mateo Placeholder: ok
+03/02/24, 14:51 - Mateo Placeholder: did you finish the assignment?
+03/02/24, 14:57 - Pablo Solano: is the gym open on Sunday?
+03/02/24, 15:29 - Valeria Castro: IMG-20240203-WA0001.jpg (file attached)
+03/02/24, 15:35 - Mateo Placeholder: running 10 minutes late, sorry
+03/02/24, 15:37 - Valeria Castro: send me the location please
+03/02/24, 16:24 - Pablo Solano: who's in for Friday?
+03/02/24, 17:17 - Valeria Castro: are you coming tomorrow?
+03/02/24, 17:42 - Valeria Castro: haha true
+03/02/24, 18:17 - Pablo Solano: good night
+03/02/24, 18:17 - Valeria Castro: are you coming tomorrow?
+03/02/24, 18:27 - Sofia Example: sounds good
+03/02/24, 18:50 - Morgan Brenes: can we move it to Thursday?
+03/02/24, 19:43 - Morgan Brenes: IMG-20240203-WA0002.jpg (file attached)
+03/02/24, 20:15 - Mateo Placeholder: on my way
+03/02/24, 20:20 - Pablo Solano: I left the notes at the office
+03/02/24, 21:07 - Mateo Placeholder: I owe you 40 for the sushi
+03/02/24, 21:18 - Andrea Salas left
+03/02/24, 21:52 - Pablo Solano: good morning everyone
+03/02/24, 21:59 - Sofia Example: anyone want empanadas tonight?
+03/02/24, 22:14 - Mateo Placeholder: haha true
+03/02/24, 22:19 - Mateo Placeholder: 👍
+03/02/24, 22:36 - Valeria Castro: nice photo
+03/02/24, 23:08 - Valeria Castro: can we move it to Wednesday?
+03/02/24, 23:40 - Valeria Castro: don't forget to bring the report
+03/02/24, 23:53 - Andrea Salas: already paid, thanks
+04/02/24, 06:07 - Valeria Castro: who's in for Tuesday?
+04/02/24, 06:23 - Morgan Brenes: I'll call you later
+04/02/24, 06:34 - Sofia Example: haha true
+04/02/24, 06:38 - Mateo Placeholder: is the gym open on Thursday?
+04/02/24, 06:42 - Andrea Salas: sounds good
+04/02/24, 07:03 - Pablo Solano: good night
+04/02/24, 07:41 - Mateo Placeholder: lol
+04/02/24, 09:05 - Mateo Placeholder: anyone want empanadas tonight?
+04/02/24, 09:15 - Morgan Brenes: check your email
+04/02/24, 09:22 - Mateo Placeholder: let's vote for the place
+04/02/24, 09:25 - Sofia Example: great job today team
+04/02/24, 09:30 - Valeria Castro: haha true
+04/02/24, 10:13 - Mateo Placeholder: I can't make it Saturday
+04/02/24, 10:16 - Pablo Solano: thanks!
+04/02/24, 10:18 - Morgan Brenes: can someone pick me up at the park?
+04/02/24, 10:23 - Sofia Example: ok see you at 4
+04/02/24, 11:19 - Mateo Placeholder: the teacher moved the exam to Wednesday
+04/02/24, 11:22 - Morgan Brenes: who has the cable?
+04/02/24, 11:31 - Mateo Placeholder: ok see you at 7
+04/02/24, 11:41 - Valeria Castro: I'll call you later
+04/02/24, 12:06 - Andrea Salas: ok
+04/02/24, 12:17 - Morgan Brenes: running 10 minutes late, sorry
+04/02/24, 12:43 - Valeria Castro: 👍
+04/02/24, 13:01 - Valeria Castro: don't forget to bring the notes
+04/02/24, 13:09 - Valeria Castro: my phone is almost dead
+04/02/24, 13:22 - Valeria Castro: it's raining a lot here
+04/02/24, 13:28 - Valeria Castro: is the gym open on Monday?
+04/02/24, 13:29 - Pablo Solano: I'm at the park already
+04/02/24, 13:35 - Sofia Example: the teacher moved the exam to Wednesday
+04/02/24, 13:49 - Sofia Example: good night
+04/02/24, 14:38 - Valeria Castro: good morning everyone
+04/02/24, 14:43 - Valeria Castro: what time does it close?
+04/02/24, 14:44 - Valeria Castro: running 10 minutes late, sorry
+04/02/24, 14:47 - Valeria Castro: anyone want empanadas tonight?
+04/02/24, 14:57 - Valeria Castro: happy birthday!! 🎉
+04/02/24, 15:07 - Andrea Salas: sounds good
+04/02/24, 15:08 - Valeria Castro: I owe you 50 for the tacos
+04/02/24, 15:40 - Valeria Castro: nice photo
+04/02/24, 16:00 - Pablo Solano: already paid, thanks
+04/02/24, 16:15 - Sofia Example: can we move it to Sunday?
+04/02/24, 16:40 - Sofia Example: who's in for Friday?
+04/02/24, 16:42 - Andrea Salas: we need 100 more people
+04/02/24, 16:45 - Sofia Example: the bus is full again
+04/02/24, 17:25 - Valeria Castro: on my way
+04/02/24, 18:20 - Morgan Brenes: can we move it to Monday?
+04/02/24, 18:42 - Andrea Salas: perfect
+04/02/24, 18:45 - Sofia Example: I left the cable at school
+04/02/24, 19:43 - Pablo Solano: the meeting is at 6 at the bus stop
+04/02/24, 20:05 - Andrea Salas: PTT-20240204-WA0003.opus (file attached)
+04/02/24, 20:24 - Andrea Salas: my phone is almost dead
+04/02/24, 20:31 - Morgan Brenes: good night
+04/02/24, 20:48 - Morgan Brenes: I left my jacket at the mall
+04/02/24, 20:59 - Pablo Solano: can someone pick me up at the gym?
+04/02/24, 21:09 - Pablo Solano: did you finish the assignment?
+04/02/24, 21:54 - Andrea Salas: great job today team
+04/02/24, 22:12 - Valeria Castro: already paid, thanks
+04/02/24, 22:30 - Pablo Solano: the teacher moved the exam to Monday
+04/02/24, 22:34 - Sofia Example: what time does it close?
+04/02/24, 22:46 - Pablo Solano: anyone want gallo pinto tonight?
+04/02/24, 23:08 - Mateo Placeholder: 👍
+04/02/24, 23:26 - Pablo Solano: <Media omitted>
+04/02/24, 23:33 - Mateo Placeholder: we need 15 more people
+04/02/24, 23:47 - Mateo Placeholder: the teacher moved the exam to Sunday
+05/02/24, 07:10 - Mateo Placeholder: good morning everyone
+05/02/24, 07:22 - Sofia Example: good night
+05/02/24, 07:29 - Mateo Placeholder: see you Sunday
+05/02/24, 07:41 - Morgan Brenes: good morning everyone
+05/02/24, 09:28 - Valeria Castro: I'll call you later
+05/02/24, 09:29 - Sofia Example: perfect
+05/02/24, 09:41 - Andrea Salas: sounds good
+05/02/24, 09:54 - Morgan Brenes: good morning everyone
+05/02/24, 10:42 - Sofia Example: are you coming tomorrow?
+05/02/24, 10:46 - Pablo Solano: ok
+05/02/24, 11:11 - Morgan Brenes: my phone is almost dead
+05/02/24, 11:13 - Pablo Solano: happy birthday!! 🎉
+05/02/24, 11:16 - Mateo Placeholder: already paid, thanks
+05/02/24, 11:20 - Valeria Castro: on my way
+05/02/24, 11:21 - Andrea Salas: nice photo
+05/02/24, 11:31 - Morgan Brenes: I'm at the clinic already
+05/02/24, 11:37 - Valeria Castro: anyone want pizza tonight?
+05/02/24, 11:44 - Pablo Solano: who has the keys?
+05/02/24, 12:03 - Andrea Salas: check your email
+05/02/24, 12:05 - Mateo Placeholder: lol
+05/02/24, 12:36 - Valeria Castro: on my way
+05/02/24, 12:48 - Morgan Brenes: let's vote for the place
+05/02/24, 13:17 - Sofia Example: thanks!
+05/02/24, 13:32 - Andrea Salas: the teacher moved the exam to Saturday
+05/02/24, 14:12 - Valeria Castro: happy birthday!! 🎉
+05/02/24, 14:47 - Mateo Placeholder: see you Tuesday
+05/02/24, 15:10 - Andrea Salas: haha true
+05/02/24, 15:14 - Mateo Placeholder: don't forget to bring my jacket
+05/02/24, 15:18 - Morgan Brenes: who's in for Friday?
+05/02/24, 16:04 - Mateo Placeholder: who's in for Friday?
+05/02/24, 16:16 - Valeria Castro: perfect
+05/02/24, 16:16 - Andrea Salas: I'm at the park already
+05/02/24, 16:35 - Andrea Salas: the teacher moved the exam to Sunday
+05/02/24, 17:19 - Sofia Example: thanks!
+05/02/24, 17:27 - Pablo Solano: perfect
+05/02/24, 17:31 - Morgan Brenes: on my way
+05/02/24, 17:46 - Valeria Castro: what time does it close?
+05/02/24, 18:21 - Pablo Solano: the meeting is at noon at the gym
+05/02/24, 18:29 - Mateo Placeholder: I'm at the stadium already
+05/02/24, 18:30 - Valeria Castro: nice photo
+05/02/24, 18:40 - Mateo Placeholder: I can't make it Monday
+05/02/24, 18:53 - Andrea Salas: address is
+200m north of school
+blue house
+05/02/24, 18:56 - Valeria Castro: my phone is almost dead
+05/02/24, 19:00 - Andrea Salas: thanks!
+05/02/24, 19:14 - Pablo Solano: reminder for Wednesday:
+bring the cable
+and the signed form
+05/02/24, 19:21 - Pablo Solano: sounds good
+05/02/24, 19:22 - Valeria Castro: it's raining a lot here
+05/02/24, 19:34 - Morgan Brenes: I'll call you later
+05/02/24, 19:43 - Morgan Brenes: the bus is full again
+05/02/24, 20:45 - Valeria Castro: who has the tickets?
+05/02/24, 21:04 - Andrea Salas: ok
+05/02/24, 21:25 - Pablo Solano: running 10 minutes late, sorry
+05/02/24, 21:45 - Valeria Castro: happy birthday!! 🎉
+05/02/24, 22:08 - Sofia Example: I owe you 100 for the tacos
+05/02/24, 22:09 - Pablo Solano: the teacher moved the exam to Saturday
+05/02/24, 22:11 - Andrea Salas: send me the location please
+05/02/24, 22:19 - Pablo Solano: what time does it close?
+05/02/24, 22:25 - Sofia Example: my phone is almost dead
+05/02/24, 22:59 - Mateo Placeholder: what time does it close?
+05/02/24, 22:59 - Mateo Placeholder: I'm at school already
+05/02/24, 23:27 - Mateo Placeholder added Andrea Salas
+05/02/24, 23:55 - Mateo Placeholder: can we move it to Thursday?
+06/02/24, 08:03 - Valeria Castro: is the gym open on Sunday?
+06/02/24, 08:15 - Mateo Placeholder: let's vote for the place
+06/02/24, 08:40 - Andrea Salas: it's raining a lot here
+06/02/24, 09:10 - Valeria Castro: the bus is full again
+06/02/24, 09:11 - Mateo Placeholder: the teacher moved the exam to Monday
+06/02/24, 09:25 - Mateo Placeholder: great job today team
+06/02/24, 10:09 - Valeria Castro: good night
+06/02/24, 10:19 - Sofia Example: I left my jacket at the mall
+06/02/24, 10:23 - Mateo Placeholder: good morning everyone
+06/02/24, 10:41 - Mateo Placeholder: ok
+06/02/24, 10:47 - Pablo Solano: the bus is full again
+06/02/24, 11:00 - Mateo Placeholder: haha true
+06/02/24, 11:03 - Valeria Castro: ok see you at 4
+06/02/24, 11:43 - Valeria Castro: are you coming tomorrow?
+06/02/24, 11:50 - Valeria Castro: the teacher moved the exam to Friday
+06/02/24, 12:44 - Pablo Solano: check your email
+06/02/24, 12:48 - Pablo Solano: anyone want rice and beans tonight?
+06/02/24, 13:48 - Morgan Brenes: anyone want empanadas tonight?
+06/02/24, 13:49 - Morgan Brenes: it's raining a lot here
+06/02/24, 14:57 - Morgan Brenes: nice photo
+06/02/24, 15:00 - Morgan Brenes: good night
+06/02/24, 15:01 - Morgan Brenes: it's raining a lot here
+06/02/24, 15:02 - Pablo Solano: I can't make it Monday
+06/02/24, 15:14 - Mateo Placeholder: ok see you at 6
+06/02/24, 15:24 - Valeria Castro: can we move it to Monday?
+06/02/24, 15:38 - Valeria Castro: thanks!
+06/02/24, 15:41 - Sofia Example: thanks!
+06/02/24, 15:58 - Morgan Brenes: nice photo
+06/02/24, 16:09 - Pablo Solano: what time does it close?
+06/02/24, 16:32 - Valeria Castro: I left the cable at the library
+06/02/24, 16:38 - Mateo Placeholder: good morning everyone
+06/02/24, 16:56 - Andrea Salas: the teacher moved the exam to Monday
+06/02/24, 16:58 - Valeria Castro: I left the charger at the clinic
+06/02/24, 17:14 - Pablo Solano: let's vote for the place
+06/02/24, 17:39 - Pablo Solano: the meeting is at 8:15 at the office
+06/02/24, 17:55 - Pablo Solano: <Media omitted>
+06/02/24, 19:06 - Mateo Placeholder: reminder for Thursday:
+bring the keys
+and the signed form
+06/02/24, 19:12 - Pablo Solano: thanks!
+06/02/24, 19:30 - Mateo Placeholder: I'll call you later
+06/02/24, 19:49 - Pablo Solano: happy birthday!! 🎉
+06/02/24, 19:57 - Pablo Solano: I left the keys at school
+06/02/24, 20:01 - Andrea Salas: the bus is full again
+06/02/24, 20:13 - Morgan Brenes: see you Wednesday
+06/02/24, 20:28 - Pablo Solano: who's in for Tuesday?
+06/02/24, 20:37 - Valeria Castro: haha true
+06/02/24, 20:40 - Sofia Example: the meeting is at 8 at the clinic
+06/02/24, 20:48 - Pablo Solano: we need 25 more people
+06/02/24, 20:59 - Morgan Brenes: can someone pick me up at the gym?
+06/02/24, 21:38 - Sofia Example: ok see you at 9
+06/02/24, 21:55 - Mateo Placeholder: it's raining a lot here
+06/02/24, 22:19 - Sofia Example: can we move it to Tuesday?
+06/02/24, 23:16 - Valeria Castro: the meeting is at 7:30 at the clinic
+06/02/24, 23:29 - Morgan Brenes: can someone pick me up at the bus stop?
+06/02/24, 23:31 - Morgan Brenes: happy birthday!! 🎉
+06/02/24, 23:31 - Valeria Castro: are you coming tomorrow?
+06/02/24, 23:36 - Morgan Brenes: we need 15 more people
+06/02/24, 23:52 - Andrea Salas: we need 50 more people
+07/02/24, 06:15 - Andrea Salas: already paid, thanks
+07/02/24, 06:59 - Valeria Castro: anyone want tacos tonight?
+07/02/24, 07:03 - Valeria Castro: reminder for Sunday:
+bring my jacket
+and the signed form
+07/02/24, 07:52 - Morgan Brenes: who has the cable?
+07/02/24, 07:56 - Andrea Salas: perfect
+07/02/24, 08:01 - Andrea Salas: where are you?
+07/02/24, 08:29 - Valeria Castro: my phone is almost dead
+07/02/24, 08:43 - Sofia Example: let's vote for the place
+07/02/24, 09:03 - Andrea Salas: I owe you 5 for the rice and beans
+07/02/24, 09:08 - Morgan Brenes: check your email
+07/02/24, 09:17 - Sofia Example: PTT-20240207-WA0004.opus (file attached)
+07/02/24, 09:23 - Sofia Example: it's raining a lot here
+07/02/24, 09:50 - Morgan Brenes: good night
+07/02/24, 10:00 - Morgan Brenes: reminder for Thursday:
+bring the report
+and the signed form
+07/02/24, 11:06 - Pablo Solano: see you Thursday
+07/02/24, 11:50 - Sofia Example: thanks!
+07/02/24, 11:58 - Valeria Castro: who has the charger?
+07/02/24, 12:16 - Andrea Salas: can someone pick me up at the clinic?
+07/02/24, 12:31 - Pablo Solano: perfect
+07/02/24, 13:39 - Valeria Castro: IMG-20240207-WA0005.jpg (file attached)
+07/02/24, 13:42 - Mateo Placeholder: anyone want sushi tonight?
+07/02/24, 13:54 - Morgan Brenes: sounds good
+07/02/24, 14:19 - Pablo Solano: haha true
+07/02/24, 14:32 - Sofia Example: great job today team
+07/02/24, 14:49 - Mateo Placeholder: what time does it close?
+07/02/24, 14:51 - Pablo Solano: I left the charger at the office
+07/02/24, 15:13 - Morgan Brenes: good night
+07/02/24, 16:22 - Sofia Example: nice photo
+07/02/24, 16:33 - Valeria Castro: who's in for Thursday?
+07/02/24, 16:57 - Mateo Placeholder added Andrea Salas
+07/02/24, 18:05 - Mateo Placeholder: nice photo
+07/02/24, 18:09 - Morgan Brenes: my phone is almost dead
+07/02/24, 18:44 - Sofia Example: perfect
+07/02/24, 18:45 - Morgan Brenes: the bus is full again
+07/02/24, 19:03 - Mateo Placeholder: where are you?
+07/02/24, 19:07 - Andrea Salas: check your email
+07/02/24, 19:13 - Valeria Castro: is the gym open on Tuesday?
+07/02/24, 19:29 - Sofia Example: who's in for Friday?
+07/02/24, 19:40 - Mateo Placeholder: perfect
+07/02/24, 19:52 - Valeria Castro: check your email
+07/02/24, 20:05 - Sofia Example: is the gym open on Thursday?
+07/02/24, 20:14 - Pablo Solano: did you finish the assignment?
+07/02/24, 20:15 - Morgan Brenes: I left the charger at the mall
+07/02/24, 20:46 - Pablo Solano: can we move it to Tuesday?
+07/02/24, 21:06 - Mateo Placeholder: can someone pick me up at the gym?
+07/02/24, 21:10 - Pablo Solano: this stupid printer jammed again
+07/02/24, 21:31 - Sofia Example: PTT-20240207-WA0006.opus (file attached)
+07/02/24, 21:42 - Morgan Brenes: great job today team
+07/02/24, 22:28 - Mateo Placeholder: check your email
+07/02/24, 22:50 - Sofia Example: nice photo
+07/02/24, 23:19 - Mateo Placeholder: I can't make it Monday
+07/02/24, 23:19 - Pablo Solano: it's raining a lot here
+07/02/24, 23:41 - Andrea Salas: who has the tickets?
+08/02/24, 07:00 - Sofia Example: who's in for Thursday?
+08/02/24, 07:08 - Morgan Brenes: 👍
+08/02/24, 07:11 - Morgan Brenes: nice photo
+08/02/24, 07:21 - Pablo Solano: can we move it to Tuesday?
+08/02/24, 07:31 - Mateo Placeholder: happy birthday!! 🎉
+08/02/24, 07:39 - Morgan Brenes: my phone is almost dead
+08/02/24, 08:13 - Valeria Castro: haha true
+08/02/24, 08:24 - Pablo Solano: check your email
+08/02/24, 09:00 - Valeria Castro: see you Saturday
+08/02/24, 09:23 - Andrea Salas: ok see you at 6
+08/02/24, 09:28 - Sofia Example: the bus is full again
+08/02/24, 09:31 - Pablo Solano: anyone want burgers tonight?
+08/02/24, 10:01 - Andrea Salas: my phone is almost dead
+08/02/24, 10:05 - Mateo Placeholder: my phone is almost dead
+08/02/24, 10:36 - Pablo Solano: perfect
+08/02/24, 11:35 - Morgan Brenes: don't forget to bring the tickets
+08/02/24, 11:48 - Andrea Salas: haha true
+08/02/24, 12:05 - Sofia Example: PTT-20240208-WA0007.opus (file attached)
+08/02/24, 12:12 - Valeria Castro: where are you?
+08/02/24, 12:17 - Sofia Example: my phone is almost dead
+08/02/24, 12:19 - Valeria Castro: my phone is almost dead
+08/02/24, 13:01 - Andrea Salas: where are you?
+08/02/24, 13:01 - Mateo Placeholder: are you coming tomorrow?
+08/02/24, 13:07 - Pablo Solano: who's in for Sunday?
+08/02/24, 13:12 - Mateo Placeholder: I can't make it Saturday
+08/02/24, 13:33 - Morgan Brenes: haha true
+08/02/24, 14:05 - Andrea Salas: where are you?
+08/02/24, 14:23 - Andrea Salas: did you finish the assignment?
+08/02/24, 15:12 - Valeria Castro: my phone is almost dead
+08/02/24, 16:08 - Sofia Example: I'll call you later
+08/02/24, 16:25 - Andrea Salas: I left the report at the stadium
+08/02/24, 16:27 - Pablo Solano: it's raining a lot here
+08/02/24, 16:30 - Morgan Brenes: the bus is full again
+08/02/24, 17:34 - Sofia Example: the teacher moved the exam to Saturday
+08/02/24, 17:35 - Andrea Salas: lol
+08/02/24, 17:49 - Andrea Salas: sounds good
+08/02/24, 18:13 - Morgan Brenes: already paid, thanks
+08/02/24, 18:14 - Valeria Castro: I'll call you later
+08/02/24, 19:11 - Mateo Placeholder: my phone is almost dead
+08/02/24, 19:30 - Sofia Example: see you Tuesday
+08/02/24, 19:34 - Andrea Salas: IMG-20240208-WA0008.jpg (file attached)
+08/02/24, 20:10 - Mateo Placeholder: see you Sunday
+08/02/24, 20:15 - Mateo Placeholder changed this group's icon
+08/02/24, 20:20 - Mateo Placeholder: haha true
+08/02/24, 20:27 - Andrea Salas: on my way
+08/02/24, 20:37 - Pablo Solano: let's vote for the place
+08/02/24, 20:51 - Andrea Salas: can we move it to Thursday?
+08/02/24, 21:05 - Andrea Salas: I'm at the clinic already
+08/02/24, 21:13 - Pablo Solano: I owe you 40 for the sushi
+08/02/24, 22:01 - Valeria Castro: the bus is full again
+08/02/24, 22:58 - Valeria Castro: nice photo
+08/02/24, 23:04 - Pablo Solano: can someone pick me up at the mall?
+08/02/24, 23:07 - Morgan Brenes: lol
+08/02/24, 23:54 - Mateo Placeholder: don't forget to bring the charger
+08/02/24, 23:56 - Morgan Brenes: send me the location please
+09/02/24, 06:03 - Mateo Placeholder: it's raining a lot here
+09/02/24, 06:05 - Andrea Salas: I left the tickets at school
+09/02/24, 06:42 - Andrea Salas: don't forget to bring my jacket
+09/02/24, 06:55 - Mateo Placeholder: are you coming tomorrow?
+09/02/24, 07:11 - Valeria Castro: IMG-20240209-WA0009.jpg (file attached)
+09/02/24, 07:30 - Morgan Brenes: nice photo
+09/02/24, 08:01 - Valeria Castro: IMG-20240209-WA0010.jpg (file attached)
+09/02/24, 08:39 - Valeria Castro: thanks!
+09/02/24, 08:57 - Mateo Placeholder: who's in for Thursday?
+09/02/24, 09:24 - Mateo Placeholder: don't forget to bring the keys
+09/02/24, 09:38 - Andrea Salas: sounds good
+09/02/24, 11:05 - Mateo Placeholder: check your email
+09/02/24, 11:34 - Mateo Placeholder: the meeting is at 9 at the clinic
+09/02/24, 12:23 - Sofia Example: thanks!
+09/02/24, 12:32 - Morgan Brenes: sounds good
+09/02/24, 12:39 - Sofia Example: can someone pick me up at the clinic?
+09/02/24, 12:55 - Mateo Placeholder: ok see you at 3
+09/02/24, 13:24 - Mateo Placeholder: is the gym open on Friday?
+09/02/24, 13:50 - Andrea Salas: did you finish the assignment?
+09/02/24, 14:32 - Pablo Solano: I left the umbrella at the gym
+09/02/24, 14:41 - Valeria Castro: it's raining a lot here
+09/02/24, 14:42 - Valeria Castro: I left the cable at school
+09/02/24, 15:15 - Morgan Brenes: haha true
+09/02/24, 15:41 - Andrea Salas: are you coming tomorrow?
+09/02/24, 15:55 - Pablo Solano: let's vote for the place
+09/02/24, 16:09 - Mateo Placeholder: on my way
+09/02/24, 16:15 - Sofia Example: sounds good
+09/02/24, 16:15 - Pablo Solano: good morning everyone
+09/02/24, 16:31 - Pablo Solano: running 10 minutes late, sorry
+09/02/24, 16:37 - Pablo Solano: who's in for Thursday?
+09/02/24, 16:48 - Pablo Solano: 👍
+09/02/24, 16:55 - Morgan Brenes: did you finish the assignment?
+09/02/24, 17:00 - Valeria Castro: who's in for Tuesday?
+09/02/24, 17:00 - Andrea Salas: check your email
+09/02/24, 17:02 - Valeria Castro: is the gym open on Sunday?
+09/02/24, 17:05 - Valeria Castro: what time does it close?
+09/02/24, 17:43 - Mateo Placeholder: what time does it close?
+09/02/24, 18:22 - Mateo Placeholder: check your email
+09/02/24, 18:40 - Valeria Castro: already paid, thanks
+09/02/24, 19:06 - Morgan Brenes: where are you?
+09/02/24, 19:10 - Sofia Example: who has the keys?
+09/02/24, 19:26 - Pablo Solano: I can't make it Sunday
+09/02/24, 19:32 - Andrea Salas: the teacher moved the exam to Wednesday
+09/02/24, 19:35 - Andrea Salas: I'm at the office already
+09/02/24, 20:09 - Andrea Salas: what time does it close?
+09/02/24, 20:10 - Mateo Placeholder: on my way
+09/02/24, 20:21 - Andrea Salas: check your email
+09/02/24, 20:22 - Mateo Placeholder: sounds good
+09/02/24, 20:34 - Morgan Brenes: ok
+09/02/24, 21:18 - Morgan Brenes: already paid, thanks
+09/02/24, 21:49 - Morgan Brenes: who has the cable?
+09/02/24, 22:28 - Mateo Placeholder: anyone want tacos tonight?
+09/02/24, 22:48 - Andrea Salas: I'm at the clinic already
+09/02/24, 22:49 - Sofia Example: where are you?
+09/02/24, 22:52 - Valeria Castro: check your email
+09/02/24, 23:42 - Valeria Castro: lol
+10/02/24, 07:00 - Morgan Brenes: what time does it close?
+10/02/24, 07:10 - Pablo Solano: already paid, thanks
+10/02/24, 07:18 - Pablo Solano: ok
+10/02/24, 07:38 - Sofia Example: don't forget to bring the umbrella
+10/02/24, 07:47 - Pablo Solano: are you coming tomorrow?
+10/02/24, 07:52 - Andrea Salas: don't forget to bring the report
+10/02/24, 08:40 - Mateo Placeholder: haha true
+10/02/24, 09:09 - Mateo Placeholder: what time does it close?
+10/02/24, 09:30 - Sofia Example: I'm at the mall already
+10/02/24, 09:32 - Andrea Salas: is the gym open on Sunday?
+10/02/24, 09:44 - Andrea Salas: already paid, thanks
+10/02/24, 09:55 - Mateo Placeholder: who has my jacket?
+10/02/24, 10:00 - Valeria Castro: let's vote for the place
+10/02/24, 10:36 - Valeria Castro: 👍
+10/02/24, 10:44 - Pablo Solano: who's in for Sunday?
+10/02/24, 10:49 - Valeria Castro: thanks!
+10/02/24, 11:11 - Sofia Example: I'll call you later
+10/02/24, 11:30 - Andrea Salas: 👍
+10/02/24, 12:03 - Pablo Solano: see you Thursday
+10/02/24, 12:13 - Andrea Salas: is the gym open on Friday?
+10/02/24, 12:16 - Mateo Placeholder: let's vote for the place
+10/02/24, 12:43 - Pablo Solano: I'm at school already
+10/02/24, 12:48 - Andrea Salas: happy birthday!! 🎉
+10/02/24, 12:50 - Sofia Example: check your email
+10/02/24, 13:06 - Valeria Castro: see you Wednesday
+10/02/24, 13:54 - Pablo Solano: who's in for Sunday?
+10/02/24, 14:44 - Mateo Placeholder: who's in for Saturday?
+10/02/24, 14:51 - Mateo Placeholder: the bus is full again
+10/02/24, 15:08 - Mateo Placeholder: my phone is almost dead
+10/02/24, 15:51 - Morgan Brenes: 👍
+10/02/24, 16:01 - Valeria Castro: see you Tuesday
+10/02/24, 16:16 - Morgan Brenes: I'm at the bus stop already
+10/02/24, 16:25 - Sofia Example: let's vote for the place
+10/02/24, 16:35 - Pablo Solano: can we move it to Saturday?
+10/02/24, 17:02 - Pablo Solano: address is
+200m north of the mall
+blue house
+10/02/24, 17:16 - Mateo Placeholder changed this group's icon
+10/02/24, 17:17 - Mateo Placeholder: reminder for Sunday:
+bring the report
+and the signed form
+10/02/24, 17:19 - Valeria Castro: address is
+200m north of the bus stop
+blue house
+10/02/24, 17:53 - Pablo Solano: I'm at the library already
+10/02/24, 17:55 - Mateo Placeholder: are you coming tomorrow?
+10/02/24, 18:24 - Valeria Castro: don't forget to bring the notes
+10/02/24, 18:35 - Mateo Placeholder: where are you?
+10/02/24, 18:57 - Pablo Solano: where are you?
+10/02/24, 19:05 - Valeria Castro: let's vote for the place
+10/02/24, 19:47 - Morgan Brenes: my phone is almost dead
+10/02/24, 20:27 - Andrea Salas: nice photo
+10/02/24, 20:35 - Pablo Solano: perfect
+10/02/24, 20:48 - Andrea Salas: ok
+10/02/24, 20:49 - Pablo Solano: we need 5 more people
+10/02/24, 20:50 - Sofia Example: let's vote for the place
+10/02/24, 21:05 - Pablo Solano: good morning everyone
+10/02/24, 21:13 - Mateo Placeholder: good morning everyone
+10/02/24, 21:22 - Andrea Salas: I'm at the office already
+10/02/24, 22:30 - Sofia Example: I can't make it Friday
+10/02/24, 23:07 - Sofia Example: where are you?
+10/02/24, 23:57 - Andrea Salas: 👍
+11/02/24, 07:17 - Sofia Example: the teacher moved the exam to Thursday
+11/02/24, 07:20 - Sofia Example: the meeting is at 6 at the office
+11/02/24, 07:25 - Andrea Salas: can we move it to Thursday?
+11/02/24, 07:42 - Andrea Salas: who's in for Tuesday?
+11/02/24, 07:42 - Valeria Castro: can someone pick me up at the gym?
+11/02/24, 07:51 - Sofia Example: I owe you 5 for the pizza
+11/02/24, 07:55 - Mateo Placeholder: don't forget to bring the charger
+11/02/24, 08:22 - Pablo Solano: who's in for Thursday?
+11/02/24, 08:31 - Morgan Brenes: nice photo
+11/02/24, 09:19 - Pablo Solano: who's in for Monday?
+11/02/24, 09:36 - Pablo Solano: did you finish the assignment?
+11/02/24, 09:39 - Pablo Solano: what time does it close?
+11/02/24, 10:15 - Andrea Salas: nice photo
+11/02/24, 10:20 - Mateo Placeholder changed this group's icon
+11/02/24, 10:50 - Valeria Castro: ok see you at 10
+11/02/24, 11:38 - Morgan Brenes: the teacher moved the exam to Thursday
+11/02/24, 11:40 - Mateo Placeholder: nice photo
+11/02/24, 11:42 - Sofia Example: <Media omitted>
+11/02/24, 11:46 - Sofia Example: 👍
+11/02/24, 12:29 - Mateo Placeholder: I'll call you later
+11/02/24, 12:41 - Sofia Example: what time does it close?
+11/02/24, 13:02 - Sofia Example: good morning everyone
+11/02/24, 13:42 - Sofia Example: where are you?
+11/02/24, 13:47 - Pablo Solano: perfect
+11/02/24, 14:08 - Morgan Brenes: IMG-20240211-WA0011.jpg (file attached)
+11/02/24, 14:16 - Andrea Salas: the meeting is at 4 at the clinic
+11/02/24, 14:33 - Sofia Example: the meeting is at noon at the stadium
+11/02/24, 14:45 - Valeria Castro: nice photo
+11/02/24, 15:02 - Andrea Salas: what time does it close?
+11/02/24, 15:12 - Morgan Brenes: perfect
+11/02/24, 15:31 - Sofia Example: did you finish the assignment?
+11/02/24, 15:37 - Sofia Example: anyone want burgers tonight?
+11/02/24, 15:43 - Sofia Example: we need 5 more people
+11/02/24, 15:58 - Morgan Brenes: the bus is full again
+11/02/24, 16:16 - Andrea Salas: check your email
+11/02/24, 16:19 - Valeria Castro: see you Thursday
+11/02/24, 17:00 - Sofia Example: I left the keys at the library
+11/02/24, 17:20 - Morgan Brenes: can we move it to Sunday?
+11/02/24, 17:25 - Morgan Brenes: the bus is full again
+11/02/24, 17:30 - Mateo Placeholder: who has the tickets?
+11/02/24, 17:42 - Morgan Brenes: send me the location please
+11/02/24, 18:03 - Andrea Salas: <Media omitted>
+11/02/24, 18:12 - Mateo Placeholder: who's in for Friday?
+11/02/24, 18:37 - Mateo Placeholder: I'm at the bus stop already
+11/02/24, 18:51 - Sofia Example: can someone pick me up at the clinic?
+11/02/24, 18:52 - Andrea Salas: great job today team
+11/02/24, 19:25 - Morgan Brenes: who has the keys?
+11/02/24, 19:26 - Pablo Solano: ok see you at 6
+11/02/24, 19:54 - Andrea Salas: the dentist said it won't hurt you, relax
+11/02/24, 20:33 - Sofia Example: great job today team
+11/02/24, 20:38 - Morgan Brenes: can we move it to Sunday?
+11/02/24, 20:48 - Morgan Brenes: can we move it to Monday?
+11/02/24, 20:58 - Morgan Brenes: let's vote for the place
+11/02/24, 21:20 - Mateo Placeholder: I left the umbrella at the gym
+11/02/24, 21:27 - Morgan Brenes: <Media omitted>
+11/02/24, 22:10 - Andrea Salas: it's raining a lot here
+11/02/24, 22:18 - Pablo Solano: sounds good
+11/02/24, 22:30 - Sofia Example: nice photo
+11/02/24, 22:34 - Mateo Placeholder: sounds good
+11/02/24, 23:15 - Morgan Brenes: <Media omitted>
+11/02/24, 23:18 - Mateo Placeholder: thanks!
+11/02/24, 23:55 - Sofia Example: see you Sunday
+12/02/24, 07:12 - Mateo Placeholder: I'm at the clinic already
+12/02/24, 07:46 - Mateo Placeholder: the bus is full again
+12/02/24, 07:58 - Mateo Placeholder: sounds good
+12/02/24, 08:48 - Andrea Salas: good morning everyone
+12/02/24, 09:01 - Sofia Example: ok
+12/02/24, 09:05 - Sofia Example: the meeting is at 4 at the park
+12/02/24, 09:13 - Valeria Castro: ok see you at 4
+12/02/24, 09:16 - Valeria Castro: who's in for Thursday?
+12/02/24, 09:24 - Andrea Salas: the teacher moved the exam to Monday
+12/02/24, 09:42 - Morgan Brenes: <Media omitted>
+12/02/24, 09:57 - Morgan Brenes: the bus is full again
+12/02/24, 10:08 - Mateo Placeholder: ok
+12/02/24, 10:10 - Valeria Castro: the teacher moved the exam to Sunday
+12/02/24, 10:33 - Andrea Salas: the meeting is at 4 at the stadium
+12/02/24, 10:48 - Sofia Example: anyone want tacos tonight?
+12/02/24, 11:19 - Pablo Solano: 👍
+12/02/24, 11:34 - Pablo Solano: lol
+12/02/24, 11:40 - Pablo Solano: see you Friday
+12/02/24, 12:11 - Mateo Placeholder: on my way
+12/02/24, 12:41 - Pablo Solano: anyone want empanadas tonight?
+12/02/24, 12:47 - Valeria Castro: the meeting is at 5 at the soda
+12/02/24, 13:15 - Pablo Solano: where are you?
+12/02/24, 13:29 - Morgan Brenes: the teacher moved the exam to Saturday
+12/02/24, 14:00 - Sofia Example: send me the location please
+12/02/24, 14:31 - Morgan Brenes: 👍
+12/02/24, 14:32 - Andrea Salas: lol
+12/02/24, 14:35 - Pablo Solano: 👍
+12/02/24, 15:43 - Valeria Castro: can someone pick me up at the clinic?
+12/02/24, 16:00 - Pablo Solano: check your email
+12/02/24, 16:01 - Valeria Castro: I'll call you later
+12/02/24, 16:40 - Morgan Brenes: nice photo
+12/02/24, 16:56 - Andrea Salas: perfect
+12/02/24, 17:13 - Pablo Solano: the bus is full again
+12/02/24, 18:17 - Morgan Brenes: I'll call you later
+12/02/24, 19:30 - Mateo Placeholder: we need 25 more people
+12/02/24, 19:32 - Sofia Example: good morning everyone
+12/02/24, 20:11 - Morgan Brenes: reminder for Thursday:
+bring the report
+and the signed form
+12/02/24, 20:27 - Valeria Castro: ok see you at 7
+12/02/24, 20:34 - Mateo Placeholder: already paid, thanks
+12/02/24, 20:54 - Sofia Example: I can't make it Sunday
+12/02/24, 20:56 - Morgan Brenes: send me the location please
+12/02/24, 21:11 - Valeria Castro: thanks!
+12/02/24, 21:15 - Mateo Placeholder: let's vote for the place
+12/02/24, 21:27 - Mateo Placeholder: haha true
+12/02/24, 21:33 - Andrea Salas: 👍
+12/02/24, 22:17 - Valeria Castro: anyone want rice and beans tonight?
+12/02/24, 22:21 - Sofia Example: on my way
+12/02/24, 22:25 - Mateo Placeholder: thanks!
+12/02/24, 22:41 - Pablo Solano: where are you?
+12/02/24, 22:43 - Andrea Salas: can someone pick me up at the clinic?
+12/02/24, 22:59 - Valeria Castro: thanks!
+12/02/24, 23:39 - Mateo Placeholder: I left the report at the stadium
+13/02/24, 08:02 - Andrea Salas: running 10 minutes late, sorry
+13/02/24, 08:32 - Morgan Brenes: the dentist said it won't hurt you, relax
+13/02/24, 08:38 - Pablo Solano: great job today team
+13/02/24, 08:40 - Morgan Brenes: good night
+13/02/24, 08:56 - Pablo Solano: ok
+13/02/24, 09:01 - Sofia Example: where are you?
+13/02/24, 09:25 - Morgan Brenes: see you Thursday
+13/02/24, 09:40 - Morgan Brenes: the bus is full again
+13/02/24, 09:51 - Mateo Placeholder: thanks!
+13/02/24, 10:09 - Pablo Solano: IMG-20240213-WA0012.jpg (file attached)

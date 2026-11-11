@@ -1,0 +1,67 @@
+{
+  "case_id": "case-010",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_14@13-08-2025_16-13-06.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_3@08-08-2025_17-07-57.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_7@09-08-2025_17-21-08.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_6@09-08-2025_14-00-01.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_8@10-08-2025_22-24-37.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_13@13-08-2025_13-06-08.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_4@08-08-2025_21-36-28.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/photos/photo_2@08-08-2025_17-03-45.jpg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_10@11-08-2025_23-19-56.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_12@13-08-2025_10-21-41.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_11@12-08-2025_07-03-36.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_9@11-08-2025_23-12-38.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/voice_messages/audio_5@09-08-2025_07-43-23.ogg",
+      "findings": []
+    },
+    {
+      "path": "chat/video_files/video_1@07-08-2025_19-26-40.mp4",
+      "findings": []
+    }
+  ]
+}

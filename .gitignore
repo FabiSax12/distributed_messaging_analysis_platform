@@ -25,6 +25,7 @@ crash.log
 # Secretos
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 

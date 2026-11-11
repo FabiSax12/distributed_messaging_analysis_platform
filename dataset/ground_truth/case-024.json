@@ -1,0 +1,258 @@
+{
+  "case_id": "case-024",
+  "labeled_by": "Camila Hidalgo (generator labels; images: COCO 2017 human annotations)",
+  "notes": "Every source is labeled. Text/audio labels are the generator's intended category for the harmful messages/sentences it inserted (including paraphrases the rules miss); hard negatives are unlabeled-as-harmful by design. Image labels: COCO knife/scissors boxes.",
+  "sources": [
+    {
+      "path": "chat/whatsapp.txt",
+      "findings": [
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 33
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 70
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 101
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 126
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 144
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 179
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 234
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 236
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 251
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 296
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 326
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 334
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 350
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 428
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 439
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 459
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 507
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 508
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 510
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 527
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 562
+        },
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "message",
+          "message_index": 568
+        },
+        {
+          "category": "threat",
+          "severity": "high",
+          "kind": "message",
+          "message_index": 579
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250223-WA0004.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250302-WA0011.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250222-WA0001.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250225-WA0005.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.163641,
+            "y": 0.264937,
+            "w": 0.167531,
+            "h": 0.070125
+          },
+          "notes": "COCO knife box, 1705.1 px²"
+        },
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.322531,
+            "y": 0.859063,
+            "w": 0.099094,
+            "h": 0.140937
+          },
+          "notes": "COCO knife box, 2571.1 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250226-WA0007.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250223-WA0002.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/IMG-20250223-WA0003.jpg",
+      "findings": [
+        {
+          "category": "sensitive_image",
+          "severity": "medium",
+          "kind": "image",
+          "bbox": {
+            "x": 0.82048,
+            "y": 0.661172,
+            "w": 0.06096,
+            "h": 0.018404
+          },
+          "notes": "COCO knife box, 152.4 px²"
+        }
+      ]
+    },
+    {
+      "path": "media/IMG-20250227-WA0008.jpg",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250302-WA0012.opus",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 26.1,
+          "audio_end_s": 29.83,
+          "notes": "You are such an idiot, I can't believe it."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250227-WA0009.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250304-WA0013.opus",
+      "findings": [
+        {
+          "category": "offensive_language",
+          "severity": "medium",
+          "kind": "audio_segment",
+          "audio_start_s": 0.33,
+          "audio_end_s": 2.95,
+          "notes": "Stop being stupid and answer the phone."
+        }
+      ]
+    },
+    {
+      "path": "media/PTT-20250225-WA0006.opus",
+      "findings": []
+    },
+    {
+      "path": "media/PTT-20250228-WA0010.opus",
+      "findings": []
+    }
+  ]
+}

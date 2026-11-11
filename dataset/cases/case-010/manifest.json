@@ -1,0 +1,115 @@
+{
+  "case_id": "case-010",
+  "title": "Synthetic: Family group chat (benign control)",
+  "priority": "low",
+  "heterogeneous": true,
+  "sources": [
+    {
+      "path": "chat/result.json",
+      "content_type": "text",
+      "chat_format": "telegram",
+      "timezone": "Europe/Madrid",
+      "sha256": "1b12aee51b06a0aaf82884d9148e744ce3184d1ba67a212bd344dcb3df0c45eb",
+      "size_bytes": 60631
+    },
+    {
+      "path": "chat/photos/photo_14@13-08-2025_16-13-06.jpg",
+      "content_type": "image",
+      "sha256": "5ea3fcf5e1315fe04b9091cb53042a569acd05b1e41ad5a8d70f38e8c250ded6",
+      "size_bytes": 132546,
+      "notes": "COCO val2017 000000398905.jpg (Attribution License, http://farm8.staticflickr.com/7141/6657510691_3f01a3ae23_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_3@08-08-2025_17-07-57.jpg",
+      "content_type": "image",
+      "sha256": "b93715083071f1c221b9221191225533062d07fce19814760ec72fb5156106af",
+      "size_bytes": 168300,
+      "notes": "COCO val2017 000000100428.jpg (Attribution-ShareAlike License, http://farm4.staticflickr.com/3812/9057179560_9849d58a64_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_7@09-08-2025_17-21-08.jpg",
+      "content_type": "image",
+      "sha256": "a6e060e6e23667a937f1130eed8616b97166e546e148cc62c1f82037b4c3738d",
+      "size_bytes": 129886,
+      "notes": "COCO val2017 000000435299.jpg (Attribution License, http://farm4.staticflickr.com/3714/9631359693_80164e6e57_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_6@09-08-2025_14-00-01.jpg",
+      "content_type": "image",
+      "sha256": "01d975300362169fe1d5bbdf664f28873201678c9e6679080e69aba4deb1ca27",
+      "size_bytes": 47600,
+      "notes": "COCO val2017 000000555009.jpg (Attribution-ShareAlike License, http://farm1.staticflickr.com/22/30339463_78c837ba54_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_8@10-08-2025_22-24-37.jpg",
+      "content_type": "image",
+      "sha256": "68f6289ad123cea10bf3111a6776409bf571d0b57a1453475debe54e1a36e961",
+      "size_bytes": 19981,
+      "notes": "COCO val2017 000000126110.jpg (Attribution-ShareAlike License, http://farm1.staticflickr.com/58/192105537_1b69c0b40d_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_13@13-08-2025_13-06-08.jpg",
+      "content_type": "image",
+      "sha256": "c3f1e039b14bec40394cec0cdcaf31f06c71cbe2723276731b209a16d0d39f11",
+      "size_bytes": 125823,
+      "notes": "COCO val2017 000000410880.jpg (Attribution License, http://farm3.staticflickr.com/2457/3790889558_3d54eae6fb_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_4@08-08-2025_21-36-28.jpg",
+      "content_type": "image",
+      "sha256": "69d32a91d82468a3c3140cc844586f1fe790d780afa7b44fc2391f2082de7f18",
+      "size_bytes": 144474,
+      "notes": "COCO val2017 000000553664.jpg (Attribution License, http://farm9.staticflickr.com/8184/8359838012_b3491d063c_z.jpg)"
+    },
+    {
+      "path": "chat/photos/photo_2@08-08-2025_17-03-45.jpg",
+      "content_type": "image",
+      "sha256": "852f95c0f7d5d72ec994fcead05a2a5501e7459966a360d92c26a5827584c744",
+      "size_bytes": 164141,
+      "notes": "COCO val2017 000000056545.jpg (Attribution License, http://farm3.staticflickr.com/2894/9470927378_921b919b7e_z.jpg)"
+    },
+    {
+      "path": "chat/voice_messages/audio_10@11-08-2025_23-19-56.ogg",
+      "content_type": "audio",
+      "sha256": "e24a063c71ea63669680838cd8cc50ca5742b15fa1518e90609371cf7ce9ccbe",
+      "size_bytes": 47472,
+      "notes": "synthetic speech (Windows SAPI TTS), 24.8 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_12@13-08-2025_10-21-41.ogg",
+      "content_type": "audio",
+      "sha256": "f1ff1fdb94c6d250bdbdad75e759d0d3a297bb9c5b432109188b9b3f1620a9dd",
+      "size_bytes": 270908,
+      "notes": "synthetic speech (Windows SAPI TTS), 137.0 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_11@12-08-2025_07-03-36.ogg",
+      "content_type": "audio",
+      "sha256": "35fc5f2f243115cd2f5139460574a8eb8191b34180f90066ca6218abaaaba216",
+      "size_bytes": 69133,
+      "notes": "synthetic speech (Windows SAPI TTS), 36.2 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_9@11-08-2025_23-12-38.ogg",
+      "content_type": "audio",
+      "sha256": "46343294a7c282a01153dfe82ffe332b15ac649af4b5a069cdaf2b94ef30a524",
+      "size_bytes": 7493,
+      "notes": "synthetic speech (Windows SAPI TTS), 4.6 s"
+    },
+    {
+      "path": "chat/voice_messages/audio_5@09-08-2025_07-43-23.ogg",
+      "content_type": "audio",
+      "sha256": "3f11553bf4cebce7770eadea203f4e46fb242695ec342bf9b60be690eaa52bc0",
+      "size_bytes": 12463,
+      "notes": "synthetic speech (Windows SAPI TTS), 6.5 s"
+    },
+    {
+      "path": "chat/video_files/video_1@07-08-2025_19-26-40.mp4",
+      "content_type": "video",
+      "sha256": "892cdc343eed7de9338bc4b10ce566bef0c672a5ee02218915928a66373bd80b",
+      "size_bytes": 461430,
+      "notes": "synthetic speech (Windows SAPI TTS), 19.1 s"
+    }
+  ],
+  "notes": "Generated by dataset/generators/generate_dataset.py, seed 42; scenario family; kind hetero; chat language es; synthetic people and events."
+}

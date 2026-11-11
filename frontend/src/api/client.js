@@ -1,16 +1,41 @@
 // Coordinator REST client. One method per endpoint in shared/api.py.
+//
+// Every request carries the Cognito ACCESS token as `Authorization: Bearer`
+// (set by AuthProvider through `configureAuth`). On a 401 the client refreshes
+// once and retries; a second 401 ends the session. Presigned S3 requests
+// (putToS3, report download) never carry the API token.
 
 import { API_BASE } from '../config.js'
+
+let auth = { getToken: () => null, refresh: async () => null }
+
+export function configureAuth(next) {
+  auth = next
+}
 
 export class ApiError extends Error {
   constructor(status, detail) {
     super(describeDetail(status, detail))
     this.status = status
     this.detail = detail
+    // 'session' (401), 'forbidden' (403), 'unavailable' (0/5xx), 'request' (other 4xx)
+    this.kind =
+      status === 401 ? 'session' : status === 403 ? 'forbidden' : status === 0 || status >= 500 ? 'unavailable' : 'request'
   }
 }
 
 function describeDetail(status, detail) {
+  if (status === 401) return 'Your session expired or is not valid. Sign in again.'
+  if (status === 403) {
+    // The coordinator answers 403 both for a role denial and for a request
+    // that did not come through CloudFront (missing origin header).
+    const text = typeof detail === 'string' ? detail : detail?.detail
+    if (text && /origin/i.test(text)) return 'The coordinator rejected a request that did not come through CloudFront.'
+    return 'Your role does not allow this action.'
+  }
+  if (status === 503 && typeof detail === 'string' && /cognito/i.test(detail)) {
+    return `The coordinator's authentication is not configured (${detail}).`
+  }
   if (!detail) {
     if (status >= 500) return `The coordinator responded ${status} with no detail (is it down or unreachable?)`
     return `HTTP error ${status}`
@@ -25,16 +50,26 @@ function describeDetail(status, detail) {
   return JSON.stringify(detail)
 }
 
-async function request(method, path, body) {
-  let res
+async function send(method, path, body, token) {
+  const headers = {}
+  if (body) headers['Content-Type'] = 'application/json'
+  if (token) headers.Authorization = `Bearer ${token}`
   try {
-    res = await fetch(`${API_BASE}${path}`, {
+    return await fetch(`${API_BASE}${path}`, {
       method,
-      headers: body ? { 'Content-Type': 'application/json' } : undefined,
+      headers,
       body: body ? JSON.stringify(body) : undefined,
     })
   } catch {
     throw new ApiError(0, 'No network response: could not reach the coordinator.')
+  }
+}
+
+async function request(method, path, body) {
+  let res = await send(method, path, body, auth.getToken())
+  if (res.status === 401 && auth.getToken()) {
+    const fresh = await auth.refresh()
+    if (fresh) res = await send(method, path, body, fresh)
   }
   const text = await res.text()
   let data = null
@@ -48,6 +83,9 @@ async function request(method, path, body) {
 }
 
 export const api = {
+  me: () => request('GET', '/api/me'),
+  adminUsers: (cursor) => request('GET', `/api/admin/users${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ''}`),
+  setRole: (username, role, enabled) => request('POST', '/api/admin/roles', { username, role, enabled }),
   state: () => request('GET', '/api/state'),
   metrics: (minutes = 30) => request('GET', `/api/metrics?minutes=${minutes}`),
   dataset: (prefix = '') => request('GET', `/api/dataset?prefix=${encodeURIComponent(prefix)}`),
