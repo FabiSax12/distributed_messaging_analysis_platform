@@ -6,8 +6,7 @@ Full documentation lives in [docs/](docs/).
 
 ## Architecture
 
-See [the current architecture](docs/architecture/current.md). The older PNG is
-historical; it should not be used as proof of deployment.
+![Architecture AWS Draw.io](docs/architecture/ArchitectureAWS.jpg)
 
 CloudFront serves the dashboard and proxies the API. The coordinator performs
 admission, FIFO/aging scheduling, case barriers, retries, reports and custody
