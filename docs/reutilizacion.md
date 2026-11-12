@@ -39,7 +39,7 @@ Copied with minimal changes (renames, imports, content types, extra fields).
 | `coordinator/.../api/health.py`, `api/ws.py`, `logging.py`, `config.py` | Health endpoint, WebSocket endpoint, logging, per-environment configuration. | New environment variables |
 | `coordinator/.../security.py` | `X-Origin-Verify` middleware so the API cannot be reached while bypassing CloudFront (also checked in the WebSocket handshake). | Kept as an extra layer. User authentication and roles are added on top (M4) |
 | `dashboard/src/hooks/`, `lib/`, `components/` | WebSocket with polling fallback, hash routing, charts. | None in substance |
-| `infra/modules/frontend`, `deploy/publish-dashboard.sh` | Dashboard delivery: Vite build, S3 bucket, CloudFront invalidation, and `/api/*` proxied to the coordinator (same origin, so no CORS). | Cognito login integrated in the app |
+| `infra/modules/frontend`, `deploy/publish-dashboard.sh` | Dashboard delivery: Vite build, S3 bucket, CloudFront invalidation, and `/api/*` proxied to the coordinator (same origin, so no CORS for the API). | Cognito login integrated in the app. The dashboard also uploads files straight to the evidence bucket, which needs a CORS rule on that bucket |
 | Concurrency model of the coordinator | One process with threads, no `multiprocessing`. | None |
 | `coordinator/scripts/fake_worker.py`, `smoke.py`, `workers/scripts/local_e2e.py`, `pytest` layout | Local end-to-end and smoke testing without real workers. | Kept and ported to RabbitMQ + PostgreSQL (`fake_worker.py` now lives in `workers/scripts/` and drives the real runner with a fake op; `local_e2e.py` runs the B.6-style scenarios on the compose stack); the `moto` unit tests were dropped (not required by the assignment) |
 | Infrastructure conventions | Flat Terraform layout, SSM-only access (no SSH), AMI taken from an SSM parameter, generated `.env.local`. | Extended, see below |
@@ -68,7 +68,7 @@ The logic is reused, but the technology or the scope changes in a meaningful way
 
 ## What is new
 
-Nothing in this table exists in Project I. This table describes scope, not proof of completion: see docs/handoff-completion.md for measured status. Dataset, frontend login and M5 remain Camila deliverables.
+Nothing in this table exists in Project I. This table describes scope, not proof of completion: see docs/handoff-completion.md for measured status. Dataset, frontend login and M5 were delivered by Camila (status in docs/responsabilidades.md).
 
 | Component | Description | Assignment |
 |---|---|---|
