@@ -218,7 +218,12 @@ manifests then fail `--verify-files` until regenerated with the new hashes).
 The published media is the reference copy: `scripts/dataset/upload-dataset.sh
 <bucket>` publishes `dataset/cases/<case_id>/<path>`, and
 `scripts/dataset/download-dataset.sh <bucket>` fetches it back and verifies the
-hashes. Terraform has no dedicated dataset bucket; agree on one with the team.
+hashes. Terraform has no dedicated dataset bucket, so the reference copy lives in
+the evidence bucket under `dataset/`: published on 2026-11-11 to
+`s3://msg-analysis-dev-evidence-114823617609/dataset/cases/` (545 sources and
+manifests, 1,715,238,653 bytes, identical to the manifests) and
+`.../dataset/ground_truth/`. Uploading needs `s3:PutObject` on that prefix and
+`kms:GenerateDataKey` on the evidence bucket key.
 
 ## Current dataset (seed 42)
 
