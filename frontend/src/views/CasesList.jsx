@@ -1,9 +1,9 @@
-// Case list: open cases and the latest finished ones carried by the live state.
+// Case board: open cases and the latest finished ones carried by the live state,
+// as cards filtered by status.
 
 import { useMemo, useState } from 'react'
 import { Empty, Section, StackedProgress, StatusLegend, StatusPill } from '../components/ui.jsx'
 import { useLiveState } from '../hooks/useLiveState.jsx'
-import { navigate } from '../hooks/useHashRoute.js'
 import { CASE_STATUS, PRIORITIES } from '../lib/domain.js'
 import { durationBetween, formatDateTime, formatDuration, shortId } from '../lib/format.js'
 
@@ -30,23 +30,25 @@ export default function CasesList() {
 
   return (
     <Section
-      title="Cases"
+      title="Case board"
       aside={
         <a className="btn btn-primary" href="#/new">
-          New case
+          Open a case
         </a>
       }
     >
       <div className="toolbar">
-        <div className="chips" role="group" aria-label="Filter by status">
-          <button type="button" className={`chip ${filter === 'all' ? 'on' : ''}`} onClick={() => setFilter('all')}>
+        <div className="board-tabs" role="tablist" aria-label="Filter by status">
+          <button type="button" role="tab" aria-selected={filter === 'all'} className={`board-tab ${filter === 'all' ? 'on' : ''}`} onClick={() => setFilter('all')}>
             All <span className="num">{data?.cases.length ?? 0}</span>
           </button>
           {Object.entries(CASE_STATUS).map(([key, info]) => (
             <button
               key={key}
               type="button"
-              className={`chip ${filter === key ? 'on' : ''}`}
+              role="tab"
+              aria-selected={filter === key}
+              className={`board-tab ${filter === key ? 'on' : ''}`}
               onClick={() => setFilter(key)}
               disabled={!counts[key]}
             >
@@ -71,54 +73,31 @@ export default function CasesList() {
           The live state includes open cases and the 50 most recently finished.
         </Empty>
       ) : (
-        <div className="table-wrap">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Case</th>
-                <th>Status</th>
-                <th className="col-progress">Sub-tasks</th>
-                <th className="right">Files</th>
-                <th>Priority</th>
-                <th>Source</th>
-                <th>Created</th>
-                <th className="right">Duration</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cases.map(({ case: c, by_status }) => (
-                <tr key={c.case_id} className="clickable" onClick={() => navigate(`/cases/${c.case_id}`)}>
-                  <td>
-                    <a href={`#/cases/${c.case_id}`} onClick={(e) => e.stopPropagation()}>
-                      <strong>{c.label || 'No label'}</strong>
-                    </a>
-                    <div className="mono muted small">{shortId(c.case_id)}</div>
-                  </td>
-                  <td>
-                    <StatusPill status={c.status} />
-                    {c.cancel_requested && !['cancelled'].includes(c.status) && (
-                      <div className="small muted">cancellation requested</div>
-                    )}
-                  </td>
-                  <td className="col-progress">
-                    <StackedProgress byStatus={by_status} total={c.total} />
-                    <span className="num small muted">
-                      {c.total - c.pending_count}/{c.total}
-                      {c.failed_count ? ` · ${c.failed_count} failed` : ''}
-                    </span>
-                  </td>
-                  <td className="right num">{c.file_count}</td>
-                  <td>{PRIORITIES[c.priority]?.label ?? c.priority}</td>
-                  <td>{c.source === 'auto' ? 'Automatic' : 'Manual'}</td>
-                  <td className="small">{formatDateTime(c.created_at)}</td>
-                  <td className="right num small">
-                    {formatDuration(durationBetween(c.started_at || c.created_at, c.finished_at))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ul className="case-cards">
+          {cases.map(({ case: c, by_status }) => (
+            <li key={c.case_id}>
+              <a href={`#/cases/${c.case_id}`} className={`case-card prio-${c.priority}`}>
+                <div className="case-card-top">
+                  <StatusPill status={c.status} />
+                  <span className={`pill tone-${PRIORITIES[c.priority]?.tone ?? 'neutral'}`}>{PRIORITIES[c.priority]?.label ?? c.priority}</span>
+                </div>
+                <strong className="case-card-title">{c.label || `Case ${shortId(c.case_id)}`}</strong>
+                <span className="mono muted small">{shortId(c.case_id)}</span>
+                <StackedProgress byStatus={by_status} total={c.total} />
+                <div className="case-card-facts small muted">
+                  <span className="num">{c.total - c.pending_count}/{c.total} sub-tasks{c.failed_count ? ` · ${c.failed_count} failed` : ''}</span>
+                  <span className="num">{c.file_count} file(s)</span>
+                </div>
+                <div className="case-card-facts small muted">
+                  <span>{formatDateTime(c.created_at)}</span>
+                  <span className="num">{formatDuration(durationBetween(c.started_at || c.created_at, c.finished_at))}</span>
+                </div>
+                {c.cancel_requested && c.status !== 'cancelled' && <span className="small tone-text-bad">Cancellation requested</span>}
+                <span className="case-card-source small muted">{c.source === 'auto' ? 'Automatic' : 'Manual'}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
     </Section>
   )

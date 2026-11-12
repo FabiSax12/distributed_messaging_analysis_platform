@@ -25,7 +25,7 @@ export default function NewCase() {
   return (
     <div className="stack-lg">
       <header className="page-head">
-        <h1>New case</h1>
+        <h1>Open a case</h1>
         <p className="muted">
           A case groups one or more files, of the same type or mixed. The coordinator splits it into sub-tasks and
           queues them by type and priority.
