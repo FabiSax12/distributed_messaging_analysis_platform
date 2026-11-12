@@ -140,7 +140,7 @@ coordinator and worker nodes.
 | Supervisor cancel while in progress -> 1 completed, 5 cancelled, case Cancelled | live | Pass |
 | No horizontal page scroll at 375 px on System, Cases, New case, Users & roles | live (viewport emulation) | Pass |
 | Access token expiring after 60 min while the page is open (timer refresh, 1008 close -> refresh -> reconnect) | not run | Code path written; only the reload refresh and the invalid-token path were exercised |
-| Production build served from CloudFront with Cognito settings | not run | Needs the `COGNITO_DOMAIN`/`COGNITO_CLIENT_ID` repository variables and a deploy |
+| Production build served from CloudFront with Cognito settings (CI deploy after merging the three PRs, `COGNITO_DOMAIN`/`COGNITO_CLIENT_ID` repository variables) | live, by hand (Camila), https://d46arnaly1f90.cloudfront.net | Pass: sign-in and the dashboard work from CloudFront |
 
 Known limitation: `GET /api/admin/users` returns Cognito usernames, which in
 this pool are UUIDs (email is a sign-in alias), so the admin table shows
