@@ -76,7 +76,7 @@ export default function CaseDetail({ caseId }) {
   if (error && !detail) {
     return (
       <div className="stack-lg">
-        <a href="#/cases" className="back">← Cases</a>
+        <a href="#/cases" className="back">← Case board</a>
         <ErrorBanner error={error.status === 404 ? 'That case does not exist.' : error} onRetry={load} />
       </div>
     )
@@ -85,7 +85,7 @@ export default function CaseDetail({ caseId }) {
 
   return (
     <div className="stack-lg">
-      <a href="#/cases" className="back">← Cases</a>
+      <a href="#/cases" className="back">← Case board</a>
       <CaseHeader c={detail.case} onChanged={load} />
       <Barrier c={detail.case} subtasks={detail.subtasks} />
       {terminal && <Report caseId={caseId} status={detail.case.status} inputsByKey={inputsByKey} />}
