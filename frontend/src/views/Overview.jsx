@@ -1,4 +1,5 @@
-// Overview: summary, alerts, worker nodes, queues and load behavior.
+// Operations view: platform status, pools (nodes + their queue), active cases,
+// coordinator queues and recent activity.
 
 import { useMemo, useState } from 'react'
 import { api } from '../api/client.js'
@@ -16,24 +17,26 @@ export default function Overview() {
   const { data } = useLiveState()
 
   if (!data) {
-    return <Empty title="Waiting for the first coordinator state">Check the connection indicator at the top right.</Empty>
+    return <Empty title="Waiting for the first coordinator state">Check the connection indicator in the side menu.</Empty>
   }
 
   return (
     <div className="stack-lg">
-      <Kpis data={data} />
+      <StatusHero data={data} />
       <Alerts alerts={data.alerts} />
-      <Workers workers={data.workers} />
-      <div className="grid-2">
-        <Queues queues={data.queues} />
-        <ActiveCases cases={data.cases} />
+      <div className="ops-grid">
+        <PoolBoard workers={data.workers} queues={data.queues} />
+        <div className="stack-lg">
+          <ActiveCases cases={data.cases} />
+          <CoordinatorQueues queues={data.queues} />
+        </div>
       </div>
       <LoadHistory />
     </div>
   )
 }
 
-function Kpis({ data }) {
+function StatusHero({ data }) {
   const k = useMemo(() => {
     const open = data.cases.filter((c) => !TERMINAL_CASE.has(c.case.status))
     const sum = (key) => data.cases.reduce((a, c) => a + (c.by_status[key] || 0), 0)
@@ -51,27 +54,40 @@ function Kpis({ data }) {
     }
   }, [data])
 
+  const degraded = k.workers && k.alive < k.workers
+  const tone = k.dlq || !k.alive ? 'bad' : degraded || data.alerts?.length ? 'warn' : 'ok'
+  const headline = {
+    ok: 'All analysis pools are online',
+    warn: degraded ? `${k.workers - k.alive} worker node(s) not reporting` : 'Running with warnings',
+    bad: k.dlq ? `${k.dlq} sub-task(s) exhausted their retries` : 'No worker is online',
+  }[tone]
+
   return (
-    <div className="kpis">
-      <Kpi label="Open cases" value={k.open} />
-      <Kpi label="Sub-tasks in progress" value={k.active} hint={`${k.waiting} waiting`} />
-      <Kpi
-        label="Live workers"
-        value={`${k.alive}/${k.workers}`}
-        tone={k.workers && k.alive < k.workers ? 'warn' : undefined}
-      />
-      <Kpi label="Messages in queues" value={k.queued} hint={`${k.inFlight} taken by workers`} />
-      <Kpi label="DLQ" value={k.dlq} tone={k.dlq ? 'bad' : undefined} hint="retries exhausted" />
-    </div>
+    <section className={`status-hero tone-${tone}`}>
+      <div className="status-hero-text">
+        <span className="eyebrow">Operations</span>
+        <h1>{headline}</h1>
+        <p className="muted">
+          {k.open ? `${k.open} case(s) under analysis, ${k.active} sub-task(s) running and ${k.waiting} waiting.` : 'No case is under analysis right now.'}
+        </p>
+      </div>
+      <div className="stat-strip">
+        <Kpi label="Cases open" value={k.open} />
+        <Kpi label="Running" value={k.active} hint={`${k.waiting} waiting`} />
+        <Kpi label="Nodes online" value={`${k.alive}/${k.workers}`} tone={degraded ? 'warn' : undefined} />
+        <Kpi label="Queued messages" value={k.queued} hint={`${k.inFlight} in flight`} />
+        <Kpi label="Dead letters" value={k.dlq} tone={k.dlq ? 'bad' : undefined} />
+      </div>
+    </section>
   )
 }
 
 function Kpi({ label, value, hint, tone }) {
   return (
-    <div className={`kpi ${tone ? `tone-${tone}` : ''}`}>
-      <span className="kpi-label">{label}</span>
-      <span className="kpi-value num">{value}</span>
-      {hint && <span className="kpi-hint">{hint}</span>}
+    <div className={`stat ${tone ? `tone-${tone}` : ''}`}>
+      <span className="stat-value num">{value}</span>
+      <span className="stat-label">{label}</span>
+      {hint && <span className="stat-hint">{hint}</span>}
     </div>
   )
 }
@@ -90,24 +106,32 @@ function Alerts({ alerts = [] }) {
   )
 }
 
-function Workers({ workers }) {
+function PoolBoard({ workers, queues }) {
   const byPool = Object.keys(POOLS).map((pool) => {
     const list = workers.filter((w) => w.pool === pool).sort((a, b) => a.worker_id.localeCompare(b.worker_id))
-    // Instance types reported by the pool's live workers (none when empty).
     const instanceTypes = [...new Set(list.filter((w) => w.alive).map((w) => w.instance_type).filter(Boolean))].join(', ')
-    return { pool, list, instanceTypes }
+    const q = queues.find((x) => x.queue === workQueue(pool)) ?? { visible: 0, in_flight: 0 }
+    const alive = list.filter((w) => w.alive).length
+    return { pool, list, instanceTypes, q, alive }
   })
 
   return (
-    <Section title="Worker nodes" aside={<span className="muted">Heartbeat every 5 s · marked down after 60 s without reporting</span>}>
-      <div className="pools">
-        {byPool.map(({ pool, list, instanceTypes }) => (
-          <div key={pool} className="pool">
-            <header className="pool-head">
-              <i className="dot" style={{ background: POOL_COLORS[pool] }} />
-              <h3>Pool {POOLS[pool].label}</h3>
-              {instanceTypes && <span className="muted mono">{instanceTypes}</span>}
+    <Section title="Analysis pools" aside={<span className="muted small">Heartbeat every 5 s · down after 60 s silent</span>}>
+      <div className="pool-board">
+        {byPool.map(({ pool, list, instanceTypes, q, alive }) => (
+          <div key={pool} className="pool-col" style={{ '--pool': POOL_COLORS[pool] }}>
+            <header className="pool-col-head">
+              <span className={`health ${alive ? (alive < list.length ? 'warn' : 'ok') : 'bad'}`} aria-hidden="true" />
+              <div>
+                <h3>{POOLS[pool].label}</h3>
+                <span className="muted small mono">{instanceTypes || 'no live node'}</span>
+              </div>
             </header>
+            <div className="pool-queue">
+              <span className="small muted mono">{workQueue(pool)}</span>
+              <span className="pool-queue-num num">{q.visible}</span>
+              <span className="small muted">waiting · {q.in_flight} in flight</span>
+            </div>
             {list.length === 0 && <p className="muted small">No worker has registered a heartbeat.</p>}
             {list.map((w) => (
               <WorkerCard key={w.worker_id} w={w} />
@@ -151,52 +175,27 @@ function WorkerCard({ w }) {
   )
 }
 
-function Queues({ queues }) {
+function CoordinatorQueues({ queues }) {
   const get = (name) => queues.find((q) => q.queue === name) ?? { visible: 0, in_flight: 0 }
-  const max = Math.max(1, ...queues.map((q) => q.visible + q.in_flight))
-
-  const row = (name, label) => {
-    const q = get(name)
-    return (
-      <div key={name} className="queue-row">
-        <span className="queue-name mono">{label ?? name}</span>
-        <div className="queue-bar" title={`${q.visible} visible · ${q.in_flight} in flight`}>
-          <span className="qb-visible" style={{ width: `${(q.visible / max) * 100}%` }} />
-          <span className="qb-flight" style={{ width: `${(q.in_flight / max) * 100}%` }} />
-        </div>
-        <span className="num queue-count">
-          {q.visible}
-          <small> / {q.in_flight}</small>
-        </span>
-      </div>
-    )
-  }
-
   return (
-    <Section
-      title="RabbitMQ queues"
-      aside={
-        <span className="legend">
-          <span className="legend-item"><i className="dot qb-visible" /> visible</span>
-          <span className="legend-item"><i className="dot qb-flight" /> in flight</span>
-        </span>
-      }
-    >
-      <div className="queues">
-        {Object.keys(POOLS).map((pool) => (
-          <div key={pool} className="queue-group">
-            <div className="queue-group-head">
-              <i className="dot" style={{ background: POOL_COLORS[pool] }} /> {POOLS[pool].label}
-            </div>
-            {row(workQueue(pool))}
-          </div>
-        ))}
-        <div className="queue-group">
-          <div className="queue-group-head">Coordinator</div>
-          {row(RESULTS_QUEUE)}
-          {row(DEAD_LETTER_QUEUE)}
-        </div>
-      </div>
+    <Section title="Coordinator queues">
+      <ul className="coord-queues">
+        {[[RESULTS_QUEUE, 'Results from workers'], [DEAD_LETTER_QUEUE, 'Dead letters (retries exhausted)']].map(([name, label]) => {
+          const q = get(name)
+          return (
+            <li key={name}>
+              <div>
+                <span className="mono small">{name}</span>
+                <span className="muted small">{label}</span>
+              </div>
+              <span className={`num coord-count ${name === DEAD_LETTER_QUEUE && q.visible + q.in_flight ? 'tone-text-bad' : ''}`}>
+                {q.visible}
+                <small> / {q.in_flight}</small>
+              </span>
+            </li>
+          )
+        })}
+      </ul>
     </Section>
   )
 }
@@ -207,10 +206,10 @@ function ActiveCases({ cases }) {
     .sort((a, b) => b.case.case_id.localeCompare(a.case.case_id))
 
   return (
-    <Section title="Cases in progress" aside={<a href="#/cases">View all</a>}>
+    <Section title="Active cases" aside={<a href="#/cases">Case board</a>}>
       {open.length === 0 ? (
         <Empty title="No cases in progress">
-          <a href="#/new">Create a case</a>
+          <a href="#/new">Open a case</a>
         </Empty>
       ) : (
         <ul className="case-mini">
@@ -280,7 +279,7 @@ function LoadHistory() {
 
   return (
     <Section
-      title="Load behavior"
+      title="Activity"
       aside={<span className="muted">Last {METRICS_WINDOW_MIN} min · GET /api/metrics</span>}
     >
       {error && <p className="muted small">Could not read the load series: {error}</p>}
