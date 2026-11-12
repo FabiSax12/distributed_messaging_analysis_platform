@@ -7,11 +7,11 @@ Work is split by load: Fabián owns the heaviest and cloud-bound work, which can
 | Migration to RabbitMQ + PostgreSQL (coordinator, workers, shared) | Fabián Vargas | David Molina | `services/coordinator/`, `services/workers/`, `services/shared/` | — |
 | Terraform infrastructure | Fabián Vargas | — | `infra/terraform/` | — |
 | Deployment (Docker images, Compose per node, SSM scripts) | Fabián Vargas | David Molina | `infra/docker/`, `scripts/deploy/` | — |
-| M2 Scheduling (priorities, aging, policy experiment) | Fabián Vargas | David Molina | `services/coordinator/scheduler/`, `experiments/m2_scheduling/` | `docs/module-m2-scheduling.md` |
-| M4 Security (Cognito RBAC, TLS, KMS, custody log, non-root workers) | Fabián Vargas | Camila Hidalgo | `services/security/`, `infra/tls/`, `experiments/m4_security/` | `docs/module-m4-security.md` |
+| M2 Scheduling (priorities, aging, policy experiment) | Fabián Vargas | David Molina | `services/coordinator/src/coordinator/scheduler/`, `experiments/m2_scheduling/` | `docs/module-m2-scheduling.md` |
+| M4 Security (Cognito RBAC, TLS, KMS, custody log, non-root workers) | Fabián Vargas | David Molina, Camila Hidalgo | `services/coordinator/src/coordinator/` (`auth.py`, `security.py`), `infra/tls/`, `experiments/m4_security/` | `docs/module-m4-security.md` |
 | Load and fault-tolerance tests (B.6) | Fabián Vargas | David Molina | `experiments/fault_tests/`, `services/load_client/` | Final report |
 | Analysis workers (text, image, audio) | David Molina | Camila Hidalgo | `services/workers/` | — |
-| M1 Memory (cgroups limits, RSS/PSS, admission control, OOM requeue) | David Molina | Fabián Vargas | `services/coordinator/admission/`, `experiments/m1_memory/` | `docs/module-m1-memory.md` |
+| M1 Memory (cgroups limits, RSS/PSS, admission control, OOM requeue) | David Molina | Fabián Vargas | `services/coordinator/src/coordinator/admission/`, `experiments/m1_memory/` | `docs/module-m1-memory.md` |
 | M3 I/O and storage (chunks, SHA-256 CAS, dedup, backpressure) | David Molina | Fabián Vargas | `services/storage/`, `experiments/m3_io_storage/` | `docs/module-m3-io-storage.md` |
 | M5 Heterogeneous compute (CPU vs GPU / threads vs quantized) | Camila Hidalgo | David Molina | `experiments/m5_heterogeneous_compute/` | `docs/module-m5-heterogeneous-compute.md` |
 | Dataset (generators, public sources, ground truth) | Camila Hidalgo | David Molina | `dataset/`, `scripts/dataset/`, `docs/dataset.md` | `docs/dataset.md` (evaluation results) |
@@ -21,7 +21,11 @@ Work is split by load: Fabián owns the heaviest and cloud-bound work, which can
 ## Current implementation/manual split
 
 David implements remaining backend, worker, storage, infrastructure code,
-experiments and deployment/docs changes in one completion PR. Fabi?n performs
+experiments and deployment/docs changes in one completion PR. That PR
+(`a7c7148`) includes the first implementation of the M2 scheduler and its
+local FIFO/aging comparison, the M4 JWT/RBAC checks and probes, the load
+client and the B.6 fault-test runners, so David appears as author of code in
+modules whose primary owner is Fabián. Fabián performs
 Terraform apply, repository-variable setup, instance lifecycle, Cognito users,
 cloud experiments/screenshots and instructor-feedback collection. Camila keeps
 frontend login/views, the full dataset and M5 benchmarking; backend contracts
@@ -39,6 +43,6 @@ evidence interpretation; code authorship follows actual commits.
   threads); decision to keep CPU routing, plus the image-thread fix in
   `image.py`. A GPU measurement was not possible and is not claimed.
 - Frontend: Cognito PKCE login, roles, administrator view, findings/report
-  views, verified live against the dev pool from `localhost`. Pending on
-  Fabián: the `COGNITO_DOMAIN` and `COGNITO_CLIENT_ID` repository variables,
-  so the CI-published dashboard includes sign-in.
+  views, verified live against the dev pool from `localhost`. The
+  `COGNITO_DOMAIN` and `COGNITO_CLIENT_ID` repository variables are set, so
+  the CI-published dashboard includes sign-in.
